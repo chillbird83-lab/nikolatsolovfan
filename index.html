@@ -1275,11 +1275,11 @@
     margin-top: 12px;
   }
   /* Bento positions */
-  .ct-standings { grid-column: span 3; grid-row: span 2; }
-  .ct-quote     { grid-column: span 3; }
-  .ct-result    { grid-column: span 3; }
+  .ct-standings   { grid-column: span 3; grid-row: span 2; }
+  .ct-rounds      { grid-column: span 3; grid-row: span 2; }
+  .ct-quote       { grid-column: span 3; }
   .ct-careerstats { grid-column: span 3; }
-  .ct-trivia    { grid-column: span 3; }
+  .ct-trivia      { grid-column: span 6; }
 
   .ct-card {
     background: rgba(255,255,255,0.02);
@@ -1443,60 +1443,126 @@
     color: var(--gray-500);
   }
 
-  /* --- Result card --- */
-  .ct-result-flag {
-    font-size: 22px;
+  /* --- Round-by-round tracker --- */
+  .ct-rounds .rd-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 14px;
+    border-bottom: 1px dashed rgba(255,255,255,0.06);
+    transition: background .25s;
   }
-  .ct-result-headline {
+  .ct-rounds .rd-row:last-of-type { border-bottom: none; }
+  .ct-rounds .rd-row.rd-live {
+    background: linear-gradient(90deg, rgba(225,6,0,0.12), transparent 80%);
+    border-left: 3px solid var(--red);
+    margin: 0 -14px;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .ct-rounds .rd-row.rd-upcoming { opacity: 0.45; }
+
+  .rd-loc {
     display: flex;
-    align-items: baseline;
-    gap: 14px;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
   }
-  .ct-result-pos {
+  .rd-num {
     font-family: var(--display);
     font-weight: 900;
-    font-size: 76px;
-    color: var(--red);
-    line-height: 0.85;
-    letter-spacing: -0.03em;
+    font-size: 20px;
+    color: var(--gray-500);
+    line-height: 1;
+    letter-spacing: -0.02em;
   }
-  .ct-result-circuit {
+  .rd-row.rd-completed .rd-num,
+  .rd-row.rd-live .rd-num { color: var(--red); }
+  .rd-name {
     font-family: var(--display);
     font-weight: 800;
-    font-size: 22px;
+    font-size: 16px;
     text-transform: uppercase;
     color: var(--bone);
     letter-spacing: 0.01em;
-    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
-  .ct-result-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    margin-top: auto;
+  .rd-flag { font-size: 16px; }
+
+  .rd-results {
+    display: flex;
+    gap: 6px;
   }
-  .ct-result-grid > div {
+  .rd-cell {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    padding: 10px 12px;
-    background: rgba(0,0,0,0.3);
-    border-left: 2px solid var(--gray-700);
+    align-items: center;
+    min-width: 42px;
+    padding: 6px 8px;
+    background: rgba(0,0,0,0.4);
+    border: 1px solid var(--gray-700);
+    cursor: help;
   }
-  .ct-result-grid .lbl {
+  .rd-cell-lbl {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 0.18em;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .rd-cell-val {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 15px;
+    line-height: 1;
+    color: var(--gray-300);
+    font-variant-numeric: tabular-nums;
+  }
+  .rd-cell-val.rd-win {
+    color: var(--bone);
+    background: var(--red);
+    margin: -1px;
+    padding: 6px 7px 5px;
+    border-radius: 2px;
+  }
+  .rd-cell-val.rd-pole {
+    color: var(--ink);
+    background: var(--gold);
+    margin: -1px;
+    padding: 6px 5px 5px;
+    border-radius: 2px;
+    font-size: 13px;
+  }
+  .rd-cell-val.rd-points { color: var(--bone); }
+  .rd-cell-val.rd-nopts  { color: var(--gray-500); }
+  .rd-cell-val.rd-blank  { color: var(--gray-700); font-weight: 400; }
+  .rd-cell-val.rd-pending {
+    color: var(--red);
+    animation: pulse-text 1.4s ease-in-out infinite;
+  }
+
+  .rd-key {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding-top: 12px;
+    margin-top: auto;
+    border-top: 1px solid var(--gray-700);
     font-family: var(--mono);
     font-size: 9px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--gray-500);
   }
-  .ct-result-grid .val {
-    font-family: var(--display);
-    font-weight: 800;
-    font-size: 17px;
-    color: var(--bone);
-    font-variant-numeric: tabular-nums;
-  }
+  .rd-key-item { display: inline-flex; align-items: center; gap: 6px; }
+  .rd-key-dot { width: 10px; height: 10px; border-radius: 1px; }
+  .rd-key-dot.rd-win-dot    { background: var(--red); }
+  .rd-key-dot.rd-pole-dot   { background: var(--gold); }
+  .rd-key-dot.rd-points-dot { background: var(--bone); }
 
   /* --- Career stats strip --- */
   .cs-list {
@@ -1561,12 +1627,14 @@
     .content-tiles {
       grid-template-columns: 1fr;
     }
-    .ct-standings, .ct-quote, .ct-result, .ct-careerstats, .ct-trivia {
+    .ct-standings, .ct-rounds, .ct-quote, .ct-careerstats, .ct-trivia {
       grid-column: 1;
       grid-row: auto;
     }
     .ct-card { padding: 22px; min-height: auto; }
-    .ct-result-pos { font-size: 56px; }
+    .rd-name { font-size: 14px; }
+    .rd-cell { min-width: 36px; padding: 5px 6px; }
+    .rd-cell-val { font-size: 13px; }
   }
 
   /* ===================== QUOTE FEATURE ===================== */
@@ -2198,33 +2266,77 @@
       </div>
     </div>
 
-    <!-- Melbourne race result card -->
-    <div class="ct-card ct-result">
+    <!-- Round-by-round race tracker -->
+    <div class="ct-card ct-rounds">
       <div class="ct-head">
-        <span class="ct-eyebrow" data-i18n="ct.result.eyebrow">Round 01 · Feature Race</span>
-        <span class="ct-result-flag">🇦🇺</span>
+        <span class="ct-eyebrow" data-i18n="ct.rounds.eyebrow">Round-by-round</span>
+        <span class="ct-meta" data-i18n="ct.rounds.legend">Quali · Sprint · Feature</span>
       </div>
-      <div class="ct-result-headline">
-        <span class="ct-result-pos">P1</span>
-        <span class="ct-result-circuit">Albert Park</span>
+
+      <!-- Round 1 — Melbourne -->
+      <div class="rd-row rd-completed">
+        <div class="rd-loc">
+          <span class="rd-num">R1</span>
+          <span class="rd-name">Melbourne</span>
+          <span class="rd-flag">🇦🇺</span>
+        </div>
+        <div class="rd-results">
+          <div class="rd-cell" title="Qualifying">
+            <span class="rd-cell-lbl">Q</span>
+            <span class="rd-cell-val rd-points">P5</span>
+          </div>
+          <div class="rd-cell" title="Sprint Race">
+            <span class="rd-cell-lbl">S</span>
+            <span class="rd-cell-val rd-nopts">P19</span>
+          </div>
+          <div class="rd-cell" title="Feature Race">
+            <span class="rd-cell-lbl">F</span>
+            <span class="rd-cell-val rd-win">P1</span>
+          </div>
+        </div>
       </div>
-      <div class="ct-result-grid">
-        <div>
-          <span class="lbl" data-i18n="ct.result.start">Started</span>
-          <span class="val">P3</span>
+
+      <!-- Round 2 — Miami (live) -->
+      <div class="rd-row rd-live">
+        <div class="rd-loc">
+          <span class="rd-num">R2</span>
+          <span class="rd-name">Miami</span>
+          <span class="rd-flag">🇺🇸</span>
         </div>
-        <div>
-          <span class="lbl" data-i18n="ct.result.gain">Positions gained</span>
-          <span class="val">+2</span>
+        <div class="rd-results">
+          <div class="rd-cell" title="Qualifying — Sprint Pole · 10th for Feature">
+            <span class="rd-cell-lbl">Q</span>
+            <span class="rd-cell-val rd-pole">SP</span>
+          </div>
+          <div class="rd-cell" title="Sprint Race — Saturday">
+            <span class="rd-cell-lbl">S</span>
+            <span class="rd-cell-val rd-pending">?</span>
+          </div>
+          <div class="rd-cell" title="Feature Race — Sunday">
+            <span class="rd-cell-lbl">F</span>
+            <span class="rd-cell-val rd-pending">?</span>
+          </div>
         </div>
-        <div>
-          <span class="lbl" data-i18n="ct.result.fastest">Fastest lap</span>
-          <span class="val">1:31.482</span>
+      </div>
+
+      <!-- Round 3 — Montreal (upcoming) -->
+      <div class="rd-row rd-upcoming">
+        <div class="rd-loc">
+          <span class="rd-num">R3</span>
+          <span class="rd-name">Montréal</span>
+          <span class="rd-flag">🇨🇦</span>
         </div>
-        <div>
-          <span class="lbl" data-i18n="ct.result.points">Points won</span>
-          <span class="val">25</span>
+        <div class="rd-results">
+          <div class="rd-cell"><span class="rd-cell-lbl">Q</span><span class="rd-cell-val rd-blank">—</span></div>
+          <div class="rd-cell"><span class="rd-cell-lbl">S</span><span class="rd-cell-val rd-blank">—</span></div>
+          <div class="rd-cell"><span class="rd-cell-lbl">F</span><span class="rd-cell-val rd-blank">—</span></div>
         </div>
+      </div>
+
+      <div class="rd-key">
+        <span class="rd-key-item"><span class="rd-key-dot rd-win-dot"></span><span data-i18n="ct.rounds.win">Win</span></span>
+        <span class="rd-key-item"><span class="rd-key-dot rd-pole-dot"></span><span data-i18n="ct.rounds.pole">Pole / Sprint Pole</span></span>
+        <span class="rd-key-item"><span class="rd-key-dot rd-points-dot"></span><span data-i18n="ct.rounds.points">Top 10</span></span>
       </div>
     </div>
 
@@ -2550,11 +2662,11 @@
       "ct.standings.gap": "Gap to P2",
       "ct.quote.text": "Ultimately in F2 you're just a step away from the dream. But still — race by race, round by round, lap by lap.",
       "ct.quote.context": "After Melbourne · 8 Mar 2026",
-      "ct.result.eyebrow": "Round 01 · Feature Race",
-      "ct.result.start": "Started",
-      "ct.result.gain": "Positions gained",
-      "ct.result.fastest": "Fastest lap",
-      "ct.result.points": "Points won",
+      "ct.rounds.eyebrow": "Round-by-round",
+      "ct.rounds.legend": "Quali · Sprint · Feature",
+      "ct.rounds.win": "Win",
+      "ct.rounds.pole": "Pole / Sprint Pole",
+      "ct.rounds.points": "Top 10",
       "ct.career.eyebrow": "Career milestones",
       "ct.career.2026": "First F2 victory · Bulgaria's first",
       "ct.career.2025": "F3 record · 5 career wins · Vice-Champion",
@@ -2612,11 +2724,11 @@
       "ct.standings.gap": "Преднина пред 2-ри",
       "ct.quote.text": "В крайна сметка във Формула 2 си само на крачка от мечтата. Но все пак — състезание след състезание, кръг след кръг, обиколка след обиколка.",
       "ct.quote.context": "След Мелбърн · 8 март 2026",
-      "ct.result.eyebrow": "Кръг 01 · Главно състезание",
-      "ct.result.start": "Стартова позиция",
-      "ct.result.gain": "Спечелени места",
-      "ct.result.fastest": "Най-бърза обиколка",
-      "ct.result.points": "Спечелени точки",
+      "ct.rounds.eyebrow": "Кръг по кръг",
+      "ct.rounds.legend": "Квал · Спринт · Главно",
+      "ct.rounds.win": "Победа",
+      "ct.rounds.pole": "Поул / Спринт поул",
+      "ct.rounds.points": "Топ 10",
       "ct.career.eyebrow": "Ключови моменти",
       "ct.career.2026": "Първа победа във F2 · Първа за България",
       "ct.career.2025": "Рекорд във F3 · 5 победи · Вицешампион",
