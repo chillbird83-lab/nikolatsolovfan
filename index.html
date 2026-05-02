@@ -1,0 +1,2462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TSOLOV — The Bulgarian Lion · Fan Page</title>
+
+<!-- ===================== SEO + SOCIAL META ===================== -->
+<meta name="description" content="Unofficial fan page for Nikola Tsolov — Bulgaria's first F2 race winner, Red Bull Junior, Campos Racing #6. Career stats, 2026 season tracker, live updates." />
+<meta name="theme-color" content="#e10600" />
+<link rel="canonical" href="https://nikolatsolovfan.netlify.app/" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+<!-- Open Graph (Facebook, LinkedIn, Discord, WhatsApp) -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://nikolatsolovfan.netlify.app/" />
+<meta property="og:title" content="TSOLOV — The Bulgarian Lion" />
+<meta property="og:description" content="Bulgaria's first F2 race winner. Red Bull Junior. Campos Racing #6. Career stats, 2026 season tracker, live updates." />
+<meta property="og:image" content="https://nikolatsolovfan.netlify.app/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="TSOLOV — The Bulgarian Lion · Fan Page" />
+<meta property="og:locale" content="en_GB" />
+<meta property="og:locale:alternate" content="bg_BG" />
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="TSOLOV — The Bulgarian Lion" />
+<meta name="twitter:description" content="Bulgaria's first F2 race winner. Red Bull Junior. Campos Racing #6." />
+<meta name="twitter:image" content="https://nikolatsolovfan.netlify.app/og-image.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #0b0b0d;
+    --bone: #f3efe6;
+    --cream: #ebe4d4;
+    --red: #e10600;
+    --deep-red: #8a0303;
+    --green: #00966e; /* Bulgarian flag green */
+    --gold: #d4a541;
+    --gray-700: #2a2a2e;
+    --gray-500: #5a5a60;
+    --gray-300: #b6b3aa;
+    --display: 'Big Shoulders Display', Impact, sans-serif;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Manrope', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--bone);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.5;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(circle at 80% 10%, rgba(225, 6, 0, 0.12), transparent 50%),
+      radial-gradient(circle at 10% 80%, rgba(0, 150, 110, 0.08), transparent 55%);
+  }
+
+  /* Subtle film grain */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  ::selection { background: var(--red); color: var(--bone); }
+
+  /* ===================== TOP BAR ===================== */
+  .topbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 32px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, rgba(11,11,13,0.95), rgba(11,11,13,0));
+    backdrop-filter: blur(8px);
+  }
+  .topbar .left { display: flex; gap: 24px; align-items: center; }
+  .topbar .left .dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    background: var(--red);
+    border-radius: 50%;
+    animation: pulse 1.4s ease-in-out infinite;
+    margin-right: 6px;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(225,6,0,0.7); }
+    50% { opacity: 0.6; box-shadow: 0 0 0 6px rgba(225,6,0,0); }
+  }
+  .topbar nav { display: flex; gap: 22px; }
+  .topbar nav a { color: var(--bone); text-decoration: none; opacity: 0.7; transition: opacity .2s; }
+  .topbar nav a:hover { opacity: 1; color: var(--red); }
+  .topbar .right { color: var(--gray-300); }
+
+  /* ===================== LATEST RESULT BANNER ===================== */
+  .result-banner {
+    position: relative;
+    margin-top: 56px; /* clears fixed topbar */
+    background: var(--ink);
+    border-top: 1px solid var(--gray-700);
+    border-bottom: 1px solid var(--gray-700);
+    overflow: hidden;
+  }
+  /* Diagonal racing stripes texture */
+  .result-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      135deg,
+      transparent 0,
+      transparent 24px,
+      rgba(225,6,0,0.05) 24px,
+      rgba(225,6,0,0.05) 25px
+    );
+    pointer-events: none;
+  }
+
+  .banner-inner {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    align-items: center;
+    gap: 28px;
+    padding: 18px 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .banner-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--red);
+    color: var(--bone);
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .banner-pill::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--bone);
+    border-radius: 50%;
+  }
+
+  .banner-result {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    overflow: hidden;
+  }
+  .banner-position {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 38px;
+    line-height: 1;
+    color: var(--red);
+    letter-spacing: -0.02em;
+  }
+  .banner-text {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--bone);
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .banner-text strong {
+    font-weight: 700;
+    color: var(--bone);
+  }
+  .banner-text .race {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-right: 6px;
+  }
+  .banner-text .sep {
+    color: var(--gray-500);
+    margin: 0 8px;
+  }
+
+  .banner-divider {
+    width: 1px;
+    height: 36px;
+    background: var(--gray-700);
+  }
+
+  .banner-next {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gray-300);
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+  .banner-next .label { color: var(--gray-500); }
+  .banner-next .where { color: var(--bone); font-weight: 700; }
+
+  @media (max-width: 800px) {
+    .banner-inner {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      padding: 16px 20px;
+    }
+    .banner-divider { display: none; }
+    .banner-result { flex-wrap: wrap; }
+    .banner-position { font-size: 32px; }
+    .banner-text { white-space: normal; }
+    .banner-next { align-items: flex-start; }
+  }
+
+  /* ===================== HERO ===================== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    padding: 60px 32px 60px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .hero .country-strip {
+    position: absolute;
+    top: 60px;
+    right: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gray-300);
+  }
+  .flag-bg {
+    width: 64px;
+    height: 38px;
+    border: 1px solid var(--gray-700);
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+  .flag-bg span:nth-child(1) { background: var(--bone); }
+  .flag-bg span:nth-child(2) { background: var(--green); }
+  .flag-bg span:nth-child(3) { background: var(--red); }
+
+  .hero-name {
+    margin-top: auto;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15em;
+  }
+  .hero-tsolov {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(80px, 22vw, 360px);
+    line-height: 0.78;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: var(--bone);
+  }
+  .hero-nickname {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(36px, 8.5vw, 130px);
+    line-height: 0.95;
+    letter-spacing: -0.005em;
+    display: flex;
+    align-items: baseline;
+    gap: 0.28em;
+    flex-wrap: wrap;
+  }
+  .hero-nickname .nick-white   { color: var(--bone); }
+  .hero-nickname .nick-green   { color: var(--green); }
+  .hero-nickname .nick-red     { color: var(--red); }
+
+  .hero-name .number {
+    font-family: var(--display);
+    font-weight: 900;
+    color: var(--red);
+    -webkit-text-stroke: 2px var(--red);
+  }
+
+  .hero-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    border-top: 1px solid var(--gray-700);
+    border-bottom: 1px solid var(--gray-700);
+    padding: 22px 0;
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  .hero-meta .field { display: flex; flex-direction: column; gap: 6px; }
+  .hero-meta .field .label { color: var(--gray-500); font-size: 10px; }
+  .hero-meta .field .value { color: var(--bone); font-size: 14px; font-weight: 500; }
+  .hero-meta .field .value strong { color: var(--red); }
+
+  .hero-tagline {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(20px, 2.4vw, 32px);
+    line-height: 1.3;
+    color: var(--cream);
+    max-width: 720px;
+    font-weight: 400;
+  }
+  .hero-tagline em {
+    color: var(--red);
+    font-style: italic;
+    font-weight: 600;
+  }
+
+  /* Speed lines decoration */
+  .speed-lines {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30%;
+    height: 220px;
+    pointer-events: none;
+    opacity: 0.4;
+  }
+  .speed-lines .line {
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--red), transparent);
+    animation: zoom 2.5s ease-in-out infinite;
+  }
+  .speed-lines .line:nth-child(1) { top: 20%; width: 40%; animation-delay: 0s; }
+  .speed-lines .line:nth-child(2) { top: 45%; width: 70%; animation-delay: 0.4s; }
+  .speed-lines .line:nth-child(3) { top: 70%; width: 50%; animation-delay: 0.8s; }
+  .speed-lines .line:nth-child(4) { top: 85%; width: 30%; animation-delay: 1.2s; }
+  @keyframes zoom {
+    0% { transform: translateX(-100%); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateX(100%); opacity: 0; }
+  }
+
+  /* ===================== SECTIONS ===================== */
+  section { padding: 100px 32px; position: relative; }
+
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 24px;
+  }
+  .section-tag::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--red);
+  }
+
+  .section-title {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(56px, 9vw, 140px);
+    line-height: 0.85;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin-bottom: 60px;
+  }
+  .section-title .it {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--red);
+    text-transform: lowercase;
+  }
+
+  /* ===================== STATS ===================== */
+  .stats-section {
+    background: var(--bone);
+    color: var(--ink);
+    overflow: hidden;
+  }
+  .stats-section .section-tag { color: var(--deep-red); }
+  .stats-section .section-tag::before { background: var(--deep-red); }
+  .stats-section .section-title { color: var(--ink); }
+  .stats-section .section-title .it { color: var(--red); }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 2px solid var(--ink);
+  }
+  .stat {
+    padding: 32px 28px;
+    border-right: 1px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    position: relative;
+    transition: background .3s ease;
+  }
+  .stat:last-child { border-right: none; }
+  .stat:hover { background: var(--ink); color: var(--bone); }
+  .stat:hover .stat-number { color: var(--red); }
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    color: var(--gray-500);
+  }
+  .stat:hover .stat-label { color: var(--gray-300); }
+  .stat-number {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(64px, 8vw, 120px);
+    line-height: 0.9;
+    color: var(--ink);
+    transition: color .3s;
+  }
+  .stat-context {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 14px;
+    margin-top: 12px;
+    color: var(--gray-700);
+    line-height: 1.4;
+  }
+  .stat:hover .stat-context { color: var(--gray-300); }
+
+  /* ===================== BIO ===================== */
+  .bio-section {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: start;
+  }
+
+  .bio-left .pull-quote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.3;
+    color: var(--bone);
+    border-left: 3px solid var(--red);
+    padding-left: 24px;
+    margin-bottom: 32px;
+  }
+  .bio-left .quote-attr {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    padding-left: 27px;
+  }
+
+  .bio-right .lead {
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--cream);
+    margin-bottom: 28px;
+    font-weight: 400;
+  }
+  .bio-right .lead::first-letter {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 84px;
+    float: left;
+    line-height: 0.85;
+    margin: 6px 12px 0 0;
+    color: var(--red);
+  }
+  .bio-right p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--gray-300);
+    margin-bottom: 20px;
+  }
+  .bio-right p strong { color: var(--bone); font-weight: 600; }
+
+  /* ===================== TIMELINE ===================== */
+  .timeline-section {
+    background: linear-gradient(180deg, var(--ink) 0%, #050505 100%);
+    border-top: 1px solid var(--gray-700);
+    border-bottom: 1px solid var(--gray-700);
+  }
+
+  .timeline {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-left: 80px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 14px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--red) 8%, var(--red) 92%, transparent);
+  }
+
+  .t-entry {
+    position: relative;
+    padding: 32px 0;
+    border-bottom: 1px dashed var(--gray-700);
+  }
+  .t-entry:last-child { border-bottom: none; }
+  .t-entry::before {
+    content: '';
+    position: absolute;
+    left: -73px;
+    top: 50px;
+    width: 14px;
+    height: 14px;
+    background: var(--ink);
+    border: 2px solid var(--red);
+    border-radius: 50%;
+    transition: all .3s ease;
+  }
+  .t-entry:hover::before {
+    background: var(--red);
+    box-shadow: 0 0 16px rgba(225,6,0,0.6);
+    transform: scale(1.3);
+  }
+  .t-entry .year {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 56px;
+    line-height: 0.9;
+    color: var(--bone);
+    margin-bottom: 8px;
+    display: inline-block;
+  }
+  .t-entry .badge {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-left: 16px;
+    vertical-align: super;
+  }
+  .t-entry .series {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .t-entry .desc {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--gray-300);
+    max-width: 720px;
+  }
+  .t-entry .desc strong { color: var(--bone); }
+
+  /* ===================== 2026 SEASON ===================== */
+  .season-section { padding: 120px 32px; }
+
+  .season-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .season-header .right-info {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    text-align: right;
+  }
+  .season-header .right-info .live {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--red);
+    margin-bottom: 6px;
+  }
+  .season-header .right-info .live::before {
+    content: '';
+    width: 8px; height: 8px;
+    background: var(--red);
+    border-radius: 50%;
+    animation: pulse 1.4s ease-in-out infinite;
+  }
+
+  .results-card {
+    background: var(--bone);
+    color: var(--ink);
+    padding: 40px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .results-card.highlight {
+    background: var(--ink);
+    color: var(--bone);
+    border: 2px solid var(--red);
+  }
+  .results-card .corner-mark {
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gray-500);
+    text-transform: uppercase;
+  }
+  .results-card.highlight .corner-mark { color: var(--red); }
+  .results-card .race-num {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 28px;
+    color: var(--red);
+    margin-bottom: 8px;
+  }
+  .results-card .race-name {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 72px);
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .results-card .race-meta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid currentColor;
+    opacity: 0.85;
+  }
+  .results-card .race-meta div span:first-child {
+    display: block;
+    font-size: 10px;
+    opacity: 0.6;
+    margin-bottom: 4px;
+  }
+  .results-card .quote-block {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.5;
+    margin-top: 20px;
+    max-width: 700px;
+  }
+
+  /* ===================== SEASON GRID (calendar + live feed) ===================== */
+  .season-grid {
+    display: grid;
+    grid-template-columns: 1.55fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  /* Calendar column */
+  .calendar-header {
+    display: grid;
+    grid-template-columns: 60px 1.5fr 1fr 1fr;
+    gap: 18px;
+    padding: 14px 18px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--gray-500);
+    border-bottom: 2px solid var(--gray-700);
+    text-transform: uppercase;
+  }
+
+  .cal-row {
+    display: grid;
+    grid-template-columns: 60px 1.5fr 1fr 1fr;
+    gap: 18px;
+    padding: 18px;
+    align-items: center;
+    border-bottom: 1px solid var(--gray-700);
+    position: relative;
+    transition: background 0.25s ease;
+  }
+  .cal-row:hover { background: rgba(255,255,255,0.025); }
+
+  .cal-row.cal-live {
+    background: linear-gradient(90deg, rgba(225,6,0,0.12), transparent 75%);
+    border-left: 3px solid var(--red);
+    padding-left: 15px;
+  }
+  .cal-row.cal-upcoming { opacity: 0.5; }
+  .cal-row.cal-upcoming:hover { opacity: 0.75; }
+  .cal-row.cal-upcoming .cal-round { color: var(--gray-500); }
+
+  .cal-round {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 1;
+    color: var(--bone);
+    letter-spacing: -0.02em;
+  }
+  .cal-row.cal-completed .cal-round { color: var(--red); }
+  .cal-row.cal-live .cal-round {
+    color: var(--red);
+    animation: pulse-text 1.6s ease-in-out infinite;
+  }
+
+  .cal-loc {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    color: var(--bone);
+    line-height: 1.05;
+  }
+  .cal-country {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gray-500);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .cal-results {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .cal-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    padding: 5px 9px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    background: var(--gray-700);
+    color: var(--gray-300);
+    border-radius: 2px;
+  }
+  .cal-badge.cal-blank {
+    background: transparent;
+    color: var(--gray-500);
+    border: 1px dashed var(--gray-700);
+  }
+  .cal-badge.cal-win {
+    background: var(--red);
+    color: var(--bone);
+    box-shadow: 0 0 0 1px var(--red);
+  }
+  .cal-badge.cal-podium {
+    background: var(--gold);
+    color: var(--ink);
+  }
+  .cal-badge.cal-points {
+    background: var(--gray-700);
+    color: var(--bone);
+  }
+  .cal-badge.cal-dnf {
+    background: transparent;
+    color: var(--red);
+    border: 1px solid var(--red);
+  }
+  .cal-badge.cal-pending {
+    background: transparent;
+    color: var(--red);
+    border: 1px solid var(--red);
+    animation: pulse-text 1.4s ease-in-out infinite;
+  }
+
+  .cal-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gray-300);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .cal-note {
+    grid-column: 2 / -1;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--gold);
+    margin-top: 6px;
+  }
+  .cal-row.cal-live .cal-note { color: var(--red); }
+
+  @keyframes pulse-text {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.45; }
+  }
+
+  /* Legend */
+  .cal-legend {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--gray-700);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+  }
+  .cal-legend .item { display: inline-flex; align-items: center; gap: 6px; }
+  .cal-legend .swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+  }
+  .cal-legend .swatch.win { background: var(--red); }
+  .cal-legend .swatch.podium { background: var(--gold); }
+  .cal-legend .swatch.points { background: var(--gray-700); }
+  .cal-legend .swatch.blank {
+    background: transparent;
+    border: 1px dashed var(--gray-500);
+  }
+
+  /* Live feed column */
+  .live-feed-col {
+    position: sticky;
+    top: 80px;
+  }
+  .live-feed-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 0;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--bone);
+    border-bottom: 2px solid var(--red);
+    margin-bottom: 18px;
+  }
+  .lf-pulse {
+    width: 8px;
+    height: 8px;
+    background: var(--red);
+    border-radius: 50%;
+    animation: pulse 1.4s ease-in-out infinite;
+  }
+  .lf-handle {
+    margin-left: auto;
+    color: var(--gray-500);
+    font-size: 9px;
+  }
+  .twitter-wrap { display: none; /* legacy — embed replaced with follow card */ }
+
+  /* ===================== FOLLOW CARD (replaces flaky X embed) ===================== */
+  .follow-card {
+    border: 1px solid var(--gray-700);
+    background: rgba(255,255,255,0.015);
+  }
+
+  .follow-row {
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--gray-700);
+    text-decoration: none;
+    color: var(--bone);
+    transition: background .25s ease, padding .25s ease;
+    position: relative;
+  }
+  .follow-row:last-child { border-bottom: none; }
+  .follow-row:hover {
+    background: rgba(225, 6, 0, 0.06);
+    padding-left: 24px;
+  }
+  .follow-row:hover .follow-action {
+    color: var(--red);
+    transform: translateX(4px);
+  }
+
+  .follow-row.hero-row {
+    background: linear-gradient(90deg, rgba(225,6,0,0.10), transparent 70%);
+    border-left: 3px solid var(--red);
+    padding-left: 17px;
+  }
+  .follow-row.hero-row:hover { padding-left: 21px; }
+
+  .follow-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: 0.02em;
+  }
+  .avatar-red { background: var(--red); color: var(--bone); }
+  .avatar-dark { background: var(--ink); border: 2px solid var(--bone); color: var(--bone); }
+  .avatar-gold { background: var(--gold); color: var(--ink); }
+
+  .follow-name {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+    color: var(--bone);
+  }
+  .follow-handle-line {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--red);
+    margin-top: 3px;
+    letter-spacing: 0.05em;
+  }
+  .follow-desc {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--gray-300);
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+
+  .follow-action {
+    font-family: var(--display);
+    font-size: 28px;
+    color: var(--gray-500);
+    transition: color .25s, transform .25s;
+  }
+
+  /* Official website link */
+  .follow-website {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 18px;
+    padding: 14px 20px;
+    border: 1px dashed var(--gray-700);
+    text-decoration: none;
+    color: var(--bone);
+    transition: border-color .25s, background .25s;
+  }
+  .follow-website:hover {
+    border-color: var(--red);
+    background: rgba(225,6,0,0.05);
+  }
+  .fw-arrow {
+    font-family: var(--display);
+    font-size: 24px;
+    color: var(--red);
+  }
+  .fw-text { display: flex; flex-direction: column; }
+  .fw-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+  }
+  .fw-domain {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.01em;
+    margin-top: 2px;
+    color: var(--bone);
+  }
+
+  @media (max-width: 600px) {
+    .follow-row { grid-template-columns: 44px 1fr auto; gap: 12px; padding: 14px 14px; }
+    .follow-avatar { width: 44px; height: 44px; font-size: 16px; }
+    .follow-name { font-size: 15px; }
+    .follow-desc { font-size: 12px; }
+  }
+
+  .season-note {
+    margin-top: 28px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gray-500);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    line-height: 1.7;
+  }
+  .season-note code {
+    background: var(--gray-700);
+    color: var(--bone);
+    padding: 2px 6px;
+    font-family: var(--mono);
+    font-size: 10px;
+    border-radius: 2px;
+  }
+
+  /* ===================== COUNTDOWN TIMER ===================== */
+  .countdown {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 32px;
+    background: linear-gradient(135deg, rgba(225,6,0,0.08), rgba(11,11,13,0.4));
+    border: 1px solid var(--gray-700);
+    border-left: 3px solid var(--red);
+    padding: 28px 32px;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .countdown::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      135deg,
+      transparent 0,
+      transparent 60px,
+      rgba(225,6,0,0.04) 60px,
+      rgba(225,6,0,0.04) 61px
+    );
+    pointer-events: none;
+  }
+  .countdown > * { position: relative; z-index: 1; }
+
+  .cd-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gray-300);
+    line-height: 1.5;
+  }
+  .cd-label .race-name {
+    display: block;
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 30px;
+    color: var(--bone);
+    letter-spacing: 0.01em;
+    margin-top: 4px;
+  }
+  .cd-label .race-name .red { color: var(--red); }
+
+  .cd-units {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+  }
+  .cd-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 70px;
+  }
+  .cd-num {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--bone);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+  .cd-tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    margin-top: 6px;
+  }
+  .cd-sep {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--gray-700);
+    align-self: flex-start;
+    padding-top: 4px;
+  }
+
+  .cd-status {
+    text-align: right;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    line-height: 1.6;
+    white-space: nowrap;
+  }
+  .cd-status .now {
+    color: var(--red);
+    font-weight: 700;
+  }
+  .cd-status .now::before {
+    content: '●';
+    margin-right: 6px;
+    animation: pulse 1.4s ease-in-out infinite;
+  }
+
+  @media (max-width: 800px) {
+    .countdown {
+      grid-template-columns: 1fr;
+      gap: 18px;
+      padding: 22px;
+    }
+    .cd-units { justify-content: flex-start; gap: 14px; }
+    .cd-num { font-size: 42px; }
+    .cd-sep { font-size: 42px; }
+    .cd-unit { min-width: 56px; }
+    .cd-status { text-align: left; white-space: normal; }
+    .cd-label .race-name { font-size: 24px; }
+  }
+
+  /* ===================== LANGUAGE TOGGLE ===================== */
+  .lang-toggle {
+    display: inline-flex;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--gray-700);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .lang-toggle button {
+    background: transparent;
+    border: none;
+    color: var(--gray-300);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    padding: 5px 11px;
+    cursor: pointer;
+    transition: all .2s;
+    text-transform: uppercase;
+  }
+  .lang-toggle button:hover { color: var(--bone); }
+  .lang-toggle button.active {
+    background: var(--red);
+    color: var(--bone);
+  }
+
+  /* ===================== PHOTO GALLERY ===================== */
+  .gallery-section {
+    background: linear-gradient(180deg, var(--ink) 0%, #050505 100%);
+    border-top: 1px solid var(--gray-700);
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 140px;
+    gap: 12px;
+    margin-top: 30px;
+  }
+  /* Bento layout: tall hero, then varied tiles */
+  .gallery-item:nth-child(1) { grid-column: span 6; grid-row: span 3; }
+  .gallery-item:nth-child(2) { grid-column: span 3; grid-row: span 2; }
+  .gallery-item:nth-child(3) { grid-column: span 3; grid-row: span 2; }
+  .gallery-item:nth-child(4) { grid-column: span 3; grid-row: span 1; }
+  .gallery-item:nth-child(5) { grid-column: span 3; grid-row: span 1; }
+  .gallery-item:nth-child(6) { grid-column: span 4; grid-row: span 2; }
+  .gallery-item:nth-child(7) { grid-column: span 4; grid-row: span 2; }
+  .gallery-item:nth-child(8) { grid-column: span 4; grid-row: span 2; }
+
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--gray-700);
+    background: var(--gray-700);
+    cursor: pointer;
+    transition: transform .4s ease, border-color .3s;
+  }
+  .gallery-item:hover {
+    border-color: var(--red);
+    transform: translateY(-2px);
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s ease, filter .3s;
+  }
+  .gallery-item:hover img {
+    transform: scale(1.04);
+    filter: contrast(1.05) saturate(1.1);
+  }
+  .gallery-svg {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform .6s ease;
+  }
+  .gallery-svg svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .gallery-item:hover .gallery-svg {
+    transform: scale(1.04);
+  }
+  .gallery-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    background: linear-gradient(135deg,
+      rgba(225,6,0,0.15) 0%,
+      rgba(11,11,13,0.6) 50%,
+      rgba(0,150,110,0.1) 100%);
+    color: var(--gray-300);
+  }
+  .gallery-placeholder .ph-num {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 48px;
+    color: var(--red);
+    line-height: 1;
+    margin-bottom: 10px;
+    opacity: 0.6;
+  }
+  .gallery-placeholder .ph-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    line-height: 1.5;
+  }
+  .gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px 18px;
+    background: linear-gradient(180deg, transparent, rgba(11,11,13,0.95));
+    color: var(--bone);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transform: translateY(8px);
+    opacity: 0;
+    transition: all .3s ease;
+  }
+  .gallery-item:hover .gallery-caption {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .gallery-note {
+    margin-top: 32px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gray-500);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    line-height: 1.7;
+    text-align: center;
+  }
+  .gallery-note code {
+    background: var(--gray-700);
+    color: var(--bone);
+    padding: 2px 6px;
+    font-family: var(--mono);
+    font-size: 10px;
+  }
+
+  @media (max-width: 800px) {
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 160px;
+    }
+    .gallery-item:nth-child(n) { grid-column: span 1; grid-row: span 1; }
+    .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+  }
+
+  /* ===================== QUOTE FEATURE ===================== */
+  .quote-feature {
+    padding: 140px 32px;
+    text-align: center;
+    background:
+      linear-gradient(135deg, rgba(225,6,0,0.08), rgba(0,150,110,0.04)),
+      var(--ink);
+    border-top: 1px solid var(--gray-700);
+    border-bottom: 1px solid var(--gray-700);
+  }
+  .quote-feature .mark {
+    font-family: var(--display);
+    font-size: 200px;
+    line-height: 0.5;
+    color: var(--red);
+    opacity: 0.3;
+    margin-bottom: 30px;
+  }
+  .quote-feature blockquote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(28px, 4vw, 56px);
+    line-height: 1.25;
+    max-width: 1100px;
+    margin: 0 auto 40px;
+    color: var(--bone);
+    font-weight: 400;
+  }
+  .quote-feature blockquote em {
+    color: var(--red);
+    font-style: italic;
+    font-weight: 600;
+  }
+  .quote-feature .attribution {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gray-300);
+  }
+
+  /* ===================== FUN FACTS ===================== */
+  .facts-section { background: var(--bone); color: var(--ink); }
+  .facts-section .section-tag { color: var(--deep-red); }
+  .facts-section .section-tag::before { background: var(--deep-red); }
+  .facts-section .section-title { color: var(--ink); }
+  .facts-section .section-title .it { color: var(--red); }
+
+  .facts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--ink);
+  }
+  .fact {
+    padding: 36px 28px;
+    border-right: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    transition: background .3s;
+  }
+  .fact:nth-child(3n) { border-right: none; }
+  .fact:nth-last-child(-n+3) { border-bottom: none; }
+  .fact:hover { background: var(--cream); }
+  .fact .icon {
+    font-family: var(--display);
+    font-weight: 900;
+    color: var(--red);
+    font-size: 32px;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .fact h4 {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    margin-bottom: 10px;
+  }
+  .fact p {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--gray-700);
+  }
+
+  /* ===================== FOOTER ===================== */
+  footer {
+    padding: 80px 32px 32px;
+    border-top: 1px solid var(--gray-700);
+    background: #050505;
+  }
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 32px;
+    margin-bottom: 60px;
+  }
+  .footer-mark {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(60px, 12vw, 180px);
+    line-height: 0.8;
+    text-transform: uppercase;
+    color: var(--bone);
+    letter-spacing: -0.03em;
+  }
+  .footer-mark .red { color: var(--red); }
+  .footer-meta {
+    text-align: right;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    line-height: 1.8;
+  }
+  .footer-meta strong { color: var(--bone); }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--gray-700);
+    padding-top: 24px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  /* ===================== ENTRY ANIMATIONS ===================== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===================== RESPONSIVE ===================== */
+  @media (max-width: 900px) {
+    .topbar nav { display: none; }
+    .hero { padding: 100px 20px 40px; }
+    section { padding: 70px 20px; }
+    .hero-meta { grid-template-columns: repeat(2, 1fr); }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .stats-grid .stat:nth-child(2) { border-right: none; }
+    .stats-grid .stat:nth-child(1),
+    .stats-grid .stat:nth-child(2) { border-bottom: 1px solid var(--ink); }
+    .bio-section { grid-template-columns: 1fr; gap: 40px; }
+    .timeline { padding-left: 50px; }
+    .t-entry::before { left: -43px; }
+    .t-entry .year { font-size: 42px; }
+    .facts-grid { grid-template-columns: 1fr; }
+    .fact { border-right: none !important; }
+    .fact:not(:last-child) { border-bottom: 1px solid var(--ink) !important; }
+    .results-card { padding: 28px; }
+    .footer-top { flex-direction: column; }
+    .footer-meta { text-align: left; }
+
+    /* Season grid mobile */
+    .season-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .calendar-header,
+    .cal-row {
+      grid-template-columns: 40px 1fr auto;
+      gap: 12px;
+      padding: 14px 12px;
+    }
+    .calendar-header .ch-date,
+    .cal-row .cal-date {
+      grid-column: 1 / -1;
+      font-size: 10px;
+      margin-top: 4px;
+      color: var(--gray-500);
+    }
+    .calendar-header .ch-results { display: none; }
+    .cal-results { grid-column: 3; }
+    .cal-round { font-size: 24px; }
+    .cal-loc { font-size: 15px; }
+    .live-feed-col { position: static; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== TOP BAR ===================== -->
+<div class="topbar">
+  <div class="left">
+    <span><span class="dot"></span><span data-i18n="topbar.live">LIVE · 2026 F2 SEASON</span></span>
+  </div>
+  <nav>
+    <a href="#stats" data-i18n="nav.stats">Stats</a>
+    <a href="#bio" data-i18n="nav.bio">Bio</a>
+    <a href="#timeline" data-i18n="nav.career">Career</a>
+    <a href="#season" data-i18n="nav.season">2026</a>
+    <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
+  </nav>
+  <div class="right">
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button data-lang="en" class="active" aria-pressed="true">EN</button>
+      <button data-lang="bg" aria-pressed="false">БГ</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== LATEST RESULT BANNER ===================== -->
+<!--
+  HOW TO UPDATE THIS AFTER EACH RACE:
+  1. Change the "banner-position" text (P1, P2, P3, P5, DNF, etc.)
+  2. Update the race name in <span class="race">
+  3. Update the description after the race name
+  4. Update the "UP NEXT" block on the right with the next round
+  Save, drag the folder onto Netlify Drop, done.
+-->
+<div class="result-banner">
+  <div class="banner-inner">
+    <span class="banner-pill" data-i18n="banner.latest">Latest Result</span>
+
+    <div class="banner-result">
+      <span class="banner-position">P1</span>
+      <span class="banner-text">
+        <span class="race">Melbourne · Feature</span>
+        <strong>First F2 victory.</strong>
+        <span class="sep">·</span>
+        Bulgaria's first ever F2 race win
+        <span class="sep">·</span>
+        Championship leader (+7 pts)
+      </span>
+    </div>
+
+    <div class="banner-divider"></div>
+
+    <div class="banner-next">
+      <span class="label" data-i18n="banner.upNext">Up Next</span>
+      <span class="where">Miami · Round 02</span>
+      <span>1–3 May 2026</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <div class="speed-lines">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+
+  <div class="country-strip">
+    <div class="flag-bg"><span></span><span></span><span></span></div>
+    <div>BULGARIA · BGR</div>
+    <div>SOFIA · 21.12.2006</div>
+  </div>
+
+  <div class="hero-name reveal in">
+    <div class="hero-tsolov">TSO<span class="number">L</span>OV</div>
+    <div class="hero-nickname">
+      <span class="nick-white">the</span>
+      <span class="nick-green">bulgarian</span>
+      <span class="nick-red">lion</span>
+    </div>
+  </div>
+
+  <div class="hero-tagline reveal in" data-i18n-html="hero.tagline">
+    Bulgaria's first FIA Formula 2 race winner. Red Bull junior.
+    Once doubted whether he'd ever leave karting — now <em>one step from F1.</em>
+  </div>
+
+  <div class="hero-meta reveal in">
+    <div class="field">
+      <span class="label" data-i18n="hero.driverNo">Driver No.</span>
+      <span class="value"><strong>#6</strong></span>
+    </div>
+    <div class="field">
+      <span class="label" data-i18n="hero.series">Series</span>
+      <span class="value">FIA Formula 2 — 2026</span>
+    </div>
+    <div class="field">
+      <span class="label" data-i18n="hero.team">Team</span>
+      <span class="value">Campos Racing</span>
+    </div>
+    <div class="field">
+      <span class="label" data-i18n="hero.junior">Junior Programme</span>
+      <span class="value">Red Bull Junior Team</span>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== STATS ===================== -->
+<section class="stats-section" id="stats">
+  <div class="section-tag" data-i18n="stats.tag">By the numbers</div>
+  <h2 class="section-title" data-i18n-html="stats.title">Career <span class="it">in figures</span></h2>
+
+  <div class="stats-grid">
+    <div class="stat">
+      <div class="stat-label">F3 Wins (Career)</div>
+      <div class="stat-number">5</div>
+      <div class="stat-context">Most wins by any driver in FIA Formula 3 history.</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">2025 F3 Final Standing</div>
+      <div class="stat-number">P2</div>
+      <div class="stat-context">Runner-up in the championship; helped Campos win the Teams' title.</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">2022 Spanish F4</div>
+      <div class="stat-number">13</div>
+      <div class="stat-context">Wins in 21 races — outright dominator, champion, rookie season.</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">First F2 Victory</div>
+      <div class="stat-number">'26</div>
+      <div class="stat-context">Melbourne Feature Race — Bulgaria's first F2 race win, ever.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BIO ===================== -->
+<section id="bio">
+  <div class="bio-section">
+    <div class="bio-left">
+      <div class="section-tag" data-i18n="bio.tag">The Story</div>
+      <h2 class="section-title" data-i18n-html="bio.title" style="font-size: clamp(48px, 7vw, 100px);">Sofia <span class="it">to</span> the front row</h2>
+      <div class="pull-quote">
+        "It seemed impossible in the beginning, coming from Bulgaria and being limited financially. But when you believe in something, nothing can stop you."
+      </div>
+      <div class="quote-attr">— Nikola Tsolov</div>
+    </div>
+
+    <div class="bio-right">
+      <p class="lead">
+        Born in Sofia on 21 December 2006, Nikola Tsolov is the most successful single-seater driver Bulgaria has ever produced — and at nineteen, he is only just getting started.
+      </p>
+      <p>
+        His karting years were defined by tight budgets and uncertain futures. A breakthrough came when <strong>Fernando Alonso's FA Racing</strong> brought him into their karting setup; in 2021, the two-time world champion invited the teenage Tsolov to drive alongside him at the Dubai 24 Hours, where their crew finished third.
+      </p>
+      <p>
+        In 2022, he leapt into Spanish Formula 4 with Campos Racing and didn't just win the title — he obliterated it, taking <strong>thirteen victories from twenty-one races</strong>. Three F3 seasons followed, the last of which (2025, back with Campos) saw him become the most-capped race winner in FIA Formula 3 history.
+      </p>
+      <p>
+        Initially an Alpine Academy member, Tsolov made the switch to the <strong>Red Bull Junior Team</strong> in November 2024. The following summer he drove the Red Bull RB7 at a Sofia show run — a moment he says he'll "remember forever." A late-season F2 promotion at Lusail and Yas Marina yielded his first F2 podium. The seat with Campos was made permanent for 2026.
+      </p>
+      <p>
+        And then, in March 2026, came Melbourne — and a piece of Bulgarian sporting history.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TIMELINE ===================== -->
+<section class="timeline-section" id="timeline">
+  <div class="section-tag" data-i18n="timeline.tag">Career Path</div>
+  <h2 class="section-title" data-i18n-html="timeline.title">From karts <span class="it">to</span> the grid</h2>
+
+  <div class="timeline">
+    <div class="t-entry">
+      <div class="year">2019</div>
+      <span class="badge">Karting · Champion</span>
+      <div class="series">WSK Open Cup — 60 Mini</div>
+      <div class="desc">Wins his first international karting title at age 12.</div>
+    </div>
+
+    <div class="t-entry">
+      <div class="year">2021</div>
+      <span class="badge">Karting · P3</span>
+      <div class="series">Dubai 24h Endurance with Fernando Alonso</div>
+      <div class="desc">Hand-picked by <strong>Alonso</strong> to share a kart with him, Pedro de la Rosa, and Ángel Burgueño. They finish on the podium.</div>
+    </div>
+
+    <div class="t-entry">
+      <div class="year">2022</div>
+      <span class="badge">F4 · Champion</span>
+      <div class="series">Spanish F4 — Campos Racing</div>
+      <div class="desc"><strong>13 wins from 21 races.</strong> Title secured three races before the season's end. Joins the Alpine Academy in March of the same year.</div>
+    </div>
+
+    <div class="t-entry">
+      <div class="year">2023</div>
+      <span class="badge">F3 · Rookie</span>
+      <div class="series">FIA Formula 3 — ART Grand Prix</div>
+      <div class="desc">Debut F3 season. Two points finishes at Spa and Monza; finishes 22nd in the standings while building experience.</div>
+    </div>
+
+    <div class="t-entry">
+      <div class="year">2024</div>
+      <span class="badge">F3 · 1st Bulgarian Winner</span>
+      <div class="series">FIA Formula 3 — ART Grand Prix</div>
+      <div class="desc">Wins the <strong>Monaco Sprint Race</strong> — the first Bulgarian to win in F3. Adds further victories at Spielberg and a podium in Hungary.</div>
+    </div>
+
+    <div class="t-entry">
+      <div class="year">2025</div>
+      <span class="badge">F3 · Runner-Up</span>
+      <div class="series">FIA Formula 3 — Campos Racing</div>
+      <div class="desc">Joins the <strong>Red Bull Junior Team</strong>. Wins in Bahrain and from pole in Monaco. Becomes the <strong>all-time F3 wins record holder (5)</strong>. Finishes second in the championship behind Rafael Câmara. Drafted to F2 for the final two rounds — first F2 podium at Yas Marina.</div>
+    </div>
+
+    <div class="t-entry">
+      <div class="year">2026</div>
+      <span class="badge">F2 · Race Winner</span>
+      <div class="series">FIA Formula 2 — Campos Racing · #6</div>
+      <div class="desc">Wins the <strong>Melbourne Feature Race</strong> — Bulgaria's <strong>first ever F2 victory</strong>. Leads the championship out of round one. The dream of F1 has never been closer.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 2026 SEASON ===================== -->
+<section class="season-section" id="season">
+  <div class="season-header">
+    <div>
+      <div class="section-tag" data-i18n="season.tag">Season Tracker</div>
+      <h2 class="section-title" data-i18n-html="season.title">2026 <span class="it">F2</span></h2>
+    </div>
+    <div class="right-info">
+      <div class="live" data-i18n="season.live">Live this weekend</div>
+      <div data-i18n="season.round">Round 02 · Miami · 1–3 May 2026</div>
+    </div>
+  </div>
+
+  <!-- ===== COUNTDOWN ===== -->
+  <div class="countdown" id="countdown">
+    <div class="cd-label">
+      <span data-i18n="cd.next">Next round</span>
+      <span class="race-name" id="cd-race-name">Miami · <span class="red">R02</span></span>
+    </div>
+    <div class="cd-units" id="cd-units">
+      <div class="cd-unit"><span class="cd-num" id="cd-d">--</span><span class="cd-tag" data-i18n="cd.days">Days</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit"><span class="cd-num" id="cd-h">--</span><span class="cd-tag" data-i18n="cd.hours">Hrs</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit"><span class="cd-num" id="cd-m">--</span><span class="cd-tag" data-i18n="cd.minutes">Min</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit"><span class="cd-num" id="cd-s">--</span><span class="cd-tag" data-i18n="cd.seconds">Sec</span></div>
+    </div>
+    <div class="cd-status" id="cd-status">
+      <span data-i18n="cd.until">Until lights out</span><br/>
+      <span data-i18n="cd.feature">Feature Race</span>
+    </div>
+  </div>
+
+  <div class="season-grid">
+    <!-- LEFT: Season calendar (rendered from JS data block at the bottom of the page) -->
+    <div class="calendar-col">
+      <div class="calendar-header">
+        <div class="ch-round">Rnd</div>
+        <div class="ch-race">Race</div>
+        <div class="ch-results">Sprint / Feature</div>
+        <div class="ch-date">Date</div>
+      </div>
+      <div id="calendar-rows"><!-- populated by JS --></div>
+
+      <div class="cal-legend">
+        <span class="item"><span class="swatch win"></span>Win</span>
+        <span class="item"><span class="swatch podium"></span>Podium</span>
+        <span class="item"><span class="swatch points"></span>Points</span>
+        <span class="item"><span class="swatch blank"></span>No race / DNS</span>
+      </div>
+    </div>
+
+    <!-- RIGHT: Live feed sidebar -->
+    <div class="live-feed-col">
+      <div class="live-feed-header">
+        <span class="lf-pulse"></span>
+        <span data-i18n="follow.title">Follow live on X</span>
+        <span class="lf-handle">/3</span>
+      </div>
+
+      <div class="follow-card">
+        <a class="follow-row hero-row" href="https://x.com/NikolaTsolov" target="_blank" rel="noopener">
+          <div class="follow-avatar avatar-red">NT</div>
+          <div class="follow-text">
+            <div class="follow-name">Nikola Tsolov</div>
+            <div class="follow-handle-line">@NikolaTsolov</div>
+            <div class="follow-desc" data-i18n="follow.tsolov">The man himself · race-day reactions, training, behind-the-scenes</div>
+          </div>
+          <div class="follow-action">→</div>
+        </a>
+
+        <a class="follow-row" href="https://x.com/Formula2" target="_blank" rel="noopener">
+          <div class="follow-avatar avatar-dark">F2</div>
+          <div class="follow-text">
+            <div class="follow-name">Formula 2</div>
+            <div class="follow-handle-line">@Formula2</div>
+            <div class="follow-desc" data-i18n="follow.f2">Official championship · live race updates lap-by-lap</div>
+          </div>
+          <div class="follow-action">→</div>
+        </a>
+
+        <a class="follow-row" href="https://x.com/CamposRacing" target="_blank" rel="noopener">
+          <div class="follow-avatar avatar-gold">CR</div>
+          <div class="follow-text">
+            <div class="follow-name">Campos Racing</div>
+            <div class="follow-handle-line">@CamposRacing</div>
+            <div class="follow-desc" data-i18n="follow.campos">Tsolov's team · garage shots, strategy, post-race</div>
+          </div>
+          <div class="follow-action">→</div>
+        </a>
+      </div>
+
+      <a class="follow-website" href="https://nikolatsolov.com" target="_blank" rel="noopener">
+        <span class="fw-arrow">↗</span>
+        <span class="fw-text">
+          <span class="fw-label" data-i18n="follow.officialLabel">Official site</span>
+          <span class="fw-domain">nikolatsolov.com</span>
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <p class="season-note">
+    Update results in seconds — open <code>index.html</code>, find the <code>const RACES</code> block near the bottom, edit the round, save, drag onto Netlify Drop.
+  </p>
+</section>
+
+<!-- ===================== FEATURE QUOTE ===================== -->
+<section class="quote-feature">
+  <div class="mark">"</div>
+  <blockquote>
+    Ultimately in Formula 2 you're <em>just a step away</em> from the dream we're all racing here for. But still — race by race, round by round, lap by lap.
+  </blockquote>
+  <div class="attribution">— Nikola Tsolov · 2026 Season Opener</div>
+</section>
+
+<!-- ===================== FUN FACTS ===================== -->
+<section class="facts-section">
+  <div class="section-tag" data-i18n="facts.tag">Off the track</div>
+  <h2 class="section-title" data-i18n-html="facts.title">Beyond <span class="it">the visor</span></h2>
+
+  <div class="facts-grid">
+    <div class="fact">
+      <span class="icon">01</span>
+      <h4>Idol: Senna</h4>
+      <p>Tsolov's racing hero is Ayrton Senna — the icon's blend of fearlessness and feel sets the bar he chases every weekend.</p>
+    </div>
+    <div class="fact">
+      <span class="icon">02</span>
+      <h4>Modern Inspiration</h4>
+      <p>Cites Max Verstappen for the way he reads and adapts to a race in real time. Same junior team, similar instincts.</p>
+    </div>
+    <div class="fact">
+      <span class="icon">03</span>
+      <h4>Mentored by Alonso</h4>
+      <p>Spent two formative years in Fernando Alonso's FA Racing karting team — and shared a kart with him at Dubai 24h in 2021.</p>
+    </div>
+    <div class="fact">
+      <span class="icon">04</span>
+      <h4>Sofia Show Run</h4>
+      <p>In June 2025, drove the Red Bull RB7 through the streets of Sofia. He calls it a moment he'll "remember forever."</p>
+    </div>
+    <div class="fact">
+      <span class="icon">05</span>
+      <h4>The Bulgarian Lion</h4>
+      <p>His nickname, given by Campos Racing — a nod to both his nation's coat of arms and his attacking driving style.</p>
+    </div>
+    <div class="fact">
+      <span class="icon">06</span>
+      <h4>Off-Duty</h4>
+      <p>Away from racing, you'll find him with friends, playing racket sports, or — surprisingly for an F2 driver — board games.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PHOTO GALLERY ===================== -->
+<section class="gallery-section" id="gallery">
+  <div class="section-tag" data-i18n="gallery.tag">In pictures</div>
+  <h2 class="section-title" data-i18n-html="gallery.title">On <span class="it">track</span></h2>
+
+  <div class="gallery-grid" id="gallery-grid"><!-- populated by JS --></div>
+
+  <p class="gallery-note" data-i18n-html="gallery.note">
+    Replace the placeholders with real photos — drop your images in the same folder as <code>index.html</code>, then update the <code>GALLERY</code> array near the bottom of the file with each filename and caption.
+  </p>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-mark">
+      GO<br/><span class="red">NIKO</span>
+    </div>
+    <div class="footer-meta">
+      <strong>Made by a fan</strong><br/>
+      For Nikola Tsolov<br/>
+      Bulgaria · #6 · Campos Racing<br/><br/>
+      Sources: FIA F2, Campos Racing,<br/>Formula Scout, Torqued Magazine
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 · Unofficial fan page</div>
+    <div>One step from the dream</div>
+  </div>
+</footer>
+
+<!-- ===================== SEASON DATA + RENDER ===================== -->
+<!--
+  HOW TO UPDATE RESULTS AFTER A RACE:
+  Edit the entry in the RACES array below for that round.
+
+  Available result values:
+    "P1"            → red WIN badge
+    "P2", "P3"      → gold PODIUM badge
+    "P4"–"P10"      → grey POINTS badge
+    "DNF" / "DSQ"   → red outline DNF badge
+    "—"             → dashed BLANK (didn't compete / no sprint that weekend)
+    "?"             → red pulsing PENDING badge (race in progress)
+
+  Available status values:
+    "completed" → row uses red round number
+    "live"      → row highlighted in red, pulsing (use during a race weekend)
+    "upcoming"  → row dimmed
+
+  After editing: save → drag the folder onto Netlify Drop → done.
+-->
+<script>
+  const RACES = [
+    { round: 1,  location: "Melbourne",         country: "Australia",     dates: "06–08 Mar", sprint: "—", feature: "P1", note: "First F2 victory · Bulgaria's first F2 win", status: "completed" },
+    { round: 2,  location: "Miami",             country: "USA",           dates: "01–03 May", sprint: "?", feature: "?",  note: "Round in progress",                          status: "live"      },
+    { round: 3,  location: "Montréal",          country: "Canada",        dates: "22–24 May", sprint: "—", feature: "—",                                                       status: "upcoming"  },
+    { round: 4,  location: "Monaco",            country: "Monaco",        dates: "04–07 Jun", sprint: "—", feature: "—",                                                       status: "upcoming"  },
+    { round: 5,  location: "Barcelona",         country: "Spain",         dates: "12–14 Jun", sprint: "—", feature: "—",                                                       status: "upcoming"  },
+    { round: 6,  location: "Spielberg",         country: "Austria",       dates: "26–28 Jun", sprint: "—", feature: "—",                                                       status: "upcoming"  },
+    { round: 7,  location: "Silverstone",       country: "Great Britain", dates: "03–05 Jul", sprint: "—", feature: "—",                                                       status: "upcoming"  },
+    { round: 8,  location: "Spa-Francorchamps", country: "Belgium",       dates: "17–19 Jul", sprint: "—", feature: "—",                                                       status: "upcoming"  },
+    { round: 9,  location: "Budapest",          country: "Hungary",       dates: "24–26 Jul", sprint: "—", feature: "—",                                                       status: "upcoming"  },
+    { round: 10, location: "Monza",             country: "Italy",         dates: "04–06 Sep", sprint: "—", feature: "—",                                                       status: "upcoming"  },
+    { round: 11, location: "Madrid",            country: "Spain",         dates: "11–13 Sep", sprint: "—", feature: "—",                                                       status: "upcoming"  },
+    { round: 12, location: "Baku",              country: "Azerbaijan",    dates: "24–26 Sep", sprint: "—", feature: "—",                                                       status: "upcoming"  },
+    { round: 13, location: "Lusail",            country: "Qatar",         dates: "27–29 Nov", sprint: "—", feature: "—",                                                       status: "upcoming"  },
+    { round: 14, location: "Yas Island",        country: "UAE",           dates: "04–06 Dec", sprint: "—", feature: "—",                                                       status: "upcoming"  }
+  ];
+
+  function badgeClass(result) {
+    if (!result || result === "—") return "cal-blank";
+    if (result === "?")            return "cal-pending";
+    if (result === "P1")           return "cal-win";
+    if (result === "P2" || result === "P3") return "cal-podium";
+    if (result === "DNF" || result === "DSQ") return "cal-dnf";
+    return "cal-points";
+  }
+
+  function renderCalendar() {
+    const target = document.getElementById('calendar-rows');
+    if (!target) return;
+    target.innerHTML = RACES.map(race => {
+      const rnd = String(race.round).padStart(2, '0');
+      const sprintCls = badgeClass(race.sprint);
+      const featureCls = badgeClass(race.feature);
+      return `
+        <div class="cal-row cal-${race.status}">
+          <div class="cal-round">${rnd}</div>
+          <div class="cal-race">
+            <div class="cal-loc">${race.location}</div>
+            <div class="cal-country">${race.country}</div>
+          </div>
+          <div class="cal-results">
+            <span class="cal-badge ${sprintCls}" title="Sprint Race">${race.sprint}</span>
+            <span class="cal-badge ${featureCls}" title="Feature Race">${race.feature}</span>
+          </div>
+          <div class="cal-date">${race.dates}</div>
+          ${race.note ? `<div class="cal-note">${race.note}</div>` : ''}
+        </div>
+      `;
+    }).join('');
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderCalendar);
+  } else {
+    renderCalendar();
+  }
+</script>
+
+<!-- ===================== PHOTO GALLERY DATA + RENDER ===================== -->
+<!--
+  HOW TO REPLACE AN ILLUSTRATION WITH A REAL PHOTO:
+  1. Drop your photo file in the same folder as index.html (e.g. melbourne-win.jpg)
+  2. In the GALLERY array below, replace the entry with:
+     { src: "melbourne-win.jpg", caption: "...", label: "..." }
+  3. Save → drag the folder onto Netlify Drop.
+
+  The illustrations are inline SVG — copyright-safe, scalable, and themed
+  to match the page. Each tells a story from his career.
+-->
+<script>
+  const GALLERY = [
+    {
+      src: "hero.png",
+      label: "Qatar · F2 Podium",
+      caption: "Maiden F2 podium · Lusail Sprint, December 2025"
+    },
+    {
+      src: "mon.png",
+      label: "Monaco · 2025",
+      caption: "Monaco Feature Race · Pole-to-flag, record-breaking 5th F3 win"
+    },
+    {
+      src: "in_the_car.png",
+      label: "In the cockpit",
+      caption: "Eyes on the prize · Red Bull Junior Team livery"
+    },
+    {
+      label: "Karting · Sofia 2016",
+      caption: "Where the journey began",
+      svg: `<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <defs><linearGradient id="kg1" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#0b0b0d"/><stop offset="100%" stop-color="#050505"/></linearGradient></defs>
+        <rect width="600" height="400" fill="url(#kg1)"/>
+        <text x="40" y="60" font-family="Courier New,monospace" font-size="11" letter-spacing="3" fill="#e10600" font-weight="700">EST. 2016</text>
+        <text x="40" y="80" font-family="Courier New,monospace" font-size="11" letter-spacing="3" fill="#5a5a60">КАРТИНГ · SOFIA</text>
+        <!-- Stylised kart silhouette -->
+        <g transform="translate(150 200)">
+          <rect x="0" y="20" width="220" height="40" fill="#e10600" rx="4"/>
+          <circle cx="30" cy="80" r="22" fill="#0b0b0d" stroke="#f3efe6" stroke-width="3"/>
+          <circle cx="190" cy="80" r="22" fill="#0b0b0d" stroke="#f3efe6" stroke-width="3"/>
+          <rect x="80" y="0" width="60" height="30" fill="#1a1a1d" stroke="#f3efe6" stroke-width="1.5"/>
+          <text x="110" y="20" font-family="Impact,sans-serif" font-size="14" font-weight="900" text-anchor="middle" fill="#f3efe6">06</text>
+        </g>
+        <!-- Speed lines -->
+        <g stroke="#e10600" stroke-width="2" opacity="0.4">
+          <line x1="20" y1="240" x2="80" y2="240"/>
+          <line x1="20" y1="260" x2="60" y2="260"/>
+          <line x1="20" y1="280" x2="100" y2="280"/>
+        </g>
+        <text x="300" y="370" font-family="Georgia,serif" font-size="14" font-style="italic" text-anchor="middle" fill="#d4a541">"It seemed impossible in the beginning."</text>
+      </svg>`
+    },
+    {
+      label: "F3 Record · 5 Wins",
+      caption: "All-time F3 wins record · Set in Monaco, May 2025",
+      svg: `<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="600" height="400" fill="#f3efe6"/>
+        <text x="50" y="60" font-family="Impact,sans-serif" font-size="11" letter-spacing="3" fill="#5a5a60" font-weight="700">RECORD</text>
+        <text x="300" y="220" font-family="Impact,sans-serif" font-size="280" font-weight="900" text-anchor="middle" fill="#0b0b0d" letter-spacing="-10">5</text>
+        <text x="300" y="270" font-family="Impact,sans-serif" font-size="22" font-weight="900" text-anchor="middle" fill="#e10600" letter-spacing="6">WINS</text>
+        <text x="300" y="310" font-family="Georgia,serif" font-size="14" font-style="italic" text-anchor="middle" fill="#5a5a60">most by any driver in FIA F3 history</text>
+        <g fill="#e10600">
+          <rect x="100" y="350" width="60" height="6"/>
+          <rect x="180" y="350" width="60" height="6"/>
+          <rect x="260" y="350" width="60" height="6"/>
+          <rect x="340" y="350" width="60" height="6"/>
+          <rect x="420" y="350" width="60" height="6"/>
+        </g>
+        <text x="50" y="380" font-family="Courier New,monospace" font-size="9" letter-spacing="2" fill="#5a5a60">23: SPA · 24: MON, RBR · 25: BHR, MON</text>
+      </svg>`
+    },
+    {
+      label: "RB7 · Sofia Show Run",
+      caption: "Driving F1 machinery on home soil · June 2025",
+      svg: `<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <defs><linearGradient id="rg1" x1="0" x2="1" y1="0" y2="0"><stop offset="0%" stop-color="#0b0b0d"/><stop offset="100%" stop-color="#1a0505"/></linearGradient></defs>
+        <rect width="600" height="400" fill="url(#rg1)"/>
+        <!-- F1 car silhouette (simplified) -->
+        <g transform="translate(80 200)">
+          <ellipse cx="220" cy="55" rx="200" ry="15" fill="#1a1a1d"/>
+          <rect x="80" y="40" width="120" height="20" fill="#e10600"/>
+          <rect x="200" y="20" width="40" height="40" fill="#1a1a1d" stroke="#f3efe6" stroke-width="1.5"/>
+          <circle cx="60" cy="80" r="22" fill="#0b0b0d" stroke="#f3efe6" stroke-width="2"/>
+          <circle cx="380" cy="80" r="22" fill="#0b0b0d" stroke="#f3efe6" stroke-width="2"/>
+          <!-- Front wing -->
+          <rect x="380" y="55" width="40" height="6" fill="#f3efe6"/>
+          <rect x="0" y="55" width="40" height="6" fill="#f3efe6"/>
+        </g>
+        <text x="300" y="60" font-family="Impact,sans-serif" font-size="34" font-weight="900" text-anchor="middle" fill="#f3efe6" letter-spacing="3">RED BULL RB7</text>
+        <text x="300" y="90" font-family="Courier New,monospace" font-size="10" letter-spacing="4" text-anchor="middle" fill="#e10600">SOFIA SHOW RUN · JUN 2025</text>
+        <text x="300" y="370" font-family="Georgia,serif" font-size="13" font-style="italic" text-anchor="middle" fill="#d4a541">"I will remember it forever"</text>
+      </svg>`
+    },
+    {
+      label: "Telemetry",
+      caption: "Lap data · Race day",
+      svg: `<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="600" height="400" fill="#0b0b0d"/>
+        <!-- Speed graph -->
+        <g stroke="#e10600" stroke-width="2" fill="none">
+          <path d="M 40 320 L 90 280 L 130 290 L 180 240 L 230 250 L 280 200 L 330 220 L 380 170 L 430 200 L 480 160 L 540 180"/>
+        </g>
+        <!-- Grid lines -->
+        <g stroke="#5a5a60" stroke-width="0.5" stroke-dasharray="2 4" opacity="0.4">
+          <line x1="40" y1="100" x2="540" y2="100"/>
+          <line x1="40" y1="180" x2="540" y2="180"/>
+          <line x1="40" y1="260" x2="540" y2="260"/>
+          <line x1="40" y1="340" x2="540" y2="340"/>
+        </g>
+        <!-- Axis labels -->
+        <g font-family="Courier New,monospace" font-size="9" fill="#5a5a60" letter-spacing="1">
+          <text x="40" y="95">320 KPH</text>
+          <text x="40" y="175">240 KPH</text>
+          <text x="40" y="255">160 KPH</text>
+          <text x="40" y="335">80  KPH</text>
+        </g>
+        <!-- Title -->
+        <text x="40" y="50" font-family="Impact,sans-serif" font-size="28" font-weight="900" fill="#f3efe6" letter-spacing="3">SPEED TRACE</text>
+        <text x="40" y="72" font-family="Courier New,monospace" font-size="10" letter-spacing="3" fill="#d4a541">QUALI · LAP 14 OF 14</text>
+        <!-- Best -->
+        <text x="540" y="50" font-family="Courier New,monospace" font-size="10" letter-spacing="2" fill="#e10600" text-anchor="end">+0.000s</text>
+        <text x="540" y="68" font-family="Impact,sans-serif" font-size="20" font-weight="900" fill="#e10600" text-anchor="end">PERSONAL BEST</text>
+      </svg>`
+    },
+    {
+      label: "→ F1",
+      caption: "One step from the dream",
+      svg: `<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="600" height="400" fill="#0b0b0d"/>
+        <!-- Checkered flag pattern (corner) -->
+        <g>
+          <rect x="0" y="0" width="40" height="40" fill="#f3efe6"/>
+          <rect x="40" y="0" width="40" height="40" fill="#0b0b0d"/>
+          <rect x="80" y="0" width="40" height="40" fill="#f3efe6"/>
+          <rect x="0" y="40" width="40" height="40" fill="#0b0b0d"/>
+          <rect x="40" y="40" width="40" height="40" fill="#f3efe6"/>
+          <rect x="80" y="40" width="40" height="40" fill="#0b0b0d"/>
+        </g>
+        <!-- Path / arrow upward -->
+        <g stroke="#e10600" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M 100 350 L 200 290 L 300 270 L 400 200 L 500 130"/>
+          <path d="M 470 130 L 500 130 L 500 160" stroke-width="3"/>
+        </g>
+        <!-- Stage labels along the path -->
+        <g font-family="Courier New,monospace" font-size="9" fill="#5a5a60" letter-spacing="2">
+          <text x="100" y="370">F4</text>
+          <text x="200" y="310">F3</text>
+          <text x="300" y="290" fill="#e10600" font-weight="700">F2 ←</text>
+          <text x="430" y="115" fill="#d4a541" font-weight="700">F1</text>
+        </g>
+        <text x="300" y="80" font-family="Impact,sans-serif" font-size="42" font-weight="900" text-anchor="middle" fill="#f3efe6" letter-spacing="2">ONE STEP</text>
+        <text x="300" y="115" font-family="Georgia,serif" font-size="20" font-style="italic" text-anchor="middle" fill="#d4a541">from the dream</text>
+      </svg>`
+    }
+  ];
+
+  function renderGallery() {
+    const grid = document.getElementById('gallery-grid');
+    if (!grid) return;
+    grid.innerHTML = GALLERY.map((item, i) => {
+      let inner;
+      if (item.svg) {
+        inner = `<div class="gallery-svg">${item.svg}</div>`;
+      } else if (item.src) {
+        inner = `<img src="${item.src}" alt="${item.caption}" loading="lazy"/>`;
+      } else {
+        inner = `<div class="gallery-placeholder">
+          <div class="ph-num">${String(i + 1).padStart(2, '0')}</div>
+          <div class="ph-label">${item.label || ''}</div>
+        </div>`;
+      }
+      return `
+        <div class="gallery-item">
+          ${inner}
+          <div class="gallery-caption">${item.caption}</div>
+        </div>
+      `;
+    }).join('');
+  }
+</script>
+
+<!-- ===================== COUNTDOWN TIMER ===================== -->
+<!--
+  Targets the start of the next race weekend (Friday) using the dates
+  from the RACES array above. Updates every second. During a race
+  weekend it shows "RACE WEEKEND IS LIVE".
+-->
+<script>
+  // ISO start datetimes for each round (Friday FP, local race time -> UTC)
+  // Update these as the season progresses.
+  const RACE_TIMES = {
+    1:  "2026-03-06T11:00:00Z",  // Melbourne — past
+    2:  "2026-05-01T13:30:00Z",  // Miami FP1 (09:30 EDT)
+    3:  "2026-05-22T16:00:00Z",  // Montreal
+    4:  "2026-06-04T10:00:00Z",  // Monaco
+    5:  "2026-06-12T10:00:00Z",  // Barcelona
+    6:  "2026-06-26T10:00:00Z",  // Spielberg
+    7:  "2026-07-03T10:00:00Z",  // Silverstone
+    8:  "2026-07-17T10:00:00Z",  // Spa
+    9:  "2026-07-24T10:00:00Z",  // Budapest
+    10: "2026-09-04T10:00:00Z",  // Monza
+    11: "2026-09-11T10:00:00Z",  // Madrid
+    12: "2026-09-24T10:00:00Z",  // Baku
+    13: "2026-11-27T11:00:00Z",  // Lusail
+    14: "2026-12-04T11:00:00Z"   // Yas Marina
+  };
+  // Race weekends typically last 3 days (Fri-Sun)
+  const WEEKEND_HOURS = 60;
+
+  function findNextRace() {
+    const now = Date.now();
+    for (const race of RACES) {
+      const startISO = RACE_TIMES[race.round];
+      if (!startISO) continue;
+      const start = Date.parse(startISO);
+      const end = start + WEEKEND_HOURS * 3600 * 1000;
+      if (now < end) {
+        return { race, start, end, isLive: now >= start };
+      }
+    }
+    return null;
+  }
+
+  function pad2(n) { return String(Math.max(0, Math.floor(n))).padStart(2, '0'); }
+
+  function tick() {
+    const ctx = findNextRace();
+    if (!ctx) {
+      document.getElementById('cd-race-name').textContent = '—';
+      document.getElementById('cd-status').innerHTML =
+        '<span class="now">Season complete</span>';
+      return;
+    }
+    const { race, start, isLive } = ctx;
+
+    // Race name + round
+    const rnd = String(race.round).padStart(2, '0');
+    document.getElementById('cd-race-name').innerHTML =
+      `${race.location} · <span class="red">R${rnd}</span>`;
+
+    if (isLive) {
+      ['cd-d', 'cd-h', 'cd-m', 'cd-s'].forEach(id =>
+        document.getElementById(id).textContent = '00'
+      );
+      document.getElementById('cd-status').innerHTML =
+        '<span class="now">' + t('cd.weekendLive', 'Race weekend live') + '</span>';
+      return;
+    }
+
+    const remaining = start - Date.now();
+    const days  = Math.floor(remaining / 86400000);
+    const hours = Math.floor((remaining % 86400000) / 3600000);
+    const mins  = Math.floor((remaining % 3600000)  / 60000);
+    const secs  = Math.floor((remaining % 60000)    / 1000);
+
+    document.getElementById('cd-d').textContent = pad2(days);
+    document.getElementById('cd-h').textContent = pad2(hours);
+    document.getElementById('cd-m').textContent = pad2(mins);
+    document.getElementById('cd-s').textContent = pad2(secs);
+  }
+</script>
+
+<!-- ===================== I18N (EN / BG) ===================== -->
+<script>
+  const I18N = {
+    en: {
+      "topbar.live": "LIVE · 2026 F2 SEASON",
+      "nav.stats": "Stats",
+      "nav.bio": "Bio",
+      "nav.career": "Career",
+      "nav.season": "2026",
+      "nav.gallery": "Gallery",
+      "banner.latest": "Latest Result",
+      "banner.upNext": "Up Next",
+      "hero.tagline": "Bulgaria's first FIA Formula 2 race winner. Red Bull junior. Once doubted whether he'd ever leave karting — now <em>one step from F1.</em>",
+      "hero.driverNo": "Driver No.",
+      "hero.series": "Series",
+      "hero.team": "Team",
+      "hero.junior": "Junior Programme",
+      "stats.tag": "By the numbers",
+      "stats.title": "Career <span class=\"it\">in figures</span>",
+      "bio.tag": "The Story",
+      "bio.title": "Sofia <span class=\"it\">to</span> the front row",
+      "timeline.tag": "Career Path",
+      "timeline.title": "From karts <span class=\"it\">to</span> the grid",
+      "season.tag": "Season Tracker",
+      "season.title": "2026 <span class=\"it\">F2</span>",
+      "season.live": "Live this weekend",
+      "season.round": "Round 02 · Miami · 1–3 May 2026",
+      "cd.next": "Next round",
+      "cd.days": "Days",
+      "cd.hours": "Hrs",
+      "cd.minutes": "Min",
+      "cd.seconds": "Sec",
+      "cd.until": "Until lights out",
+      "cd.feature": "Race weekend start",
+      "cd.weekendLive": "Race weekend live",
+      "facts.tag": "Off the track",
+      "facts.title": "Beyond <span class=\"it\">the visor</span>",
+      "gallery.tag": "In pictures",
+      "gallery.title": "On <span class=\"it\">track</span>",
+      "gallery.note": "Replace the placeholders with real photos — drop your images in the same folder as <code>index.html</code>, then update the <code>GALLERY</code> array near the bottom of the file with each filename and caption.",
+      "follow.title": "Follow live on X",
+      "follow.tsolov": "The man himself · race-day reactions, training, behind-the-scenes",
+      "follow.f2": "Official championship · live race updates lap-by-lap",
+      "follow.campos": "Tsolov's team · garage shots, strategy, post-race",
+      "follow.officialLabel": "Official site"
+    },
+    bg: {
+      "topbar.live": "НА ЖИВО · СЕЗОН F2 2026",
+      "nav.stats": "Статистика",
+      "nav.bio": "Биография",
+      "nav.career": "Кариера",
+      "nav.season": "2026",
+      "nav.gallery": "Галерия",
+      "banner.latest": "Последен резултат",
+      "banner.upNext": "Следващо",
+      "hero.tagline": "Първият български победител във Формула 2. Пилот на Red Bull Junior. Някога се съмняваше, че ще напусне картинга — сега е <em>една крачка от Формула 1.</em>",
+      "hero.driverNo": "Номер",
+      "hero.series": "Шампионат",
+      "hero.team": "Отбор",
+      "hero.junior": "Юношеска програма",
+      "stats.tag": "В цифри",
+      "stats.title": "Кариера <span class=\"it\">в числа</span>",
+      "bio.tag": "Историята",
+      "bio.title": "От София <span class=\"it\">до</span> първия ред",
+      "timeline.tag": "Път в кариерата",
+      "timeline.title": "От картинга <span class=\"it\">до</span> голямата сцена",
+      "season.tag": "Сезонът",
+      "season.title": "2026 <span class=\"it\">F2</span>",
+      "season.live": "На живо този уикенд",
+      "season.round": "Кръг 02 · Маями · 1–3 май 2026",
+      "cd.next": "Следващ кръг",
+      "cd.days": "Дни",
+      "cd.hours": "Часа",
+      "cd.minutes": "Мин",
+      "cd.seconds": "Сек",
+      "cd.until": "До старта",
+      "cd.feature": "Начало на уикенда",
+      "cd.weekendLive": "Уикендът е в ход",
+      "facts.tag": "Извън пистата",
+      "facts.title": "Отвъд <span class=\"it\">каската</span>",
+      "gallery.tag": "В снимки",
+      "gallery.title": "На <span class=\"it\">пистата</span>",
+      "gallery.note": "Заменете заместителите с истински снимки — добавете изображенията в същата папка като <code>index.html</code> и обновете масива <code>GALLERY</code> в долната част на файла.",
+      "follow.title": "На живо в X",
+      "follow.tsolov": "Самият Никола · реакции от пистата, тренировки, зад кулисите",
+      "follow.f2": "Официален акаунт · обновления лап по лап",
+      "follow.campos": "Отборът на Никола · гараж, стратегия, след състезанието",
+      "follow.officialLabel": "Официален сайт"
+    }
+  };
+
+  let CURRENT_LANG = 'en';
+
+  function t(key, fallback) {
+    return (I18N[CURRENT_LANG] && I18N[CURRENT_LANG][key]) || fallback || key;
+  }
+
+  function applyLanguage(lang) {
+    if (!I18N[lang]) return;
+    CURRENT_LANG = lang;
+    document.documentElement.setAttribute('lang', lang === 'bg' ? 'bg' : 'en');
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (I18N[lang][key]) el.textContent = I18N[lang][key];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.getAttribute('data-i18n-html');
+      if (I18N[lang][key]) el.innerHTML = I18N[lang][key];
+    });
+
+    // Update toggle button state
+    document.querySelectorAll('.lang-toggle button').forEach(btn => {
+      const isActive = btn.getAttribute('data-lang') === lang;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-pressed', isActive);
+    });
+
+    try { localStorage.setItem('fanpage-lang', lang); } catch (e) {}
+
+    // Refresh countdown labels
+    if (typeof tick === 'function') tick();
+  }
+
+  function initLanguage() {
+    let saved = null;
+    try { saved = localStorage.getItem('fanpage-lang'); } catch (e) {}
+    const browserBG = (navigator.language || '').toLowerCase().startsWith('bg');
+    const initial = saved || (browserBG ? 'bg' : 'en');
+
+    document.querySelectorAll('.lang-toggle button').forEach(btn => {
+      btn.addEventListener('click', () => applyLanguage(btn.getAttribute('data-lang')));
+    });
+    applyLanguage(initial);
+  }
+</script>
+
+<!-- ===================== INIT ALL ===================== -->
+<script>
+  function initAll() {
+    if (typeof renderGallery === 'function') renderGallery();
+    if (typeof initLanguage === 'function') initLanguage();
+    if (typeof tick === 'function') {
+      tick();
+      setInterval(tick, 1000);
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAll);
+  } else {
+    initAll();
+  }
+</script>
+
+<script>
+  // Reveal-on-scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('section, .t-entry, .stat, .results-card, .fact').forEach(el => {
+    el.classList.add('reveal');
+    io.observe(el);
+  });
+</script>
+
+</body>
+</html>
