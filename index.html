@@ -113,7 +113,91 @@
   .topbar nav { display: flex; gap: 22px; }
   .topbar nav a { color: var(--bone); text-decoration: none; opacity: 0.7; transition: opacity .2s; }
   .topbar nav a:hover { opacity: 1; color: var(--red); }
-  .topbar .right { color: var(--gray-300); }
+  .topbar .right { color: var(--gray-300); display: flex; align-items: center; gap: 16px; }
+
+  /* ---- Hamburger button ---- */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    flex-shrink: 0;
+  }
+  .hamburger span {
+    display: block;
+    height: 1.5px;
+    background: var(--bone);
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.2s ease, width 0.25s ease;
+    transform-origin: center;
+  }
+  .hamburger span:nth-child(3) { width: 60%; }
+  .hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .hamburger[aria-expanded="true"] span:nth-child(3) { width: 100%; transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ---- Mobile nav panel ---- */
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    top: 56px;
+    left: 0; right: 0;
+    z-index: 49;
+    background: rgba(11,11,13,0.98);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gray-700);
+    padding: 0;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                padding 0.35s ease;
+  }
+  .mobile-nav.open {
+    max-height: 420px;
+    padding: 16px 0 24px;
+  }
+  .mobile-nav a {
+    display: block;
+    padding: 14px 28px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bone);
+    text-decoration: none;
+    opacity: 0.7;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: opacity 0.15s, color 0.15s, padding-left 0.15s;
+  }
+  .mobile-nav a:hover { opacity: 1; color: var(--red); padding-left: 36px; }
+  .mobile-nav .mobile-nav-lang {
+    display: flex;
+    gap: 10px;
+    padding: 18px 28px 0;
+  }
+  .mobile-nav .mobile-nav-lang button {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    padding: 6px 14px;
+    background: transparent;
+    border: 1px solid var(--gray-700);
+    color: var(--gray-300);
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .mobile-nav .mobile-nav-lang button.active {
+    background: var(--red);
+    border-color: var(--red);
+    color: var(--bone);
+  }
 
   /* ===================== LATEST RESULT BANNER ===================== */
   .result-banner {
@@ -1774,12 +1858,31 @@
   /* ===================== ENTRY ANIMATIONS ===================== */
   .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: translateY(28px);
+    transition: opacity 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-delay: var(--reveal-delay, 0s);
   }
   .reveal.in {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
+  }
+  /* Slide from left — for section tags */
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+    transition-delay: var(--reveal-delay, 0s);
+  }
+  .reveal-left.in { opacity: 1; transform: none; }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal-left {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
   }
 
   /* ===================== CHAMPIONSHIP STANDINGS ===================== */
@@ -2301,9 +2404,111 @@
   }
   .poll-voted-msg { color: var(--deep-red); font-weight: 700; }
 
+  /* ===================== SHARE STRIP ===================== */
+  .share-strip {
+    background: var(--gray-700);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .share-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    white-space: nowrap;
+  }
+
+  .share-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 2px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 700;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, transform 0.15s, color 0.2s;
+    background: transparent;
+    white-space: nowrap;
+  }
+  .share-btn svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    fill: currentColor;
+  }
+  .share-btn:hover { transform: translateY(-2px); }
+
+  .share-btn-x {
+    color: var(--bone);
+    border-color: rgba(255,255,255,0.15);
+  }
+  .share-btn-x:hover {
+    background: #000;
+    border-color: #000;
+    color: #fff;
+  }
+
+  .share-btn-wa {
+    color: #25d366;
+    border-color: rgba(37,211,102,0.25);
+  }
+  .share-btn-wa:hover {
+    background: #25d366;
+    border-color: #25d366;
+    color: #fff;
+  }
+
+  .share-btn-fb {
+    color: #1877f2;
+    border-color: rgba(24,119,242,0.25);
+  }
+  .share-btn-fb:hover {
+    background: #1877f2;
+    border-color: #1877f2;
+    color: #fff;
+  }
+
+  .share-btn-copy {
+    color: var(--red);
+    border-color: rgba(225,6,0,0.3);
+  }
+  .share-btn-copy:hover {
+    background: var(--red);
+    border-color: var(--red);
+    color: var(--bone);
+  }
+  .share-btn-copy.copied {
+    background: var(--green);
+    border-color: var(--green);
+    color: #fff;
+  }
+
   /* ===================== RESPONSIVE ===================== */
   @media (max-width: 900px) {
     .topbar nav { display: none; }
+    .hamburger { display: flex; }
+    .mobile-nav { display: block; }
     .hero { padding: 100px 20px 40px; }
     section { padding: 70px 20px; }
     .hero-meta { grid-template-columns: repeat(2, 1fr); }
@@ -2353,24 +2558,43 @@
 <!-- ===================== TOP BAR ===================== -->
 <div class="topbar">
   <div class="left">
-    <span><span class="dot"></span><span data-i18n="topbar.live">LIVE · 2026 F2 SEASON</span></span>
+    <span><span class="dot"></span><span data-i18n="topbar.live">2026 F2 SEASON</span></span>
   </div>
   <nav>
     <a href="#stats" data-i18n="nav.stats">Stats</a>
     <a href="#bio" data-i18n="nav.bio">Bio</a>
     <a href="#timeline" data-i18n="nav.career">Career</a>
     <a href="#season" data-i18n="nav.season">2026</a>
-    <a href="#standings">Standings</a>
+    <a href="#standings" data-i18n="nav.standings">Standings</a>
     <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
-    <a href="#highlights">Video</a>
+    <a href="#highlights" data-i18n="nav.video">Video</a>
   </nav>
   <div class="right">
     <div class="lang-toggle" role="group" aria-label="Language">
       <button data-lang="en" class="active" aria-pressed="true">EN</button>
       <button data-lang="bg" aria-pressed="false">БГ</button>
     </div>
+    <button class="hamburger" id="hamburger" aria-expanded="false" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </div>
+
+<!-- Mobile nav panel -->
+<nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
+  <a href="#stats"      data-i18n="nav.stats"     onclick="closeMobileNav()">Stats</a>
+  <a href="#bio"        data-i18n="nav.bio"        onclick="closeMobileNav()">Bio</a>
+  <a href="#timeline"   data-i18n="nav.career"     onclick="closeMobileNav()">Career</a>
+  <a href="#season"     data-i18n="nav.season"     onclick="closeMobileNav()">2026</a>
+  <a href="#standings"  data-i18n="nav.standings"  onclick="closeMobileNav()">Standings</a>
+  <a href="#poll"       data-i18n="nav.poll"       onclick="closeMobileNav()">Poll</a>
+  <a href="#gallery"    data-i18n="nav.gallery"    onclick="closeMobileNav()">Gallery</a>
+  <a href="#highlights" data-i18n="nav.video"      onclick="closeMobileNav()">Video</a>
+  <div class="mobile-nav-lang">
+    <button data-lang="en" onclick="applyLanguage('en'); syncMobileLang()">EN</button>
+    <button data-lang="bg" onclick="applyLanguage('bg'); syncMobileLang()">БГ</button>
+  </div>
+</nav>
 
 <!-- ===================== LATEST RESULT BANNER ===================== -->
 <!--
@@ -2682,10 +2906,10 @@
 <section class="champ-section" id="standings">
   <div class="champ-header">
     <div>
-      <div class="section-tag">Drivers' Championship</div>
-      <h2 class="section-title" style="font-size: clamp(48px, 7vw, 100px); margin-bottom: 0;">2026 <span class="it">Standings</span></h2>
+      <div class="section-tag" data-i18n="standings.tag">Drivers' Championship</div>
+      <h2 class="section-title" style="font-size: clamp(48px, 7vw, 100px); margin-bottom: 0;" data-i18n-html="standings.title">2026 <span class="it">Standings</span></h2>
     </div>
-    <div class="champ-after">
+    <div class="champ-after" data-i18n="standings.after">
       After Round 02 · Miami
     </div>
   </div>
@@ -2782,11 +3006,11 @@
 
 <!-- ===================== FAN POLL ===================== -->
 <section class="poll-section" id="poll">
-  <div class="section-tag">Fan Poll</div>
-  <h2 class="section-title">Have your <span class="it">say</span></h2>
+  <div class="section-tag" data-i18n="poll.tag">Fan Poll</div>
+  <h2 class="section-title" data-i18n-html="poll.title">Have your <span class="it">say</span></h2>
 
   <div class="poll-inner">
-    <div class="poll-question">Where will Nikola finish the 2026 F2 Championship?</div>
+    <div class="poll-question" data-i18n="poll.question">Where will Nikola finish the 2026 F2 Championship?</div>
 
     <!-- Pre-vote -->
     <div class="poll-options" id="poll-options">
@@ -2954,8 +3178,8 @@
 
 <!-- ===================== HELMET & LIVERY ===================== -->
 <section class="livery-section" id="livery">
-  <div class="section-tag">Design</div>
-  <h2 class="section-title">Helmet <span class="it">&amp; Livery</span></h2>
+  <div class="section-tag" data-i18n="livery.tag">Design</div>
+  <h2 class="section-title" data-i18n-html="livery.title">Helmet <span class="it">&amp; Livery</span></h2>
 
   <div class="livery-grid">
 
@@ -3324,8 +3548,78 @@
         <span class="video-sub">Bulgaria's first-ever F1 show run</span>
       </div>
     </a>
+
+    <!-- Miami Sprint Race Highlights -->
+    <a class="video-card" href="https://www.youtube.com/watch?v=DQDaAIq2DWc" target="_blank" rel="noopener" style="text-decoration:none;">
+      <div class="video-embed">
+        <img src="https://img.youtube.com/vi/DQDaAIq2DWc/hqdefault.jpg" alt="F2 Sprint Race Highlights Miami 2026 — Tsolov wins" loading="lazy" />
+        <div class="video-play">
+          <div class="video-play-btn">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="video-meta">
+        <span class="video-label">Sprint Race · R02 Miami</span>
+        <span class="video-title">Sprint Race highlights — pole to flag</span>
+        <span class="video-sub">2 May 2026 · Miami International Autodrome</span>
+      </div>
+    </a>
   </div>
 </section>
+
+<!-- ===================== SHARE STRIP ===================== -->
+<div class="share-strip">
+  <span class="share-label">Share this page</span>
+  <div class="share-buttons">
+
+    <!-- X / Twitter -->
+    <a class="share-btn share-btn-x"
+       href="https://twitter.com/intent/tweet?text=Nikola%20Tsolov%20%F0%9F%87%A7%F0%9F%87%AC%20%E2%80%94%20Bulgaria%E2%80%99s%20first%20F2%20race%20winner.%20Championship%20leader.%20One%20step%20from%20F1.&url=https%3A%2F%2Fnikolatsolovfan.netlify.app%2F"
+       target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      X · Twitter
+    </a>
+
+    <!-- WhatsApp -->
+    <a class="share-btn share-btn-wa"
+       href="https://wa.me/?text=Nikola%20Tsolov%20%F0%9F%87%A7%F0%9F%87%AC%20%E2%80%94%20Bulgaria%E2%80%99s%20first%20F2%20race%20winner%20%7C%20Fan%20page%20https%3A%2F%2Fnikolatsolovfan.netlify.app%2F"
+       target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+
+    <!-- Facebook -->
+    <a class="share-btn share-btn-fb"
+       href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fnikolatsolovfan.netlify.app%2F"
+       target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      Facebook
+    </a>
+
+    <!-- Copy link -->
+    <button class="share-btn share-btn-copy" id="copy-btn" onclick="copyLink()">
+      <svg viewBox="0 0 24 24"><path d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/></svg>
+      <span id="copy-label">Copy link</span>
+    </button>
+
+  </div>
+</div>
+
+<script>
+  function copyLink() {
+    const btn = document.getElementById('copy-btn');
+    const label = document.getElementById('copy-label');
+    navigator.clipboard.writeText('https://nikolatsolovfan.netlify.app/').then(() => {
+      btn.classList.add('copied');
+      label.textContent = 'Copied!';
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        label.textContent = 'Copy link';
+      }, 2200);
+    });
+  }
+</script>
 
 <!-- ===================== FOOTER ===================== -->
 <footer>
@@ -3625,7 +3919,18 @@
       "ct.career.2021": "Dubai 24h podium with Fernando Alonso",
       "ct.trivia.eyebrow": "Did you know",
       "ct.trivia.title": "He drove the Red Bull RB7 through Sofia",
-      "ct.trivia.body": "In June 2025, Tsolov drove Vettel's 2011 championship-winning RB7 down the streets of his hometown — the first F1 show run ever held in Bulgaria. He calls it a moment he'll <em>\"remember forever.\"</em>"
+      "ct.trivia.body": "In June 2025, Tsolov drove Vettel's 2011 championship-winning RB7 down the streets of his hometown — the first F1 show run ever held in Bulgaria. He calls it a moment he'll <em>\"remember forever.\"</em>",
+      "nav.standings": "Standings",
+      "nav.video": "Video",
+      "nav.poll": "Poll",
+      "standings.tag": "Drivers' Championship",
+      "standings.title": "2026 <span class=\"it\">Standings</span>",
+      "standings.after": "After Round 02 · Miami",
+      "poll.tag": "Fan Poll",
+      "poll.title": "Have your <span class=\"it\">say</span>",
+      "poll.question": "Where will Nikola finish the 2026 F2 Championship?",
+      "livery.tag": "Design",
+      "livery.title": "Helmet <span class=\"it\">&amp; Livery</span>"
     },
     bg: {
       "topbar.live": "НА ЖИВО · СЕЗОН F2 2026",
@@ -3687,7 +3992,18 @@
       "ct.career.2021": "Подиум в Дубай 24ч с Фернандо Алонсо",
       "ct.trivia.eyebrow": "Знаехте ли",
       "ct.trivia.title": "Той кара Red Bull RB7 през София",
-      "ct.trivia.body": "През юни 2025 г. Цолов кара титулния болид на Фетел RB7 от 2011 г. по улиците на родния си град — първото F1 шоу в България някога. Той казва, че е момент, който ще <em>„помни завинаги.“</em>"
+      “ct.trivia.body”: “През юни 2025 г. Цолов кара титулния болид на Фетел RB7 от 2011 г. по улиците на родния си град — първото F1 шоу в България някога. Той казва, че е момент, който ще <em>„помни завинаги.”</em>”,
+      “nav.standings”: “Класиране”,
+      “nav.video”: “Видео”,
+      “nav.poll”: “Гласуване”,
+      “standings.tag”: “Шампионат при пилотите”,
+      “standings.title”: “Класиране <span class=\”it\”>2026</span>”,
+      “standings.after”: “След Кръг 02 · Маями”,
+      “poll.tag”: “Гласуване”,
+      “poll.title”: “Кажи своето <span class=\”it\”>мнение</span>”,
+      “poll.question”: “Как ще завърши Никола в шампионата на Ф2 2026?”,
+      “livery.tag”: “Дизайн”,
+      “livery.title”: “Каска <span class=\”it\”>&amp; Ливрея</span>”
     }
   };
 
@@ -3737,6 +4053,44 @@
   }
 </script>
 
+<!-- ===================== MOBILE NAV ===================== -->
+<script>
+  const hamburger  = document.getElementById('hamburger');
+  const mobileNav  = document.getElementById('mobile-nav');
+
+  function openMobileNav() {
+    mobileNav.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    mobileNav.setAttribute('aria-hidden', 'false');
+  }
+  function closeMobileNav() {
+    mobileNav.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    mobileNav.setAttribute('aria-hidden', 'true');
+  }
+  function syncMobileLang() {
+    const lang = document.documentElement.getAttribute('lang') || 'en';
+    document.querySelectorAll('.mobile-nav-lang button').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+    document.querySelectorAll('.lang-toggle button').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+  }
+
+  hamburger.addEventListener('click', () => {
+    mobileNav.classList.contains('open') ? closeMobileNav() : openMobileNav();
+  });
+
+  // Close on outside click
+  document.addEventListener('click', e => {
+    if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) closeMobileNav();
+  });
+
+  // Close on ESC
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileNav(); });
+</script>
+
 <!-- ===================== INIT ALL ===================== -->
 <script>
   function initAll() {
@@ -3755,19 +4109,87 @@
 </script>
 
 <script>
-  // Reveal-on-scroll
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('in');
-      }
-    });
-  }, { threshold: 0.12 });
+  // ===================== SCROLL ANIMATIONS =====================
+  function initScrollAnimations() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          observer.unobserve(e.target); // fire once
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -48px 0px' });
 
-  document.querySelectorAll('section, .t-entry, .stat, .results-card, .fact').forEach(el => {
-    el.classList.add('reveal');
-    io.observe(el);
-  });
+    function watch(el, cls = 'reveal', delay = 0) {
+      el.classList.add(cls);
+      if (delay) el.style.setProperty('--reveal-delay', delay + 's');
+      observer.observe(el);
+    }
+
+    function watchGroup(selector, cls = 'reveal', baseDelay = 0, step = 0.08) {
+      document.querySelectorAll(selector).forEach((el, i) => {
+        watch(el, cls, baseDelay + i * step);
+      });
+    }
+
+    // -- Section tags & titles (slide from left, then title fades up) --
+    document.querySelectorAll('.section-tag').forEach(el => watch(el, 'reveal-left'));
+    document.querySelectorAll('.section-title').forEach(el => watch(el, 'reveal', 0.08));
+
+    // -- Hero meta items --
+    watchGroup('.hero-meta > *', 'reveal', 0.15, 0.1);
+
+    // -- Career stats --
+    watchGroup('.stat', 'reveal', 0, 0.1);
+
+    // -- Bio --
+    document.querySelectorAll('.bio-section > *').forEach((el, i) => watch(el, 'reveal', i * 0.12));
+
+    // -- Timeline entries --
+    watchGroup('.t-entry', 'reveal', 0, 0.1);
+
+    // -- Countdown block --
+    document.querySelectorAll('.countdown').forEach(el => watch(el, 'reveal', 0.1));
+
+    // -- Calendar rows --
+    watchGroup('.cal-row', 'reveal', 0, 0.04);
+
+    // -- Follow cards --
+    document.querySelectorAll('.follow-card, .follow-website').forEach((el, i) => watch(el, 'reveal', i * 0.1));
+
+    // -- Championship standings rows --
+    watchGroup('.champ-table tbody tr', 'reveal', 0, 0.05);
+
+    // -- Fan poll options --
+    watchGroup('.poll-btn', 'reveal', 0.1, 0.07);
+
+    // -- Feature quote --
+    document.querySelectorAll('.quote-feature').forEach(el => watch(el, 'reveal', 0.05));
+
+    // -- Fun facts --
+    watchGroup('.fact', 'reveal', 0, 0.08);
+
+    // -- Livery cards --
+    watchGroup('.livery-card', 'reveal', 0, 0.12);
+
+    // -- Gallery photos --
+    watchGroup('.photo-item', 'reveal', 0, 0.1);
+
+    // -- Content tiles --
+    watchGroup('.ct-card', 'reveal', 0, 0.08);
+
+    // -- Video cards --
+    watchGroup('.video-card', 'reveal', 0, 0.12);
+
+    // -- Result banner (slight delay so it's not invisible on hard load) --
+    document.querySelectorAll('.result-banner').forEach(el => watch(el, 'reveal', 0.2));
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initScrollAnimations);
+  } else {
+    initScrollAnimations();
+  }
 </script>
 
 </body>
