@@ -2504,6 +2504,35 @@
     color: #fff;
   }
 
+  /* ===================== BACK TO TOP ===================== */
+  .back-to-top {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 60;
+    width: 44px;
+    height: 44px;
+    background: var(--red);
+    color: var(--bone);
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s;
+    pointer-events: none;
+  }
+  .back-to-top.visible {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+  .back-to-top:hover { background: var(--deep-red); }
+  .back-to-top svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
   /* ===================== RESPONSIVE ===================== */
   @media (max-width: 900px) {
     .topbar nav { display: none; }
@@ -3733,19 +3762,34 @@
 <script>
   const GALLERY = [
     {
-      src: "hero.png",
+      src: "hero.webp",
       label: "Qatar · F2 Podium",
       caption: "Maiden F2 podium · Lusail Sprint, December 2025"
     },
     {
-      src: "mon.png",
+      src: "mon.webp",
       label: "Monaco · 2025",
       caption: "Monaco Feature Race · Pole-to-flag, record-breaking 5th F3 win"
     },
     {
-      src: "in_the_car.png",
+      src: "in_the_car.webp",
       label: "In the cockpit",
       caption: "Eyes on the prize · Red Bull Junior Team livery"
+    },
+    {
+      src: "celebration.avif",
+      label: "Miami · Sprint Win",
+      caption: "Tsolov celebrates his Miami Sprint victory · R02 · 2 May 2026"
+    },
+    {
+      src: "portrait.webp",
+      label: "Miami · Sprint Win",
+      caption: "Tsolov celebrates his Miami Sprint victory · R02 · 2 May 2026"
+    },
+    {
+      src: "tsolov06.jpg",
+      label: "2026 Season Portrait",
+      caption: "Official season portrait · Campos Racing · Red Bull Junior"
     }
   ];
 
@@ -4051,6 +4095,18 @@
     });
     applyLanguage(initial);
   }
+</script>
+
+<!-- ===================== BACK TO TOP ===================== -->
+<button class="back-to-top" id="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+  const btt = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    btt.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
 </script>
 
 <!-- ===================== MOBILE NAV ===================== -->
