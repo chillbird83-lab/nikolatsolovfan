@@ -1782,6 +1782,525 @@
     transform: translateY(0);
   }
 
+  /* ===================== CHAMPIONSHIP STANDINGS ===================== */
+  .champ-section {
+    padding: 120px 32px;
+    background: var(--ink);
+  }
+
+  .champ-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .champ-after {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .champ-live-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(225,6,0,0.15);
+    border: 1px solid rgba(225,6,0,0.4);
+    color: var(--red);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+  .champ-live-pill::before {
+    content: '';
+    width: 5px; height: 5px;
+    background: var(--red);
+    border-radius: 50%;
+    animation: pulse 1.4s ease-in-out infinite;
+  }
+
+  .champ-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--sans);
+  }
+
+  .champ-table thead tr {
+    border-bottom: 1px solid var(--gray-700);
+  }
+  .champ-table thead th {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    font-weight: 400;
+    padding: 0 16px 14px;
+    text-align: left;
+  }
+  .champ-table thead th.col-pts,
+  .champ-table thead th.col-wins,
+  .champ-table thead th.col-gap { text-align: right; }
+
+  .champ-table tbody tr {
+    border-bottom: 1px dashed rgba(255,255,255,0.05);
+    transition: background 0.15s;
+  }
+  .champ-table tbody tr:hover { background: rgba(255,255,255,0.03); }
+
+  .champ-table tbody td {
+    padding: 14px 16px;
+    font-size: 14px;
+    color: var(--gray-300);
+    vertical-align: middle;
+  }
+
+  .champ-pos {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 26px;
+    color: var(--gray-700);
+    line-height: 1;
+    width: 52px;
+  }
+
+  .champ-driver-name {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--bone);
+    display: block;
+    line-height: 1.2;
+  }
+  .champ-driver-team {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    display: block;
+    margin-top: 2px;
+  }
+
+  .champ-pts {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 26px;
+    color: var(--bone);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .champ-wins {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--gray-300);
+    text-align: right;
+  }
+  .champ-gap {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--gray-500);
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  /* Tsolov highlight row */
+  .champ-table tbody tr.champ-tsolov {
+    background: linear-gradient(90deg, rgba(225,6,0,0.14), rgba(225,6,0,0.04) 60%, transparent);
+    border-left: 3px solid var(--red);
+    border-bottom: 1px dashed rgba(225,6,0,0.2);
+  }
+  .champ-table tbody tr.champ-tsolov .champ-pos { color: var(--red); }
+  .champ-table tbody tr.champ-tsolov .champ-driver-name { color: var(--bone); font-size: 16px; }
+  .champ-table tbody tr.champ-tsolov .champ-pts { color: var(--red); }
+
+  .champ-flag {
+    font-size: 18px;
+    line-height: 1;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  .champ-wins-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .champ-wins-badge.has-wins {
+    background: var(--red);
+    color: var(--bone);
+  }
+  .champ-wins-badge.no-wins {
+    border: 1px solid var(--gray-700);
+    color: var(--gray-500);
+  }
+
+  .champ-footer-note {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 700px) {
+    .champ-table thead th.col-wins,
+    .champ-table tbody td.col-wins,
+    .champ-table thead th.col-gap,
+    .champ-table tbody td.col-gap { display: none; }
+    .champ-pos { font-size: 20px; width: 36px; }
+    .champ-pts { font-size: 20px; }
+  }
+
+  /* ===================== VIDEO HIGHLIGHTS ===================== */
+  .video-section {
+    padding: 120px 32px;
+    background: var(--gray-700);
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 0;
+  }
+
+  .video-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--ink);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 3px;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .video-card:hover {
+    border-color: rgba(225,6,0,0.4);
+    transform: translateY(-3px);
+  }
+
+  .video-embed {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 */
+    background: #000;
+    display: block;
+    overflow: hidden;
+  }
+  .video-embed img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+    transition: opacity 0.2s, transform 0.3s;
+  }
+  .video-card:hover .video-embed img {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+  .video-play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+  .video-play-btn {
+    width: 60px;
+    height: 60px;
+    background: rgba(225,6,0,0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .video-card:hover .video-play-btn {
+    background: var(--red);
+    transform: scale(1.1);
+  }
+  .video-play-btn svg {
+    width: 22px;
+    height: 22px;
+    fill: var(--bone);
+    margin-left: 3px;
+  }
+
+  .video-meta {
+    padding: 18px 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+  }
+  .video-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+  }
+  .video-title {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--bone);
+    line-height: 1.3;
+  }
+  .video-sub {
+    font-family: var(--sans);
+    font-size: 12px;
+    color: var(--gray-500);
+    margin-top: 2px;
+  }
+
+  @media (max-width: 900px) {
+    .video-grid { grid-template-columns: 1fr; }
+  }
+
+
+  /* ===================== HELMET & LIVERY ===================== */
+  .livery-section {
+    padding: 120px 32px;
+    background: var(--ink);
+  }
+
+  .livery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    background: var(--gray-700);
+    border: 3px solid var(--gray-700);
+  }
+
+  .livery-card {
+    background: var(--ink);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .livery-visual {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 40px 32px;
+    min-height: 320px;
+  }
+
+  .livery-visual svg {
+    width: 100%;
+    height: auto;
+    max-height: 260px;
+    filter: drop-shadow(0 12px 32px rgba(0,0,0,0.6));
+  }
+
+  .livery-meta {
+    padding: 24px 28px 28px;
+    border-top: 1px solid var(--gray-700);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .livery-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 6px;
+  }
+
+  .livery-name {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 28px;
+    color: var(--bone);
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+
+  .livery-detail {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  @media (max-width: 700px) {
+    .livery-grid { grid-template-columns: 1fr; }
+    .livery-visual { min-height: 220px; padding: 32px 24px 24px; }
+  }
+
+  /* ===================== FAN POLL ===================== */
+  .poll-section {
+    padding: 120px 32px;
+    background: var(--bone);
+    color: var(--ink);
+  }
+  .poll-section .section-tag { color: var(--deep-red); }
+  .poll-section .section-tag::before { background: var(--deep-red); }
+  .poll-section .section-title { color: var(--ink); }
+  .poll-section .section-title .it { color: var(--red); }
+
+  .poll-inner {
+    max-width: 680px;
+  }
+
+  .poll-question {
+    font-family: var(--sans);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--gray-700);
+    margin-bottom: 32px;
+    line-height: 1.4;
+  }
+
+  .poll-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Pre-vote option buttons */
+  .poll-btn {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 22px;
+    background: var(--cream);
+    border: 2px solid rgba(11,11,13,0.1);
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    text-align: left;
+    transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    width: 100%;
+  }
+  .poll-btn:hover {
+    border-color: var(--red);
+    background: var(--bone);
+    transform: translateX(4px);
+  }
+  .poll-btn .poll-icon {
+    font-size: 22px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  /* Post-vote result bars */
+  .poll-result {
+    display: none;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .poll-result.visible { display: flex; }
+
+  .poll-row {
+    display: grid;
+    grid-template-columns: 26px 1fr auto;
+    align-items: center;
+    gap: 14px;
+  }
+  .poll-row-icon { font-size: 18px; line-height: 1; }
+
+  .poll-bar-wrap {
+    position: relative;
+    height: 36px;
+    background: rgba(11,11,13,0.08);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .poll-bar {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 0%;
+    background: var(--gray-700);
+    border-radius: 2px;
+    transition: width 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .poll-bar.is-winner { background: var(--red); }
+  .poll-bar.is-mine { background: var(--deep-red); }
+
+  .poll-bar-label {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--bone);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .poll-bar-label.dark { color: var(--ink); }
+
+  .poll-pct {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 22px;
+    color: var(--ink);
+    min-width: 52px;
+    text-align: right;
+  }
+  .poll-pct.is-winner { color: var(--red); }
+
+  .poll-footer {
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1px solid rgba(11,11,13,0.1);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .poll-voted-msg { color: var(--deep-red); font-weight: 700; }
+
   /* ===================== RESPONSIVE ===================== */
   @media (max-width: 900px) {
     .topbar nav { display: none; }
@@ -1841,7 +2360,9 @@
     <a href="#bio" data-i18n="nav.bio">Bio</a>
     <a href="#timeline" data-i18n="nav.career">Career</a>
     <a href="#season" data-i18n="nav.season">2026</a>
+    <a href="#standings">Standings</a>
     <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
+    <a href="#highlights">Video</a>
   </nav>
   <div class="right">
     <div class="lang-toggle" role="group" aria-label="Language">
@@ -1868,11 +2389,11 @@
       <span class="banner-position">P1</span>
       <span class="banner-text">
         <span class="race">Miami · Sprint</span>
-        <strong>Two from two!</strong>
+        <strong>Championship leader</strong>
         <span class="sep">·</span>
-        Pole-to-flag victory
+        Pole-to-flag victory · +1 pt gap
         <span class="sep">·</span>
-        Championship leader (+9 pts)
+        Feature race: DNS after first-lap contact
       </span>
     </div>
 
@@ -1880,8 +2401,8 @@
 
     <div class="banner-next">
       <span class="label" data-i18n="banner.upNext">Up Next</span>
-      <span class="where">Miami · Feature</span>
-      <span>Sun 12:30 ET</span>
+      <span class="where">Montréal · R03</span>
+      <span>22–24 May 2026</span>
     </div>
   </div>
 </div>
@@ -2070,7 +2591,7 @@
   <div class="countdown" id="countdown">
     <div class="cd-label">
       <span data-i18n="cd.next">Next round</span>
-      <span class="race-name" id="cd-race-name">Miami · <span class="red">R02</span></span>
+      <span class="race-name" id="cd-race-name">Montréal · <span class="red">R03</span></span>
     </div>
     <div class="cd-units" id="cd-units">
       <div class="cd-unit"><span class="cd-num" id="cd-d">--</span><span class="cd-tag" data-i18n="cd.days">Days</span></div>
@@ -2157,6 +2678,232 @@
   </div>
 </section>
 
+<!-- ===================== CHAMPIONSHIP STANDINGS ===================== -->
+<section class="champ-section" id="standings">
+  <div class="champ-header">
+    <div>
+      <div class="section-tag">Drivers' Championship</div>
+      <h2 class="section-title" style="font-size: clamp(48px, 7vw, 100px); margin-bottom: 0;">2026 <span class="it">Standings</span></h2>
+    </div>
+    <div class="champ-after">
+      After Round 02 · Miami
+    </div>
+  </div>
+
+  <table class="champ-table">
+    <thead>
+      <tr>
+        <th style="width:52px;">Pos</th>
+        <th>Driver</th>
+        <th class="col-wins">Wins</th>
+        <th class="col-pts">Pts</th>
+        <th class="col-gap">Gap</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="champ-tsolov">
+        <td class="champ-pos">01</td>
+        <td><span class="champ-flag">🇧🇬</span><span class="champ-driver-name">Nikola Tsolov</span><span class="champ-driver-team">Campos Racing</span></td>
+        <td class="col-wins"><span class="champ-wins-badge has-wins">2</span></td>
+        <td class="champ-pts">35</td>
+        <td class="champ-gap col-gap">—</td>
+      </tr>
+      <tr>
+        <td class="champ-pos">02</td>
+        <td><span class="champ-flag">🇮🇹</span><span class="champ-driver-name">Gabriele Minì</span><span class="champ-driver-team">MP Motorsport</span></td>
+        <td class="col-wins"><span class="champ-wins-badge has-wins">1</span></td>
+        <td class="champ-pts">34</td>
+        <td class="champ-gap col-gap">−1</td>
+      </tr>
+      <tr>
+        <td class="champ-pos">03</td>
+        <td><span class="champ-flag">🇧🇷</span><span class="champ-driver-name">Rafael Câmara</span><span class="champ-driver-team">Invicta Racing</span></td>
+        <td class="col-wins"><span class="champ-wins-badge no-wins">0</span></td>
+        <td class="champ-pts">34</td>
+        <td class="champ-gap col-gap">−1</td>
+      </tr>
+      <tr>
+        <td class="champ-pos">04</td>
+        <td><span class="champ-flag">🇩🇪</span><span class="champ-driver-name">Laurens van Hoepen</span><span class="champ-driver-team">Trident</span></td>
+        <td class="col-wins"><span class="champ-wins-badge has-wins">1</span></td>
+        <td class="champ-pts">26</td>
+        <td class="champ-gap col-gap">−9</td>
+      </tr>
+      <tr>
+        <td class="champ-pos">05</td>
+        <td><span class="champ-flag">🇯🇵</span><span class="champ-driver-name">Ritomo Miyata</span><span class="champ-driver-team">Hitech</span></td>
+        <td class="col-wins"><span class="champ-wins-badge no-wins">0</span></td>
+        <td class="champ-pts">22</td>
+        <td class="champ-gap col-gap">−13</td>
+      </tr>
+      <tr>
+        <td class="champ-pos">06</td>
+        <td><span class="champ-flag">🇸🇪</span><span class="champ-driver-name">Dino Beganovic</span><span class="champ-driver-team">DAMS Lucas Oil</span></td>
+        <td class="col-wins"><span class="champ-wins-badge no-wins">0</span></td>
+        <td class="champ-pts">21</td>
+        <td class="champ-gap col-gap">−14</td>
+      </tr>
+      <tr>
+        <td class="champ-pos">07</td>
+        <td><span class="champ-flag">🇲🇽</span><span class="champ-driver-name">Noel León</span><span class="champ-driver-team">Campos Racing</span></td>
+        <td class="col-wins"><span class="champ-wins-badge no-wins">0</span></td>
+        <td class="champ-pts">20</td>
+        <td class="champ-gap col-gap">−15</td>
+      </tr>
+      <tr>
+        <td class="champ-pos">08</td>
+        <td><span class="champ-flag">🇵🇾</span><span class="champ-driver-name">Joshua Dürksen</span><span class="champ-driver-team">Invicta Racing</span></td>
+        <td class="col-wins"><span class="champ-wins-badge no-wins">0</span></td>
+        <td class="champ-pts">16</td>
+        <td class="champ-gap col-gap">−19</td>
+      </tr>
+      <tr>
+        <td class="champ-pos">09</td>
+        <td><span class="champ-flag">🇹🇭</span><span class="champ-driver-name">Tasanapol Inthraphuvasakul</span><span class="champ-driver-team">Invicta Racing</span></td>
+        <td class="col-wins"><span class="champ-wins-badge no-wins">0</span></td>
+        <td class="champ-pts">13</td>
+        <td class="champ-gap col-gap">−22</td>
+      </tr>
+      <tr>
+        <td class="champ-pos">10</td>
+        <td><span class="champ-flag">🇩🇪</span><span class="champ-driver-name">Oliver Goethe</span><span class="champ-driver-team">Trident</span></td>
+        <td class="col-wins"><span class="champ-wins-badge no-wins">0</span></td>
+        <td class="champ-pts">12</td>
+        <td class="champ-gap col-gap">−23</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="champ-footer-note">
+    <span>Top 10 shown · Full standings at fiaformula2.com</span>
+    <span>Updated after R02 Miami · R03 Montréal next</span>
+  </div>
+</section>
+
+<!-- ===================== FAN POLL ===================== -->
+<section class="poll-section" id="poll">
+  <div class="section-tag">Fan Poll</div>
+  <h2 class="section-title">Have your <span class="it">say</span></h2>
+
+  <div class="poll-inner">
+    <div class="poll-question">Where will Nikola finish the 2026 F2 Championship?</div>
+
+    <!-- Pre-vote -->
+    <div class="poll-options" id="poll-options">
+      <button class="poll-btn" onclick="castVote('champion')">
+        <span class="poll-icon">🏆</span> F2 Champion
+      </button>
+      <button class="poll-btn" onclick="castVote('p2')">
+        <span class="poll-icon">🥈</span> Runner-up · P2
+      </button>
+      <button class="poll-btn" onclick="castVote('p3')">
+        <span class="poll-icon">🥉</span> Third · P3
+      </button>
+      <button class="poll-btn" onclick="castVote('top5')">
+        <span class="poll-icon">📈</span> Top 5
+      </button>
+    </div>
+
+    <!-- Post-vote results -->
+    <div class="poll-result" id="poll-result">
+      <div class="poll-row" id="pr-champion">
+        <span class="poll-row-icon">🏆</span>
+        <div class="poll-bar-wrap">
+          <div class="poll-bar" id="bar-champion"></div>
+          <span class="poll-bar-label">F2 Champion</span>
+        </div>
+        <span class="poll-pct" id="pct-champion">0%</span>
+      </div>
+      <div class="poll-row" id="pr-p2">
+        <span class="poll-row-icon">🥈</span>
+        <div class="poll-bar-wrap">
+          <div class="poll-bar" id="bar-p2"></div>
+          <span class="poll-bar-label">Runner-up · P2</span>
+        </div>
+        <span class="poll-pct" id="pct-p2">0%</span>
+      </div>
+      <div class="poll-row" id="pr-p3">
+        <span class="poll-row-icon">🥉</span>
+        <div class="poll-bar-wrap">
+          <div class="poll-bar" id="bar-p3"></div>
+          <span class="poll-bar-label">Third · P3</span>
+        </div>
+        <span class="poll-pct" id="pct-p3">0%</span>
+      </div>
+      <div class="poll-row" id="pr-top5">
+        <span class="poll-row-icon">📈</span>
+        <div class="poll-bar-wrap">
+          <div class="poll-bar" id="bar-top5"></div>
+          <span class="poll-bar-label">Top 5</span>
+        </div>
+        <span class="poll-pct" id="pct-top5">0%</span>
+      </div>
+    </div>
+
+    <div class="poll-footer">
+      <span id="poll-total"></span>
+      <span class="poll-voted-msg" id="poll-voted-msg"></span>
+    </div>
+  </div>
+</section>
+
+<script>
+  const POLL_KEY  = 'tsolov_poll_2026_v1';
+  const SEED      = { champion: 1243, p2: 387, p3: 94, top5: 52 };
+  const OPTIONS   = ['champion', 'p2', 'p3', 'top5'];
+
+  function getPoll() {
+    try { return JSON.parse(localStorage.getItem(POLL_KEY)) || {}; } catch { return {}; }
+  }
+
+  function savePoll(data) {
+    try { localStorage.setItem(POLL_KEY, JSON.stringify(data)); } catch {}
+  }
+
+  function castVote(option) {
+    const data = getPoll();
+    if (data.voted) return;
+    data.voted = option;
+    data.counts = data.counts || {};
+    OPTIONS.forEach(o => { data.counts[o] = (data.counts[o] || 0); });
+    data.counts[option]++;
+    savePoll(data);
+    showResults(data);
+  }
+
+  function showResults(data) {
+    const counts = {};
+    OPTIONS.forEach(o => {
+      counts[o] = SEED[o] + (data.counts?.[o] || 0);
+    });
+    const total = OPTIONS.reduce((s, o) => s + counts[o], 0);
+    const winner = OPTIONS.reduce((a, b) => counts[a] >= counts[b] ? a : b);
+
+    OPTIONS.forEach(o => {
+      const pct = Math.round((counts[o] / total) * 100);
+      const bar = document.getElementById('bar-' + o);
+      const pctEl = document.getElementById('pct-' + o);
+      bar.classList.toggle('is-winner', o === winner);
+      bar.classList.toggle('is-mine',   o === data.voted && o !== winner);
+      pctEl.classList.toggle('is-winner', o === winner);
+      pctEl.textContent = pct + '%';
+      // trigger animation after paint
+      requestAnimationFrame(() => requestAnimationFrame(() => { bar.style.width = pct + '%'; }));
+    });
+
+    document.getElementById('poll-options').style.display = 'none';
+    document.getElementById('poll-result').classList.add('visible');
+    document.getElementById('poll-total').textContent = total.toLocaleString() + ' votes';
+    document.getElementById('poll-voted-msg').textContent = data.voted ? 'You voted · thank you' : '';
+  }
+
+  // On load — show results if already voted, otherwise show options
+  (function init() {
+    const data = getPoll();
+    if (data.voted) showResults(data);
+  })();
+</script>
+
 <!-- ===================== FEATURE QUOTE ===================== -->
 <section class="quote-feature">
   <div class="mark">"</div>
@@ -2205,6 +2952,165 @@
   </div>
 </section>
 
+<!-- ===================== HELMET & LIVERY ===================== -->
+<section class="livery-section" id="livery">
+  <div class="section-tag">Design</div>
+  <h2 class="section-title">Helmet <span class="it">&amp; Livery</span></h2>
+
+  <div class="livery-grid">
+
+    <!-- CAR LIVERY -->
+    <div class="livery-card">
+      <div class="livery-visual">
+        <svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg" aria-label="Campos Racing #6 F2 car livery">
+          <!-- Shadow -->
+          <ellipse cx="260" cy="188" rx="210" ry="8" fill="rgba(0,0,0,0.35)"/>
+
+          <!-- Floor / underfloor -->
+          <path d="M70 148 Q80 155 440 155 Q460 150 470 145 L450 138 Q280 142 80 138 Z" fill="#0a1a3a"/>
+
+          <!-- Main body — Campos blue -->
+          <path d="M90 138 Q100 118 130 112 L180 108 L340 106 Q390 106 420 112 Q445 118 450 132 Q440 140 80 140 Z" fill="#003399"/>
+
+          <!-- White side stripe -->
+          <path d="M130 112 L340 106 L420 112 Q400 116 340 117 L160 119 Q140 118 130 112 Z" fill="#ffffff" opacity="0.12"/>
+
+          <!-- Sidepods -->
+          <path d="M155 118 Q160 108 200 106 L200 122 Q175 122 155 118 Z" fill="#002277"/>
+          <path d="M320 106 Q365 108 375 118 L355 122 L320 122 Z" fill="#002277"/>
+
+          <!-- Cockpit surround / halo -->
+          <path d="M220 106 Q260 98 300 106" stroke="#c8a800" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <!-- Halo centre pillar -->
+          <rect x="257" y="97" width="6" height="12" rx="2" fill="#c8a800"/>
+
+          <!-- Cockpit opening -->
+          <path d="M225 110 Q260 103 295 110 Q280 116 240 116 Z" fill="#0b0b0d"/>
+
+          <!-- Nose cone -->
+          <path d="M90 138 Q80 136 55 128 Q45 124 40 120 Q50 116 70 116 Q82 118 90 124 Z" fill="#003399"/>
+          <path d="M55 128 Q45 124 40 120 L38 122 Q44 127 55 131 Z" fill="#002277"/>
+
+          <!-- Nose tip accent (red) -->
+          <path d="M38 120 Q35 121 33 122 Q35 124 38 124 Z" fill="#e10600"/>
+
+          <!-- Rear wing main plane -->
+          <path d="M415 108 Q440 106 460 110 L462 118 Q440 116 415 118 Z" fill="#003399"/>
+          <!-- Rear wing upper flap -->
+          <path d="M418 104 Q442 101 462 106 L462 109 Q440 106 418 108 Z" fill="#1144bb"/>
+          <!-- Rear wing endplate -->
+          <path d="M460 104 L465 104 L466 120 L461 120 Z" fill="#002277"/>
+
+          <!-- Front wing -->
+          <path d="M38 122 Q20 124 10 128 L10 132 Q22 130 40 128 Z" fill="#003399"/>
+          <path d="M10 126 Q5 128 3 130 L3 133 Q6 131 10 132 Z" fill="#1144bb"/>
+
+          <!-- Number 6 on sidepod -->
+          <text x="178" y="128" font-family="'Big Shoulders Display', Arial Black, sans-serif" font-weight="900" font-size="22" fill="#ffffff" letter-spacing="-1">6</text>
+
+          <!-- CAMPOS wordmark on engine cover -->
+          <text x="215" y="112" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="7" fill="#ffffff" letter-spacing="3" opacity="0.7">CAMPOS</text>
+
+          <!-- Red Bull logo area (simplified) -->
+          <circle cx="345" cy="114" r="7" fill="#e10600" opacity="0.9"/>
+          <circle cx="352" cy="114" r="7" fill="#c8a800" opacity="0.9"/>
+
+          <!-- Wheel rims — front -->
+          <circle cx="100" cy="142" r="20" fill="#111" stroke="#333" stroke-width="1.5"/>
+          <circle cx="100" cy="142" r="13" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+          <circle cx="100" cy="142" r="6" fill="#e10600"/>
+          <!-- tyre -->
+          <ellipse cx="100" cy="152" rx="20" ry="5" fill="rgba(0,0,0,0.3)"/>
+
+          <!-- Wheel rims — rear -->
+          <circle cx="400" cy="142" r="22" fill="#111" stroke="#333" stroke-width="1.5"/>
+          <circle cx="400" cy="142" r="14" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+          <circle cx="400" cy="142" r="7" fill="#e10600"/>
+          <ellipse cx="400" cy="153" rx="22" ry="5" fill="rgba(0,0,0,0.3)"/>
+        </svg>
+      </div>
+      <div class="livery-meta">
+        <div>
+          <div class="livery-label">2026 Season</div>
+          <div class="livery-name">Campos #6</div>
+        </div>
+        <div class="livery-detail">
+          Dallara F2 2024<br/>
+          Blue · White · Gold<br/>
+          Campos Racing
+        </div>
+      </div>
+    </div>
+
+    <!-- HELMET -->
+    <div class="livery-card">
+      <div class="livery-visual">
+        <svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" aria-label="Nikola Tsolov racing helmet design">
+          <!-- Shadow -->
+          <ellipse cx="160" cy="248" rx="95" ry="8" fill="rgba(0,0,0,0.35)"/>
+
+          <!-- Helmet shell — main white base -->
+          <path d="M65 145 Q60 110 75 80 Q95 45 160 38 Q225 45 245 80 Q260 110 255 145 Q248 178 230 196 Q210 212 160 216 Q110 212 90 196 Q72 178 65 145 Z" fill="#f0f0f0"/>
+
+          <!-- Bulgarian white base already covers, add green stripe top -->
+          <path d="M75 80 Q95 45 160 38 Q225 45 245 80 Q235 88 160 90 Q85 88 75 80 Z" fill="#00966e"/>
+
+          <!-- Red centre stripe -->
+          <path d="M120 40 Q160 36 200 40 L205 72 Q160 76 115 72 Z" fill="#e10600"/>
+
+          <!-- White mid band -->
+          <path d="M85 92 Q160 96 235 92 L238 118 Q160 122 82 118 Z" fill="#ffffff"/>
+
+          <!-- Blue lower band (Campos) -->
+          <path d="M68 130 Q160 135 252 130 L252 155 Q160 158 68 155 Z" fill="#003399"/>
+
+          <!-- Visor -->
+          <path d="M88 115 Q160 108 232 115 L238 148 Q220 160 160 163 Q100 160 82 148 Z" fill="#1a1a2e"/>
+          <!-- Visor tint/reflection -->
+          <path d="M92 118 Q140 112 190 116 L192 130 Q150 126 95 130 Z" fill="rgba(255,255,255,0.06)"/>
+          <!-- Visor chrome edge -->
+          <path d="M88 115 Q160 108 232 115 L235 120 Q160 113 85 120 Z" fill="rgba(200,168,0,0.5)"/>
+
+          <!-- Visor surround -->
+          <path d="M86 113 Q160 106 234 113 L238 150 Q220 163 160 166 Q100 163 82 150 Z" fill="none" stroke="#c8a800" stroke-width="2.5"/>
+
+          <!-- Chin piece -->
+          <path d="M100 196 Q160 204 220 196 L225 215 Q160 222 95 215 Z" fill="#e8e8e8"/>
+          <path d="M100 196 Q160 204 220 196 L218 202 Q160 210 102 202 Z" fill="#003399"/>
+
+          <!-- Air vents top -->
+          <rect x="148" y="42" width="24" height="5" rx="2.5" fill="#0b0b0d" opacity="0.5"/>
+          <rect x="148" y="50" width="24" height="4" rx="2" fill="#0b0b0d" opacity="0.3"/>
+
+          <!-- NT initials on side -->
+          <text x="92" y="162" font-family="'Big Shoulders Display', Arial Black, sans-serif" font-weight="900" font-size="16" fill="#ffffff" opacity="0.9" letter-spacing="-0.5">NT</text>
+
+          <!-- Bulgarian flag shield on back (left side visible) -->
+          <rect x="218" y="130" width="18" height="14" rx="1" fill="#ffffff"/>
+          <rect x="218" y="130" width="18" height="5" rx="1" fill="#ffffff"/>
+          <rect x="218" y="135" width="18" height="4" fill="#00966e"/>
+          <rect x="218" y="139" width="18" height="5" rx="1" fill="#e10600"/>
+
+          <!-- Shine / highlight -->
+          <path d="M100 68 Q130 55 175 52 Q195 54 210 62 Q185 58 155 60 Q125 62 100 75 Z" fill="rgba(255,255,255,0.18)"/>
+        </svg>
+      </div>
+      <div class="livery-meta">
+        <div>
+          <div class="livery-label">2026 Design</div>
+          <div class="livery-name">The Lion</div>
+        </div>
+        <div class="livery-detail">
+          White · Green · Red<br/>
+          Bulgarian tricolour<br/>
+          Red Bull Junior
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- ===================== GALLERY (3 photos) + CONTENT CARDS (5) ===================== -->
 <section class="gallery-section" id="gallery">
   <div class="section-tag" data-i18n="gallery.tag">In pictures</div>
@@ -2229,28 +3135,28 @@
         </li>
         <li>
           <span class="pos">02</span>
-          <span class="name">Laurens van Hoepen <em>Trident</em></span>
-          <span class="pts">26</span>
+          <span class="name">Gabriele Minì <em>MP</em></span>
+          <span class="pts">34</span>
         </li>
         <li>
           <span class="pos">03</span>
           <span class="name">Rafael Câmara <em>Invicta</em></span>
-          <span class="pts">18</span>
+          <span class="pts">34</span>
         </li>
         <li>
           <span class="pos">04</span>
-          <span class="name">Joshua Dürksen <em>Invicta</em></span>
-          <span class="pts">15</span>
+          <span class="name">Laurens van Hoepen <em>Trident</em></span>
+          <span class="pts">26</span>
         </li>
         <li>
           <span class="pos">05</span>
           <span class="name">Ritomo Miyata <em>Hitech</em></span>
-          <span class="pts">14</span>
+          <span class="pts">22</span>
         </li>
       </ol>
       <div class="ct-foot">
         <span class="ct-foot-label" data-i18n="ct.standings.gap">Gap to P2</span>
-        <span class="ct-foot-value">+9</span>
+        <span class="ct-foot-value">+1</span>
       </div>
     </div>
 
@@ -2312,9 +3218,9 @@
             <span class="rd-cell-lbl">S</span>
             <span class="rd-cell-val rd-win">P1</span>
           </div>
-          <div class="rd-cell" title="Feature Race — Sunday 12:30 ET">
+          <div class="rd-cell" title="Feature Race — DNS after first-lap contact">
             <span class="rd-cell-lbl">F</span>
-            <span class="rd-cell-val rd-pending">?</span>
+            <span class="rd-cell-val rd-nopts">DNS</span>
           </div>
         </div>
       </div>
@@ -2378,6 +3284,49 @@
   </div>
 </section>
 
+<!-- ===================== VIDEO HIGHLIGHTS ===================== -->
+<section class="video-section" id="highlights">
+  <div class="section-tag">Video</div>
+  <h2 class="section-title">Race <span class="it">highlights</span></h2>
+
+  <div class="video-grid">
+    <!-- Melbourne Feature Race Win -->
+    <a class="video-card" href="https://www.youtube.com/watch?v=TrAFUhgeRzc" target="_blank" rel="noopener" style="text-decoration:none;">
+      <div class="video-embed">
+        <img src="https://img.youtube.com/vi/TrAFUhgeRzc/hqdefault.jpg" alt="Bulgaria's first F2 victory — Melbourne 2026" loading="lazy" />
+        <div class="video-play">
+          <div class="video-play-btn">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="video-meta">
+        <span class="video-label">Feature Race · R01 Melbourne</span>
+        <span class="video-title">Bulgaria's first F2 victory</span>
+        <span class="video-sub">8 March 2026 · Albert Park</span>
+      </div>
+    </a>
+
+    <!-- Onboard -->
+    <!-- Sofia RB7 Show Run -->
+    <a class="video-card" href="https://www.youtube.com/watch?v=tnY2I0OgwxM" target="_blank" rel="noopener" style="text-decoration:none;">
+      <div class="video-embed">
+        <img src="https://img.youtube.com/vi/tnY2I0OgwxM/hqdefault.jpg" alt="Tsolov drives the RB7 through Sofia 2025" loading="lazy" />
+        <div class="video-play">
+          <div class="video-play-btn">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="video-meta">
+        <span class="video-label">Show Run · Sofia 2025</span>
+        <span class="video-title">Tsolov drives the RB7 through Sofia</span>
+        <span class="video-sub">Bulgaria's first-ever F1 show run</span>
+      </div>
+    </a>
+  </div>
+</section>
+
 <!-- ===================== FOOTER ===================== -->
 <footer>
   <div class="footer-top">
@@ -2420,7 +3369,7 @@
 <script>
   const RACES = [
     { round: 1,  location: "Melbourne",         country: "Australia",     dates: "06–08 Mar", sprint: "—", feature: "P1", note: "First F2 victory · Bulgaria's first F2 win", status: "completed" },
-    { round: 2,  location: "Miami",             country: "USA",           dates: "01–03 May", sprint: "?", feature: "?",  note: "Round in progress",                          status: "live"      },
+    { round: 2,  location: "Miami",             country: "USA",           dates: "01–03 May", sprint: "P1", feature: "DNF", note: "Sprint win · Feature DNS after first-lap contact", status: "completed" },
     { round: 3,  location: "Montréal",          country: "Canada",        dates: "22–24 May", sprint: "—", feature: "—",                                                       status: "upcoming"  },
     { round: 4,  location: "Monaco",            country: "Monaco",        dates: "04–07 Jun", sprint: "—", feature: "—",                                                       status: "upcoming"  },
     { round: 5,  location: "Barcelona",         country: "Spain",         dates: "12–14 Jun", sprint: "—", feature: "—",                                                       status: "upcoming"  },
@@ -2562,6 +3511,7 @@
   function findNextRace() {
     const now = Date.now();
     for (const race of RACES) {
+      if (race.status === 'completed') continue;
       const startISO = RACE_TIMES[race.round];
       if (!startISO) continue;
       const start = Date.parse(startISO);
@@ -2637,8 +3587,8 @@
       "timeline.title": "From karts <span class=\"it\">to</span> the grid",
       "season.tag": "Season Tracker",
       "season.title": "2026 <span class=\"it\">F2</span>",
-      "season.live": "Live this weekend",
-      "season.round": "Round 02 · Miami · 1–3 May 2026",
+      "season.live": "Next round",
+      "season.round": "Round 03 · Montréal · 22–24 May 2026",
       "cd.next": "Next round",
       "cd.days": "Days",
       "cd.hours": "Hrs",
@@ -2699,8 +3649,8 @@
       "timeline.title": "От картинга <span class=\"it\">до</span> голямата сцена",
       "season.tag": "Сезонът",
       "season.title": "2026 <span class=\"it\">F2</span>",
-      "season.live": "На живо този уикенд",
-      "season.round": "Кръг 02 · Маями · 1–3 май 2026",
+      "season.live": "Следващ кръг",
+      "season.round": "Кръг 03 · Монреал · 22–24 май 2026",
       "cd.next": "Следващ кръг",
       "cd.days": "Дни",
       "cd.hours": "Часа",
