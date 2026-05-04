@@ -7,7 +7,7 @@
 
 <!-- ===================== SEO + SOCIAL META ===================== -->
 <meta name="description" content="Unofficial fan page for Nikola Tsolov — Bulgaria's first F2 race winner, Red Bull Junior, Campos Racing #6. Career stats, 2026 season tracker, live updates." />
-<meta name="theme-color" content="#e10600" />
+<meta name="theme-color" content="#041E42" />
 <link rel="canonical" href="https://chillbird83-lab.github.io/nikolatsolovfan/" />
 
 <!-- Favicon -->
@@ -33,22 +33,22 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@300;400;500;600;700&family=Orbitron:wght@400;600;700;900&family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --ink: #0b0b0d;
-    --bone: #f3efe6;
-    --cream: #ebe4d4;
-    --red: #e10600;
-    --deep-red: #8a0303;
-    --green: #00966e; /* Bulgarian flag green */
-    --gold: #d4a541;
-    --gray-700: #2a2a2e;
-    --gray-500: #5a5a60;
-    --gray-300: #b6b3aa;
-    --display: 'Big Shoulders Display', Impact, sans-serif;
+    --ink: #041E42;
+    --bone: #F1F1F1;
+    --cream: #d8d4cc;
+    --red: #E03A3E;
+    --deep-red: #a01820;
+    --green: #00966e;
+    --gold: #FFCC00;
+    --gray-700: #0d2d56;
+    --gray-500: #4a6080;
+    --gray-300: #9ab0c8;
+    --display: 'Orbitron', 'Big Shoulders Display', Impact, sans-serif;
     --serif: 'Fraunces', Georgia, serif;
-    --sans: 'Manrope', system-ui, sans-serif;
+    --sans: 'Titillium Web', 'Manrope', system-ui, sans-serif;
     --mono: 'JetBrains Mono', monospace;
   }
 
@@ -64,22 +64,36 @@
     line-height: 1.5;
     overflow-x: hidden;
     background-image:
-      radial-gradient(circle at 80% 10%, rgba(225, 6, 0, 0.12), transparent 50%),
-      radial-gradient(circle at 10% 80%, rgba(0, 150, 110, 0.08), transparent 55%);
+      radial-gradient(circle at 80% 10%, rgba(224, 58, 62, 0.10), transparent 50%),
+      radial-gradient(circle at 10% 80%, rgba(255, 204, 0, 0.06), transparent 55%);
   }
 
-  /* Subtle film grain */
+  /* Lion watermark */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
     pointer-events: none;
-    z-index: 100;
+    z-index: 0;
+    background-image: url('lion.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 55%;
     opacity: 0.04;
+  }
+
+  /* Subtle film grain */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.035;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
-  ::selection { background: var(--red); color: var(--bone); }
+  ::selection { background: var(--gold); color: var(--ink); }
 
   /* ===================== TOP BAR ===================== */
   .topbar {
@@ -94,25 +108,31 @@
     font-size: 11px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    background: linear-gradient(180deg, rgba(11,11,13,0.95), rgba(11,11,13,0));
+    background-color: rgba(4, 20, 42, 0.97);
+    background-image:
+      repeating-linear-gradient(45deg,  rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 4px),
+      repeating-linear-gradient(-45deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 4px);
+    background-size: 4px 4px;
+    border-bottom: 1px solid rgba(255, 204, 0, 0.18);
     backdrop-filter: blur(8px);
+    box-shadow: 0 2px 24px rgba(4,20,42,0.8);
   }
   .topbar .left { display: flex; gap: 24px; align-items: center; }
   .topbar .left .dot {
     display: inline-block;
     width: 8px; height: 8px;
-    background: var(--red);
+    background: var(--gold);
     border-radius: 50%;
     animation: pulse 1.4s ease-in-out infinite;
     margin-right: 6px;
   }
   @keyframes pulse {
-    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(225,6,0,0.7); }
-    50% { opacity: 0.6; box-shadow: 0 0 0 6px rgba(225,6,0,0); }
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(255,204,0,0.7); }
+    50% { opacity: 0.6; box-shadow: 0 0 0 6px rgba(255,204,0,0); }
   }
   .topbar nav { display: flex; gap: 22px; }
-  .topbar nav a { color: var(--bone); text-decoration: none; opacity: 0.7; transition: opacity .2s; }
-  .topbar nav a:hover { opacity: 1; color: var(--red); }
+  .topbar nav a { color: var(--bone); text-decoration: none; opacity: 0.7; transition: opacity .2s, color .2s; }
+  .topbar nav a:hover { opacity: 1; color: var(--gold); text-shadow: 0 0 8px rgba(255,204,0,0.6); }
   .topbar .right { color: var(--gray-300); display: flex; align-items: center; gap: 16px; }
 
   /* ---- Hamburger button ---- */
@@ -149,9 +169,9 @@
     top: 56px;
     left: 0; right: 0;
     z-index: 49;
-    background: rgba(11,11,13,0.98);
+    background: rgba(4,20,42,0.98);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--gray-700);
+    border-bottom: 1px solid rgba(255,204,0,0.18);
     padding: 0;
     overflow: hidden;
     max-height: 0;
@@ -175,7 +195,7 @@
     border-bottom: 1px solid rgba(255,255,255,0.04);
     transition: opacity 0.15s, color 0.15s, padding-left 0.15s;
   }
-  .mobile-nav a:hover { opacity: 1; color: var(--red); padding-left: 36px; }
+  .mobile-nav a:hover { opacity: 1; color: var(--gold); padding-left: 36px; }
   .mobile-nav .mobile-nav-lang {
     display: flex;
     gap: 10px;
@@ -217,8 +237,8 @@
       135deg,
       transparent 0,
       transparent 24px,
-      rgba(225,6,0,0.05) 24px,
-      rgba(225,6,0,0.05) 25px
+      rgba(255,204,0,0.04) 24px,
+      rgba(255,204,0,0.04) 25px
     );
     pointer-events: none;
   }
@@ -376,7 +396,7 @@
   .hero-tsolov {
     font-family: var(--display);
     font-weight: 900;
-    font-size: clamp(80px, 22vw, 360px);
+    font-size: clamp(48px, 12vw, 180px);
     line-height: 0.78;
     letter-spacing: -0.03em;
     text-transform: uppercase;
@@ -409,8 +429,8 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
-    border-top: 1px solid var(--gray-700);
-    border-bottom: 1px solid var(--gray-700);
+    border-top: 1px solid rgba(255,204,0,0.2);
+    border-bottom: 1px solid rgba(255,204,0,0.2);
     padding: 22px 0;
     font-family: var(--mono);
     font-size: 11px;
@@ -451,7 +471,7 @@
   .speed-lines .line {
     position: absolute;
     height: 1px;
-    background: linear-gradient(to right, transparent, var(--red), transparent);
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
     animation: zoom 2.5s ease-in-out infinite;
   }
   .speed-lines .line:nth-child(1) { top: 20%; width: 40%; animation-delay: 0s; }
@@ -475,14 +495,14 @@
     font-size: 11px;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--red);
+    color: var(--gold);
     margin-bottom: 24px;
   }
   .section-tag::before {
     content: '';
     width: 28px;
     height: 1px;
-    background: var(--red);
+    background: var(--gold);
   }
 
   .section-title {
@@ -504,55 +524,68 @@
 
   /* ===================== STATS ===================== */
   .stats-section {
-    background: var(--bone);
-    color: var(--ink);
+    background: #020f1f;
+    color: var(--bone);
     overflow: hidden;
+    border-top: 1px solid rgba(255,204,0,0.15);
+    border-bottom: 1px solid rgba(255,204,0,0.15);
   }
-  .stats-section .section-tag { color: var(--deep-red); }
-  .stats-section .section-tag::before { background: var(--deep-red); }
-  .stats-section .section-title { color: var(--ink); }
+  .stats-section .section-tag { color: var(--gold); }
+  .stats-section .section-tag::before { background: var(--gold); }
+  .stats-section .section-title { color: var(--bone); }
   .stats-section .section-title .it { color: var(--red); }
 
   .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    border-top: 2px solid var(--ink);
+    gap: 2px;
+    background: rgba(255,204,0,0.08);
+    border: 1px solid rgba(255,204,0,0.12);
+    border-radius: 4px;
+    overflow: hidden;
   }
   .stat {
     padding: 32px 28px;
-    border-right: 1px solid var(--ink);
-    border-bottom: 2px solid var(--ink);
+    background: #041830;
     position: relative;
-    transition: background .3s ease;
+    transition: background .3s ease, box-shadow .3s ease;
+    border-bottom: 2px solid transparent;
   }
-  .stat:last-child { border-right: none; }
-  .stat:hover { background: var(--ink); color: var(--bone); }
-  .stat:hover .stat-number { color: var(--red); }
+  .stat::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    opacity: 0;
+    transition: opacity .3s;
+  }
+  .stat:hover { background: #061f3a; box-shadow: inset 0 0 30px rgba(255,204,0,0.04); }
+  .stat:hover::before { opacity: 1; }
+  .stat:hover .stat-number { color: var(--gold); text-shadow: 0 0 20px rgba(255,204,0,0.4); }
   .stat-label {
     font-family: var(--mono);
     font-size: 10px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     margin-bottom: 16px;
-    color: var(--gray-500);
+    color: var(--gray-300);
   }
-  .stat:hover .stat-label { color: var(--gray-300); }
   .stat-number {
     font-family: var(--display);
     font-weight: 900;
-    font-size: clamp(64px, 8vw, 120px);
+    font-size: clamp(56px, 7vw, 110px);
     line-height: 0.9;
-    color: var(--ink);
-    transition: color .3s;
+    color: var(--bone);
+    transition: color .3s, text-shadow .3s;
   }
   .stat-context {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 14px;
+    font-family: var(--mono);
+    font-size: 11px;
     margin-top: 12px;
-    color: var(--gray-700);
-    line-height: 1.4;
+    color: var(--gray-500);
+    line-height: 1.5;
+    letter-spacing: 0.05em;
   }
   .stat:hover .stat-context { color: var(--gray-300); }
 
@@ -573,9 +606,10 @@
     font-size: 28px;
     line-height: 1.3;
     color: var(--bone);
-    border-left: 3px solid var(--red);
+    border-left: 3px solid var(--gold);
     padding-left: 24px;
     margin-bottom: 32px;
+    text-shadow: 0 0 40px rgba(255,204,0,0.08);
   }
   .bio-left .quote-attr {
     font-family: var(--mono);
@@ -613,9 +647,9 @@
 
   /* ===================== TIMELINE ===================== */
   .timeline-section {
-    background: linear-gradient(180deg, var(--ink) 0%, #050505 100%);
-    border-top: 1px solid var(--gray-700);
-    border-bottom: 1px solid var(--gray-700);
+    background: linear-gradient(180deg, var(--ink) 0%, #020c1a 100%);
+    border-top: 1px solid rgba(255,204,0,0.12);
+    border-bottom: 1px solid rgba(255,204,0,0.12);
   }
 
   .timeline {
@@ -1018,17 +1052,17 @@
   }
   .follow-row:last-child { border-bottom: none; }
   .follow-row:hover {
-    background: rgba(225, 6, 0, 0.06);
+    background: rgba(255, 204, 0, 0.05);
     padding-left: 24px;
   }
   .follow-row:hover .follow-action {
-    color: var(--red);
+    color: var(--gold);
     transform: translateX(4px);
   }
 
   .follow-row.hero-row {
-    background: linear-gradient(90deg, rgba(225,6,0,0.10), transparent 70%);
-    border-left: 3px solid var(--red);
+    background: linear-gradient(90deg, rgba(255,204,0,0.08), transparent 70%);
+    border-left: 3px solid var(--gold);
     padding-left: 17px;
   }
   .follow-row.hero-row:hover { padding-left: 21px; }
@@ -2200,16 +2234,22 @@
   .livery-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3px;
-    background: var(--gray-700);
-    border: 3px solid var(--gray-700);
+    gap: 2px;
+    background: rgba(255,204,0,0.12);
+    border: 2px solid rgba(255,204,0,0.2);
+    border-radius: 4px;
+    overflow: hidden;
   }
 
   .livery-card {
-    background: var(--ink);
+    background: #020d1c;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    transition: box-shadow .3s;
+  }
+  .livery-card:hover {
+    box-shadow: inset 0 0 40px rgba(255,204,0,0.04);
   }
 
   .livery-visual {
@@ -2221,19 +2261,21 @@
     min-height: 320px;
   }
 
-  .livery-visual svg {
+  .livery-visual img {
     width: 100%;
     height: auto;
     max-height: 260px;
-    filter: drop-shadow(0 12px 32px rgba(0,0,0,0.6));
+    object-fit: contain;
+    mix-blend-mode: multiply;
   }
 
   .livery-meta {
     padding: 24px 28px 28px;
-    border-top: 1px solid var(--gray-700);
+    border-top: 1px solid rgba(255,204,0,0.15);
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    background: rgba(4,30,66,0.6);
   }
 
   .livery-label {
@@ -2241,18 +2283,18 @@
     font-size: 10px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--red);
+    color: var(--gold);
     margin-bottom: 6px;
   }
 
   .livery-name {
     font-family: var(--display);
-    font-weight: 900;
-    font-size: 28px;
+    font-weight: 700;
+    font-size: 24px;
     color: var(--bone);
     line-height: 1;
     text-transform: uppercase;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.05em;
   }
 
   .livery-detail {
@@ -2445,11 +2487,17 @@
     text-transform: uppercase;
     text-decoration: none;
     font-weight: 700;
-    border: 1px solid transparent;
+    border: 1px solid rgba(255,204,0,0.3);
     cursor: pointer;
-    transition: background 0.2s, border-color 0.2s, transform 0.15s, color 0.2s;
+    transition: background 0.2s, border-color 0.2s, transform 0.15s, color 0.2s, box-shadow 0.2s;
     background: transparent;
     white-space: nowrap;
+    color: var(--gold);
+  }
+  .share-btn:hover {
+    box-shadow: 0 0 10px rgba(255,204,0,0.5), 0 0 20px rgba(255,204,0,0.2);
+    border-color: var(--gold);
+    color: var(--gold);
   }
   .share-btn svg {
     width: 15px;
@@ -2741,7 +2789,7 @@
     font-family: var(--mono);
   }
 
-  /* ===================== CAREER MAP ===================== */
+  /* ===================== 2026 F2 SEASON MAP ===================== */
   .map-section {
     max-width: 1200px;
     margin: 0 auto;
@@ -2750,64 +2798,96 @@
   .map-wrap {
     position: relative;
     background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 16px;
+    border: 1px solid rgba(255,204,0,0.15);
+    border-radius: 12px;
     overflow: hidden;
   }
   .map-wrap svg { display: block; width: 100%; height: auto; }
+
+  /* Click-triggered race card */
   .map-tooltip {
     position: absolute;
-    background: #1c1c21;
-    border: 1px solid rgba(255,255,255,0.14);
-    border-radius: 9px;
-    padding: 9px 14px;
-    font-size: 12px;
+    background: rgba(4, 18, 38, 0.97);
+    border: 1px solid rgba(255,204,0,0.35);
+    border-radius: 10px;
+    padding: 16px 18px 14px;
     font-family: var(--mono);
     pointer-events: none;
     opacity: 0;
-    transition: opacity 0.15s;
-    white-space: nowrap;
-    z-index: 10;
+    transition: opacity 0.18s;
+    z-index: 20;
     color: var(--bone);
-    transform: translate(-50%, -120%);
+    transform: translate(-50%, calc(-100% - 14px));
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,204,0,0.08);
+    min-width: 210px;
   }
-  .map-tooltip.vis { opacity: 1; }
-  .map-tooltip .tt-name { font-weight: 700; font-size: 13px; }
-  .map-tooltip .tt-series { color: var(--gray-500); margin-top: 2px; }
-  .map-tooltip .tt-best { margin-top: 3px; }
-  .map-tooltip .tt-best.win  { color: #4fd99a; }
-  .map-tooltip .tt-best.podium { color: var(--gold); }
-  .map-tooltip .tt-best.points { color: var(--red); }
-  .map-tooltip .tt-best.raced  { color: var(--gray-300); }
+  .map-tooltip.vis { opacity: 1; pointer-events: auto; }
+  .map-tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: -7px; left: 50%;
+    transform: translateX(-50%);
+    width: 12px; height: 7px;
+    background: rgba(255,204,0,0.35);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+  }
+  .tt-close {
+    position: absolute; top: 8px; right: 10px;
+    font-size: 16px; line-height: 1; cursor: pointer;
+    color: var(--gray-500); background: none; border: none;
+    padding: 2px 4px; transition: color .15s;
+  }
+  .tt-close:hover { color: var(--bone); }
+  .tt-round {
+    font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 4px;
+  }
+  .tt-name { font-weight: 700; font-size: 15px; line-height: 1.1; }
+  .tt-country { color: var(--gray-300); font-size: 11px; margin-top: 3px; }
+  .tt-dates {
+    color: var(--gray-500); font-size: 10px; margin-top: 2px; margin-bottom: 10px;
+  }
+  .tt-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 10px 0; }
+  .tt-results { display: flex; gap: 20px; }
+  .tt-result { display: flex; flex-direction: column; gap: 4px; }
+  .tt-result-label {
+    font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray-500);
+  }
+  .tt-result-val { font-size: 14px; font-weight: 700; }
+  .tt-result-val.tv-win     { color: #FFCC00; text-shadow: 0 0 8px rgba(255,204,0,0.5); }
+  .tt-result-val.tv-podium  { color: #4fd99a; }
+  .tt-result-val.tv-points  { color: #E03A3E; }
+  .tt-result-val.tv-dnf     { color: #E03A3E; opacity: 0.65; }
+  .tt-result-val.tv-blank   { color: var(--gray-700); }
+  .tt-result-val.tv-upcoming { color: var(--gray-500); font-size: 11px; letter-spacing: 0.1em; }
+  .tt-note {
+    font-size: 10px; color: var(--gray-300); margin-top: 10px;
+    line-height: 1.5; font-style: italic; max-width: 220px; white-space: normal;
+  }
+  .tt-upcoming-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 10px; padding: 4px 10px;
+    border: 1px solid rgba(255,204,0,0.25); border-radius: 20px;
+    font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);
+  }
+
   .map-legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px 24px;
-    margin-top: 14px;
-    padding: 0 4px;
+    display: flex; flex-wrap: wrap; gap: 10px 24px;
+    margin-top: 14px; padding: 0 4px;
   }
   .map-legend-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    font-family: var(--mono);
-    color: var(--gray-300);
+    display: flex; align-items: center; gap: 8px;
+    font-size: 11px; font-family: var(--mono); color: var(--gray-300);
   }
-  .map-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-  }
-  .map-dot.win    { background: #4fd99a; box-shadow: 0 0 6px #4fd99a80; }
-  .map-dot.podium { background: var(--gold); box-shadow: 0 0 6px var(--gold)60; }
-  .map-dot.points { background: var(--red); box-shadow: 0 0 6px var(--red)60; }
-  .map-dot.raced  { background: var(--gray-500); }
-  .circuit-dot {
-    cursor: pointer;
-    transition: r 0.2s, opacity 0.2s;
-  }
-  .circuit-dot:hover { opacity: 0.85; }
+  .map-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .map-dot.win      { background: #FFCC00; box-shadow: 0 0 6px rgba(255,204,0,0.6); }
+  .map-dot.podium   { background: #4fd99a; box-shadow: 0 0 6px rgba(79,217,154,0.5); }
+  .map-dot.points   { background: var(--red); box-shadow: 0 0 5px rgba(224,58,62,0.5); }
+  .map-dot.dnf      { background: transparent; border: 2px solid var(--red); }
+  .map-dot.upcoming { background: #2a4060; border: 1.5px dashed #4a6080; }
+  .circuit-dot { cursor: pointer; transition: opacity 0.2s; }
+  .circuit-dot:hover { opacity: 0.8; }
 </style>
 </head>
 <body>
@@ -3055,22 +3135,23 @@
   </div>
 </section>
 
-<!-- ===================== CAREER MAP ===================== -->
+<!-- ===================== 2026 F2 SEASON MAP ===================== -->
 <section class="map-section" id="map">
-  <div class="section-tag" data-i18n="map.tag">Career Circuits</div>
-  <h2 class="section-title" data-i18n-html="map.title">Race <span class="it">History</span></h2>
+  <div class="section-tag">2026 Calendar</div>
+  <h2 class="section-title">Season <span class="it">Map</span></h2>
   <div class="map-wrap">
     <svg id="circuit-map" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet"
-         role="img" aria-label="Nikola Tsolov career circuit map — every circuit he has raced at, coloured by best result">
+         role="img" aria-label="2026 F2 season circuit map — click a dot for race details">
       <!-- rendered by JS -->
     </svg>
     <div class="map-tooltip" id="map-tooltip"></div>
   </div>
   <div class="map-legend">
-    <div class="map-legend-item"><span class="map-dot win"></span><span data-i18n="map.win">Win</span></div>
-    <div class="map-legend-item"><span class="map-dot podium"></span><span data-i18n="map.podium">Podium</span></div>
-    <div class="map-legend-item"><span class="map-dot points"></span><span data-i18n="map.points">Points finish</span></div>
-    <div class="map-legend-item"><span class="map-dot raced"></span><span data-i18n="map.raced">Raced</span></div>
+    <div class="map-legend-item"><span class="map-dot win"></span><span>Win</span></div>
+    <div class="map-legend-item"><span class="map-dot podium"></span><span>Podium</span></div>
+    <div class="map-legend-item"><span class="map-dot points"></span><span>Points</span></div>
+    <div class="map-legend-item"><span class="map-dot dnf"></span><span>DNF / DNS</span></div>
+    <div class="map-legend-item"><span class="map-dot upcoming"></span><span>Upcoming</span></div>
   </div>
 </section>
 
@@ -3483,73 +3564,8 @@
 
     <!-- CAR LIVERY -->
     <div class="livery-card">
-      <div class="livery-visual">
-        <svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg" aria-label="Campos Racing #6 F2 car livery">
-          <!-- Shadow -->
-          <ellipse cx="260" cy="188" rx="210" ry="8" fill="rgba(0,0,0,0.35)"/>
-
-          <!-- Floor / underfloor -->
-          <path d="M70 148 Q80 155 440 155 Q460 150 470 145 L450 138 Q280 142 80 138 Z" fill="#0a1a3a"/>
-
-          <!-- Main body — Campos blue -->
-          <path d="M90 138 Q100 118 130 112 L180 108 L340 106 Q390 106 420 112 Q445 118 450 132 Q440 140 80 140 Z" fill="#003399"/>
-
-          <!-- White side stripe -->
-          <path d="M130 112 L340 106 L420 112 Q400 116 340 117 L160 119 Q140 118 130 112 Z" fill="#ffffff" opacity="0.12"/>
-
-          <!-- Sidepods -->
-          <path d="M155 118 Q160 108 200 106 L200 122 Q175 122 155 118 Z" fill="#002277"/>
-          <path d="M320 106 Q365 108 375 118 L355 122 L320 122 Z" fill="#002277"/>
-
-          <!-- Cockpit surround / halo -->
-          <path d="M220 106 Q260 98 300 106" stroke="#c8a800" stroke-width="4" fill="none" stroke-linecap="round"/>
-          <!-- Halo centre pillar -->
-          <rect x="257" y="97" width="6" height="12" rx="2" fill="#c8a800"/>
-
-          <!-- Cockpit opening -->
-          <path d="M225 110 Q260 103 295 110 Q280 116 240 116 Z" fill="#0b0b0d"/>
-
-          <!-- Nose cone -->
-          <path d="M90 138 Q80 136 55 128 Q45 124 40 120 Q50 116 70 116 Q82 118 90 124 Z" fill="#003399"/>
-          <path d="M55 128 Q45 124 40 120 L38 122 Q44 127 55 131 Z" fill="#002277"/>
-
-          <!-- Nose tip accent (red) -->
-          <path d="M38 120 Q35 121 33 122 Q35 124 38 124 Z" fill="#e10600"/>
-
-          <!-- Rear wing main plane -->
-          <path d="M415 108 Q440 106 460 110 L462 118 Q440 116 415 118 Z" fill="#003399"/>
-          <!-- Rear wing upper flap -->
-          <path d="M418 104 Q442 101 462 106 L462 109 Q440 106 418 108 Z" fill="#1144bb"/>
-          <!-- Rear wing endplate -->
-          <path d="M460 104 L465 104 L466 120 L461 120 Z" fill="#002277"/>
-
-          <!-- Front wing -->
-          <path d="M38 122 Q20 124 10 128 L10 132 Q22 130 40 128 Z" fill="#003399"/>
-          <path d="M10 126 Q5 128 3 130 L3 133 Q6 131 10 132 Z" fill="#1144bb"/>
-
-          <!-- Number 6 on sidepod -->
-          <text x="178" y="128" font-family="'Big Shoulders Display', Arial Black, sans-serif" font-weight="900" font-size="22" fill="#ffffff" letter-spacing="-1">6</text>
-
-          <!-- CAMPOS wordmark on engine cover -->
-          <text x="215" y="112" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="7" fill="#ffffff" letter-spacing="3" opacity="0.7">CAMPOS</text>
-
-          <!-- Red Bull logo area (simplified) -->
-          <circle cx="345" cy="114" r="7" fill="#e10600" opacity="0.9"/>
-          <circle cx="352" cy="114" r="7" fill="#c8a800" opacity="0.9"/>
-
-          <!-- Wheel rims — front -->
-          <circle cx="100" cy="142" r="20" fill="#111" stroke="#333" stroke-width="1.5"/>
-          <circle cx="100" cy="142" r="13" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
-          <circle cx="100" cy="142" r="6" fill="#e10600"/>
-          <!-- tyre -->
-          <ellipse cx="100" cy="152" rx="20" ry="5" fill="rgba(0,0,0,0.3)"/>
-
-          <!-- Wheel rims — rear -->
-          <circle cx="400" cy="142" r="22" fill="#111" stroke="#333" stroke-width="1.5"/>
-          <circle cx="400" cy="142" r="14" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
-          <circle cx="400" cy="142" r="7" fill="#e10600"/>
-          <ellipse cx="400" cy="153" rx="22" ry="5" fill="rgba(0,0,0,0.3)"/>
-        </svg>
+      <div class="livery-visual" style="background:#fff;">
+        <img src="Livery.png" alt="Campos Racing #6 F2 car livery" style="width:100%;height:auto;max-height:260px;object-fit:contain;mix-blend-mode:multiply;"/>
       </div>
       <div class="livery-meta">
         <div>
@@ -3566,56 +3582,8 @@
 
     <!-- HELMET -->
     <div class="livery-card">
-      <div class="livery-visual">
-        <svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" aria-label="Nikola Tsolov racing helmet design">
-          <!-- Shadow -->
-          <ellipse cx="160" cy="248" rx="95" ry="8" fill="rgba(0,0,0,0.35)"/>
-
-          <!-- Helmet shell — main white base -->
-          <path d="M65 145 Q60 110 75 80 Q95 45 160 38 Q225 45 245 80 Q260 110 255 145 Q248 178 230 196 Q210 212 160 216 Q110 212 90 196 Q72 178 65 145 Z" fill="#f0f0f0"/>
-
-          <!-- Bulgarian white base already covers, add green stripe top -->
-          <path d="M75 80 Q95 45 160 38 Q225 45 245 80 Q235 88 160 90 Q85 88 75 80 Z" fill="#00966e"/>
-
-          <!-- Red centre stripe -->
-          <path d="M120 40 Q160 36 200 40 L205 72 Q160 76 115 72 Z" fill="#e10600"/>
-
-          <!-- White mid band -->
-          <path d="M85 92 Q160 96 235 92 L238 118 Q160 122 82 118 Z" fill="#ffffff"/>
-
-          <!-- Blue lower band (Campos) -->
-          <path d="M68 130 Q160 135 252 130 L252 155 Q160 158 68 155 Z" fill="#003399"/>
-
-          <!-- Visor -->
-          <path d="M88 115 Q160 108 232 115 L238 148 Q220 160 160 163 Q100 160 82 148 Z" fill="#1a1a2e"/>
-          <!-- Visor tint/reflection -->
-          <path d="M92 118 Q140 112 190 116 L192 130 Q150 126 95 130 Z" fill="rgba(255,255,255,0.06)"/>
-          <!-- Visor chrome edge -->
-          <path d="M88 115 Q160 108 232 115 L235 120 Q160 113 85 120 Z" fill="rgba(200,168,0,0.5)"/>
-
-          <!-- Visor surround -->
-          <path d="M86 113 Q160 106 234 113 L238 150 Q220 163 160 166 Q100 163 82 150 Z" fill="none" stroke="#c8a800" stroke-width="2.5"/>
-
-          <!-- Chin piece -->
-          <path d="M100 196 Q160 204 220 196 L225 215 Q160 222 95 215 Z" fill="#e8e8e8"/>
-          <path d="M100 196 Q160 204 220 196 L218 202 Q160 210 102 202 Z" fill="#003399"/>
-
-          <!-- Air vents top -->
-          <rect x="148" y="42" width="24" height="5" rx="2.5" fill="#0b0b0d" opacity="0.5"/>
-          <rect x="148" y="50" width="24" height="4" rx="2" fill="#0b0b0d" opacity="0.3"/>
-
-          <!-- NT initials on side -->
-          <text x="92" y="162" font-family="'Big Shoulders Display', Arial Black, sans-serif" font-weight="900" font-size="16" fill="#ffffff" opacity="0.9" letter-spacing="-0.5">NT</text>
-
-          <!-- Bulgarian flag shield on back (left side visible) -->
-          <rect x="218" y="130" width="18" height="14" rx="1" fill="#ffffff"/>
-          <rect x="218" y="130" width="18" height="5" rx="1" fill="#ffffff"/>
-          <rect x="218" y="135" width="18" height="4" fill="#00966e"/>
-          <rect x="218" y="139" width="18" height="5" rx="1" fill="#e10600"/>
-
-          <!-- Shine / highlight -->
-          <path d="M100 68 Q130 55 175 52 Q195 54 210 62 Q185 58 155 60 Q125 62 100 75 Z" fill="rgba(255,255,255,0.18)"/>
-        </svg>
+      <div class="livery-visual" style="background:#fff;">
+        <img src="Helmet.png" alt="Nikola Tsolov racing helmet design" style="width:100%;height:auto;max-height:260px;object-fit:contain;mix-blend-mode:multiply;"/>
       </div>
       <div class="livery-meta">
         <div>
@@ -4649,69 +4617,72 @@
 })();
 </script>
 
-<!-- ===================== CAREER CIRCUIT MAP ===================== -->
+<!-- ===================== 2026 F2 SEASON MAP ===================== -->
 <script>
 (function renderCircuitMap() {
-  // lon→x: (lon+180)/360*1000  |  lat→y: (90-lat)/180*500
   function toXY(lon, lat) {
     return [(lon + 180) / 360 * 1000, (90 - lat) / 180 * 500];
   }
 
-  // Simplified continent land paths (equirectangular, ViewBox 0 0 1000 500)
   const LAND = [
-    // North America
     'M33,50 L108,83 L139,97 L156,114 L156,161 L181,189 L256,208 L269,228 L292,228 L319,200 L292,189 L275,181 L272,167 L289,144 L306,136 L317,128 L333,119 L350,119 L339,106 L317,83 L289,69 L272,56 L236,44 L181,44 L111,56 L69,78 Z',
-    // Greenland
     'M292,19 L350,8 L386,14 L400,28 L381,44 L350,50 L320,44 Z',
-    // South America
     'M278,222 L292,228 L328,222 L336,208 L319,250 L361,253 L403,278 L403,311 L361,328 L356,344 L319,367 L311,403 L292,394 L297,367 L300,333 L292,278 L283,264 Z',
-    // Europe (part of Eurasia; drawn separately so dots sit on top)
     'M431,108 L472,150 L597,150 L617,131 L639,125 L667,97 L625,83 L583,56 L514,50 L472,75 Z',
-    // Africa
     'M458,155 L644,155 L648,200 L644,283 L611,319 L578,347 L550,347 L544,331 L533,300 L522,244 L500,233 L486,236 L478,244 L455,208 Z',
-    // Asia (Eurasia east of Europe + Middle East)
     'M597,150 L650,155 L667,189 L722,189 L778,194 L806,200 L833,189 L875,153 L910,125 L889,83 L847,47 L806,39 L750,33 L694,33 L640,36 L583,56 L625,83 L667,97 L639,125 L617,131 Z',
-    // Indochina peninsula
     'M778,194 L806,200 L825,222 L814,250 L797,253 L786,236 L778,219 Z',
-    // Australia
     'M806,308 L875,286 L958,297 L986,319 L981,364 L958,392 L917,403 L875,386 L844,353 L833,325 Z',
-    // Iceland
     'M422,67 L442,61 L453,69 L442,78 L422,75 Z',
-    // UK
     'M478,97 L486,89 L497,94 L494,108 L483,111 Z',
-    // Japan
     'M903,125 L917,119 L925,133 L914,144 L903,139 Z',
   ];
 
-  // Circuit data  (best result at that circuit across all seasons)
+  // 2026 F2 season rounds — derived from RACES data
   const CIRCUITS = [
-    // F2 2026
-    { name:'Melbourne',    country:'Australia', series:'F2 · 2026',   best:'Feature Win',   cls:'win',    lat:-37.85, lon:144.97 },
-    { name:'Miami',        country:'USA',       series:'F2 · 2026',   best:'Sprint Win',    cls:'win',    lat: 25.96, lon:-80.24 },
-    // F3 2024-2025
-    { name:'Bahrain',      country:'Bahrain',   series:'F3 · 2024-25',best:'Podium',        cls:'podium', lat: 26.03, lon: 50.51 },
-    { name:'Jeddah',       country:'Saudi Arabia',series:'F3 · 2024-25',best:'Points',      cls:'points', lat: 21.63, lon: 39.10 },
-    { name:'Imola',        country:'Italy',     series:'F3 · 2024-25',best:'Win',           cls:'win',    lat: 44.34, lon: 11.71 },
-    { name:'Monaco',       country:'Monaco',    series:'F3 · 2024-25',best:'Win',           cls:'win',    lat: 43.73, lon:  7.42 },
-    { name:'Barcelona',    country:'Spain',     series:'F3 · 2024-25',best:'Win',           cls:'win',    lat: 41.57, lon:  2.26 },
-    { name:'Silverstone',  country:'UK',        series:'F3 · 2024-25',best:'Win',           cls:'win',    lat: 52.07, lon: -1.02 },
-    { name:'Budapest',     country:'Hungary',   series:'F3 · 2024-25',best:'Podium',        cls:'podium', lat: 47.58, lon: 19.25 },
-    { name:'Spa',          country:'Belgium',   series:'F3 · 2024-25',best:'Podium',        cls:'podium', lat: 50.44, lon:  5.97 },
-    { name:'Monza',        country:'Italy',     series:'F3 · 2024-25',best:'Win',           cls:'win',    lat: 45.62, lon:  9.28 },
-    { name:'Baku',         country:'Azerbaijan',series:'F3 · 2024-25',best:'Points',        cls:'points', lat: 40.37, lon: 49.85 },
-    { name:'Singapore',    country:'Singapore', series:'F3 · 2024-25',best:'Points',        cls:'points', lat:  1.29, lon:103.86 },
-    { name:'Austin (COTA)',country:'USA',       series:'F3 · 2024-25',best:'Win',           cls:'win',    lat: 30.13, lon:-97.63 },
-    { name:'Abu Dhabi',    country:'UAE',       series:'F3 · 2025',   best:'Points',        cls:'points', lat: 24.47, lon: 54.60 },
-    // F4 Spain 2022-23
-    { name:'Jerez',        country:'Spain',     series:'F4 · 2022-23',best:'Win',           cls:'win',    lat: 36.71, lon: -6.03 },
-    { name:'Valencia',     country:'Spain',     series:'F4 · 2022-23',best:'Win',           cls:'win',    lat: 39.48, lon: -0.63 },
-    { name:'Motorland Aragon',country:'Spain',  series:'F4 · 2022-23',best:'Win',           cls:'win',    lat: 41.16, lon: -0.53 },
-    { name:'Almeria',      country:'Spain',     series:'F4 · 2022-23',best:'Raced',         cls:'raced',  lat: 37.03, lon: -2.37 },
+    { round:1,  name:'Melbourne',       country:'Australia',    dates:'06–08 Mar', sprint:'—',  feature:'P1',  note:'First F2 victory · Bulgaria\'s first F2 win', status:'completed', lat:-37.85, lon:144.97 },
+    { round:2,  name:'Miami',           country:'USA',          dates:'01–03 May', sprint:'P1', feature:'DNF', note:'Sprint win · Feature DNF after first-lap contact', status:'completed', lat: 25.96, lon:-80.24 },
+    { round:3,  name:'Montréal',        country:'Canada',       dates:'22–24 May', sprint:'—',  feature:'—',   note:'', status:'upcoming', lat: 45.50, lon:-73.57 },
+    { round:4,  name:'Monaco',          country:'Monaco',       dates:'04–07 Jun', sprint:'—',  feature:'—',   note:'', status:'upcoming', lat: 43.73, lon:  7.42 },
+    { round:5,  name:'Barcelona',       country:'Spain',        dates:'12–14 Jun', sprint:'—',  feature:'—',   note:'', status:'upcoming', lat: 41.57, lon:  2.26 },
+    { round:6,  name:'Spielberg',       country:'Austria',      dates:'26–28 Jun', sprint:'—',  feature:'—',   note:'', status:'upcoming', lat: 47.22, lon: 14.76 },
+    { round:7,  name:'Silverstone',     country:'Great Britain',dates:'03–05 Jul', sprint:'—',  feature:'—',   note:'', status:'upcoming', lat: 52.07, lon: -1.02 },
+    { round:8,  name:'Spa-Francorchamps',country:'Belgium',     dates:'17–19 Jul', sprint:'—',  feature:'—',   note:'', status:'upcoming', lat: 50.44, lon:  5.97 },
+    { round:9,  name:'Budapest',        country:'Hungary',      dates:'24–26 Jul', sprint:'—',  feature:'—',   note:'', status:'upcoming', lat: 47.58, lon: 19.25 },
+    { round:10, name:'Monza',           country:'Italy',        dates:'04–06 Sep', sprint:'—',  feature:'—',   note:'', status:'upcoming', lat: 45.62, lon:  9.28 },
+    { round:11, name:'Madrid',          country:'Spain',        dates:'11–13 Sep', sprint:'—',  feature:'—',   note:'', status:'upcoming', lat: 40.43, lon: -3.70 },
+    { round:12, name:'Baku',            country:'Azerbaijan',   dates:'24–26 Sep', sprint:'—',  feature:'—',   note:'', status:'upcoming', lat: 40.37, lon: 49.85 },
+    { round:13, name:'Lusail',          country:'Qatar',        dates:'27–29 Nov', sprint:'—',  feature:'—',   note:'', status:'upcoming', lat: 25.49, lon: 51.45 },
+    { round:14, name:'Yas Island',      country:'UAE',          dates:'04–06 Dec', sprint:'—',  feature:'—',   note:'', status:'upcoming', lat: 24.47, lon: 54.60 },
   ];
+
+  // Classify each round for dot colour
+  function classify(c) {
+    const vals = [c.sprint, c.feature];
+    if (c.status === 'upcoming') return 'upcoming';
+    if (vals.includes('P1')) return 'win';
+    if (vals.some(v => v === 'P2' || v === 'P3')) return 'podium';
+    if (vals.some(v => /^P[4-9]$|^P10$/.test(v))) return 'points';
+    if (vals.some(v => v === 'DNF' || v === 'DSQ')) return 'dnf';
+    return 'dnf';
+  }
+
+  function resultClass(v) {
+    if (!v || v === '—') return 'tv-blank';
+    if (v === 'P1')       return 'tv-win';
+    if (v === 'P2' || v === 'P3') return 'tv-podium';
+    if (v === 'DNF' || v === 'DSQ') return 'tv-dnf';
+    return 'tv-points';
+  }
+
+  const DOT_COLOUR = { win:'#FFCC00', podium:'#4fd99a', points:'#E03A3E', dnf:'#E03A3E', upcoming:'#2a4060' };
+  const DOT_STROKE = { win:'#FFCC00', podium:'#4fd99a', points:'#E03A3E', dnf:'#E03A3E', upcoming:'#4a6080' };
+  const DOT_R = 6;
 
   const svgEl = document.getElementById('circuit-map');
   const tip   = document.getElementById('map-tooltip');
   const ns    = 'http://www.w3.org/2000/svg';
+  let   activeC = null;
 
   function mk(tag, attrs) {
     const e = document.createElementNS(ns, tag);
@@ -4719,92 +4690,128 @@
     return e;
   }
 
-  // Ocean background
-  svgEl.appendChild(mk('rect', { x:0, y:0, width:1000, height:500, fill:'#0d1520' }));
-
-  // Graticule (equator + prime meridian)
-  svgEl.appendChild(mk('line', { x1:0, y1:250, x2:1000, y2:250, stroke:'rgba(255,255,255,0.06)', 'stroke-width':1 }));
+  // Ocean
+  svgEl.appendChild(mk('rect', { x:0, y:0, width:1000, height:500, fill:'#071628' }));
+  // Graticule
+  svgEl.appendChild(mk('line', { x1:0, y1:250, x2:1000, y2:250, stroke:'rgba(255,255,255,0.05)', 'stroke-width':1 }));
   svgEl.appendChild(mk('line', { x1:500, y1:0, x2:500, y2:500, stroke:'rgba(255,255,255,0.04)', 'stroke-width':1 }));
-
   // Landmasses
-  LAND.forEach(d => {
-    svgEl.appendChild(mk('path', { d, fill:'#1e2d40', stroke:'rgba(255,255,255,0.08)', 'stroke-width':'0.5' }));
-  });
+  LAND.forEach(d => svgEl.appendChild(mk('path', { d, fill:'#122035', stroke:'rgba(255,255,255,0.07)', 'stroke-width':'0.5' })));
 
-  // DOT COLOURS
-  const DOT_COLOUR = { win:'#4fd99a', podium:'#d4a541', points:'#e10600', raced:'#5a5a60' };
-  const DOT_GLOW   = { win:'#4fd99a40', podium:'#d4a54140', points:'#e1060040', raced:'none' };
-  const DOT_R      = { win:7, podium:6, points:5, raced:4 };
-
-  // Cluster nearby dots slightly (prevent total overlap on Spanish circuits)
+  // Nudge overlapping dots
   const placed = [];
   function nudge(x, y) {
-    const MIN = 12;
+    const MIN = 14;
     for (const [px, py] of placed) {
-      const dx = x - px, dy = y - py;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      if (dist < MIN && dist > 0) {
-        const scale = MIN / dist;
-        x = px + dx * scale;
-        y = py + dy * scale;
-      }
+      const dx = x-px, dy = y-py, dist = Math.hypot(dx, dy);
+      if (dist < MIN && dist > 0) { const s = MIN/dist; x = px+dx*s; y = py+dy*s; }
     }
-    placed.push([x, y]);
-    return [x, y];
+    placed.push([x, y]); return [x, y];
   }
 
-  // Circuit dots
+  function positionTip(svgX, svgY) {
+    const rect  = svgEl.getBoundingClientRect();
+    const scaleX = rect.width / 1000, scaleY = rect.height / 500;
+    let   left   = svgX * scaleX;
+    let   top    = svgY * scaleY;
+    // Keep panel inside the map horizontally
+    tip.style.left = Math.min(Math.max(left, 120), rect.width - 120) + 'px';
+    tip.style.top  = top + 'px';
+  }
+
+  function buildPanel(c) {
+    const cls = classify(c);
+    const sprintHtml  = c.sprint  === '—' ? `<span class="tt-result-val tv-blank">—</span>`
+                      : `<span class="tt-result-val ${resultClass(c.sprint)}">${c.sprint}</span>`;
+    const featureHtml = c.feature === '—' ? `<span class="tt-result-val tv-blank">—</span>`
+                      : `<span class="tt-result-val ${resultClass(c.feature)}">${c.feature}</span>`;
+
+    const resultsBlock = c.status === 'upcoming'
+      ? `<div class="tt-upcoming-badge">⧖ Upcoming round</div>`
+      : `<div class="tt-divider"></div>
+         <div class="tt-results">
+           <div class="tt-result"><div class="tt-result-label">Sprint</div>${sprintHtml}</div>
+           <div class="tt-result"><div class="tt-result-label">Feature</div>${featureHtml}</div>
+         </div>`;
+
+    const noteHtml = c.note ? `<div class="tt-note">${c.note}</div>` : '';
+
+    return `<button class="tt-close" aria-label="Close">✕</button>
+      <div class="tt-round">Round ${String(c.round).padStart(2,'0')} · F2 2026</div>
+      <div class="tt-name">${c.name}</div>
+      <div class="tt-country">${c.country}</div>
+      <div class="tt-dates">${c.dates}</div>
+      ${resultsBlock}${noteHtml}`;
+  }
+
+  function showTip(c, x, y) {
+    activeC = c;
+    tip.innerHTML = buildPanel(c);
+    tip.classList.add('vis');
+    positionTip(x, y);
+    tip.querySelector('.tt-close').addEventListener('click', hideTip);
+  }
+
+  function hideTip() { tip.classList.remove('vis'); activeC = null; }
+
+  // Close on outside click
+  document.addEventListener('click', e => {
+    if (tip.classList.contains('vis') && !tip.contains(e.target) && !e.target.closest('.circuit-dot')) hideTip();
+  });
+  // Close on Escape
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') hideTip(); });
+
   CIRCUITS.forEach(c => {
     const [rawX, rawY] = toXY(c.lon, c.lat);
     const [x, y] = nudge(rawX, rawY);
-    const r   = DOT_R[c.cls];
-    const col = DOT_COLOUR[c.cls];
+    const cls = classify(c);
+    const col = DOT_COLOUR[cls];
+    const str = DOT_STROKE[cls];
 
-    // Glow ring
-    if (c.cls !== 'raced') {
-      svgEl.appendChild(mk('circle', { cx:x, cy:y, r:r+4, fill:'none',
-        stroke:col, 'stroke-width':1, opacity:0.3 }));
+    // Pulse ring for completed wins
+    if (cls === 'win') {
+      const ring = mk('circle', { cx:x, cy:y, r:DOT_R+5, fill:'none', stroke:col, 'stroke-width':1.5, opacity:0.35 });
+      svgEl.appendChild(ring);
+    }
+
+    // Dashed ring for upcoming
+    if (cls === 'upcoming') {
+      svgEl.appendChild(mk('circle', { cx:x, cy:y, r:DOT_R+4, fill:'none',
+        stroke:str, 'stroke-width':1, 'stroke-dasharray':'3 2', opacity:0.5 }));
     }
 
     // Main dot
-    const dot = mk('circle', { cx:x, cy:y, r, fill:col,
-      stroke:'#0d1520', 'stroke-width':1.5, class:'circuit-dot', role:'img',
-      'aria-label':`${c.name} — best result: ${c.best}` });
+    const dot = mk('circle', { cx:x, cy:y, r:DOT_R, fill:col,
+      stroke:'#071628', 'stroke-width':1.5, class:'circuit-dot',
+      'aria-label':`R${c.round} ${c.name}` });
     svgEl.appendChild(dot);
 
-    // Tooltip
-    dot.addEventListener('mouseenter', e => {
-      tip.innerHTML = `<div class="tt-name">${c.name}</div>
-        <div class="tt-series">${c.series} · ${c.country}</div>
-        <div class="tt-best ${c.cls}">Best: ${c.best}</div>`;
-      tip.classList.add('vis');
-      positionTip(x, y);
+    // Round number label
+    const lbl = mk('text', { x, y: y - DOT_R - 4, 'text-anchor':'middle',
+      fill:'rgba(255,255,255,0.55)', 'font-size':7, 'font-family':'JetBrains Mono,monospace',
+      'pointer-events':'none' });
+    lbl.textContent = `R${String(c.round).padStart(2,'0')}`;
+    svgEl.appendChild(lbl);
+
+    // Click to show panel
+    dot.addEventListener('click', e => {
+      e.stopPropagation();
+      if (activeC === c) { hideTip(); return; }
+      showTip(c, x, y);
     });
-    dot.addEventListener('mouseleave', () => tip.classList.remove('vis'));
-    dot.addEventListener('touchstart', e => {
-      e.preventDefault();
-      tip.innerHTML = `<div class="tt-name">${c.name}</div>
-        <div class="tt-series">${c.series} · ${c.country}</div>
-        <div class="tt-best ${c.cls}">Best: ${c.best}</div>`;
-      tip.classList.add('vis');
-      positionTip(x, y);
-      setTimeout(() => tip.classList.remove('vis'), 2800);
+    dot.addEventListener('touchend', e => {
+      e.preventDefault(); e.stopPropagation();
+      if (activeC === c) { hideTip(); return; }
+      showTip(c, x, y);
     }, { passive:false });
   });
 
-  function positionTip(svgX, svgY) {
-    const rect = svgEl.getBoundingClientRect();
-    const scaleX = rect.width  / 1000;
-    const scaleY = rect.height / 500;
-    tip.style.left = (svgX * scaleX) + 'px';
-    tip.style.top  = (svgY * scaleY) + 'px';
-  }
-
   // Counter badge
-  const winCount  = CIRCUITS.filter(c => c.cls === 'win').length;
+  const wins = CIRCUITS.filter(c => classify(c) === 'win').length;
+  const done = CIRCUITS.filter(c => c.status === 'completed').length;
   const badge = mk('text', { x:990, y:492, 'text-anchor':'end',
-    fill:'rgba(255,255,255,0.2)', 'font-size':10, 'font-family':'JetBrains Mono,monospace' });
-  badge.textContent = `${CIRCUITS.length} circuits · ${winCount} wins`;
+    fill:'rgba(255,255,255,0.18)', 'font-size':9, 'font-family':'JetBrains Mono,monospace' });
+  badge.textContent = `${done} of 14 rounds · ${wins} win${wins !== 1 ? 's' : ''}`;
   svgEl.appendChild(badge);
 })();
 </script>
