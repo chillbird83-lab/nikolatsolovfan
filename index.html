@@ -2954,6 +2954,51 @@
   .recap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
   @media (max-width: 900px) { .recap-grid { grid-template-columns: 1fr; } }
 
+  /* ---- Recap header ---- */
+  .recap-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 24px 16px; cursor: pointer;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    background: linear-gradient(135deg, rgba(255,204,0,0.06), transparent 60%);
+    gap: 12px;
+  }
+  .recap-header:hover { background: linear-gradient(135deg, rgba(255,204,0,0.09), transparent 60%); }
+  .recap-header-left { display: flex; align-items: center; gap: 14px; }
+  .recap-header-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; flex-wrap: wrap; justify-content: flex-end; }
+  .recap-race-name { font-family: var(--display); font-weight: 700; font-size: 18px; color: var(--bone); letter-spacing: 0.02em; line-height: 1.2; }
+  .recap-date { font-family: var(--mono); font-size: 11px; color: var(--gray-300); margin-top: 3px; }
+  .recap-chevron { font-size: 11px; color: var(--gold); opacity: 0.7; transition: transform .3s ease; flex-shrink: 0; }
+  .recap-card.open .recap-chevron { transform: rotate(180deg); }
+
+  /* ---- Recap badges ---- */
+  .recap-badge { display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 20px; font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; white-space: nowrap; }
+  .badge-win    { background: rgba(255,204,0,0.15); color: #FFCC00; border: 1px solid rgba(255,204,0,0.35); }
+  .badge-podium { background: rgba(0,150,110,0.15); color: #00c890; border: 1px solid rgba(0,150,110,0.35); }
+  .badge-points { background: rgba(74,96,128,0.25); color: var(--gray-300); border: 1px solid rgba(74,96,128,0.4); }
+  .badge-dnf    { background: rgba(224,58,62,0.12); color: #E03A3E; border: 1px solid rgba(224,58,62,0.3); }
+
+  /* ---- Recap stat label (lbl variant) ---- */
+  .recap-stat-lbl { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gray-500); }
+  .recap-stat:first-child { padding-left: 24px; }
+  .recap-stat:last-child  { padding-right: 24px; }
+
+  /* ---- Inner chart+moments grid ---- */
+  .recap-inner-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  @media (max-width: 700px) { .recap-inner-grid { grid-template-columns: 1fr; } }
+
+  /* ---- Moment lap/text ---- */
+  .recap-moment-lap  { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--gold); text-align: right; padding-top: 2px; }
+  .recap-moment-text { font-family: var(--sans); font-size: 13px; color: var(--bone); line-height: 1.4; padding-left: 6px; }
+  .recap-moments-title { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 10px; }
+
+  /* ---- Quote ---- */
+  .recap-quote {
+    padding: 14px 24px 18px;
+    font-family: var(--serif); font-style: italic; font-size: 13px;
+    color: var(--gray-300); line-height: 1.6;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
   .recap-card {
     background: #041830;
     border: 1px solid rgba(255,204,0,0.15);
