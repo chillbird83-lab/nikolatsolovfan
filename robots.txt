@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chillbird83-lab.github.io/nikolatsolovfan/sitemap.xml
