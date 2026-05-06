@@ -4788,6 +4788,9 @@
     });
     applyLanguage(initial);
   }
+
+  // Make explicitly available globally for onclick handlers
+  window.applyLanguage = applyLanguage;
 </script>
 
 <!-- ===================== BACK TO TOP ===================== -->
