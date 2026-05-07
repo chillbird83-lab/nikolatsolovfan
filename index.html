@@ -1622,7 +1622,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .rd-flag { font-size: 16px; }
+  .rd-flag { font-size: 16px; line-height: 1; }
+  .rd-flag img { width: 24px; height: 18px; border-radius: 2px; object-fit: cover; vertical-align: middle; }
 
   .rd-results {
     display: flex;
@@ -3776,15 +3777,15 @@
       </tr>
       <tr>
         <td class="champ-pos">02</td>
-        <td><img class="champ-flag" src="https://flagcdn.com/24x18/it.png" alt="IT" title="Italy"><span class="champ-driver-name">Gabriele Minì</span><span class="champ-driver-team">MP Motorsport</span></td>
-        <td class="col-wins"><span class="champ-wins-badge has-wins">1</span></td>
+        <td><img class="champ-flag" src="https://flagcdn.com/24x18/br.png" alt="BR" title="Brazil"><span class="champ-driver-name">Rafael Câmara</span><span class="champ-driver-team">Invicta Racing</span></td>
+        <td class="col-wins"><span class="champ-wins-badge no-wins">0</span></td>
         <td class="champ-pts">34</td>
         <td class="champ-gap col-gap">−1</td>
       </tr>
       <tr>
         <td class="champ-pos">03</td>
-        <td><img class="champ-flag" src="https://flagcdn.com/24x18/br.png" alt="BR" title="Brazil"><span class="champ-driver-name">Rafael Câmara</span><span class="champ-driver-team">Invicta Racing</span></td>
-        <td class="col-wins"><span class="champ-wins-badge no-wins">0</span></td>
+        <td><img class="champ-flag" src="https://flagcdn.com/24x18/it.png" alt="IT" title="Italy"><span class="champ-driver-name">Gabriele Minì</span><span class="champ-driver-team">MP Motorsport</span></td>
+        <td class="col-wins"><span class="champ-wins-badge has-wins">1</span></td>
         <td class="champ-pts">34</td>
         <td class="champ-gap col-gap">−1</td>
       </tr>
@@ -4100,7 +4101,7 @@
     <div class="ct-card ct-standings">
       <div class="ct-head">
         <span class="ct-eyebrow" data-i18n="ct.standings.eyebrow">Drivers' Championship</span>
-        <span class="ct-meta" data-i18n="ct.standings.after">After Round 01</span>
+        <span class="ct-meta" data-i18n="ct.standings.after">After Round 02</span>
       </div>
       <ol class="standings-list">
         <li class="leader">
@@ -4110,12 +4111,12 @@
         </li>
         <li>
           <span class="pos">02</span>
-          <span class="name">Gabriele Minì <em>MP</em></span>
+          <span class="name">Rafael Câmara <em>Invicta</em></span>
           <span class="pts">34</span>
         </li>
         <li>
           <span class="pos">03</span>
-          <span class="name">Rafael Câmara <em>Invicta</em></span>
+          <span class="name">Gabriele Minì <em>MP</em></span>
           <span class="pts">34</span>
         </li>
         <li>
@@ -4159,7 +4160,7 @@
         <div class="rd-loc">
           <span class="rd-num">R1</span>
           <span class="rd-name">Melbourne</span>
-          <span class="rd-flag">🇦🇺</span>
+          <span class="rd-flag"><img src="https://flagcdn.com/24x18/au.png" alt="AU" title="Australia"></span>
         </div>
         <div class="rd-results">
           <div class="rd-cell" title="Qualifying">
@@ -4168,7 +4169,7 @@
           </div>
           <div class="rd-cell" title="Sprint Race">
             <span class="rd-cell-lbl">S</span>
-            <span class="rd-cell-val rd-nopts">P17</span>
+            <span class="rd-cell-val rd-nopts">P19</span>
           </div>
           <div class="rd-cell" title="Feature Race">
             <span class="rd-cell-lbl">F</span>
@@ -4182,7 +4183,7 @@
         <div class="rd-loc">
           <span class="rd-num">R2</span>
           <span class="rd-name">Miami</span>
-          <span class="rd-flag">🇺🇸</span>
+          <span class="rd-flag"><img src="https://flagcdn.com/24x18/us.png" alt="US" title="United States"></span>
         </div>
         <div class="rd-results">
           <div class="rd-cell" title="Qualifying — Sprint Pole · 10th for Feature">
@@ -4193,9 +4194,9 @@
             <span class="rd-cell-lbl">S</span>
             <span class="rd-cell-val rd-win">P1</span>
           </div>
-          <div class="rd-cell" title="Feature Race — DNS · Tagged out at the start by Inthraphuvasak">
+          <div class="rd-cell" title="Feature Race — DNF · Tagged out at the start by Inthraphuvasak">
             <span class="rd-cell-lbl">F</span>
-            <span class="rd-cell-val rd-nopts">DNS</span>
+            <span class="rd-cell-val rd-nopts">DNF</span>
           </div>
         </div>
       </div>
@@ -4205,7 +4206,7 @@
         <div class="rd-loc">
           <span class="rd-num">R3</span>
           <span class="rd-name">Montréal</span>
-          <span class="rd-flag">🇨🇦</span>
+          <span class="rd-flag"><img src="https://flagcdn.com/24x18/ca.png" alt="CA" title="Canada"></span>
         </div>
         <div class="rd-results">
           <div class="rd-cell"><span class="rd-cell-lbl">Q</span><span class="rd-cell-val rd-blank">—</span></div>
@@ -4435,8 +4436,8 @@
 -->
 <script>
   const RACES = [
-    { round: 1,  location: "Melbourne",         country: "Australia",     dates: "06–08 Mar", sprint: "P17", feature: "P1", note: "First F2 victory · Bulgaria's first F2 win", status: "completed" },
-    { round: 2,  location: "Miami",             country: "USA",           dates: "01–03 May", sprint: "P1", feature: "DNS", note: "Sprint win · Feature DNS after first-lap contact", status: "completed" },
+    { round: 1,  location: "Melbourne",         country: "Australia",     dates: "06–08 Mar", sprint: "P19", feature: "P1", note: "First F2 victory · Bulgaria's first F2 win", status: "completed" },
+    { round: 2,  location: "Miami",             country: "USA",           dates: "01–03 May", sprint: "P1", feature: "DNF", note: "Sprint win · Feature DNF after first-lap contact", status: "completed" },
     { round: 3,  location: "Montréal",          country: "Canada",        dates: "22–24 May", sprint: "—", feature: "—",                                                       status: "upcoming"  },
     { round: 4,  location: "Monaco",            country: "Monaco",        dates: "04–07 Jun", sprint: "—", feature: "—",                                                       status: "upcoming"  },
     { round: 5,  location: "Barcelona",         country: "Spain",         dates: "12–14 Jun", sprint: "—", feature: "—",                                                       status: "upcoming"  },
