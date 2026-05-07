@@ -930,6 +930,18 @@
     color: var(--bone);
     line-height: 1.05;
   }
+  .cal-loc-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cal-flag {
+    width: 24px;
+    height: 18px;
+    border-radius: 2px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
   .cal-country {
     font-family: var(--mono);
     font-size: 10px;
@@ -4436,20 +4448,20 @@
 -->
 <script>
   const RACES = [
-    { round: 1,  location: "Melbourne",         country: "Australia",     dates: "06–08 Mar", sprint: "P19", feature: "P1", note: "First F2 victory · Bulgaria's first F2 win", status: "completed" },
-    { round: 2,  location: "Miami",             country: "USA",           dates: "01–03 May", sprint: "P1", feature: "DNF", note: "Sprint win · Feature DNF after first-lap contact", status: "completed" },
-    { round: 3,  location: "Montréal",          country: "Canada",        dates: "22–24 May", sprint: "—", feature: "—",                                                       status: "upcoming"  },
-    { round: 4,  location: "Monaco",            country: "Monaco",        dates: "04–07 Jun", sprint: "—", feature: "—",                                                       status: "upcoming"  },
-    { round: 5,  location: "Barcelona",         country: "Spain",         dates: "12–14 Jun", sprint: "—", feature: "—",                                                       status: "upcoming"  },
-    { round: 6,  location: "Spielberg",         country: "Austria",       dates: "26–28 Jun", sprint: "—", feature: "—",                                                       status: "upcoming"  },
-    { round: 7,  location: "Silverstone",       country: "Great Britain", dates: "03–05 Jul", sprint: "—", feature: "—",                                                       status: "upcoming"  },
-    { round: 8,  location: "Spa-Francorchamps", country: "Belgium",       dates: "17–19 Jul", sprint: "—", feature: "—",                                                       status: "upcoming"  },
-    { round: 9,  location: "Budapest",          country: "Hungary",       dates: "24–26 Jul", sprint: "—", feature: "—",                                                       status: "upcoming"  },
-    { round: 10, location: "Monza",             country: "Italy",         dates: "04–06 Sep", sprint: "—", feature: "—",                                                       status: "upcoming"  },
-    { round: 11, location: "Madrid",            country: "Spain",         dates: "11–13 Sep", sprint: "—", feature: "—",                                                       status: "upcoming"  },
-    { round: 12, location: "Baku",              country: "Azerbaijan",    dates: "24–26 Sep", sprint: "—", feature: "—",                                                       status: "upcoming"  },
-    { round: 13, location: "Lusail",            country: "Qatar",         dates: "27–29 Nov", sprint: "—", feature: "—",                                                       status: "upcoming"  },
-    { round: 14, location: "Yas Island",        country: "UAE",           dates: "04–06 Dec", sprint: "—", feature: "—",                                                       status: "upcoming"  }
+    { round: 1,  location: "Melbourne",         country: "Australia",     flag: "au", dates: "06–08 Mar", sprint: "P19", feature: "P1", note: "First F2 victory · Bulgaria's first F2 win", status: "completed" },
+    { round: 2,  location: "Miami",             country: "USA",           flag: "us", dates: "01–03 May", sprint: "P1", feature: "DNF", note: "Sprint win · Feature DNF after first-lap contact", status: "completed" },
+    { round: 3,  location: "Montréal",          country: "Canada",        flag: "ca", dates: "22–24 May", sprint: "—", feature: "—",                                                       status: "upcoming"  },
+    { round: 4,  location: "Monaco",            country: "Monaco",        flag: "mc", dates: "04–07 Jun", sprint: "—", feature: "—",                                                       status: "upcoming"  },
+    { round: 5,  location: "Barcelona",         country: "Spain",         flag: "es", dates: "12–14 Jun", sprint: "—", feature: "—",                                                       status: "upcoming"  },
+    { round: 6,  location: "Spielberg",         country: "Austria",       flag: "at", dates: "26–28 Jun", sprint: "—", feature: "—",                                                       status: "upcoming"  },
+    { round: 7,  location: "Silverstone",       country: "Great Britain", flag: "gb", dates: "03–05 Jul", sprint: "—", feature: "—",                                                       status: "upcoming"  },
+    { round: 8,  location: "Spa-Francorchamps", country: "Belgium",       flag: "be", dates: "17–19 Jul", sprint: "—", feature: "—",                                                       status: "upcoming"  },
+    { round: 9,  location: "Budapest",          country: "Hungary",       flag: "hu", dates: "24–26 Jul", sprint: "—", feature: "—",                                                       status: "upcoming"  },
+    { round: 10, location: "Monza",             country: "Italy",         flag: "it", dates: "04–06 Sep", sprint: "—", feature: "—",                                                       status: "upcoming"  },
+    { round: 11, location: "Madrid",            country: "Spain",         flag: "es", dates: "11–13 Sep", sprint: "—", feature: "—",                                                       status: "upcoming"  },
+    { round: 12, location: "Baku",              country: "Azerbaijan",    flag: "az", dates: "24–26 Sep", sprint: "—", feature: "—",                                                       status: "upcoming"  },
+    { round: 13, location: "Lusail",            country: "Qatar",         flag: "qa", dates: "27–29 Nov", sprint: "—", feature: "—",                                                       status: "upcoming"  },
+    { round: 14, location: "Yas Island",        country: "UAE",           flag: "ae", dates: "04–06 Dec", sprint: "—", feature: "—",                                                       status: "upcoming"  }
   ];
 
   function badgeClass(result) {
@@ -4472,7 +4484,10 @@
         <div class="cal-row cal-${race.status}">
           <div class="cal-round">${rnd}</div>
           <div class="cal-race">
-            <div class="cal-loc">${race.location}</div>
+            <div class="cal-loc-row">
+              <img class="cal-flag" src="https://flagcdn.com/24x18/${race.flag}.png" alt="${race.flag.toUpperCase()}" title="${race.country}">
+              <div class="cal-loc">${race.location}</div>
+            </div>
             <div class="cal-country">${race.country}</div>
           </div>
           <div class="cal-results">
