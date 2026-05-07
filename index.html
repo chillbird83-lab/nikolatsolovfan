@@ -3434,6 +3434,24 @@
     .sched-row  { grid-template-columns: 20px 66px 1fr auto; gap: 0 10px; padding: 12px 14px; }
     .sched-time { font-size: 14px; }
   }
+
+  /* ===================== NEWS ===================== */
+  .news-section { padding: 100px 32px; }
+  .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; margin-top: 48px; }
+  .news-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 24px; display: flex; flex-direction: column; gap: 10px; transition: border-color .2s; }
+  .news-card:hover { border-color: rgba(255,255,255,0.18); }
+  .news-meta { display: flex; align-items: center; gap: 10px; }
+  .news-date { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; color: var(--gray-300); text-transform: uppercase; }
+  .news-tag { font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 2px 8px; border-radius: 20px; }
+  .news-tag.race    { background: rgba(255,204,0,0.12);  color: var(--gold);  border: 1px solid rgba(255,204,0,0.25); }
+  .news-tag.team    { background: rgba(0,150,110,0.12);  color: var(--green); border: 1px solid rgba(0,150,110,0.25); }
+  .news-tag.record  { background: rgba(224,58,62,0.12);  color: var(--red);   border: 1px solid rgba(224,58,62,0.25); }
+  .news-tag.general { background: rgba(255,255,255,0.06); color: var(--gray-300); border: 1px solid rgba(255,255,255,0.1); }
+  .news-headline { font-family: var(--display); font-weight: 900; font-size: 16px; color: var(--bone); letter-spacing: 0.02em; line-height: 1.3; }
+  .news-summary  { font-family: var(--sans); font-size: 13px; color: var(--gray-300); line-height: 1.6; flex: 1; }
+  .news-link { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: var(--red); text-transform: uppercase; text-decoration: none; margin-top: 4px; }
+  .news-link:hover { color: var(--bone); }
+  @media (max-width: 600px) { .news-section { padding: 70px 20px; } .news-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -3451,6 +3469,7 @@
     <a href="#standings">Standings</a>
     <a href="#gallery">Gallery</a>
     <a href="#highlights">Video</a>
+    <a href="#news">News</a>
   </nav>
   <div class="right">
     <button class="hamburger" id="hamburger" aria-expanded="false" aria-label="Open menu">
@@ -3469,6 +3488,7 @@
   <a href="#poll"       onclick="closeMobileNav()">Poll</a>
   <a href="#gallery"    onclick="closeMobileNav()">Gallery</a>
   <a href="#highlights"      onclick="closeMobileNav()">Video</a>
+  <a href="#news"            onclick="closeMobileNav()">News</a>
 </nav>
 
 <!-- ===================== LATEST RESULT BANNER ===================== -->
@@ -4555,6 +4575,13 @@
   </div>
 </section>
 
+<!-- ===================== NEWS ===================== -->
+<section class="news-section" id="news">
+  <div class="section-tag">Latest</div>
+  <h2 class="section-title">News <span class="it">&amp; Updates</span></h2>
+  <div class="news-grid" id="news-grid"><!-- rendered by JS --></div>
+</section>
+
 <!-- ===================== SHARE STRIP ===================== -->
 <div class="share-strip">
   <span class="share-label">Share this page</span>
@@ -5522,10 +5549,95 @@ function initRecapCards() {
 }
 </script>
 
+<!-- ===================== NEWS DATA + RENDER ===================== -->
+<!--
+  HOW TO ADD A NEWS ITEM:
+  Add a new object to the TOP of the NEWS array (newest first):
+  {
+    date: "2026-06-08",       // ISO date
+    tag: "race",              // race | team | record | general
+    headline: "...",
+    summary: "...",
+    url: "https://...",       // optional — adds a "Read more" link
+    source: "Formula 2"       // optional — shown alongside the link
+  }
+-->
+<script>
+  const NEWS = [
+    {
+      date: "2026-05-02",
+      tag: "race",
+      headline: "Tsolov wins Miami Sprint from pole — championship lead extended",
+      summary: "Nikola Tsolov converted reverse-grid pole into a dominant lights-to-flag Sprint victory at the Miami International Autodrome, opening a one-point gap at the top of the F2 standings.",
+      url: "https://www.fiaformula2.com/Drivers/1265/Nikola-Tsolov",
+      source: "FIA Formula 2"
+    },
+    {
+      date: "2026-05-03",
+      tag: "race",
+      headline: "Miami Feature Race ends in DNF after first-lap contact",
+      summary: "A strong points weekend was cut short when Tsolov was caught up in first-lap contact at Miami, retiring from the Feature Race while running inside the top ten."
+    },
+    {
+      date: "2026-03-08",
+      tag: "record",
+      headline: "Bulgaria's first F2 race winner — Melbourne Feature Race victory",
+      summary: "Nikola Tsolov made history at Albert Park, taking victory in the FIA Formula 2 Melbourne Feature Race — the first ever F2 win for a Bulgarian driver.",
+      url: "https://www.fiaformula2.com/Drivers/1265/Nikola-Tsolov",
+      source: "FIA Formula 2"
+    },
+    {
+      date: "2025-05-25",
+      tag: "record",
+      headline: "Record-breaking 5th F3 win at Monaco",
+      summary: "Tsolov became the most successful driver in FIA Formula 3 history with a dominant lights-to-flag victory at Circuit de Monaco — his fifth career F3 win, a new all-time record.",
+      url: "https://www.fiaformula3.com/Latest/DT8JvFKiZZQ2szJdR2DvP/a-record-breaking-fifth-victory-nikola-tsolovs-monte-carlo-weekend-debrief",
+      source: "FIA Formula 3"
+    },
+    {
+      date: "2025-06-08",
+      tag: "general",
+      headline: "Tsolov drives the Red Bull RB7 through the streets of Sofia",
+      summary: "In a landmark moment for Bulgarian motorsport, Tsolov piloted Vettel's 2011 championship-winning RB7 through his hometown — the first Bulgarian driver to take part in a Red Bull show run."
+    },
+    {
+      date: "2024-11-01",
+      tag: "team",
+      headline: "Tsolov joins the Red Bull Junior Team",
+      summary: "After three seasons with the Alpine Academy, Nikola Tsolov made the switch to the Red Bull Junior Team — a major step on the road to Formula 1.",
+      url: "https://www.redbull.com/int-en/juniorteam/drivers/athlete-profile-nikola-tsolov",
+      source: "Red Bull"
+    }
+  ];
+
+  function renderNews() {
+    const grid = document.getElementById('news-grid');
+    if (!grid) return;
+    grid.innerHTML = NEWS.map(item => {
+      const d = new Date(item.date);
+      const dateStr = d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+      const link = item.url
+        ? `<a class="news-link" href="${item.url}" target="_blank" rel="noopener">Read more · ${item.source || 'Source'} →</a>`
+        : '';
+      return `
+        <div class="news-card">
+          <div class="news-meta">
+            <span class="news-date">${dateStr}</span>
+            <span class="news-tag ${item.tag}">${item.tag}</span>
+          </div>
+          <div class="news-headline">${item.headline}</div>
+          <div class="news-summary">${item.summary}</div>
+          ${link}
+        </div>`;
+    }).join('');
+  }
+</script>
+
 <!-- ===================== INIT ALL ===================== -->
 <script>
   function initAll() {
     if (typeof renderGallery === 'function') renderGallery();
+    if (typeof renderNews === 'function') renderNews();
     if (typeof tick === 'function') {
       tick();
       setInterval(tick, 1000);
