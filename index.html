@@ -2170,6 +2170,15 @@
     object-fit: cover;
   }
 
+  .proj-flag {
+    width: 24px;
+    height: 18px;
+    border-radius: 2px;
+    vertical-align: middle;
+    margin-right: 6px;
+    object-fit: cover;
+  }
+
   .champ-wins-badge {
     display: inline-flex;
     align-items: center;
@@ -4831,10 +4840,10 @@
   const REMAINING    = TOTAL_ROUNDS - COMPLETED;
 
   const DRIVERS = [
-    { name: 'Tsolov',     flag: '🇧🇬', team: 'Campos Racing',  pts: 35, color: '#e10600' },
-    { name: 'Minì',       flag: '🇮🇹', team: 'MP Motorsport',  pts: 34, color: '#d4a541' },
-    { name: 'Câmara',     flag: '🇧🇷', team: 'Invicta Racing', pts: 34, color: '#4fd99a' },
-    { name: 'van Hoepen', flag: '🇳🇱', team: 'Trident',         pts: 26, color: '#7ba7e0' },
+    { name: 'Tsolov',     flag: '<img class="proj-flag" src="https://flagcdn.com/24x18/bg.png" alt="BG" title="Bulgaria">',     team: 'Campos Racing',  pts: 35, color: '#e10600' },
+    { name: 'Minì',       flag: '<img class="proj-flag" src="https://flagcdn.com/24x18/it.png" alt="IT" title="Italy">',         team: 'MP Motorsport',  pts: 34, color: '#d4a541' },
+    { name: 'Câmara',     flag: '<img class="proj-flag" src="https://flagcdn.com/24x18/br.png" alt="BR" title="Brazil">',        team: 'Invicta Racing', pts: 34, color: '#4fd99a' },
+    { name: 'van Hoepen', flag: '<img class="proj-flag" src="https://flagcdn.com/24x18/nl.png" alt="NL" title="Netherlands">',   team: 'Trident',        pts: 26, color: '#7ba7e0' },
   ];
 
   const projected = DRIVERS.map(d => ({
