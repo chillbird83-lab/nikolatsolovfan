@@ -256,28 +256,6 @@
     transition: opacity 0.15s, color 0.15s, padding-left 0.15s;
   }
   .mobile-nav a:hover { opacity: 1; color: var(--gold); padding-left: 36px; }
-  .mobile-nav .mobile-nav-lang {
-    display: flex;
-    gap: 10px;
-    padding: 18px 28px 0;
-  }
-  .mobile-nav .mobile-nav-lang button {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    padding: 6px 14px;
-    background: transparent;
-    border: 1px solid var(--gray-700);
-    color: var(--gray-300);
-    cursor: pointer;
-    border-radius: 2px;
-    transition: background 0.15s, color 0.15s, border-color 0.15s;
-  }
-  .mobile-nav .mobile-nav-lang button.active {
-    background: var(--red);
-    border-color: var(--red);
-    color: var(--bone);
-  }
 
   /* ===================== LATEST RESULT BANNER ===================== */
   .result-banner {
@@ -1359,30 +1337,6 @@
   }
 
   /* ===================== LANGUAGE TOGGLE ===================== */
-  .lang-toggle {
-    display: inline-flex;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid var(--gray-700);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-  .lang-toggle button {
-    background: transparent;
-    border: none;
-    color: var(--gray-300);
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    padding: 5px 11px;
-    cursor: pointer;
-    transition: all .2s;
-    text-transform: uppercase;
-  }
-  .lang-toggle button:hover { color: var(--bone); }
-  .lang-toggle button.active {
-    background: var(--red);
-    color: var(--bone);
-  }
 
   /* ===================== GALLERY SECTION (photos + content tiles) ===================== */
   .gallery-section {
@@ -3240,10 +3194,6 @@
     <a href="#highlights" data-i18n="nav.video">Video</a>
   </nav>
   <div class="right">
-    <div class="lang-toggle" role="group" aria-label="Language">
-      <button data-lang="en" class="active" aria-pressed="true" onclick="applyLanguage('en')">EN</button>
-      <button data-lang="bg" aria-pressed="false" onclick="applyLanguage('bg')">БГ</button>
-    </div>
     <button class="hamburger" id="hamburger" aria-expanded="false" aria-label="Open menu">
       <span></span><span></span><span></span>
     </button>
@@ -3260,10 +3210,6 @@
   <a href="#poll"       data-i18n="nav.poll"       onclick="closeMobileNav()">Poll</a>
   <a href="#gallery"    data-i18n="nav.gallery"    onclick="closeMobileNav()">Gallery</a>
   <a href="#highlights" data-i18n="nav.video"      onclick="closeMobileNav()">Video</a>
-  <div class="mobile-nav-lang">
-    <button data-lang="en" onclick="applyLanguage('en'); syncMobileLang()">EN</button>
-    <button data-lang="bg" onclick="applyLanguage('bg'); syncMobileLang()">БГ</button>
-  </div>
 </nav>
 
 <!-- ===================== LATEST RESULT BANNER ===================== -->
@@ -4674,227 +4620,6 @@
   }
 </script>
 
-<!-- ===================== I18N (EN / BG) ===================== -->
-<script>
-  const I18N = {
-    en: {
-      "topbar.live": "LIVE · 2026 F2 SEASON",
-      "nav.stats": "Stats",
-      "nav.bio": "Bio",
-      "nav.career": "Career",
-      "nav.season": "2026",
-      "nav.gallery": "Gallery",
-      "banner.latest": "Latest Result",
-      "banner.upNext": "Up Next",
-      "hero.tagline": "Bulgaria's first FIA Formula 2 race winner. Red Bull junior. Once doubted whether he'd ever leave karting — now <em>one step from F1.</em>",
-      "hero.driverNo": "Driver No.",
-      "hero.series": "Series",
-      "hero.team": "Team",
-      "hero.junior": "Junior Programme",
-      "stats.tag": "By the numbers",
-      "stats.title": "Career <span class=\"it\">in figures</span>",
-      "bio.tag": "The Story",
-      "bio.title": "Sofia <span class=\"it\">to</span> the front row",
-      "timeline.tag": "Career Path",
-      "timeline.title": "From karts <span class=\"it\">to</span> the grid",
-      "season.tag": "Season Tracker",
-      "season.title": "2026 <span class=\"it\">F2</span>",
-      "season.live": "Next round",
-      "season.round": "Round 03 · Montréal · 22–24 May 2026",
-      "cd.next": "Next round",
-      "cd.days": "Days",
-      "cd.hours": "Hrs",
-      "cd.minutes": "Min",
-      "cd.seconds": "Sec",
-      "cd.until": "Until lights out",
-      "cd.feature": "Race weekend start",
-      "cd.weekendLive": "Race weekend live",
-      "facts.tag": "Off the track",
-      "facts.title": "Beyond <span class=\"it\">the visor</span>",
-      "gallery.tag": "In pictures",
-      "gallery.title": "On <span class=\"it\">track</span>",
-      "gallery.note": "Replace the placeholders with real photos — drop your images in the same folder as <code>index.html</code>, then update the <code>GALLERY</code> array near the bottom of the file with each filename and caption.",
-      "follow.title": "Follow live on X",
-      "follow.tsolov": "The man himself · race-day reactions, training, behind-the-scenes",
-      "follow.f2": "Official championship · live race updates lap-by-lap",
-      "follow.campos": "Tsolov's team · garage shots, strategy, post-race",
-      "follow.officialLabel": "Official site",
-      "ct.standings.eyebrow": "Drivers' Championship",
-      "ct.standings.after": "After Miami Sprint",
-      "ct.standings.gap": "Gap to P2",
-      "ct.quote.text": "Ultimately in F2 you're just a step away from the dream. But still — race by race, round by round, lap by lap.",
-      "ct.quote.context": "After Melbourne · 8 Mar 2026",
-      "ct.rounds.eyebrow": "Round-by-round",
-      "ct.rounds.legend": "Quali · Sprint · Feature",
-      "ct.rounds.win": "Win",
-      "ct.rounds.pole": "Pole / Sprint Pole",
-      "ct.rounds.points": "Top 10",
-      "ct.career.eyebrow": "Career milestones",
-      "ct.career.2026": "First F2 victory · Bulgaria's first",
-      "ct.career.2025": "F3 record · 5 career wins · Vice-Champion",
-      "ct.career.2024": "First Bulgarian to win in FIA F3",
-      "ct.career.2022": "Spanish F4 Champion · 13 wins from 21",
-      "ct.career.2021": "Dubai 24h podium with Fernando Alonso",
-      "ct.trivia.eyebrow": "Did you know",
-      "ct.trivia.title": "He drove the Red Bull RB7 through Sofia",
-      "ct.trivia.body": "In June 2025, Tsolov drove Vettel's 2011 championship-winning RB7 down the streets of his hometown — the first F1 show run ever held in Bulgaria. He calls it a moment he'll <em>\"remember forever.\"</em>",
-      "nav.standings": "Standings",
-      "nav.video": "Video",
-      "nav.poll": "Poll",
-      "standings.tag": "Drivers' Championship",
-      "standings.title": "2026 <span class=\"it\">Standings</span>",
-      "standings.after": "After Round 02 · Miami",
-      "poll.tag": "Fan Poll",
-      "poll.title": "Have your <span class=\"it\">say</span>",
-      "poll.question": "Where will Nikola finish the 2026 F2 Championship?",
-      "livery.tag": "Design",
-      "livery.title": "Helmet <span class=\"it\">&amp; Livery</span>",
-      "map.tag": "Career Circuits",
-      "map.title": "Race <span class=\"it\">History</span>",
-      "map.win": "Win",
-      "map.podium": "Podium",
-      "map.points": "Points finish",
-      "map.raced": "Raced",
-      "chart.tag": "Points Battle",
-      "chart.title": "Championship <span class=\"it\">Race</span>",
-      "proj.tag": "Data Model",
-      "proj.title": "Season <span class=\"it\">Projection</span>",
-      "proj.subtitle": "Projected over 14 rounds · based on current average"
-    },
-    bg: {
-      "topbar.live": "НА ЖИВО · СЕЗОН F2 2026",
-      "nav.stats": "Статистика",
-      "nav.bio": "Биография",
-      "nav.career": "Кариера",
-      "nav.season": "2026",
-      "nav.gallery": "Галерия",
-      "banner.latest": "Последен резултат",
-      "banner.upNext": "Следващо",
-      "hero.tagline": "Първият български победител във Формула 2. Пилот на Red Bull Junior. Някога се съмняваше, че ще напусне картинга — сега е <em>една крачка от Формула 1.</em>",
-      "hero.driverNo": "Номер",
-      "hero.series": "Шампионат",
-      "hero.team": "Отбор",
-      "hero.junior": "Юношеска програма",
-      "stats.tag": "В цифри",
-      "stats.title": "Кариера <span class=\"it\">в числа</span>",
-      "bio.tag": "Историята",
-      "bio.title": "От София <span class=\"it\">до</span> първия ред",
-      "timeline.tag": "Път в кариерата",
-      "timeline.title": "От картинга <span class=\"it\">до</span> голямата сцена",
-      "season.tag": "Сезонът",
-      "season.title": "2026 <span class=\"it\">F2</span>",
-      "season.live": "Следващ кръг",
-      "season.round": "Кръг 03 · Монреал · 22–24 май 2026",
-      "cd.next": "Следващ кръг",
-      "cd.days": "Дни",
-      "cd.hours": "Часа",
-      "cd.minutes": "Мин",
-      "cd.seconds": "Сек",
-      "cd.until": "До старта",
-      "cd.feature": "Начало на уикенда",
-      "cd.weekendLive": "Уикендът е в ход",
-      "facts.tag": "Извън пистата",
-      "facts.title": "Отвъд <span class=\"it\">каската</span>",
-      "gallery.tag": "В снимки",
-      "gallery.title": "На <span class=\"it\">пистата</span>",
-      "gallery.note": "Заменете заместителите с истински снимки — добавете изображенията в същата папка като <code>index.html</code> и обновете масива <code>GALLERY</code> в долната част на файла.",
-      "follow.title": "На живо в X",
-      "follow.tsolov": "Самият Никола · реакции от пистата, тренировки, зад кулисите",
-      "follow.f2": "Официален акаунт · обновления лап по лап",
-      "follow.campos": "Отборът на Никола · гараж, стратегия, след състезанието",
-      "follow.officialLabel": "Официален сайт",
-      "ct.standings.eyebrow": "Класиране при пилотите",
-      "ct.standings.after": "След Спринт Маями",
-      "ct.standings.gap": "Преднина пред 2-ри",
-      "ct.quote.text": "В крайна сметка във Формула 2 си само на крачка от мечтата. Но все пак — състезание след състезание, кръг след кръг, обиколка след обиколка.",
-      "ct.quote.context": "След Мелбърн · 8 март 2026",
-      "ct.rounds.eyebrow": "Кръг по кръг",
-      "ct.rounds.legend": "Квал · Спринт · Главно",
-      "ct.rounds.win": "Победа",
-      "ct.rounds.pole": "Поул / Спринт поул",
-      "ct.rounds.points": "Топ 10",
-      "ct.career.eyebrow": "Ключови моменти",
-      "ct.career.2026": "Първа победа във F2 · Първа за България",
-      "ct.career.2025": "Рекорд във F3 · 5 победи · Вицешампион",
-      "ct.career.2024": "Първи българин с победа във FIA F3",
-      "ct.career.2022": "Шампион Spanish F4 · 13 победи от 21",
-      "ct.career.2021": "Подиум в Дубай 24ч с Фернандо Алонсо",
-      "ct.trivia.eyebrow": "Знаехте ли",
-      "ct.trivia.title": "Той кара Red Bull RB7 през София",
-      "ct.trivia.body": "През юни 2025 г. Цолов кара титулния болид на Фетел RB7 от 2011 г. по улиците на родния си град — първото F1 шоу в България някога. Той казва, че е момент, който ще <em>&#8222;помни завинаги.&#8221;</em>",
-      "nav.standings": "Класиране",
-      "nav.video": "Видео",
-      "nav.poll": "Гласуване",
-      "standings.tag": "Шампионат при пилотите",
-      "standings.title": "Класиране <span class=\"it\">2026</span>",
-      "standings.after": "След Кръг 02 · Маями",
-      "poll.tag": "Гласуване",
-      "poll.title": "Кажи своето <span class=\"it\">мнение</span>",
-      "poll.question": "Как ще завърши Никола в шампионата на Ф2 2026?",
-      "livery.tag": "Дизайн",
-      "livery.title": "Каска <span class=\"it\">&amp; Ливрея</span>",
-      "map.tag": "Писти в кариерата",
-      "map.title": "История <span class=\"it\">на расите</span>",
-      "map.win": "Победа",
-      "map.podium": "Подиум",
-      "map.points": "В точките",
-      "map.raced": "Участие",
-      "chart.tag": "Битката за точки",
-      "chart.title": "Шампионатна <span class=\"it\">надпревара</span>",
-      "proj.tag": "Прогноза",
-      "proj.title": "Сезонна <span class=\"it\">прогноза</span>",
-      "proj.subtitle": "Прогноза за 14 кръга · според текущата средна стойност"
-    }
-  };
-
-  let CURRENT_LANG = 'en';
-
-  function t(key, fallback) {
-    return (I18N[CURRENT_LANG] && I18N[CURRENT_LANG][key]) || fallback || key;
-  }
-
-  function applyLanguage(lang) {
-    if (!I18N[lang]) return;
-    CURRENT_LANG = lang;
-    document.documentElement.setAttribute('lang', lang === 'bg' ? 'bg' : 'en');
-
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if (I18N[lang][key]) el.textContent = I18N[lang][key];
-    });
-    document.querySelectorAll('[data-i18n-html]').forEach(el => {
-      const key = el.getAttribute('data-i18n-html');
-      if (I18N[lang][key]) el.innerHTML = I18N[lang][key];
-    });
-
-    // Update toggle button state
-    document.querySelectorAll('.lang-toggle button').forEach(btn => {
-      const isActive = btn.getAttribute('data-lang') === lang;
-      btn.classList.toggle('active', isActive);
-      btn.setAttribute('aria-pressed', isActive);
-    });
-
-    try { localStorage.setItem('fanpage-lang', lang); } catch (e) {}
-
-    // Refresh countdown labels
-    if (typeof tick === 'function') tick();
-  }
-
-  function initLanguage() {
-    let saved = null;
-    try { saved = localStorage.getItem('fanpage-lang'); } catch (e) {}
-    const browserBG = (navigator.language || '').toLowerCase().startsWith('bg');
-    const initial = saved || (browserBG ? 'bg' : 'en');
-
-    document.querySelectorAll('.lang-toggle button').forEach(btn => {
-      btn.addEventListener('click', () => applyLanguage(btn.getAttribute('data-lang')));
-    });
-    applyLanguage(initial);
-  }
-
-  // Make explicitly available globally for onclick handlers
-  window.applyLanguage = applyLanguage;
-</script>
 
 <!-- ===================== BACK TO TOP ===================== -->
 <button class="back-to-top" id="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
@@ -4922,15 +4647,6 @@
     mobileNav.classList.remove('open');
     hamburger.setAttribute('aria-expanded', 'false');
     mobileNav.setAttribute('aria-hidden', 'true');
-  }
-  function syncMobileLang() {
-    const lang = document.documentElement.getAttribute('lang') || 'en';
-    document.querySelectorAll('.mobile-nav-lang button').forEach(btn => {
-      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
-    });
-    document.querySelectorAll('.lang-toggle button').forEach(btn => {
-      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
-    });
   }
 
   hamburger.addEventListener('click', () => {
@@ -5547,7 +5263,6 @@ function initRecapCards() {
 <script>
   function initAll() {
     if (typeof renderGallery === 'function') renderGallery();
-    if (typeof initLanguage === 'function') initLanguage();
     if (typeof tick === 'function') {
       tick();
       setInterval(tick, 1000);
