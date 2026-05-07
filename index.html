@@ -1900,6 +1900,77 @@
     color: var(--gray-700);
   }
 
+  /* ===================== SUPPORT BAR ===================== */
+  .support-bar {
+    background: linear-gradient(135deg, rgba(255,94,91,0.08) 0%, rgba(4,20,42,0.95) 60%);
+    border-top: 1px solid rgba(255,94,91,0.2);
+    border-bottom: 1px solid rgba(255,94,91,0.1);
+    padding: 28px 32px;
+  }
+  .support-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .support-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .support-title {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--bone);
+  }
+  .support-sub {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--gray-300);
+    max-width: 480px;
+  }
+  .support-kofi-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: #ff5e5b;
+    color: #fff;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    border: 1px solid #ff5e5b;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .support-kofi-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    flex-shrink: 0;
+  }
+  .support-kofi-btn:hover {
+    background: #e04d4a;
+    border-color: #e04d4a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255,94,91,0.35);
+  }
+  @media (max-width: 600px) {
+    .support-inner { justify-content: center; text-align: center; }
+    .support-sub { max-width: 100%; }
+  }
+
   /* ===================== FOOTER ===================== */
   footer {
     padding: 80px 32px 32px;
@@ -2609,6 +2680,16 @@
   .share-btn-copy.copied {
     background: var(--green);
     border-color: var(--green);
+    color: #fff;
+  }
+
+  .share-btn-kofi {
+    color: #ff5e5b;
+    border-color: rgba(255,94,91,0.3);
+  }
+  .share-btn-kofi:hover {
+    background: #ff5e5b;
+    border-color: #ff5e5b;
     color: #fff;
   }
 
@@ -4297,6 +4378,14 @@
       Facebook
     </a>
 
+    <!-- Ko-fi -->
+    <a class="share-btn share-btn-kofi"
+       href="https://ko-fi.com/nikotomoff"
+       target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.034-3.954-.709-.965-1.041-2.7-.091-3.71.951-1.01 3.005-1.086 4.363.407 0 0 1.565-1.782 3.468-.963 1.904.82 1.832 3.011.723 4.311zm6.173.478c-.928.116-1.682-.028-1.682-.028V7.284h1.77s1.971.551 1.971 2.638c0 1.913-.985 2.667-2.059 3.015z"/></svg>
+      Buy me a coffee
+    </a>
+
     <!-- Copy link -->
     <button class="share-btn share-btn-copy" id="copy-btn" onclick="copyLink()">
       <svg viewBox="0 0 24 24"><path d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/></svg>
@@ -4320,6 +4409,20 @@
     });
   }
 </script>
+
+<!-- ===================== SUPPORT BAR ===================== -->
+<div class="support-bar">
+  <div class="support-inner">
+    <div class="support-text">
+      <span class="support-title">Enjoying the page?</span>
+      <span class="support-sub">This fan site is built and maintained for free — if you like it, a coffee helps keep it going.</span>
+    </div>
+    <a class="support-kofi-btn" href="https://ko-fi.com/nikotomoff" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.034-3.954-.709-.965-1.041-2.7-.091-3.71.951-1.01 3.005-1.086 4.363.407 0 0 1.565-1.782 3.468-.963 1.904.82 1.832 3.011.723 4.311zm6.173.478c-.928.116-1.682-.028-1.682-.028V7.284h1.77s1.971.551 1.971 2.638c0 1.913-.985 2.667-2.059 3.015z"/></svg>
+      Buy me a coffee
+    </a>
+  </div>
+</div>
 
 <!-- ===================== FOOTER ===================== -->
 <footer>
