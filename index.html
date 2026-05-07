@@ -1275,6 +1275,15 @@
     margin-top: 4px;
   }
   .cd-label .race-name .red { color: var(--red); }
+  .cd-race-flag {
+    width: 28px;
+    height: 21px;
+    border-radius: 2px;
+    object-fit: cover;
+    vertical-align: middle;
+    margin-right: 4px;
+    margin-bottom: 3px;
+  }
 
   .cd-units {
     display: flex;
@@ -3641,7 +3650,7 @@
   <div class="countdown" id="countdown">
     <div class="cd-label">
       <span data-i18n="cd.next">Next round</span>
-      <span class="race-name" id="cd-race-name">Montréal · <span class="red">R03</span></span>
+      <span class="race-name" id="cd-race-name"><img class="cd-race-flag" src="https://flagcdn.com/24x18/ca.png" alt="CA" title="Canada"> Montréal · <span class="red">R03</span></span>
     </div>
     <div class="cd-units" id="cd-units">
       <div class="cd-unit"><span class="cd-num" id="cd-d">--</span><span class="cd-tag" data-i18n="cd.days">Days</span></div>
@@ -4636,7 +4645,7 @@
     // Race name + round
     const rnd = String(race.round).padStart(2, '0');
     document.getElementById('cd-race-name').innerHTML =
-      `${race.location} · <span class="red">R${rnd}</span>`;
+      `<img class="cd-race-flag" src="https://flagcdn.com/24x18/${race.flag}.png" alt="${race.flag.toUpperCase()}" title="${race.country}"> ${race.location} · <span class="red">R${rnd}</span>`;
 
     if (isLive) {
       ['cd-d', 'cd-h', 'cd-m', 'cd-s'].forEach(id =>
