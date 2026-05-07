@@ -50,6 +50,31 @@
       ]
     },
     {
+      "@type": "SportsEvent",
+      "@id": "https://chillbird83-lab.github.io/nikolatsolovfan/#melbourne-2026",
+      "name": "FIA Formula 2 2026 — Round 1 Melbourne Feature Race",
+      "startDate": "2026-03-08",
+      "location": {
+        "@type": "Place",
+        "name": "Albert Park Circuit",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Melbourne",
+          "addressCountry": "AU"
+        }
+      },
+      "sport": "Motorsport",
+      "organizer": {
+        "@type": "Organization",
+        "name": "FIA Formula 2 Championship"
+      },
+      "competitor": {
+        "@type": "Person",
+        "@id": "https://chillbird83-lab.github.io/nikolatsolovfan/#tsolov"
+      },
+      "description": "Nikola Tsolov wins the Melbourne Feature Race — Bulgaria's first ever FIA Formula 2 victory, driving for Campos Racing."
+    },
+    {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://chillbird83-lab.github.io/nikolatsolovfan/" }
@@ -3282,7 +3307,7 @@
         <span class="sep">·</span>
         Reverse-grid pole · led every lap · +1 pt gap
         <span class="sep">·</span>
-        Feature race: DNS after first-lap contact
+        Feature race: DNF after first-lap contact
       </span>
     </div>
 
@@ -4949,7 +4974,7 @@
   // 2026 F2 season rounds — derived from RACES data
   const CIRCUITS = [
     { round:1,  name:'Melbourne',       country:'Australia',    dates:'06–08 Mar', sprint:'P17', feature:'P1',  note:'First F2 victory · Bulgaria\'s first F2 win', status:'completed', lat:-37.85, lon:144.97 },
-    { round:2,  name:'Miami',           country:'USA',          dates:'01–03 May', sprint:'P1',  feature:'DNS', note:'Sprint win · Feature DNS after first-lap contact', status:'completed', lat: 25.96, lon:-80.24 },
+    { round:2,  name:'Miami',           country:'USA',          dates:'01–03 May', sprint:'P1',  feature:'DNF', note:'Sprint win · Feature DNF after first-lap contact', status:'completed', lat: 25.96, lon:-80.24 },
     { round:3,  name:'Montréal',        country:'Canada',       dates:'22–24 May', sprint:'—',  feature:'—',   note:'', status:'upcoming', lat: 45.50, lon:-73.57 },
     { round:4,  name:'Monaco',          country:'Monaco',       dates:'04–07 Jun', sprint:'—',  feature:'—',   note:'', status:'upcoming', lat: 43.73, lon:  7.42 },
     { round:5,  name:'Barcelona',       country:'Spain',        dates:'12–14 Jun', sprint:'—',  feature:'—',   note:'', status:'upcoming', lat: 41.57, lon:  2.26 },
