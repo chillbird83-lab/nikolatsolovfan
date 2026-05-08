@@ -3321,7 +3321,18 @@
   .badge-podium { background: rgba(0,150,110,0.15); color: #00c890; border: 1px solid rgba(0,150,110,0.35); }
   .badge-points { background: rgba(74,96,128,0.25); color: var(--gray-300); border: 1px solid rgba(74,96,128,0.4); }
   .badge-dnf    { background: rgba(224,58,62,0.12); color: #E03A3E; border: 1px solid rgba(224,58,62,0.3); }
-  .badge-neutral{ background: rgba(154,176,200,0.10); color: #9ab0c8; border: 1px solid rgba(154,176,200,0.25); }
+  .badge-neutral  { background: rgba(154,176,200,0.10); color: #9ab0c8; border: 1px solid rgba(154,176,200,0.25); }
+  .badge-upcoming { background: rgba(0,150,110,0.12); color: #00966e; border: 1px solid rgba(0,150,110,0.35); animation: pulse-text 2s ease-in-out infinite; }
+
+  .recap-preview { border-color: rgba(0,150,110,0.3); }
+  .recap-preview:hover { border-color: rgba(0,150,110,0.6) !important; }
+  .recap-preview .recap-header:hover { background: linear-gradient(135deg, rgba(0,150,110,0.07), transparent 60%); }
+
+  .preview-facts { padding: 8px 0 12px; display: flex; flex-direction: column; gap: 0; }
+  .pfr { display: grid; grid-template-columns: 96px 1fr; gap: 8px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.05); align-items: baseline; }
+  .pfr:last-child { border-bottom: none; }
+  .pfr-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gray-500); }
+  .pfr-val   { font-family: var(--sans); font-size: 13px; color: var(--bone); line-height: 1.3; }
 
   /* ---- Recap stat label (lbl variant) ---- */
   .recap-stat-lbl { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gray-500); }
@@ -3796,6 +3807,66 @@
           </div>
         </div>
         <div class="recap-quote">"It was intense but funny at the same time. I lost the lead, got it back — that's racing." — Nikola Tsolov</div>
+      </div>
+    </div>
+
+    <!-- R03 Montréal Preview -->
+    <div class="recap-card recap-preview" id="recap-r03">
+      <div class="recap-header" onclick="toggleRecap('recap-r03')">
+        <div class="recap-header-left">
+          <span class="recap-round">R03</span>
+          <div>
+            <div class="recap-race-name">Montréal · Circuit Gilles Villeneuve</div>
+            <div class="recap-date">22–24 May 2026</div>
+          </div>
+        </div>
+        <div class="recap-header-right">
+          <span class="recap-badge badge-upcoming">Sprint TBC</span>
+          <span class="recap-badge badge-upcoming">Feature TBC</span>
+          <span class="recap-chevron">▼</span>
+        </div>
+      </div>
+      <div class="recap-body">
+        <div class="recap-stats-row">
+          <div class="recap-stat"><span class="recap-stat-val" style="color:var(--gold)">P1</span><span class="recap-stat-lbl">Championship</span></div>
+          <div class="recap-stat"><span class="recap-stat-val">35</span><span class="recap-stat-lbl">Points Led</span></div>
+          <div class="recap-stat"><span class="recap-stat-val">4.361</span><span class="recap-stat-lbl">km/lap</span></div>
+          <div class="recap-stat"><span class="recap-stat-val">14</span><span class="recap-stat-lbl">Corners</span></div>
+        </div>
+        <div class="recap-grid">
+          <div class="recap-chart-wrap">
+            <div class="recap-chart-title">Circuit — Key Facts</div>
+            <div class="preview-facts">
+              <div class="pfr"><span class="pfr-label">Circuit</span><span class="pfr-val">Circuit Gilles Villeneuve</span></div>
+              <div class="pfr"><span class="pfr-label">City</span><span class="pfr-val">Montréal, Canada</span></div>
+              <div class="pfr"><span class="pfr-label">Length</span><span class="pfr-val">4.361 km · 14 corners</span></div>
+              <div class="pfr"><span class="pfr-label">DRS Zones</span><span class="pfr-val">3 (unique triple-zone setup)</span></div>
+              <div class="pfr"><span class="pfr-label">Surface</span><span class="pfr-val">Semi-permanent street circuit</span></div>
+              <div class="pfr"><span class="pfr-label">Known for</span><span class="pfr-val">Wall of Champions · L'Épingle hairpin (T10)</span></div>
+              <div class="pfr"><span class="pfr-label">Character</span><span class="pfr-val">Low-downforce, heavy braking zones</span></div>
+            </div>
+          </div>
+          <div class="recap-moments">
+            <div class="recap-moments-title">What to Watch</div>
+            <div class="recap-moment">
+              <span class="recap-moment-lap">Quali</span>
+              <span class="recap-moment-text">Track position is everything at CGV — the narrow walls punish any mistake in the final sector</span>
+            </div>
+            <div class="recap-moment">
+              <span class="recap-moment-lap">Sprint</span>
+              <span class="recap-moment-text">Reverse grid gives Nikola a shot from row 1 — can he make it back-to-back sprint wins?</span>
+            </div>
+            <div class="recap-moment">
+              <span class="recap-moment-lap">Feature</span>
+              <span class="recap-moment-text">His first semi-street circuit in F2 — circuit knowledge vs raw pace, brake management key</span>
+            </div>
+            <div class="recap-moment">
+              <span class="recap-moment-lap">Title</span>
+              <span class="recap-moment-text">A double-points haul here puts him near-untouchable at the championship midpoint</span>
+            </div>
+          </div>
+        </div>
+        <div class="recap-quote" style="color:var(--gray-300);">Round 3 · 22–24 May 2026 · Nikola heads to Canada as <em style="color:var(--gold);font-style:normal;font-weight:700;">championship leader with 35 points</em></div>
       </div>
     </div>
 
@@ -4742,7 +4813,7 @@
 -->
 <script>
   const RACES = [
-    { round: 1,  location: "Melbourne",         country: "Australia",     flag: "au", dates: "06–08 Mar", sprint: "P19", feature: "P1", note: "First F2 victory · Bulgaria's first F2 win", status: "completed" },
+    { round: 1,  location: "Melbourne",         country: "Australia",     flag: "au", dates: "06–08 Mar", sprint: "P17", feature: "P1", note: "First F2 victory · Bulgaria's first F2 win", status: "completed" },
     { round: 2,  location: "Miami",             country: "USA",           flag: "us", dates: "01–03 May", sprint: "P1", feature: "DNF", note: "Sprint win · Feature DNF after first-lap contact", status: "completed" },
     { round: 3,  location: "Montréal",          country: "Canada",        flag: "ca", dates: "22–24 May", sprint: "—", feature: "—",                                                       status: "upcoming"  },
     { round: 4,  location: "Monaco",            country: "Monaco",        flag: "mc", dates: "04–07 Jun", sprint: "—", feature: "—",                                                       status: "upcoming"  },
