@@ -2501,6 +2501,227 @@
     .champ-pts { font-size: 20px; }
   }
 
+  /* ===================== RIVAL CARD ===================== */
+  .rival-section {
+    padding: 100px 32px;
+    background: linear-gradient(180deg, #020c1a 0%, var(--ink) 100%);
+    border-top: 1px solid rgba(255,204,0,0.12);
+  }
+  .rival-matchup { max-width: 1100px; margin: 0 auto; }
+
+  .rival-drivers {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    border: 1px solid var(--gray-700);
+    overflow: hidden;
+    margin-bottom: 2px;
+  }
+
+  .rival-side {
+    padding: 36px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .rival-side.s-tsolov {
+    background: linear-gradient(135deg, rgba(225,6,0,0.12), rgba(225,6,0,0.03));
+    border-right: 1px solid var(--gray-700);
+  }
+  .rival-side.s-camara {
+    background: linear-gradient(135deg, rgba(60,120,200,0.08), rgba(60,120,200,0.02));
+    text-align: right;
+    border-left: 1px solid var(--gray-700);
+  }
+
+  .rival-tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+  }
+  .s-tsolov .rival-tag { color: var(--red); }
+  .s-camara .rival-tag { color: #5b9bd5; }
+
+  .rival-surname {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(32px, 4.5vw, 64px);
+    line-height: 0.9;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin-top: 4px;
+  }
+  .s-tsolov .rival-surname { color: var(--red); }
+  .s-camara .rival-surname { color: #5b9bd5; }
+
+  .rival-fullname {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray-300);
+  }
+  .rival-team-txt {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    margin-top: 2px;
+  }
+  .rival-pts-big {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(52px, 7vw, 96px);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-top: 16px;
+  }
+  .s-tsolov .rival-pts-big { color: var(--red); }
+  .s-camara .rival-pts-big { color: #5b9bd5; }
+  .rival-pts-lbl {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+  }
+
+  .rival-vs-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 32px;
+    gap: 10px;
+    background: rgba(255,255,255,0.01);
+  }
+  .rival-vs-word {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 22px;
+    color: var(--gray-700);
+    letter-spacing: 0.08em;
+  }
+  .rival-gap-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 16px;
+    background: rgba(255,204,0,0.1);
+    border: 1px solid rgba(255,204,0,0.35);
+    border-radius: 2px;
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+  .rival-after-note {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  /* Stat comparison rows */
+  .rival-stats {
+    border: 1px solid var(--gray-700);
+    border-top: none;
+  }
+  .rival-stat-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 80px;
+    align-items: center;
+    border-bottom: 1px solid var(--gray-700);
+  }
+  .rival-stat-row:last-child { border-bottom: none; }
+
+  .rival-n {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 26px;
+    padding: 18px 20px;
+    line-height: 1;
+  }
+  .rival-n.left  { color: var(--red); text-align: left; }
+  .rival-n.right { color: #5b9bd5; text-align: right; }
+  .rival-n.right.zero { color: var(--gray-700); }
+
+  .rival-center-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    padding: 16px 12px;
+  }
+  .rival-center-lbl {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--bone);
+  }
+  .rival-split-bar {
+    display: flex;
+    gap: 2px;
+    width: 100%;
+    height: 5px;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .rsb-t { background: var(--red); border-radius: 2px; height: 100%; }
+  .rsb-c { background: #5b9bd5; border-radius: 2px; height: 100%; margin-left: auto; }
+
+  .rival-center-sub {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-300);
+    text-align: center;
+    line-height: 1.5;
+  }
+  .rival-n-sm {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 20px;
+    padding: 18px 20px;
+    line-height: 1;
+  }
+  .rival-n-sm.left  { color: var(--red); text-align: left; }
+  .rival-n-sm.right { color: #5b9bd5; text-align: right; }
+  .rival-n-sm.right.zero { color: var(--gray-700); }
+  .rival-n-sm.dim  { color: var(--gray-300); }
+
+  .rival-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .rival-foot strong { color: var(--gold); font-weight: 700; }
+
+  @media (max-width: 720px) {
+    .rival-drivers { grid-template-columns: 1fr; }
+    .rival-vs-col { flex-direction: row; padding: 16px 20px; border-top: 1px solid var(--gray-700); border-bottom: 1px solid var(--gray-700); }
+    .rival-side { padding: 24px 20px; }
+    .s-camara { text-align: left; border-left: none; border-top: 1px solid var(--gray-700); }
+    .rival-stat-row { grid-template-columns: 60px 1fr 60px; }
+    .rival-n { font-size: 20px; padding: 14px 12px; }
+  }
+
   /* ===================== VIDEO HIGHLIGHTS ===================== */
   .video-section {
     padding: 120px 32px;
@@ -4214,6 +4435,128 @@
   <div class="champ-footer-note">
     <span>Top 10 shown · Full standings at fiaformula2.com</span>
     <span>Updated after R02 Miami · R03 Montréal next</span>
+  </div>
+</section>
+
+<!-- ===================== RIVAL CARD ===================== -->
+<section class="rival-section" id="rival">
+  <div class="section-tag">Title Battle</div>
+  <h2 class="section-title">Head-to-<span class="it">Head</span></h2>
+
+  <div class="rival-matchup">
+    <div class="rival-drivers">
+
+      <!-- Tsolov -->
+      <div class="rival-side s-tsolov">
+        <span class="rival-tag">Championship Leader · P1</span>
+        <div class="rival-surname">Tsolov</div>
+        <div class="rival-fullname">Nikola Tsolov</div>
+        <div class="rival-team-txt">Campos Racing · #6 · Bulgaria</div>
+        <div class="rival-pts-big">35</div>
+        <div class="rival-pts-lbl">Points</div>
+      </div>
+
+      <!-- VS divider -->
+      <div class="rival-vs-col">
+        <div class="rival-vs-word">VS</div>
+        <div class="rival-gap-pill">+1 pt</div>
+        <div class="rival-after-note">After R02<br/>2 of 14</div>
+      </div>
+
+      <!-- Câmara -->
+      <div class="rival-side s-camara">
+        <span class="rival-tag">P2 · −1 point</span>
+        <div class="rival-surname">Câmara</div>
+        <div class="rival-fullname">Rafael Câmara</div>
+        <div class="rival-team-txt">Invicta Racing · Brazil</div>
+        <div class="rival-pts-big">34</div>
+        <div class="rival-pts-lbl">Points</div>
+      </div>
+    </div>
+
+    <!-- Stat rows -->
+    <div class="rival-stats">
+
+      <div class="rival-stat-row">
+        <div class="rival-n left">35</div>
+        <div class="rival-center-cell">
+          <span class="rival-center-lbl">Points</span>
+          <div class="rival-split-bar">
+            <div class="rsb-t" style="width:50.7%"></div>
+            <div class="rsb-c" style="width:48.6%"></div>
+          </div>
+        </div>
+        <div class="rival-n right">34</div>
+      </div>
+
+      <div class="rival-stat-row">
+        <div class="rival-n left">2</div>
+        <div class="rival-center-cell">
+          <span class="rival-center-lbl">Race Wins</span>
+          <div class="rival-split-bar">
+            <div class="rsb-t" style="width:100%"></div>
+          </div>
+        </div>
+        <div class="rival-n right zero">0</div>
+      </div>
+
+      <div class="rival-stat-row">
+        <div class="rival-n left">17.5</div>
+        <div class="rival-center-cell">
+          <span class="rival-center-lbl">Pts / Round</span>
+          <div class="rival-split-bar">
+            <div class="rsb-t" style="width:50.7%"></div>
+            <div class="rsb-c" style="width:49.3%"></div>
+          </div>
+        </div>
+        <div class="rival-n right">17.0</div>
+      </div>
+
+      <div class="rival-stat-row">
+        <div class="rival-n-sm left">P7.5</div>
+        <div class="rival-center-cell">
+          <span class="rival-center-lbl">Avg Qualifying · lower = better</span>
+          <div class="rival-split-bar">
+            <div class="rsb-t" style="width:43.9%"></div>
+            <div class="rsb-c" style="width:56.1%"></div>
+          </div>
+          <span class="rival-center-sub">R1: P5 · R2: P10 &nbsp;|&nbsp; R1: P6 · R2: P2</span>
+        </div>
+        <div class="rival-n-sm right">P4.0</div>
+      </div>
+
+      <div class="rival-stat-row">
+        <div class="rival-n-sm left dim">10</div>
+        <div class="rival-center-cell">
+          <span class="rival-center-lbl">Last Round Pts (R02)</span>
+          <div class="rival-split-bar">
+            <div class="rsb-t" style="width:38.5%"></div>
+            <div class="rsb-c" style="width:61.5%"></div>
+          </div>
+          <span class="rival-center-sub">Câmara closed +6 pts in Miami</span>
+        </div>
+        <div class="rival-n-sm right">16</div>
+      </div>
+
+      <div class="rival-stat-row">
+        <div class="rival-n-sm left dim">3/4</div>
+        <div class="rival-center-cell">
+          <span class="rival-center-lbl">Races Finished</span>
+          <div class="rival-split-bar">
+            <div class="rsb-t" style="width:42.9%"></div>
+            <div class="rsb-c" style="width:57.1%"></div>
+          </div>
+          <span class="rival-center-sub">DNS — Miami Feature Race</span>
+        </div>
+        <div class="rival-n-sm right">4/4</div>
+      </div>
+
+    </div>
+
+    <div class="rival-foot">
+      <span>Tsolov leads by just <strong>1 point</strong> — the tightest gap at the top after R02</span>
+      <span>Source · FIA Formula 2 · fiaformula2.com</span>
+    </div>
   </div>
 </section>
 
