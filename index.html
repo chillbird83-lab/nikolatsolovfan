@@ -390,7 +390,7 @@
     inset: 0;
     pointer-events: none;
     z-index: 0;
-    background-image: url('lion.png');
+    background-image: url('Geometric_lion_head_logo_202605092137.jpeg');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 55%;
@@ -652,7 +652,27 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 32px;
+    background: #041e42;
+    overflow: hidden;
   }
+  .hero-bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+    z-index: 0;
+    opacity: 0.32;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(4,30,66,0.45), rgba(4,30,66,0.7));
+    z-index: 1;
+  }
+  .hero > * { position: relative; z-index: 2; }
 
   .hero .country-strip {
     position: absolute;
@@ -3804,6 +3824,7 @@
 
 <!-- ===================== HERO ===================== -->
 <header class="hero">
+  <img src="Racing_car_on_wet_track_202605092103.jpeg" alt="" class="hero-bg-img" aria-hidden="true"/>
   <div class="speed-lines">
     <div class="line"></div>
     <div class="line"></div>
@@ -4095,8 +4116,9 @@
 </section>
 
 <!-- ===================== BIO ===================== -->
-<section id="bio">
-  <div class="bio-section">
+<section id="bio" style="position:relative; overflow:hidden;">
+  <div style="position:absolute;inset:0;background:url('Driver_walking_toward_light_202605092127.jpeg') center/cover no-repeat;opacity:0.12;pointer-events:none;z-index:0;"></div>
+  <div class="bio-section" style="position:relative;z-index:1;">
     <div class="bio-left">
       <div class="section-tag">The Story</div>
       <h2 class="section-title" style="font-size: clamp(48px, 7vw, 100px);">Sofia <span class="it">to</span> the front row</h2>
@@ -4763,8 +4785,8 @@
 
     <!-- CAR LIVERY -->
     <div class="livery-card">
-      <div class="livery-visual" style="background:#fff;">
-        <img src="Livery.png" alt="Campos Racing #6 F2 car livery" loading="lazy" style="width:100%;height:auto;max-height:260px;object-fit:contain;mix-blend-mode:multiply;"/>
+      <div class="livery-visual" style="background:#000;padding:0;min-height:320px;position:relative;">
+        <img src="Campos_Racing_F2_car_202605092103.jpeg" alt="Campos Racing #6 F2 car livery — Red Bull colours, 2026 season" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;max-height:none;object-fit:cover;filter:brightness(1.8);mix-blend-mode:normal;"/>
       </div>
       <div class="livery-meta">
         <div>
@@ -4781,8 +4803,8 @@
 
     <!-- HELMET -->
     <div class="livery-card">
-      <div class="livery-visual" style="background:#fff;">
-        <img src="Helmet.png" alt="Nikola Tsolov racing helmet design" loading="lazy" style="width:100%;height:auto;max-height:260px;object-fit:contain;mix-blend-mode:multiply;"/>
+      <div class="livery-visual" style="background:#000;padding:0;min-height:320px;position:relative;">
+        <img src="image.png_202605092251.jpeg" alt="Nikola Tsolov racing helmet design — Red Bull, TB logo, 2026 season" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;max-height:none;object-fit:cover;mix-blend-mode:normal;"/>
       </div>
       <div class="livery-meta">
         <div>
@@ -5229,6 +5251,11 @@
 -->
 <script>
   const GALLERY = [
+    {
+      src: "Formula_2_car_morphing_lion_202605092108.jpeg",
+      label: "The Bulgarian Lion",
+      caption: "The Bulgarian Lion unleashed — Nikola Tsolov's F2 car with fiery lion spirit, Melbourne 2026"
+    },
     {
       src: "hero.webp",
       label: "Qatar · F2 Podium",
