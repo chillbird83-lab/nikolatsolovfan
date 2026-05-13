@@ -317,6 +317,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+<link rel="preload" as="image" type="image/webp" href="Racing_car_on_wet_track_202605092103.webp" />
 <link rel="manifest" href="site.webmanifest" />
 
 <!-- Open Graph (Facebook, LinkedIn, Discord, WhatsApp) -->
@@ -3964,7 +3965,7 @@
 
 <!-- ===================== HERO ===================== -->
 <header class="hero">
-  <img src="Racing_car_on_wet_track_202605092103.webp" alt="" class="hero-bg-img" aria-hidden="true" fetchpriority="high" width="1600" height="900"/>
+  <img src="Racing_car_on_wet_track_202605092103.webp" alt="" class="hero-bg-img" aria-hidden="true" fetchpriority="high" decoding="async" width="1600" height="900"/>
   <div class="speed-lines">
     <div class="line"></div>
     <div class="line"></div>
@@ -5424,7 +5425,7 @@
       caption: "Nikola Tsolov after winning the Miami Sprint Race · FIA Formula 2 championship leader, 2026"
     },
     {
-      src: "tsolov06.jpg",
+      src: "tsolov06.webp",
       label: "2026 Season Portrait",
       caption: "Nikola Tsolov official 2026 season portrait · Campos Racing #6, Red Bull Junior Team"
     }
@@ -5698,11 +5699,13 @@
   });
 
   // Animate lines with stroke-dashoffset when chart enters viewport
-  paths.forEach(p => {
-    const len = p.getTotalLength ? p.getTotalLength() : 400;
-    p.setAttribute('stroke-dasharray', len);
-    p.setAttribute('stroke-dashoffset', len);
-    p.style.transition = 'stroke-dashoffset 1.5s cubic-bezier(.16,1,.3,1)';
+  requestAnimationFrame(() => {
+    paths.forEach(p => {
+      const len = p.getTotalLength ? p.getTotalLength() : 400;
+      p.setAttribute('stroke-dasharray', len);
+      p.setAttribute('stroke-dashoffset', len);
+      p.style.transition = 'stroke-dashoffset 1.5s cubic-bezier(.16,1,.3,1)';
+    });
   });
   const chartObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
@@ -6279,15 +6282,20 @@ function initRecapCards() {
 <!-- ===================== INIT ALL ===================== -->
 <script>
   function initAll() {
-    if (typeof renderGallery === 'function') renderGallery();
-    if (typeof renderNews === 'function') renderNews();
+    // Critical — render above-the-fold countdown immediately
     if (typeof tick === 'function') {
       tick();
       setInterval(tick, 1000);
     }
-    if (typeof initSessionSchedule === 'function') initSessionSchedule();
-    if (typeof initStatCounters === 'function') initStatCounters();
-    if (typeof initRecapCards === 'function') initRecapCards();
+    // Defer non-critical work to unblock main thread
+    const defer = window.requestIdleCallback || (cb => setTimeout(cb, 1));
+    defer(() => {
+      if (typeof renderGallery === 'function') renderGallery();
+      if (typeof renderNews === 'function') renderNews();
+      if (typeof initSessionSchedule === 'function') initSessionSchedule();
+      if (typeof initStatCounters === 'function') initStatCounters();
+      if (typeof initRecapCards === 'function') initRecapCards();
+    });
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initAll);
