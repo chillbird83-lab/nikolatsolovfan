@@ -5776,7 +5776,8 @@
     {
       src: "nikola-tsolov-f2-campos-racing.webp",
       label: "F2 · Campos Racing",
-      caption: "Nikola Tsolov in FIA Formula 2 with Campos Racing · Bulgarian Red Bull Junior driver, 2026 season"
+      caption: "Nikola Tsolov in FIA Formula 2 with Campos Racing · Bulgarian Red Bull Junior driver, 2026 season",
+      objectPosition: "center 20%"
     }
   ];
 
@@ -5786,7 +5787,8 @@
     grid.innerHTML = GALLERY.map((item, i) => {
       let inner;
       if (item.src) {
-        inner = `<img src="${item.src}" alt="${item.caption}" loading="lazy"/>`;
+        const posStyle = item.objectPosition ? ` style="object-position:${item.objectPosition}"` : '';
+        inner = `<img src="${item.src}" alt="${item.caption}" loading="lazy"${posStyle}/>`;
       } else if (item.svg) {
         inner = `<div class="gallery-svg">${item.svg}</div>`;
       } else {
