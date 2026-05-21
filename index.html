@@ -568,14 +568,21 @@
     0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(255,204,0,0.7); }
     50% { opacity: 0.6; box-shadow: 0 0 0 6px rgba(255,204,0,0); }
   }
-  .topbar nav { display: flex; gap: 22px; }
-  .topbar nav a { color: var(--bone); text-decoration: none; opacity: 0.7; transition: opacity .2s, color .2s; }
-  .topbar nav a:hover { opacity: 1; color: var(--gold); text-shadow: 0 0 8px rgba(255,204,0,0.6); }
+  .topbar nav { display: flex; gap: 24px; }
+  .topbar nav a {
+    color: #ffffff;
+    text-decoration: none;
+    opacity: 1;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    transition: color .2s, text-shadow .2s;
+  }
+  .topbar nav a:hover { color: var(--gold); text-shadow: 0 0 8px rgba(255,204,0,0.6); }
   .topbar .right { color: var(--gray-300); display: flex; align-items: center; gap: 16px; }
 
   /* ---- Hamburger button ---- */
   .hamburger {
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 5px;
@@ -602,7 +609,7 @@
 
   /* ---- Mobile nav panel ---- */
   .mobile-nav {
-    display: none;
+    display: block;
     position: fixed;
     top: 56px;
     left: 0; right: 0;
@@ -3720,8 +3727,6 @@
   /* ===================== RESPONSIVE ===================== */
   @media (max-width: 900px) {
     .topbar nav { display: none; }
-    .hamburger { display: flex; }
-    .mobile-nav { display: block; }
     .hero { padding: 100px 20px 40px; }
     section { padding: 70px 20px; }
     .hero-meta { grid-template-columns: repeat(2, 1fr); }
@@ -4257,15 +4262,8 @@
     <span><span class="dot"></span><span>2026 F2 SEASON</span></span>
   </div>
   <nav>
-    <a href="#stats">Stats</a>
-    <a href="#bio">Bio</a>
-    <a href="#timeline">Career</a>
     <a href="#season">2026</a>
     <a href="#standings">Standings</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#highlights">Video</a>
-    <a href="#quiz">Quiz</a>
-    <a href="#news">News</a>
     <a href="/articles/">Articles</a>
   </nav>
   <div class="right">
