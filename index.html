@@ -2612,152 +2612,203 @@
     animation: pulse 1.4s ease-in-out infinite;
   }
 
-  .champ-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: var(--sans);
-  }
-
-  .champ-table thead tr {
-    border-bottom: 1px solid var(--gray-700);
-  }
-  .champ-table thead th {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gray-500);
-    font-weight: 400;
-    padding: 0 16px 14px;
-    text-align: left;
-  }
-  .champ-table thead th.col-pts,
-  .champ-table thead th.col-wins,
-  .champ-table thead th.col-gap { text-align: right; }
-  .champ-table tbody td.col-wins { text-align: right; }
-
-  .champ-table tbody tr {
-    border-bottom: 1px dashed rgba(255,255,255,0.05);
-    transition: background 0.15s;
-  }
-  .champ-table tbody tr:hover { background: rgba(255,255,255,0.03); }
-
-  .champ-table tbody td {
-    padding: 14px 16px;
-    font-size: 14px;
-    color: var(--gray-300);
-    vertical-align: middle;
-  }
-
-  .champ-pos {
-    font-family: var(--display);
-    font-weight: 900;
-    font-size: 26px;
-    color: var(--gray-700);
-    line-height: 1;
-    width: 52px;
-  }
-
-  .champ-driver-name {
-    font-family: var(--sans);
-    font-weight: 600;
-    font-size: 15px;
-    color: var(--bone);
-    display: block;
-    line-height: 1.2;
-    grid-column: 1;
-    grid-row: 1;
-  }
-  .champ-driver-team {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--gray-500);
-    display: block;
-    margin-top: 2px;
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  .champ-pts {
-    font-family: var(--display);
-    font-weight: 900;
-    font-size: 26px;
-    color: var(--bone);
-    text-align: right;
-    font-variant-numeric: tabular-nums;
-    white-space: nowrap;
-  }
-  .champ-wins {
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--gray-300);
-    text-align: right;
-  }
-  .champ-gap {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--gray-500);
-    text-align: right;
-    white-space: nowrap;
-  }
-
-  /* Tsolov highlight row */
-  .champ-table tbody tr.champ-tsolov {
-    background: linear-gradient(90deg, rgba(225,6,0,0.14), rgba(225,6,0,0.04) 60%, transparent);
-    border-left: 3px solid var(--red);
-    border-bottom: 1px dashed rgba(225,6,0,0.2);
-  }
-  .champ-table tbody tr.champ-tsolov .champ-pos { color: var(--red); }
-  .champ-table tbody tr.champ-tsolov .champ-driver-name { color: var(--bone); font-size: 16px; }
-  .champ-table tbody tr.champ-tsolov .champ-pts { color: var(--red); }
-
-  .champ-table tbody td:nth-child(2) {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
-    column-gap: 12px;
-    align-items: center;
-  }
-  .champ-flag {
-    width: 28px;
-    height: 21px;
-    grid-column: 2;
-    grid-row: 1 / 3;
-    align-self: center;
-    display: block;
-    border-radius: 2px;
-    object-fit: cover;
+  /* ===== STANDINGS CARDS (new card-based design) ===== */
+  .std-list {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
   .proj-flag {
-    width: 24px;
-    height: 18px;
+    width: 24px; height: 18px;
     border-radius: 2px;
     vertical-align: middle;
     margin-right: 6px;
     object-fit: cover;
   }
 
-  .champ-wins-badge {
-    display: inline-flex;
+  .std-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 64px 64px 1fr auto;
+    align-items: center;
+    gap: 18px;
+    padding: 14px 22px 14px 18px;
+    background: linear-gradient(90deg,
+      rgba(13,45,86,0.55) 0%,
+      rgba(13,45,86,0.25) 70%,
+      rgba(13,45,86,0.1) 100%);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform .2s ease, border-color .2s, box-shadow .2s;
+  }
+  .std-row::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--team-color, var(--gray-500));
+    opacity: 0.85;
+  }
+  .std-row:hover {
+    transform: translateX(3px);
+    border-color: rgba(255,255,255,0.15);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  }
+
+  /* Leader row */
+  .std-row.std-leader {
+    background: linear-gradient(90deg,
+      rgba(225,6,0,0.22) 0%,
+      rgba(225,6,0,0.08) 60%,
+      rgba(13,45,86,0.1) 100%);
+    border-color: rgba(225,6,0,0.35);
+  }
+  .std-row.std-leader::before { background: var(--red); opacity: 1; }
+
+  /* Position number */
+  .std-pos {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 38px;
+    line-height: 1;
+    color: var(--bone);
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+  .std-leader .std-pos { color: var(--red); text-shadow: 0 0 14px rgba(225,6,0,0.45); }
+
+  /* Avatar + flag stack */
+  .std-avatar-wrap {
+    position: relative;
+    width: 56px; height: 56px;
+  }
+  .std-avatar {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--team-color, var(--gray-700));
+    color: #fff;
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    font-family: var(--mono);
-    font-size: 11px;
-    font-weight: 700;
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 18px;
+    letter-spacing: 0.02em;
+    border: 2px solid rgba(255,255,255,0.18);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.35);
   }
-  .champ-wins-badge.has-wins {
-    background: var(--red);
+  .std-flag {
+    position: absolute;
+    bottom: -2px; right: -4px;
+    width: 22px; height: 16px;
+    border-radius: 2px;
+    border: 1.5px solid var(--ink);
+    object-fit: cover;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  }
+
+  /* Driver info */
+  .std-driver { min-width: 0; }
+  .std-names {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+    line-height: 1.1;
+  }
+  .std-first {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--gray-300);
+  }
+  .std-last {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 22px;
     color: var(--bone);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
   }
-  .champ-wins-badge.no-wins {
-    border: 1px solid var(--gray-700);
-    color: var(--gray-500);
+  .std-leader .std-last { color: #fff; }
+  .std-rookie {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    padding: 2px 6px;
+    border: 1px solid rgba(255,204,0,0.4);
+    border-radius: 2px;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .std-rookie.short { padding: 2px 5px; }
+  .std-team {
+    margin-top: 4px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-300);
+    opacity: 0.85;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Points + trophies */
+  .std-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .std-pts {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 36px;
+    line-height: 1;
+    color: var(--bone);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+    min-width: 50px;
+    text-align: right;
+  }
+  .std-leader .std-pts { color: var(--red); }
+  .std-trophies {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 18px;
+  }
+  .std-trophy {
+    width: 14px; height: 14px;
+    color: var(--gold);
+    filter: drop-shadow(0 0 4px rgba(255,204,0,0.4));
+  }
+
+  /* Mobile */
+  @media (max-width: 700px) {
+    .std-row {
+      grid-template-columns: 42px 48px 1fr auto;
+      gap: 12px;
+      padding: 12px 14px 12px 12px;
+    }
+    .std-pos { font-size: 26px; }
+    .std-avatar-wrap, .std-avatar { width: 44px; height: 44px; }
+    .std-avatar { font-size: 14px; }
+    .std-flag { width: 18px; height: 13px; bottom: -2px; right: -3px; }
+    .std-last { font-size: 17px; }
+    .std-first { font-size: 12px; }
+    .std-team { font-size: 9px; }
+    .std-pts { font-size: 26px; min-width: 36px; }
+    .std-rookie { font-size: 8px; padding: 1px 4px; }
   }
 
   .champ-footer-note {
@@ -2776,14 +2827,6 @@
     gap: 8px;
   }
 
-  @media (max-width: 700px) {
-    .champ-table thead th.col-wins,
-    .champ-table tbody td.col-wins,
-    .champ-table thead th.col-gap,
-    .champ-table tbody td.col-gap { display: none; }
-    .champ-pos { font-size: 20px; width: 36px; }
-    .champ-pts { font-size: 20px; }
-  }
 
   /* ===================== RIVAL CARD ===================== */
   .rival-section {
@@ -4223,6 +4266,7 @@
     <a href="#highlights">Video</a>
     <a href="#quiz">Quiz</a>
     <a href="#news">News</a>
+    <a href="/articles/">Articles</a>
   </nav>
   <div class="right">
     <button class="hamburger" id="hamburger" aria-expanded="false" aria-label="Open menu">
@@ -4243,6 +4287,7 @@
   <a href="#highlights"      onclick="closeMobileNav()">Video</a>
   <a href="#quiz"            onclick="closeMobileNav()">Quiz</a>
   <a href="#news"            onclick="closeMobileNav()">News</a>
+  <a href="/articles/"       onclick="closeMobileNav()">Articles</a>
 </nav>
 
 <!-- ===================== LATEST RESULT BANNER ===================== -->
@@ -4833,89 +4878,228 @@
     </div>
   </div>
 
-  <table class="champ-table">
-    <thead>
-      <tr>
-        <th style="width:52px;">Pos</th>
-        <th>Driver</th>
-        <th class="col-wins">Wins</th>
-        <th class="col-pts">Pts</th>
-        <th class="col-gap">Gap</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="champ-tsolov">
-        <td class="champ-pos">01</td>
-        <td><img class="champ-flag" src="https://flagcdn.com/24x18/bg.png" alt="BG" title="Bulgaria"><span class="champ-driver-name">Nikola Tsolov</span><span class="champ-driver-team">Campos Racing</span></td>
-        <td class="col-wins"><span class="champ-wins-badge has-wins">2</span></td>
-        <td class="champ-pts">35</td>
-        <td class="champ-gap col-gap">—</td>
-      </tr>
-      <tr>
-        <td class="champ-pos">02</td>
-        <td><img class="champ-flag" src="https://flagcdn.com/24x18/br.png" alt="BR" title="Brazil"><span class="champ-driver-name">Rafael Câmara</span><span class="champ-driver-team">Invicta Racing</span></td>
-        <td class="col-wins"><span class="champ-wins-badge no-wins">0</span></td>
-        <td class="champ-pts">34</td>
-        <td class="champ-gap col-gap">−1</td>
-      </tr>
-      <tr>
-        <td class="champ-pos">03</td>
-        <td><img class="champ-flag" src="https://flagcdn.com/24x18/it.png" alt="IT" title="Italy"><span class="champ-driver-name">Gabriele Minì</span><span class="champ-driver-team">MP Motorsport</span></td>
-        <td class="col-wins"><span class="champ-wins-badge has-wins">1</span></td>
-        <td class="champ-pts">34</td>
-        <td class="champ-gap col-gap">−1</td>
-      </tr>
-      <tr>
-        <td class="champ-pos">04</td>
-        <td><img class="champ-flag" src="https://flagcdn.com/24x18/nl.png" alt="NL" title="Netherlands"><span class="champ-driver-name">Laurens van Hoepen</span><span class="champ-driver-team">Trident</span></td>
-        <td class="col-wins"><span class="champ-wins-badge no-wins">0</span></td>
-        <td class="champ-pts">26</td>
-        <td class="champ-gap col-gap">−9</td>
-      </tr>
-      <tr>
-        <td class="champ-pos">05</td>
-        <td><img class="champ-flag" src="https://flagcdn.com/24x18/jp.png" alt="JP" title="Japan"><span class="champ-driver-name">Ritomo Miyata</span><span class="champ-driver-team">Hitech</span></td>
-        <td class="col-wins"><span class="champ-wins-badge no-wins">0</span></td>
-        <td class="champ-pts">22</td>
-        <td class="champ-gap col-gap">−13</td>
-      </tr>
-      <tr>
-        <td class="champ-pos">06</td>
-        <td><img class="champ-flag" src="https://flagcdn.com/24x18/se.png" alt="SE" title="Sweden"><span class="champ-driver-name">Dino Beganovic</span><span class="champ-driver-team">DAMS Lucas Oil</span></td>
-        <td class="col-wins"><span class="champ-wins-badge no-wins">0</span></td>
-        <td class="champ-pts">21</td>
-        <td class="champ-gap col-gap">−14</td>
-      </tr>
-      <tr>
-        <td class="champ-pos">07</td>
-        <td><img class="champ-flag" src="https://flagcdn.com/24x18/mx.png" alt="MX" title="Mexico"><span class="champ-driver-name">Noel León</span><span class="champ-driver-team">Campos Racing</span></td>
-        <td class="col-wins"><span class="champ-wins-badge no-wins">0</span></td>
-        <td class="champ-pts">20</td>
-        <td class="champ-gap col-gap">−15</td>
-      </tr>
-      <tr>
-        <td class="champ-pos">08</td>
-        <td><img class="champ-flag" src="https://flagcdn.com/24x18/py.png" alt="PY" title="Paraguay"><span class="champ-driver-name">Joshua Dürksen</span><span class="champ-driver-team">Invicta Racing</span></td>
-        <td class="col-wins"><span class="champ-wins-badge has-wins">1</span></td>
-        <td class="champ-pts">16</td>
-        <td class="champ-gap col-gap">−19</td>
-      </tr>
-      <tr>
-        <td class="champ-pos">09</td>
-        <td><img class="champ-flag" src="https://flagcdn.com/24x18/th.png" alt="TH" title="Thailand"><span class="champ-driver-name">Tasanapol Inthraphuvasakul</span><span class="champ-driver-team">ART Grand Prix</span></td>
-        <td class="col-wins"><span class="champ-wins-badge no-wins">0</span></td>
-        <td class="champ-pts">13</td>
-        <td class="champ-gap col-gap">−22</td>
-      </tr>
-      <tr>
-        <td class="champ-pos">10</td>
-        <td><img class="champ-flag" src="https://flagcdn.com/24x18/de.png" alt="DE" title="Germany"><span class="champ-driver-name">Oliver Goethe</span><span class="champ-driver-team">MP Motorsport</span></td>
-        <td class="col-wins"><span class="champ-wins-badge no-wins">0</span></td>
-        <td class="champ-pts">12</td>
-        <td class="champ-gap col-gap">−23</td>
-      </tr>
-    </tbody>
-  </table>
+  <!-- Trophy SVG (used inline below) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="trophy-icon" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M18 4V2H6v2H2v3a4 4 0 0 0 4 4 6 6 0 0 0 5 5.91V18H8v2h8v-2h-3v-1.09A6 6 0 0 0 18 11a4 4 0 0 0 4-4V4h-4zM4 7V6h2v3a2 2 0 0 1-2-2zm16 0a2 2 0 0 1-2 2V6h2v1z"/>
+    </symbol>
+  </svg>
+
+  <div class="std-list">
+
+    <!-- 1 -->
+    <div class="std-row std-leader" style="--team-color:#e10600">
+      <div class="std-pos">1</div>
+      <div class="std-avatar-wrap">
+        <div class="std-avatar">NT</div>
+        <img class="std-flag" src="https://flagcdn.com/24x18/bg.png" alt="Bulgaria" />
+      </div>
+      <div class="std-driver">
+        <div class="std-names">
+          <span class="std-first">Nikola</span>
+          <span class="std-last">Tsolov</span>
+          <span class="std-rookie">Rookie</span>
+        </div>
+        <div class="std-team">Campos Racing</div>
+      </div>
+      <div class="std-right">
+        <div class="std-pts">35</div>
+        <div class="std-trophies">
+          <svg class="std-trophy"><use href="#trophy-icon"/></svg>
+          <svg class="std-trophy"><use href="#trophy-icon"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="std-row" style="--team-color:#ffcc00">
+      <div class="std-pos">2</div>
+      <div class="std-avatar-wrap">
+        <div class="std-avatar" style="color:#1a1a1a">RC</div>
+        <img class="std-flag" src="https://flagcdn.com/24x18/br.png" alt="Brazil" />
+      </div>
+      <div class="std-driver">
+        <div class="std-names">
+          <span class="std-first">Rafael</span>
+          <span class="std-last">Câmara</span>
+          <span class="std-rookie short">R</span>
+        </div>
+        <div class="std-team">Invicta Racing</div>
+      </div>
+      <div class="std-right">
+        <div class="std-pts">34</div>
+        <div class="std-trophies"></div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="std-row" style="--team-color:#ff6b1a">
+      <div class="std-pos">3</div>
+      <div class="std-avatar-wrap">
+        <div class="std-avatar">GM</div>
+        <img class="std-flag" src="https://flagcdn.com/24x18/it.png" alt="Italy" />
+      </div>
+      <div class="std-driver">
+        <div class="std-names">
+          <span class="std-first">Gabriele</span>
+          <span class="std-last">Minì</span>
+        </div>
+        <div class="std-team">MP Motorsport</div>
+      </div>
+      <div class="std-right">
+        <div class="std-pts">34</div>
+        <div class="std-trophies">
+          <svg class="std-trophy"><use href="#trophy-icon"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="std-row" style="--team-color:#2563eb">
+      <div class="std-pos">4</div>
+      <div class="std-avatar-wrap">
+        <div class="std-avatar">LH</div>
+        <img class="std-flag" src="https://flagcdn.com/24x18/nl.png" alt="Netherlands" />
+      </div>
+      <div class="std-driver">
+        <div class="std-names">
+          <span class="std-first">Laurens</span>
+          <span class="std-last">van Hoepen</span>
+          <span class="std-rookie short">R</span>
+        </div>
+        <div class="std-team">Trident</div>
+      </div>
+      <div class="std-right">
+        <div class="std-pts">26</div>
+        <div class="std-trophies"></div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="std-row" style="--team-color:#6b7280">
+      <div class="std-pos">5</div>
+      <div class="std-avatar-wrap">
+        <div class="std-avatar">RM</div>
+        <img class="std-flag" src="https://flagcdn.com/24x18/jp.png" alt="Japan" />
+      </div>
+      <div class="std-driver">
+        <div class="std-names">
+          <span class="std-first">Ritomo</span>
+          <span class="std-last">Miyata</span>
+        </div>
+        <div class="std-team">Hitech</div>
+      </div>
+      <div class="std-right">
+        <div class="std-pts">22</div>
+        <div class="std-trophies"></div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="std-row" style="--team-color:#dc2626">
+      <div class="std-pos">6</div>
+      <div class="std-avatar-wrap">
+        <div class="std-avatar">DB</div>
+        <img class="std-flag" src="https://flagcdn.com/24x18/se.png" alt="Sweden" />
+      </div>
+      <div class="std-driver">
+        <div class="std-names">
+          <span class="std-first">Dino</span>
+          <span class="std-last">Beganovic</span>
+        </div>
+        <div class="std-team">DAMS Lucas Oil</div>
+      </div>
+      <div class="std-right">
+        <div class="std-pts">21</div>
+        <div class="std-trophies"></div>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="std-row" style="--team-color:#e10600">
+      <div class="std-pos">7</div>
+      <div class="std-avatar-wrap">
+        <div class="std-avatar">NL</div>
+        <img class="std-flag" src="https://flagcdn.com/24x18/mx.png" alt="Mexico" />
+      </div>
+      <div class="std-driver">
+        <div class="std-names">
+          <span class="std-first">Noel</span>
+          <span class="std-last">León</span>
+          <span class="std-rookie short">R</span>
+        </div>
+        <div class="std-team">Campos Racing</div>
+      </div>
+      <div class="std-right">
+        <div class="std-pts">20</div>
+        <div class="std-trophies"></div>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="std-row" style="--team-color:#ffcc00">
+      <div class="std-pos">8</div>
+      <div class="std-avatar-wrap">
+        <div class="std-avatar" style="color:#1a1a1a">JD</div>
+        <img class="std-flag" src="https://flagcdn.com/24x18/py.png" alt="Paraguay" />
+      </div>
+      <div class="std-driver">
+        <div class="std-names">
+          <span class="std-first">Joshua</span>
+          <span class="std-last">Dürksen</span>
+        </div>
+        <div class="std-team">Invicta Racing</div>
+      </div>
+      <div class="std-right">
+        <div class="std-pts">16</div>
+        <div class="std-trophies">
+          <svg class="std-trophy"><use href="#trophy-icon"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="std-row" style="--team-color:#475569">
+      <div class="std-pos">9</div>
+      <div class="std-avatar-wrap">
+        <div class="std-avatar">TI</div>
+        <img class="std-flag" src="https://flagcdn.com/24x18/th.png" alt="Thailand" />
+      </div>
+      <div class="std-driver">
+        <div class="std-names">
+          <span class="std-first">Tasanapol</span>
+          <span class="std-last">Inthraphuvasakul</span>
+          <span class="std-rookie short">R</span>
+        </div>
+        <div class="std-team">ART Grand Prix</div>
+      </div>
+      <div class="std-right">
+        <div class="std-pts">13</div>
+        <div class="std-trophies"></div>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="std-row" style="--team-color:#ff6b1a">
+      <div class="std-pos">10</div>
+      <div class="std-avatar-wrap">
+        <div class="std-avatar">OG</div>
+        <img class="std-flag" src="https://flagcdn.com/24x18/de.png" alt="Germany" />
+      </div>
+      <div class="std-driver">
+        <div class="std-names">
+          <span class="std-first">Oliver</span>
+          <span class="std-last">Goethe</span>
+        </div>
+        <div class="std-team">MP Motorsport</div>
+      </div>
+      <div class="std-right">
+        <div class="std-pts">12</div>
+        <div class="std-trophies"></div>
+      </div>
+    </div>
+
+  </div><!-- /std-list -->
 
   <div class="champ-footer-note">
     <span>Top 10 shown · Full standings at fiaformula2.com</span>
@@ -6916,7 +7100,7 @@ if (document.readyState === 'loading') {
     document.querySelectorAll('.follow-card, .follow-website').forEach((el, i) => watch(el, 'reveal', i * 0.1));
 
     // -- Championship standings rows --
-    watchGroup('.champ-table tbody tr', 'reveal', 0, 0.05);
+    watchGroup('.std-row', 'reveal', 0, 0.05);
 
     // -- Fan poll options --
     watchGroup('.poll-btn', 'reveal', 0.1, 0.07);

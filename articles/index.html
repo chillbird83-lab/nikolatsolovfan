@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Articles — Nikola Tsolov Fan Page</title>
+<meta name="description" content="In-depth articles about Nikola Tsolov — career timeline, F2 2026 season analysis, Bulgarian F1 history and the road from karting to Formula 1." />
+<meta name="theme-color" content="#041E42" />
+<link rel="canonical" href="https://nikolatsolovfan.com/articles/" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Articles — Nikola Tsolov Fan Page" />
+<meta property="og:description" content="In-depth articles on Nikola Tsolov's F2 career, the 2026 season, and Bulgarian motorsport history." />
+<meta property="og:url" content="https://nikolatsolovfan.com/articles/" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://nikolatsolovfan.com/hero.webp" />
+
+<!-- Structured data: CollectionPage + Breadcrumb -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://nikolatsolovfan.com/articles/",
+      "url": "https://nikolatsolovfan.com/articles/",
+      "name": "Articles — Nikola Tsolov Fan Page",
+      "description": "In-depth articles about Nikola Tsolov, Bulgaria's first F2 race winner."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://nikolatsolovfan.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Articles", "item": "https://nikolatsolovfan.com/articles/" }
+      ]
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Titillium+Web:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --ink: #041E42;
+    --bone: #F1F1F1;
+    --red: #E03A3E;
+    --green: #00966e;
+    --gold: #FFCC00;
+    --gray-700: #0d2d56;
+    --gray-500: #4a6080;
+    --gray-300: #9ab0c8;
+    --display: 'Orbitron', Impact, sans-serif;
+    --sans: 'Titillium Web', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--ink);
+    color: var(--bone);
+    font-family: var(--sans);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  ::selection { background: var(--gold); color: var(--ink); }
+
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(4,30,66,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--gray-700);
+    padding: 14px 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .topbar .brand { color: var(--gold); font-weight: 700; }
+  .topbar nav { display: flex; gap: 22px; }
+  .topbar nav a { color: var(--bone); text-decoration: none; opacity: 0.75; transition: opacity .2s, color .2s; }
+  .topbar nav a:hover, .topbar nav a.active { opacity: 1; color: var(--gold); }
+
+  .crumbs {
+    max-width: 900px; margin: 0 auto; padding: 24px 24px 0;
+    font-family: var(--mono); font-size: 11px;
+    color: var(--gray-300); letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .crumbs a { color: var(--gray-300); text-decoration: none; }
+  .crumbs a:hover { color: var(--gold); }
+  .crumbs .sep { margin: 0 8px; color: var(--gray-500); }
+
+  main { max-width: 900px; margin: 0 auto; padding: 30px 24px 80px; }
+
+  .page-header { margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--gray-700); }
+  .page-tag { font-family: var(--mono); font-size: 11px; color: var(--red); letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 12px; }
+  .page-header h1 { font-family: var(--display); font-size: clamp(34px, 5vw, 52px); line-height: 1.05; font-weight: 900; margin-bottom: 14px; }
+  .page-header h1 .it { color: var(--red); font-style: italic; font-weight: 700; }
+  .page-header p { color: var(--gray-300); font-size: 16px; max-width: 640px; }
+
+  .article-list { display: grid; gap: 24px; }
+  .article-card {
+    display: block;
+    padding: 28px;
+    background: linear-gradient(180deg, rgba(13,45,86,0.45), rgba(13,45,86,0.15));
+    border: 1px solid var(--gray-700);
+    border-radius: 4px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform .25s ease, border-color .25s, box-shadow .25s;
+  }
+  .article-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--red);
+    box-shadow: 0 8px 24px rgba(225,6,0,0.15);
+  }
+  .article-card .meta { font-family: var(--mono); font-size: 11px; color: var(--gray-300); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 10px; }
+  .article-card .meta .badge { display: inline-block; padding: 2px 8px; background: var(--red); color: #fff; border-radius: 2px; margin-right: 10px; font-size: 10px; }
+  .article-card h2 { font-family: var(--display); font-size: 24px; line-height: 1.2; margin-bottom: 10px; font-weight: 700; }
+  .article-card p { color: var(--gray-300); font-size: 15px; }
+  .article-card .readmore { display: inline-block; margin-top: 14px; font-family: var(--mono); font-size: 11px; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; }
+
+  footer {
+    border-top: 1px solid var(--gray-700);
+    padding: 30px 24px;
+    text-align: center;
+    color: var(--gray-500);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  footer a { color: var(--gray-300); text-decoration: none; }
+  footer a:hover { color: var(--gold); }
+
+  @media (max-width: 600px) {
+    .topbar { padding: 12px 18px; }
+    .topbar nav { gap: 14px; font-size: 11px; }
+    main { padding: 24px 16px 60px; }
+    .article-card { padding: 22px; }
+    .article-card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">NikolaTsolovFan</div>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/articles/" class="active">Articles</a>
+    <a href="/#standings">Standings</a>
+    <a href="/#season">Season</a>
+  </nav>
+</header>
+
+<div class="crumbs">
+  <a href="/">Home</a><span class="sep">/</span>Articles
+</div>
+
+<main>
+  <div class="page-header">
+    <div class="page-tag">Editorial</div>
+    <h1>Articles <span class="it">&amp;</span> analysis</h1>
+    <p>In-depth pieces on Nikola Tsolov's career, the FIA Formula 2 2026 season, and the road from karting to Formula 1.</p>
+  </div>
+
+  <div class="article-list">
+
+    <a href="/articles/nikola-tsolov-career-timeline/" class="article-card">
+      <div class="meta"><span class="badge">Featured</span>15 May 2026 · 6 min read</div>
+      <h2>From karts to championship leader: the Nikola Tsolov story</h2>
+      <p>How a kid from Sofia with a karting budget that nearly ran out became Bulgaria's first FIA Formula 2 race winner — and is now leading the championship as a rookie.</p>
+      <span class="readmore">Read article →</span>
+    </a>
+
+  </div>
+</main>
+
+<footer>
+  <p>Unofficial fan site · Not affiliated with Nikola Tsolov, Campos Racing, Red Bull, or the FIA.</p>
+  <p style="margin-top:8px"><a href="/">← Back to home</a></p>
+</footer>
+
+</body>
+</html>
