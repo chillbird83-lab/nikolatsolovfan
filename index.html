@@ -1362,10 +1362,16 @@
     border-left: 2px solid var(--gray-500);
   }
   .sl-item.sl-pending {
-    opacity: 0.7;
+    opacity: 0.85;
     border-left-color: var(--gold);
     border-style: dashed;
   }
+  .sl-item.sl-expired {
+    opacity: 0.45;
+    border-left-color: var(--gray-500);
+  }
+  .sl-item.sl-expired .sl-desc { text-decoration: line-through; text-decoration-color: var(--gray-500); }
+  .sl-item.sl-expired .sl-pts { color: var(--gray-500); text-decoration: line-through; }
   .sl-year {
     font-family: var(--display);
     font-weight: 900;
@@ -4847,22 +4853,17 @@
         <div class="sl-head">
           <div>
             <div class="sl-label">FIA Super License points</div>
-            <div class="sl-sub">Progress toward the 40 points required to race in Formula 1</div>
+            <div class="sl-sub">Progress toward the 40 points required to race in Formula 1 — counted over a rolling 3-year window</div>
           </div>
           <div class="sl-count">
-            <span class="sl-current">37</span><span class="sl-total">/40</span>
+            <span class="sl-current">25</span><span class="sl-total">/40</span>
           </div>
         </div>
         <div class="sl-bar">
-          <div class="sl-bar-fill" style="width:92.5%"></div>
+          <div class="sl-bar-fill" style="width:62.5%"></div>
           <div class="sl-bar-marker" style="left:100%"><span>F1</span></div>
         </div>
         <div class="sl-breakdown">
-          <div class="sl-item">
-            <span class="sl-year">2022</span>
-            <span class="sl-desc">Spanish F4 — Champion</span>
-            <span class="sl-pts">+12</span>
-          </div>
           <div class="sl-item">
             <span class="sl-year">2025</span>
             <span class="sl-desc">FIA Formula 3 — Vice-Champion</span>
@@ -4870,12 +4871,17 @@
           </div>
           <div class="sl-item sl-pending">
             <span class="sl-year">2026</span>
-            <span class="sl-desc">FIA Formula 2 — in progress</span>
-            <span class="sl-pts">+ ?</span>
+            <span class="sl-desc">FIA Formula 2 — Top 3 unlocks Super License</span>
+            <span class="sl-pts">+40</span>
+          </div>
+          <div class="sl-item sl-expired">
+            <span class="sl-year">2022</span>
+            <span class="sl-desc">Spanish F4 — Champion (expired end 2025)</span>
+            <span class="sl-pts">+12</span>
           </div>
         </div>
         <div class="sl-foot">
-          Top 3 in F2 = full Super License. Tsolov currently leads the 2026 standings.
+          A Top 3 finish in F2 2026 (worth 40 pts) would push Tsolov past the threshold. He currently leads the championship.
         </div>
       </div>
     </div>
