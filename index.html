@@ -5012,7 +5012,7 @@
       <div class="sched-tz-wrap">
         <span>TZ</span>
         <div class="tz-dropdown" id="tz-dropdown">
-          <div class="tz-trigger" id="tz-trigger" role="button" tabindex="0" aria-haspopup="listbox" aria-expanded="false">
+          <div class="tz-trigger" id="tz-trigger" role="button" tabindex="0" aria-haspopup="listbox" aria-expanded="false" onclick="(function(t){var d=t.parentElement;var open=d.classList.toggle('open');t.classList.toggle('open',open);t.setAttribute('aria-expanded',open);})(this);event.stopPropagation();">
             <span class="tz-trigger-label" id="tz-trigger-label">🌍 My local time</span>
             <span class="tz-trigger-chevron">▼</span>
           </div>
@@ -5029,6 +5029,17 @@
             <div class="tz-option" data-tz="Australia/Sydney" role="option">🇦🇺 Sydney (AEST)</div>
           </div>
         </div>
+        <script>
+          // Inline fallback: close dropdown on outside click + Esc
+          (function(){
+            var d = document.getElementById('tz-dropdown');
+            var t = document.getElementById('tz-trigger');
+            if (!d || !t) return;
+            function close(){ d.classList.remove('open'); t.classList.remove('open'); t.setAttribute('aria-expanded','false'); }
+            document.addEventListener('click', function(e){ if (!d.contains(e.target)) close(); });
+            document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+          })();
+        </script>
       </div>
     </div>
     <div class="sched-rows" id="sched-rows"></div>
@@ -7287,11 +7298,11 @@ if (document.readyState === 'loading') {
     // Defer non-critical work to unblock main thread
     const defer = window.requestIdleCallback || (cb => setTimeout(cb, 1));
     defer(() => {
-      if (typeof renderGallery === 'function') renderGallery();
-      if (typeof renderNews === 'function') renderNews();
-      if (typeof initSessionSchedule === 'function') initSessionSchedule();
-      if (typeof initStatCounters === 'function') initStatCounters();
-      if (typeof initRecapCards === 'function') initRecapCards();
+      try { if (typeof renderGallery === 'function') renderGallery(); } catch (e) { console.error('renderGallery:', e); }
+      try { if (typeof renderNews === 'function') renderNews(); } catch (e) { console.error('renderNews:', e); }
+      try { if (typeof initSessionSchedule === 'function') initSessionSchedule(); } catch (e) { console.error('initSessionSchedule:', e); }
+      try { if (typeof initStatCounters === 'function') initStatCounters(); } catch (e) { console.error('initStatCounters:', e); }
+      try { if (typeof initRecapCards === 'function') initRecapCards(); } catch (e) { console.error('initRecapCards:', e); }
     });
   }
   if (document.readyState === 'loading') {
