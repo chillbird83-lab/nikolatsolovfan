@@ -4421,10 +4421,46 @@
   .sched-time { font-family: var(--mono); font-size: 16px; font-weight: 700; color: var(--bone); letter-spacing: 0.04em; line-height: 1; }
   .sched-tz-abbr { font-size: 10px; color: var(--gray-300); font-weight: 400; margin-left: 4px; }
 
+  /* Status / result pills */
+  .sched-done-pill, .sched-next-pill, .sched-result-pill {
+    display: inline-block;
+    margin-left: 12px;
+    padding: 3px 9px;
+    border-radius: 3px;
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+  .sched-done-pill {
+    background: rgba(255,255,255,0.05);
+    color: var(--gray-300);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .sched-next-pill {
+    background: rgba(255,204,0,0.12);
+    color: var(--gold);
+    border: 1px solid rgba(255,204,0,0.35);
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  .sched-result-pill {
+    background: rgba(225,6,0,0.15);
+    color: var(--red);
+    border: 1px solid rgba(225,6,0,0.4);
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: none;
+    box-shadow: 0 0 12px rgba(225,6,0,0.18);
+  }
+
   @media (max-width: 600px) {
     .sched-wrap { margin: 20px 0 0; border-radius: 0; border-left: none; border-right: none; }
     .sched-row  { grid-template-columns: 20px 66px 1fr auto; gap: 0 10px; padding: 12px 14px; }
     .sched-time { font-size: 14px; }
+    .sched-done-pill, .sched-next-pill, .sched-result-pill { margin-left: 6px; font-size: 8px; padding: 2px 6px; }
   }
 
   /* ===================== NEWS ===================== */
@@ -6796,10 +6832,10 @@
 <script>
 function initSessionSchedule() {
   const SESSIONS = [
-    { label: 'Free Practice',   short: 'FP',   utc: '2026-05-22T14:05:00Z', type: 'fp'   },
-    { label: 'Qualifying',      short: 'QUAL', utc: '2026-05-22T18:00:00Z', type: 'qual' },
-    { label: 'Sprint Race',     short: 'SPR',  utc: '2026-05-23T18:10:00Z', type: 'spr'  },
-    { label: 'Feature Race',    short: 'FTR',  utc: '2026-05-24T16:05:00Z', type: 'ftr'  },
+    { label: 'Free Practice',   short: 'FP',   utc: '2026-05-22T14:05:00Z', type: 'fp',   result: '' },
+    { label: 'Qualifying',      short: 'QUAL', utc: '2026-05-22T18:00:00Z', type: 'qual', result: 'P4 · +0.312' },
+    { label: 'Sprint Race',     short: 'SPR',  utc: '2026-05-23T18:10:00Z', type: 'spr',  result: '' },
+    { label: 'Feature Race',    short: 'FTR',  utc: '2026-05-24T16:05:00Z', type: 'ftr',  result: '' },
   ];
 
   const TZ_ZONES = [
@@ -6845,13 +6881,16 @@ function initSessionSchedule() {
       const t = new Date(s.utc).getTime();
       const isPast = t < now;
       const isNext = !isPast && SESSIONS.filter(x => new Date(x.utc).getTime() > now)[0] === s;
+      const resultPill = (isPast && s.result)
+        ? `<span class="sched-result-pill">${s.result}</span>`
+        : (isPast ? '<span class="sched-done-pill">Done</span>' : '');
       return `<div class="sched-row sched-type-${s.type}${isPast?' sched-past':''}${isNext?' sched-next':''}">
         <span class="sched-dot"></span>
         <span class="sched-badge">${s.short}</span>
         <span class="sched-label">${s.label}</span>
         <span class="sched-time">${formatSession(s.utc, tz)}</span>
         ${isNext ? '<span class="sched-next-pill">Next up</span>' : ''}
-        ${isPast ? '<span class="sched-done-pill">Done</span>' : ''}
+        ${resultPill}
       </div>`;
     }).join('');
   }
