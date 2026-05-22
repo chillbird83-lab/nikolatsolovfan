@@ -6321,7 +6321,7 @@
         document.getElementById(id).textContent = '00'
       );
       document.getElementById('cd-status').innerHTML =
-        '<span class="now">' + t('cd.weekendLive', 'Race weekend live') + '</span>';
+        '<span class="now">Race weekend live</span>';
       return;
     }
 
@@ -7301,8 +7301,8 @@ if (document.readyState === 'loading') {
   function initAll() {
     // Critical — render above-the-fold countdown immediately
     if (typeof tick === 'function') {
-      tick();
-      setInterval(tick, 1000);
+      try { tick(); } catch (e) { console.error('tick:', e); }
+      setInterval(() => { try { tick(); } catch (e) { /* swallow */ } }, 1000);
     }
     // Defer non-critical work to unblock main thread
     const defer = window.requestIdleCallback || (cb => setTimeout(cb, 1));
