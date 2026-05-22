@@ -6860,43 +6860,56 @@ function initSessionSchedule() {
   }
 
   // Dropdown open/close
-  const trigger = document.getElementById('tz-trigger');
-  const panel   = document.getElementById('tz-panel');
-  const dropdown= document.getElementById('tz-dropdown');
+  const trigger  = document.getElementById('tz-trigger');
+  const panel    = document.getElementById('tz-panel');
+  const dropdown = document.getElementById('tz-dropdown');
 
-  if (trigger && panel) {
+  function closeDropdown() {
+    if (!dropdown) return;
+    dropdown.classList.remove('open');
+    trigger.classList.remove('open');
+    trigger.setAttribute('aria-expanded', 'false');
+  }
+  function openDropdown() {
+    if (!dropdown) return;
+    dropdown.classList.add('open');
+    trigger.classList.add('open');
+    trigger.setAttribute('aria-expanded', 'true');
+  }
+  function toggleDropdown() {
+    if (dropdown.classList.contains('open')) closeDropdown();
+    else openDropdown();
+  }
+
+  if (trigger && panel && dropdown) {
     trigger.addEventListener('click', (e) => {
+      e.preventDefault();
       e.stopPropagation();
-      const open = dropdown.classList.toggle('open');
-      trigger.setAttribute('aria-expanded', open);
+      toggleDropdown();
     });
     trigger.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); trigger.click(); }
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleDropdown();
+      }
     });
     document.addEventListener('click', (e) => {
-      if (!dropdown.contains(e.target)) {
-        dropdown.classList.remove('open');
-        trigger.setAttribute('aria-expanded', 'false');
-      }
+      if (!dropdown.contains(e.target)) closeDropdown();
     });
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        dropdown.classList.remove('open');
-        trigger.setAttribute('aria-expanded', 'false');
-      }
+      if (e.key === 'Escape') closeDropdown();
     });
 
-    // Option clicks
-    document.querySelectorAll('.tz-option').forEach(opt => {
-      opt.addEventListener('click', (e) => {
-        e.stopPropagation();
-        currentTZ = opt.dataset.tz;
-        renderRows(currentTZ);
-        updateTriggerLabel(currentTZ);
-        setActiveOption(currentTZ);
-        dropdown.classList.remove('open');
-        trigger.setAttribute('aria-expanded', 'false');
-      });
+    // Option clicks — delegated on panel so it survives any re-render
+    panel.addEventListener('click', (e) => {
+      const opt = e.target.closest('.tz-option');
+      if (!opt) return;
+      e.stopPropagation();
+      currentTZ = opt.dataset.tz;
+      renderRows(currentTZ);
+      updateTriggerLabel(currentTZ);
+      setActiveOption(currentTZ);
+      closeDropdown();
     });
   }
 
