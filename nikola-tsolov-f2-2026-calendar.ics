@@ -1,0 +1,149 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//nikolatsolovfan.com//F2 2026 Tsolov Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Nikola Tsolov — F2 2026 Season
+X-WR-CALDESC:All 14 FIA Formula 2 2026 race weekends. Nikola Tsolov (Campos Racing #6) follows.
+X-WR-TIMEZONE:UTC
+BEGIN:VEVENT
+UID:r01-melbourne-2026@nikolatsolovfan.com
+DTSTAMP:20260515T000000Z
+DTSTART;VALUE=DATE:20260306
+DTEND;VALUE=DATE:20260309
+SUMMARY:F2 R1 — Melbourne (Tsolov, Campos #6)
+LOCATION:Albert Park Circuit, Melbourne, Australia
+DESCRIPTION:Round 1 of the 2026 FIA Formula 2 Championship. Albert Park, Melbourne. Nikola Tsolov drives car #6 for Campos Racing.\nFull tracker: https://nikolatsolovfan.com
+URL:https://nikolatsolovfan.com/#season
+END:VEVENT
+BEGIN:VEVENT
+UID:r02-miami-2026@nikolatsolovfan.com
+DTSTAMP:20260515T000000Z
+DTSTART;VALUE=DATE:20260501
+DTEND;VALUE=DATE:20260504
+SUMMARY:F2 R2 — Miami (Tsolov, Campos #6)
+LOCATION:Miami International Autodrome, Miami, USA
+DESCRIPTION:Round 2 of the 2026 FIA Formula 2 Championship. Miami International Autodrome.\nFull tracker: https://nikolatsolovfan.com
+URL:https://nikolatsolovfan.com/#season
+END:VEVENT
+BEGIN:VEVENT
+UID:r03-montreal-2026@nikolatsolovfan.com
+DTSTAMP:20260515T000000Z
+DTSTART;VALUE=DATE:20260522
+DTEND;VALUE=DATE:20260525
+SUMMARY:F2 R3 — Montréal (Tsolov, Campos #6)
+LOCATION:Circuit Gilles Villeneuve, Montréal, Canada
+DESCRIPTION:Round 3 of the 2026 FIA Formula 2 Championship. Circuit Gilles Villeneuve, Montréal.\nFull tracker: https://nikolatsolovfan.com
+URL:https://nikolatsolovfan.com/#season
+END:VEVENT
+BEGIN:VEVENT
+UID:r04-monaco-2026@nikolatsolovfan.com
+DTSTAMP:20260515T000000Z
+DTSTART;VALUE=DATE:20260604
+DTEND;VALUE=DATE:20260608
+SUMMARY:F2 R4 — Monaco (Tsolov, Campos #6)
+LOCATION:Circuit de Monaco, Monaco
+DESCRIPTION:Round 4 of the 2026 FIA Formula 2 Championship. Circuit de Monaco.\nFull tracker: https://nikolatsolovfan.com
+URL:https://nikolatsolovfan.com/#season
+END:VEVENT
+BEGIN:VEVENT
+UID:r05-barcelona-2026@nikolatsolovfan.com
+DTSTAMP:20260515T000000Z
+DTSTART;VALUE=DATE:20260612
+DTEND;VALUE=DATE:20260615
+SUMMARY:F2 R5 — Barcelona (Tsolov, Campos #6)
+LOCATION:Circuit de Barcelona-Catalunya, Spain
+DESCRIPTION:Round 5 of the 2026 FIA Formula 2 Championship. Circuit de Barcelona-Catalunya.\nFull tracker: https://nikolatsolovfan.com
+URL:https://nikolatsolovfan.com/#season
+END:VEVENT
+BEGIN:VEVENT
+UID:r06-spielberg-2026@nikolatsolovfan.com
+DTSTAMP:20260515T000000Z
+DTSTART;VALUE=DATE:20260626
+DTEND;VALUE=DATE:20260629
+SUMMARY:F2 R6 — Spielberg (Tsolov, Campos #6)
+LOCATION:Red Bull Ring, Spielberg, Austria
+DESCRIPTION:Round 6 of the 2026 FIA Formula 2 Championship. Red Bull Ring, Spielberg.\nFull tracker: https://nikolatsolovfan.com
+URL:https://nikolatsolovfan.com/#season
+END:VEVENT
+BEGIN:VEVENT
+UID:r07-silverstone-2026@nikolatsolovfan.com
+DTSTAMP:20260515T000000Z
+DTSTART;VALUE=DATE:20260703
+DTEND;VALUE=DATE:20260706
+SUMMARY:F2 R7 — Silverstone (Tsolov, Campos #6)
+LOCATION:Silverstone Circuit, United Kingdom
+DESCRIPTION:Round 7 of the 2026 FIA Formula 2 Championship. Silverstone Circuit.\nFull tracker: https://nikolatsolovfan.com
+URL:https://nikolatsolovfan.com/#season
+END:VEVENT
+BEGIN:VEVENT
+UID:r08-spa-2026@nikolatsolovfan.com
+DTSTAMP:20260515T000000Z
+DTSTART;VALUE=DATE:20260717
+DTEND;VALUE=DATE:20260720
+SUMMARY:F2 R8 — Spa-Francorchamps (Tsolov, Campos #6)
+LOCATION:Circuit de Spa-Francorchamps, Belgium
+DESCRIPTION:Round 8 of the 2026 FIA Formula 2 Championship. Spa-Francorchamps.\nFull tracker: https://nikolatsolovfan.com
+URL:https://nikolatsolovfan.com/#season
+END:VEVENT
+BEGIN:VEVENT
+UID:r09-budapest-2026@nikolatsolovfan.com
+DTSTAMP:20260515T000000Z
+DTSTART;VALUE=DATE:20260724
+DTEND;VALUE=DATE:20260727
+SUMMARY:F2 R9 — Budapest (Tsolov, Campos #6)
+LOCATION:Hungaroring, Budapest, Hungary
+DESCRIPTION:Round 9 of the 2026 FIA Formula 2 Championship. Hungaroring, Budapest.\nFull tracker: https://nikolatsolovfan.com
+URL:https://nikolatsolovfan.com/#season
+END:VEVENT
+BEGIN:VEVENT
+UID:r10-monza-2026@nikolatsolovfan.com
+DTSTAMP:20260515T000000Z
+DTSTART;VALUE=DATE:20260904
+DTEND;VALUE=DATE:20260907
+SUMMARY:F2 R10 — Monza (Tsolov, Campos #6)
+LOCATION:Autodromo Nazionale Monza, Italy
+DESCRIPTION:Round 10 of the 2026 FIA Formula 2 Championship. Monza.\nFull tracker: https://nikolatsolovfan.com
+URL:https://nikolatsolovfan.com/#season
+END:VEVENT
+BEGIN:VEVENT
+UID:r11-madrid-2026@nikolatsolovfan.com
+DTSTAMP:20260515T000000Z
+DTSTART;VALUE=DATE:20260911
+DTEND;VALUE=DATE:20260914
+SUMMARY:F2 R11 — Madrid (Tsolov, Campos #6)
+LOCATION:Circuit Madrid, Spain
+DESCRIPTION:Round 11 of the 2026 FIA Formula 2 Championship. Circuit Madrid.\nFull tracker: https://nikolatsolovfan.com
+URL:https://nikolatsolovfan.com/#season
+END:VEVENT
+BEGIN:VEVENT
+UID:r12-baku-2026@nikolatsolovfan.com
+DTSTAMP:20260515T000000Z
+DTSTART;VALUE=DATE:20260924
+DTEND;VALUE=DATE:20260927
+SUMMARY:F2 R12 — Baku (Tsolov, Campos #6)
+LOCATION:Baku City Circuit, Azerbaijan
+DESCRIPTION:Round 12 of the 2026 FIA Formula 2 Championship. Baku City Circuit.\nFull tracker: https://nikolatsolovfan.com
+URL:https://nikolatsolovfan.com/#season
+END:VEVENT
+BEGIN:VEVENT
+UID:r13-lusail-2026@nikolatsolovfan.com
+DTSTAMP:20260515T000000Z
+DTSTART;VALUE=DATE:20261127
+DTEND;VALUE=DATE:20261130
+SUMMARY:F2 R13 — Lusail (Tsolov, Campos #6)
+LOCATION:Lusail International Circuit, Qatar
+DESCRIPTION:Round 13 of the 2026 FIA Formula 2 Championship. Lusail International Circuit.\nFull tracker: https://nikolatsolovfan.com
+URL:https://nikolatsolovfan.com/#season
+END:VEVENT
+BEGIN:VEVENT
+UID:r14-yasisland-2026@nikolatsolovfan.com
+DTSTAMP:20260515T000000Z
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261207
+SUMMARY:F2 R14 — Yas Island (Tsolov, Campos #6)
+LOCATION:Yas Marina Circuit, Abu Dhabi, UAE
+DESCRIPTION:Round 14 of the 2026 FIA Formula 2 Championship. Yas Marina Circuit — season finale.\nFull tracker: https://nikolatsolovfan.com
+URL:https://nikolatsolovfan.com/#season
+END:VEVENT
+END:VCALENDAR
