@@ -6354,19 +6354,19 @@
 <script>
 (function renderPointsChart() {
   const DRIVERS = [
-    { name: 'Tsolov',     color: '#e10600', pts: [0, 25, 35] },
-    { name: 'Minì',       color: '#d4a541', pts: [0,  9, 34] },
-    { name: 'Câmara',     color: '#4fd99a', pts: [0, 18, 34] },
-    { name: 'van Hoepen', color: '#7ba7e0', pts: [0, 26, 26] },
-    { name: 'Miyata',     color: '#b07be0', pts: [0, 14, 22] },
+    { name: 'Minì',       color: '#ff6b1a', pts: [0,  7, 34, 57] },
+    { name: 'Tsolov',     color: '#e10600', pts: [0, 25, 35, 47] },
+    { name: 'Câmara',     color: '#ffcc00', pts: [0, 18, 34, 36] },
+    { name: 'Stenshorne', color: '#facc15', pts: [0,  1,  4, 35] },
+    { name: 'van Hoepen', color: '#5b9bd5', pts: [0, 18, 26, 33] },
   ];
-  const ROUNDS = ['Pre-season', 'R01 · Melbourne', 'R02 · Miami'];
+  const ROUNDS = ['Pre-season', 'R01 · Melbourne', 'R02 · Miami', 'R03 · Montréal'];
 
   const W = 740, H = 320;
   const PAD = { top: 30, right: 140, bottom: 52, left: 44 };
   const pw = W - PAD.left - PAD.right;
   const ph = H - PAD.top  - PAD.bottom;
-  const MAX_PTS = 45;
+  const MAX_PTS = 60;
   const ns = 'http://www.w3.org/2000/svg';
   const svg = document.getElementById('points-chart');
 
@@ -6380,7 +6380,7 @@
   function cy(pts) { return PAD.top  + ph - (pts / MAX_PTS) * ph; }
 
   // Grid lines
-  [0, 10, 20, 30, 40].forEach(pts => {
+  [0, 15, 30, 45, 60].forEach(pts => {
     const yy = cy(pts);
     svg.appendChild(el('line', { x1: PAD.left - 6, y1: yy, x2: W - PAD.right, y2: yy,
       stroke: pts === 0 ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.05)',
