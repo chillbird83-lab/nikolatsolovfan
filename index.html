@@ -4572,7 +4572,7 @@
         <span class="race">Montréal · Feature</span>
         <strong>P2 in championship · 47 pts (−10 to Minì)</strong>
         <span class="sep">·</span>
-        Recovered from mid-race spin · 4 overtakes in final 10 laps
+        Contact on lap 15 dropped him to P16 — climbed 12 places to P4
         <span class="sep">·</span>
         Sprint: P14 (no points)
       </span>
@@ -4856,17 +4856,17 @@
               <text x="18" y="110" fill="#9ab0c8" font-size="9" text-anchor="middle">P18</text>
               <line x1="28" y1="12" x2="296" y2="12" stroke="#1a3a5c" stroke-width="0.5"/>
               <line x1="28" y1="36" x2="296" y2="36" stroke="#1a3a5c" stroke-width="0.5"/>
-              <line x1="28" y1="60" x2="296" y2="60" stroke="#1a3a5c" stroke-width="0.5"/>
+              <line x1="28" y1="60" x2="296" y2="60" stroke="#1a3a5c" stroke-with="0.5" stroke-width="0.5"/>
               <line x1="28" y1="84" x2="296" y2="84" stroke="#1a3a5c" stroke-width="0.5"/>
               <line x1="28" y1="108" x2="296" y2="108" stroke="#1a3a5c" stroke-width="0.5"/>
-              <!-- Starts P4, mid-race spin drops to P12-ish, recovers to P4 -->
-              <polyline points="28,36 70,36 110,40 150,85 175,75 210,60 245,48 296,36"
+              <!-- Starts P4, holds for ~14 laps, collision on lap 15 drops to P16, recovers all the way back to P4 -->
+              <polyline points="28,36 70,36 130,38 170,104 200,86 225,70 255,52 296,36"
                 fill="none" stroke="#FFCC00" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
               <circle cx="28" cy="36" r="4" fill="#FFCC00"/>
-              <circle cx="150" cy="85" r="4" fill="#E03A3E"/>
+              <circle cx="170" cy="104" r="4.5" fill="#E03A3E"/>
               <circle cx="296" cy="36" r="5" fill="#FFCC00" stroke="#fff" stroke-width="1.5"/>
               <text x="286" y="32" fill="#FFCC00" font-size="9" font-weight="bold">P4</text>
-              <text x="142" y="100" fill="#E03A3E" font-size="8">spin</text>
+              <text x="170" y="116" fill="#E03A3E" font-size="8" text-anchor="middle">L15 · contact</text>
             </svg>
           </div>
           <div class="recap-moments">
@@ -4880,12 +4880,12 @@
               <span class="recap-moment-text" style="color:var(--gray-300)">From P7 on reverse grid, dropped back in a chaotic race. Finished P14, no points.</span>
             </div>
             <div class="recap-moment">
-              <span class="recap-moment-lap">Mid-race</span>
-              <span class="recap-moment-text" style="color:var(--red)">Spin flat-spotted the front-left tyre — dropped outside the points</span>
+              <span class="recap-moment-lap">Lap 15</span>
+              <span class="recap-moment-text" style="color:var(--red)">Innocent victim of contact — dropped from the fight to <strong>P16</strong>, outside the points</span>
             </div>
             <div class="recap-moment">
-              <span class="recap-moment-lap">Final 10 laps</span>
-              <span class="recap-moment-text">🔥 Four overtakes back into the points — tyre management masterclass on a flat-spot</span>
+              <span class="recap-moment-lap">Recovery</span>
+              <span class="recap-moment-text">🔥 <strong>P16 → P4</strong> — twelve places back through traffic with damaged tyres, tyre-management masterclass</span>
             </div>
             <div class="recap-moment">
               <span class="recap-moment-lap">Finish</span>
@@ -4897,7 +4897,7 @@
         <!-- Technical Takeaway -->
         <div class="recap-takeaway">
           <div class="recap-takeaway-label">Technical Takeaway</div>
-          <p>Montréal confirmed Tsolov's elite tire management. Even after a mid-race spin flat-spotted his momentum, he maintained the thermal window required to execute four high-stakes overtakes in the final 10 laps. This recovery drive protected a crucial 12 points in the championship battle.</p>
+          <p>Montréal confirmed Tsolov's elite tyre management. After being collected in a lap-15 collision through no fault of his own — dropping him from the fight to P16 — he kept the tyres in the right thermal window to claw back <strong>twelve positions</strong>, executing a string of high-stakes overtakes to finish P4. The recovery drive protected a crucial 12 points in the championship battle.</p>
         </div>
 
         <div class="recap-quote">"Not the weekend we wanted, but P4 from where I was at half-distance — I'll take that. The car came alive in the second stint." — Nikola Tsolov</div>
@@ -7111,8 +7111,8 @@ function initRecapCards() {
     {
       date: "2026-05-24",
       tag: "race",
-      headline: "Tsolov salvages P4 in Montréal — drops to P2 in title fight as Minì surges to top",
-      summary: "A weekend that nearly turned costly ended with damage controlled. After qualifying P4 (Van Hoepen pole), a chaotic Sprint left Tsolov P14 with no points. The Feature Race saw a mid-race spin flat-spot his front-left tyre — but a tyre-management masterclass and four overtakes in the final 10 laps clawed him back to P4 (12 pts). Stenshorne won the Feature; Minì's P3 finish lifted him to the top of the championship on 57 pts. Tsolov is now P2 with 47 — a 10-point gap to recover.",
+      headline: "Tsolov P16 → P4 recovery in Montréal — drops to P2 in title fight as Minì surges to top",
+      summary: "A weekend that nearly turned costly ended with damage controlled. After qualifying P4 (Van Hoepen pole), a chaotic Sprint left Tsolov P14 with no points. The Feature Race delivered the headline moment: an innocent victim of contact on lap 15, he was dumped back to P16 — then drove a tyre-management masterclass to climb twelve places and finish P4 (12 pts). Stenshorne won the Feature; Minì's P3 finish lifted him to the top of the championship on 57 pts. Tsolov is now P2 with 47 — a 10-point gap to recover.",
       url: "https://www.fiaformula2.com",
       source: "Race Recap",
       image: "nikola-tsolov-campos-f2-wet-track.webp"
