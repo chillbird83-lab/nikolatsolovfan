@@ -2822,13 +2822,6 @@
     gap: 10px;
   }
 
-  .proj-flag {
-    width: 24px; height: 18px;
-    border-radius: 2px;
-    vertical-align: middle;
-    margin-right: 6px;
-    object-fit: cover;
-  }
 
   .std-row {
     position: relative;
@@ -4011,127 +4004,6 @@
   }
 
   /* ===================== PROJECTION WIDGET ===================== */
-  .projection-section {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 24px 96px;
-  }
-  .proj-header { margin-bottom: 32px; }
-  .proj-subtitle {
-    font-size: 14px;
-    color: var(--gray-500);
-    margin-top: 6px;
-    font-family: var(--mono);
-  }
-  .proj-champ-banner {
-    grid-column: 1 / -1;
-    background: rgba(225,6,0,0.07);
-    border: 1px solid rgba(225,6,0,0.22);
-    border-radius: 14px;
-    padding: 22px 28px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 4px;
-  }
-  .proj-crown { font-size: 44px; line-height: 1; }
-  .proj-champ-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: var(--gray-500);
-    text-transform: uppercase;
-    margin-bottom: 4px;
-  }
-  .proj-champ-name {
-    font-family: var(--display);
-    font-size: 30px;
-    font-weight: 900;
-    color: var(--red);
-    line-height: 1;
-  }
-  .proj-champ-margin {
-    font-size: 13px;
-    color: var(--gray-300);
-    margin-top: 4px;
-    font-family: var(--mono);
-  }
-  .proj-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-  }
-  @media (max-width: 640px) { .proj-grid { grid-template-columns: 1fr; } }
-  .proj-card {
-    background: rgba(255,255,255,0.025);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 14px;
-    padding: 22px 24px;
-  }
-  .proj-card.proj-leader {
-    border-color: rgba(225,6,0,0.22);
-    background: rgba(225,6,0,0.04);
-  }
-  .proj-eyebrow {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: var(--gray-500);
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-  .proj-driver {
-    font-family: var(--display);
-    font-size: 26px;
-    font-weight: 800;
-    letter-spacing: 0.02em;
-    line-height: 1;
-    margin-bottom: 2px;
-  }
-  .proj-team {
-    font-size: 11px;
-    color: var(--gray-500);
-    margin-bottom: 18px;
-    font-family: var(--mono);
-  }
-  .proj-pts-now {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--gray-400, #888);
-    margin-bottom: 4px;
-  }
-  .proj-pts-final {
-    font-family: var(--display);
-    font-size: 48px;
-    font-weight: 900;
-    line-height: 1;
-  }
-  .proj-pts-final .unit {
-    font-size: 16px;
-    font-weight: 400;
-    color: var(--gray-500);
-    margin-left: 4px;
-  }
-  .proj-bar-wrap {
-    height: 4px;
-    background: rgba(255,255,255,0.07);
-    border-radius: 2px;
-    margin-top: 14px;
-    overflow: hidden;
-  }
-  .proj-bar {
-    height: 100%;
-    border-radius: 2px;
-    width: 0;
-    transition: width 1.2s cubic-bezier(.16,1,.3,1) 0.5s;
-  }
-  .proj-note {
-    font-size: 11px;
-    color: var(--gray-500);
-    margin-top: 10px;
-    font-family: var(--mono);
-  }
-
   /* ===================== 2026 F2 SEASON MAP ===================== */
   .map-section {
     max-width: 1200px;
@@ -5597,14 +5469,6 @@
 </section>
 
 <!-- ===================== POINTS PROJECTION ===================== -->
-<section class="projection-section" id="projection">
-  <div class="proj-header">
-    <div class="section-tag">Data Model</div>
-    <h2 class="section-title">Season <span class="it">Projection</span></h2>
-    <p class="proj-subtitle">Projected over 14 rounds · based on current average</p>
-  </div>
-  <div class="proj-grid" id="proj-grid"><!-- rendered by JS --></div>
-</section>
 
 <!-- ===================== FAN POLL ===================== -->
 <section class="poll-section" id="poll">
@@ -6634,70 +6498,6 @@
 })();
 </script>
 
-<!-- ===================== POINTS PROJECTION ===================== -->
-<script>
-(function renderProjection() {
-  const TOTAL_ROUNDS = 14;
-  const COMPLETED    = 2;
-  const REMAINING    = TOTAL_ROUNDS - COMPLETED;
-
-  const DRIVERS = [
-    { name: 'Tsolov',     flag: '<img class="proj-flag" src="https://flagcdn.com/24x18/bg.png" alt="BG" title="Bulgaria">',     team: 'Campos Racing',  pts: 35, color: '#e10600' },
-    { name: 'Minì',       flag: '<img class="proj-flag" src="https://flagcdn.com/24x18/it.png" alt="IT" title="Italy">',         team: 'MP Motorsport',  pts: 34, color: '#d4a541' },
-    { name: 'Câmara',     flag: '<img class="proj-flag" src="https://flagcdn.com/24x18/br.png" alt="BR" title="Brazil">',        team: 'Invicta Racing', pts: 34, color: '#4fd99a' },
-    { name: 'van Hoepen', flag: '<img class="proj-flag" src="https://flagcdn.com/24x18/nl.png" alt="NL" title="Netherlands">',   team: 'Trident',        pts: 26, color: '#7ba7e0' },
-  ];
-
-  const projected = DRIVERS.map(d => ({
-    ...d,
-    avg:   +(d.pts / COMPLETED).toFixed(1),
-    final: Math.round(d.pts + (d.pts / COMPLETED) * REMAINING),
-  })).sort((a, b) => b.final - a.final);
-
-  const maxFinal = projected[0].final;
-  const grid     = document.getElementById('proj-grid');
-
-  // Projected champion banner
-  const lead   = projected[0];
-  const margin = lead.final - projected[1].final;
-  const banner = document.createElement('div');
-  banner.className = 'proj-champ-banner';
-  banner.innerHTML = `
-    <div class="proj-crown">🏆</div>
-    <div>
-      <div class="proj-champ-label">Projected Champion · 14 rounds</div>
-      <div class="proj-champ-name">${lead.flag} ${lead.name}</div>
-      <div class="proj-champ-margin">+${margin} pts projected margin · ${lead.avg} pts/round average</div>
-    </div>`;
-  grid.appendChild(banner);
-
-  projected.forEach((d, i) => {
-    const card = document.createElement('div');
-    card.className = 'proj-card' + (i === 0 ? ' proj-leader' : '');
-    card.innerHTML = `
-      <div class="proj-eyebrow">P${i + 1} projected</div>
-      <div class="proj-driver">${d.flag} ${d.name}</div>
-      <div class="proj-team">${d.team}</div>
-      <div class="proj-pts-now">Now: ${d.pts} pts · Avg: ${d.avg} / round</div>
-      <div class="proj-pts-final">${d.final}<span class="unit">pts</span></div>
-      <div class="proj-bar-wrap"><div class="proj-bar" data-pct="${(d.final/maxFinal*100).toFixed(1)}" style="background:${d.color};"></div></div>
-      <div class="proj-note">${REMAINING} rounds remaining · linear model</div>`;
-    grid.appendChild(card);
-  });
-
-  // Animate bars when in view
-  const bars = [...grid.querySelectorAll('.proj-bar')];
-  const projObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        bars.forEach(b => { b.style.width = b.dataset.pct + '%'; });
-        projObs.disconnect();
-      }
-    });
-  }, { threshold: 0.25 });
-  projObs.observe(grid);
-})();
-</script>
 
 <!-- ===================== 2026 F2 SEASON MAP ===================== -->
 <script>
@@ -7510,9 +7310,6 @@ if (document.readyState === 'loading') {
     document.querySelectorAll('.chart-section').forEach(el => watch(el, 'reveal', 0.05));
     document.querySelectorAll('.chart-legend-item').forEach((el, i) => watch(el, 'reveal', 0.3 + i * 0.07));
 
-    // -- Projection cards --
-    document.querySelectorAll('.proj-champ-banner').forEach(el => watch(el, 'reveal', 0.05));
-    document.querySelectorAll('.proj-card').forEach((el, i) => watch(el, 'reveal', 0.1 + i * 0.1));
 
     // -- Career map --
     document.querySelectorAll('.map-section').forEach(el => watch(el, 'reveal', 0.05));
