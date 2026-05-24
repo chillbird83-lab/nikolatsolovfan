@@ -3060,6 +3060,14 @@
     text-align: right;
     border-left: 1px solid var(--gray-700);
   }
+  .rival-side.s-mini {
+    background: linear-gradient(135deg, rgba(255,107,26,0.12), rgba(255,107,26,0.02));
+    text-align: right;
+    border-left: 1px solid var(--gray-700);
+  }
+  .s-mini .rival-tag { color: #ff8a3d; }
+  .s-mini .rival-surname { color: #ff8a3d; }
+  .s-mini .rival-pts-big { color: #ff8a3d; }
 
   .rival-tag {
     font-family: var(--mono);
@@ -3245,7 +3253,7 @@
     .rival-drivers { grid-template-columns: 1fr; }
     .rival-vs-col { flex-direction: row; padding: 16px 20px; border-top: 1px solid var(--gray-700); border-bottom: 1px solid var(--gray-700); }
     .rival-side { padding: 24px 20px; }
-    .s-camara { text-align: left; border-left: none; border-top: 1px solid var(--gray-700); }
+    .s-camara, .s-mini { text-align: left; border-left: none; border-top: 1px solid var(--gray-700); }
     .rival-stat-row { grid-template-columns: 60px 1fr 60px; }
     .rival-n { font-size: 20px; padding: 14px 12px; }
   }
@@ -5464,28 +5472,28 @@
 
       <!-- Tsolov -->
       <div class="rival-side s-tsolov">
-        <span class="rival-tag">Championship Leader · P1</span>
+        <span class="rival-tag">P2 · −10 points</span>
         <div class="rival-surname">Tsolov</div>
         <div class="rival-fullname">Nikola Tsolov</div>
         <div class="rival-team-txt">Campos Racing · #6 · Bulgaria</div>
-        <div class="rival-pts-big">35</div>
+        <div class="rival-pts-big">47</div>
         <div class="rival-pts-lbl">Points</div>
       </div>
 
       <!-- VS divider -->
       <div class="rival-vs-col">
         <div class="rival-vs-word">VS</div>
-        <div class="rival-gap-pill">+1 pt</div>
-        <div class="rival-after-note">After R02<br/>2 of 14</div>
+        <div class="rival-gap-pill">−10 pts</div>
+        <div class="rival-after-note">After R03<br/>3 of 14</div>
       </div>
 
-      <!-- Câmara -->
-      <div class="rival-side s-camara">
-        <span class="rival-tag">P2 · −1 point</span>
-        <div class="rival-surname">Câmara</div>
-        <div class="rival-fullname">Rafael Câmara</div>
-        <div class="rival-team-txt">Invicta Racing · Brazil</div>
-        <div class="rival-pts-big">34</div>
+      <!-- Minì -->
+      <div class="rival-side s-mini">
+        <span class="rival-tag">Championship Leader · P1</span>
+        <div class="rival-surname">Minì</div>
+        <div class="rival-fullname">Gabriele Minì</div>
+        <div class="rival-team-txt">MP Motorsport · Italy</div>
+        <div class="rival-pts-big">57</div>
         <div class="rival-pts-lbl">Points</div>
       </div>
     </div>
@@ -5494,15 +5502,15 @@
     <div class="rival-stats">
 
       <div class="rival-stat-row">
-        <div class="rival-n left">35</div>
+        <div class="rival-n left">47</div>
         <div class="rival-center-cell">
           <span class="rival-center-lbl">Points</span>
           <div class="rival-split-bar">
-            <div class="rsb-t" style="width:50.7%"></div>
-            <div class="rsb-c" style="width:48.6%"></div>
+            <div class="rsb-t" style="width:45.2%"></div>
+            <div class="rsb-c" style="width:54.8%"></div>
           </div>
         </div>
-        <div class="rival-n right">34</div>
+        <div class="rival-n right">57</div>
       </div>
 
       <div class="rival-stat-row">
@@ -5510,67 +5518,67 @@
         <div class="rival-center-cell">
           <span class="rival-center-lbl">Race Wins</span>
           <div class="rival-split-bar">
-            <div class="rsb-t" style="width:100%"></div>
+            <div class="rsb-t" style="width:66.7%"></div>
+            <div class="rsb-c" style="width:33.3%"></div>
           </div>
         </div>
-        <div class="rival-n right zero">0</div>
+        <div class="rival-n right">1</div>
       </div>
 
       <div class="rival-stat-row">
-        <div class="rival-n left">17.5</div>
+        <div class="rival-n left">15.7</div>
         <div class="rival-center-cell">
           <span class="rival-center-lbl">Pts / Round</span>
           <div class="rival-split-bar">
-            <div class="rsb-t" style="width:50.7%"></div>
-            <div class="rsb-c" style="width:49.3%"></div>
+            <div class="rsb-t" style="width:45.2%"></div>
+            <div class="rsb-c" style="width:54.8%"></div>
           </div>
         </div>
-        <div class="rival-n right">17.0</div>
+        <div class="rival-n right">19.0</div>
       </div>
 
       <div class="rival-stat-row">
-        <div class="rival-n-sm left">P7.5</div>
+        <div class="rival-n-sm left">P6.3</div>
         <div class="rival-center-cell">
-          <span class="rival-center-lbl">Avg Qualifying · lower = better</span>
+          <span class="rival-center-lbl">Tsolov · Avg Qualifying (lower = better)</span>
           <div class="rival-split-bar">
-            <div class="rsb-t" style="width:43.9%"></div>
-            <div class="rsb-c" style="width:56.1%"></div>
+            <div class="rsb-t" style="width:100%"></div>
           </div>
-          <span class="rival-center-sub">R1: P5 · R2: P10 &nbsp;|&nbsp; R1: P6 · R2: P2</span>
+          <span class="rival-center-sub">Melbourne P5 · Miami P10 · Montréal P4</span>
         </div>
-        <div class="rival-n-sm right">P4.0</div>
+        <div class="rival-n-sm right">—</div>
       </div>
 
       <div class="rival-stat-row">
-        <div class="rival-n-sm left dim">10</div>
+        <div class="rival-n-sm left dim">12</div>
         <div class="rival-center-cell">
-          <span class="rival-center-lbl">Last Round Pts (R02)</span>
+          <span class="rival-center-lbl">Last Round Pts (R03 Montréal)</span>
           <div class="rival-split-bar">
-            <div class="rsb-t" style="width:38.5%"></div>
-            <div class="rsb-c" style="width:61.5%"></div>
+            <div class="rsb-t" style="width:34.3%"></div>
+            <div class="rsb-c" style="width:65.7%"></div>
           </div>
-          <span class="rival-center-sub">Câmara closed +6 pts in Miami</span>
+          <span class="rival-center-sub">Minì took 23 pts in Montréal (Sprint P2 + Feature P3) — gap opened up</span>
         </div>
-        <div class="rival-n-sm right">16</div>
+        <div class="rival-n-sm right">23</div>
       </div>
 
       <div class="rival-stat-row">
-        <div class="rival-n-sm left dim">3/4</div>
+        <div class="rival-n-sm left dim">5/6</div>
         <div class="rival-center-cell">
           <span class="rival-center-lbl">Races Finished</span>
           <div class="rival-split-bar">
-            <div class="rsb-t" style="width:42.9%"></div>
-            <div class="rsb-c" style="width:57.1%"></div>
+            <div class="rsb-t" style="width:45.5%"></div>
+            <div class="rsb-c" style="width:54.5%"></div>
           </div>
-          <span class="rival-center-sub">DNS — Miami Feature Race</span>
+          <span class="rival-center-sub">Tsolov DNS — Miami Feature Race</span>
         </div>
-        <div class="rival-n-sm right">4/4</div>
+        <div class="rival-n-sm right">6/6</div>
       </div>
 
     </div>
 
     <div class="rival-foot">
-      <span>Tsolov leads by just <strong>1 point</strong> — the tightest gap at the top after R02</span>
+      <span>Minì leads the championship by <strong>10 points</strong> after surging in Montréal — title fight is now a chase</span>
       <span>Source · FIA Formula 2 · fiaformula2.com</span>
     </div>
   </div>
