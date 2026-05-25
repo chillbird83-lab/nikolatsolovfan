@@ -3986,8 +3986,9 @@
       gap: 18px;
     }
     /* Make background image actually visible on mobile — keep lion's head in view */
+    /* Image is landscape; on portrait mobile we lose the sides. The lion's head is upper-right of the image, so we anchor the crop to the right side. */
     .hero-bg-img {
-      object-position: center 15%;
+      object-position: 75% 35%;
       animation-name: heroImgRevealMobile;
     }
     .hero::before {
