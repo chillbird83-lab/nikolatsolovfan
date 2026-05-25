@@ -3970,12 +3970,28 @@
   .back-to-top svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
 
   /* ===================== RESPONSIVE ===================== */
+  @keyframes heroImgRevealMobile {
+    0%   { opacity: 0; transform: scale(1.05); }
+    100% { opacity: 0.7; transform: scale(1); }
+  }
+
   @media (max-width: 900px) {
     .topbar nav { display: none; }
     .hero {
       padding: 70px 18px 32px;
-      min-height: auto;
+      min-height: 88vh;
       gap: 18px;
+    }
+    /* Make background image actually visible on mobile */
+    .hero-bg-img {
+      object-position: center 45%;
+      animation-name: heroImgRevealMobile;
+    }
+    .hero::before {
+      background: linear-gradient(to bottom,
+        rgba(4,30,66,0.15) 0%,
+        rgba(4,30,66,0.30) 45%,
+        rgba(4,30,66,0.75) 100%);
     }
     .hero .country-strip {
       top: 18px;
