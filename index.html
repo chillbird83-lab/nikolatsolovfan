@@ -3978,6 +3978,50 @@
     100% { opacity: 0.7; transform: scale(1); }
   }
 
+  /* ============================================================
+     COMPREHENSIVE MOBILE POLISH — applies on top of existing media
+     queries. Reduces paddings, tightens grids, prevents overflow.
+     ============================================================ */
+  @media (max-width: 480px) {
+    /* Section spacing: tighter vertical rhythm on small phones */
+    section { padding: 56px 16px; }
+    .section-title { font-size: clamp(40px, 11vw, 56px); margin-bottom: 36px; }
+
+    /* Footer */
+    footer { padding: 40px 20px 30px; }
+    .footer-mark { font-size: clamp(48px, 18vw, 90px); }
+    .footer-meta { font-size: 10px; }
+
+    /* Stats grid items */
+    .stat-number { font-size: 44px !important; }
+
+    /* Quiz container */
+    .quiz-container { padding: 28px 18px; border-radius: 10px; }
+    .quiz-question { font-size: 18px; margin-bottom: 22px; }
+
+    /* Chart wrapper */
+    .chart-wrap { padding: 18px 12px 14px; border-radius: 10px; }
+    .chart-legend { gap: 8px 16px; }
+    .chart-legend-item { font-size: 11px; }
+
+    /* Standings card */
+    .champ-section { padding: 70px 14px; }
+
+    /* Calendar / season */
+    .season-section { padding: 70px 14px; }
+
+    /* Result banner: tighter padding */
+    .banner-inner { padding: 14px 14px; }
+    .banner-position { font-size: 26px !important; }
+    .banner-text { font-size: 12px; }
+    .banner-text .race { font-size: 13px; }
+
+    /* News cards */
+    .news-card-body { padding: 18px; }
+    .news-headline { font-size: 15px; }
+    .news-summary { font-size: 12.5px; }
+  }
+
   @media (max-width: 900px) {
     .topbar nav { display: none; }
     .hero {
@@ -4209,6 +4253,40 @@
   }
   .recap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
   @media (max-width: 900px) { .recap-grid { grid-template-columns: 1fr; } }
+
+  /* Recap card mobile fixes — header stacks, stats row scrolls, no overflow */
+  @media (max-width: 700px) {
+    .recap-card { overflow: hidden; }
+    .recap-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 16px 16px 14px;
+    }
+    .recap-header-left { flex-wrap: wrap; width: 100%; min-width: 0; }
+    .recap-header-right {
+      width: 100%;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .recap-race-name { font-size: 16px; word-break: break-word; }
+    .recap-date { font-size: 10px; }
+    .recap-badge { font-size: 9px; padding: 3px 8px; letter-spacing: 0.08em; }
+    .recap-stats-row {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .recap-stats-row::-webkit-scrollbar { display: none; }
+    .recap-stat {
+      flex: 0 0 auto;
+      min-width: 96px;
+      padding: 12px 14px;
+    }
+    .recap-stat-val { font-size: 14px; }
+    .recap-stat-label, .recap-stat-lbl { font-size: 8px; letter-spacing: 0.12em; }
+  }
 
   /* ---- Recap header ---- */
   .recap-header {
