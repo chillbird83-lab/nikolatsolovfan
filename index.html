@@ -2693,6 +2693,41 @@
     background: rgba(255,204,0,0.06);
   }
 
+  .footer-about {
+    max-width: 920px;
+    margin: 0 auto 30px;
+    padding: 28px 0;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .footer-about-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+  .footer-about p {
+    font-family: var(--sans);
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--gray-300);
+    margin: 0 0 14px;
+  }
+  .footer-about p strong { color: var(--bone); font-weight: 600; }
+  .footer-about p em { color: var(--gold); font-style: normal; font-weight: 500; }
+  .footer-about a {
+    color: var(--gray-300);
+    text-decoration: underline;
+    text-decoration-color: rgba(255,255,255,0.15);
+    text-underline-offset: 3px;
+    transition: color .15s, text-decoration-color .15s;
+  }
+  .footer-about a:hover { color: var(--gold); text-decoration-color: var(--gold); }
+  .footer-about-contact { font-size: 12px; color: var(--gray-500); }
+
   .footer-bottom {
     display: flex;
     justify-content: space-between;
@@ -2760,8 +2795,18 @@
     text-transform: uppercase;
     color: var(--gray-500);
     display: flex;
-    align-items: center;
-    gap: 10px;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+  }
+  .champ-updated {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+  }
+  @media (max-width: 600px) {
+    .champ-after { align-items: flex-start; }
   }
 
   .champ-live-pill {
@@ -4388,19 +4433,10 @@
 
     <div class="bio-right">
       <p class="lead">
-        Born in Sofia on 21 December 2006, Nikola Tsolov is the most successful single-seater driver Bulgaria has ever produced — and at nineteen, he is only just getting started.
+        Born in Sofia on 21 December 2006, Nikola Tsolov is the most successful single-seater driver Bulgaria has ever produced — and at nineteen, he is only just getting started. A <strong>Fernando Alonso protégé</strong> who came up through FA Racing karting and the Alpine Academy, he switched to the <strong>Red Bull Junior Team</strong> in November 2024 and signed permanently with <strong>Campos Racing</strong> for his 2026 F2 debut.
       </p>
       <p>
-        His karting years were defined by tight budgets and uncertain futures. A breakthrough came when <strong>Fernando Alonso's FA Racing</strong> brought him into their karting setup; in 2021, the two-time world champion invited the teenage Tsolov to drive alongside him at the Dubai 24 Hours, where their crew finished third.
-      </p>
-      <p>
-        In 2022, he leapt into Spanish Formula 4 with Campos Racing and didn't just win the title — he obliterated it, taking <strong>thirteen victories from twenty-one races</strong>. Three F3 seasons followed, the last of which (2025, back with Campos) saw him become the most-capped race winner in FIA Formula 3 history.
-      </p>
-      <p>
-        Initially an Alpine Academy member, Tsolov made the switch to the <strong>Red Bull Junior Team</strong> in November 2024. The following summer he drove the Red Bull RB7 at a Sofia show run — a moment he says he'll "remember forever." A late-season F2 promotion at Lusail and Yas Marina yielded his first F2 podium. The seat with Campos was made permanent for 2026.
-      </p>
-      <p>
-        And then, in March 2026, came Melbourne — and a piece of Bulgarian sporting history.
+        Two Formula 4 (Spain) seasons, three FIA Formula 3 seasons, and the all-time F3 wins record (5) led to Melbourne in March 2026 — where he became the <strong>first Bulgarian to win an FIA Formula 2 race</strong> and made a piece of national sporting history. The full career story is below.
       </p>
       <a href="/articles/nikola-tsolov-career-timeline/" class="bio-read-more">
         <span class="brm-label">Full feature</span>
@@ -4702,6 +4738,7 @@
     </div>
     <div class="champ-after">
       After Round 03 · Montréal
+      <span class="champ-updated"><time datetime="2026-05-25">Updated 25 May 2026</time></span>
     </div>
   </div>
 
@@ -5426,6 +5463,20 @@
       </div>
     </div>
   </div>
+  <!-- About this site — E-E-A-T trust block -->
+  <div class="footer-about">
+    <h3 class="footer-about-title">About this site</h3>
+    <p>
+      <strong>nikolatsolovfan.com</strong> is an independent, unofficial fan-built site dedicated to Bulgarian Formula 2 driver <strong>Nikola Tsolov</strong>. We track his race results, championship standings, career milestones, and the wider context of his Red Bull Junior Team path to Formula 1 — written for both Bulgarian fans following the country's first F2 race winner and global motorsport followers tracking the Red Bull junior pipeline.
+    </p>
+    <p>
+      All data is sourced from <a href="https://www.fiaformula2.com" target="_blank" rel="noopener">fiaformula2.com</a>, Campos Racing, Formula Scout, GPblog, Motorsport Week, Pit Debrief and other public motorsport press. Editorial: <em>Nikola Tsolov Fan — editorial</em>. No affiliation with Nikola Tsolov, Campos Racing, Red Bull Racing, FIA, or any rights holder. All trademarks belong to their respective owners.
+    </p>
+    <p class="footer-about-contact">
+      Feedback or corrections: reach us via <a href="https://x.com/nikolatsolovfan" target="_blank" rel="noopener">X</a> · <a href="https://www.facebook.com/profile.php?id=61589869483783" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.instagram.com/nikolatsolovfancom/" target="_blank" rel="noopener">Instagram</a>
+    </p>
+  </div>
+
   <div class="footer-bottom">
     <div>© 2026 · Unofficial fan page</div>
     <div>One step from the dream</div>
@@ -6171,22 +6222,29 @@ function initRecapCards() {
       const link = item.url
         ? `<a class="news-link" href="${item.url}" target="_blank" rel="noopener">Read more · ${item.source || 'Source'} →</a>`
         : '';
+      const imgUrl = item.image
+        ? (item.image.startsWith('http') ? item.image : `https://nikolatsolovfan.com/${item.image}`)
+        : 'https://nikolatsolovfan.com/nikola-tsolov-f2-podium-lusail-2025.webp';
       const img = item.image
         ? `<img class="news-card-img" src="${item.image}" alt="${item.headline}" loading="lazy">`
         : '';
       return `
-        <div class="news-card">
+        <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
+          <meta itemprop="image" content="${imgUrl}">
+          <meta itemprop="datePublished" content="${item.date}">
+          <meta itemprop="author" content="Nikola Tsolov Fan — editorial">
+          <meta itemprop="publisher" content="nikolatsolovfan.com">
           ${img}
           <div class="news-card-body">
             <div class="news-meta">
               <span class="news-date">${dateStr}</span>
               <span class="news-tag ${item.tag}">${item.tag}</span>
             </div>
-            <div class="news-headline">${item.headline}</div>
-            <div class="news-summary">${item.summary}</div>
+            <h3 class="news-headline" itemprop="headline">${item.headline}</h3>
+            <div class="news-summary" itemprop="description">${item.summary}</div>
             ${link}
           </div>
-        </div>`;
+        </article>`;
     }).join('');
   }
 </script>
