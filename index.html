@@ -884,12 +884,11 @@
     0%, 100% { text-shadow: 0 0 8px rgba(231,76,60,0.3); }
     50%      { text-shadow: 0 0 24px rgba(231,76,60,0.7), 0 0 48px rgba(231,76,60,0.3); }
   }
+  /* Scanline effect across hero — uses transform (compositor) instead of top (layout) to avoid CLS */
   @keyframes scanline {
-    0%   { top: -4px; }
-    100% { top: 100%; }
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(110vh); }
   }
-
-  /* Scanline effect across hero */
   .hero-scanline {
     position: absolute;
     inset: 0;
@@ -902,10 +901,11 @@
     content: '';
     position: absolute;
     left: 0; right: 0;
+    top: -4px;
     height: 4px;
     background: linear-gradient(90deg, transparent, rgba(255,204,0,0.6), rgba(231,76,60,0.6), transparent);
     animation: scanline 1.2s ease-in-out 0.2s 1 forwards;
-    top: -4px;
+    will-change: transform;
   }
 
   /* Hero image cinematic reveal */
@@ -1005,6 +1005,8 @@
     letter-spacing: -0.03em;
     text-transform: uppercase;
     color: var(--bone);
+    /* Reserve space to prevent CLS during font swap */
+    min-height: clamp(38px, 9.4vw, 140px);
   }
   .hero-nickname {
     font-family: var(--serif);
@@ -1017,6 +1019,8 @@
     align-items: baseline;
     gap: 0.28em;
     flex-wrap: wrap;
+    /* Reserve space to prevent CLS during font swap */
+    min-height: clamp(34px, 8vw, 124px);
   }
   .hero-nickname .nick-white   { color: var(--bone); }
   .hero-nickname .nick-green   { color: var(--green); }
@@ -4047,7 +4051,7 @@
 
 <!-- ===================== HERO ===================== -->
 <header class="hero">
-  <img src="nikola-tsolov-campos-f2-wet-track.webp" alt="" class="hero-bg-img" aria-hidden="true" fetchpriority="high" decoding="async" width="1600" height="900"/>
+  <img src="nikola-tsolov-campos-f2-wet-track.webp" alt="" class="hero-bg-img" aria-hidden="true" fetchpriority="high" decoding="async" width="1100" height="614"/>
   <div class="speed-lines">
     <div class="line"></div>
     <div class="line"></div>
