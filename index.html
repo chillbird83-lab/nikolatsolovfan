@@ -11,6 +11,7 @@
 <meta name="keywords" content="Nikola Tsolov, Tsolov F2, Bulgarian F2 driver, Campos Racing, Red Bull Junior, FIA Formula 2 2026, Bulgaria motorsport, Formula 2 standings 2026" />
 <link rel="canonical" href="https://nikolatsolovfan.com/" />
 <link rel="alternate" hreflang="en" href="https://nikolatsolovfan.com/" />
+<link rel="alternate" hreflang="bg" href="https://nikolatsolovfan.com/bg/" />
 <link rel="alternate" hreflang="x-default" href="https://nikolatsolovfan.com/" />
 
 <!-- Structured Data -->
@@ -594,6 +595,26 @@
     transition: color .2s, text-shadow .2s;
   }
   .topbar nav a:hover { color: var(--gold); text-shadow: 0 0 8px rgba(255,204,0,0.6); }
+  .topbar nav .lang-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 9px;
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 3px;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    transition: background .2s, border-color .2s, color .2s;
+    margin-left: 6px;
+  }
+  .topbar nav .lang-switch:hover {
+    background: rgba(255,204,0,0.1);
+    border-color: var(--gold);
+    text-shadow: none;
+  }
+  .topbar nav .lang-switch .lang-current { color: var(--gold); font-weight: 700; }
+  .topbar nav .lang-switch .lang-other { color: var(--gray-300); }
+  .topbar nav .lang-switch .lang-current::after { content: " · "; color: var(--gray-500); }
   .topbar .right { color: var(--gray-300); display: flex; align-items: center; gap: 16px; }
 
   /* ---- Hamburger button ---- */
@@ -4037,6 +4058,7 @@
     <a href="#season">2026</a>
     <a href="#standings">Standings</a>
     <a href="/articles/">Articles</a>
+    <a href="/bg/" class="lang-switch" hreflang="bg" title="Българска версия"><span class="lang-current">EN</span><span class="lang-other">BG</span></a>
   </nav>
   <div class="right">
     <button class="hamburger" id="hamburger" aria-expanded="false" aria-label="Open menu">
@@ -4057,6 +4079,7 @@
   <a href="#highlights"      onclick="closeMobileNav()">Video</a>
   <a href="#news"            onclick="closeMobileNav()">News</a>
   <a href="/articles/"       onclick="closeMobileNav()">Articles</a>
+  <a href="/bg/"             onclick="closeMobileNav()" hreflang="bg">🇧🇬 Българска версия</a>
 </nav>
 
 <!-- ===================== LATEST RESULT BANNER ===================== -->
