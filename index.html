@@ -4424,8 +4424,8 @@
   .recap-toggle:hover { background: rgba(255,204,0,0.04); }
   .recap-toggle-icon { font-size: 16px; transition: transform .3s ease; display: inline-block; }
   .recap-card.open .recap-toggle-icon { transform: rotate(180deg); }
-  .recap-body { max-height: 0; overflow: hidden; transition: max-height .5s cubic-bezier(.25,.46,.45,.94); }
-  .recap-card.open .recap-body { max-height: 600px; }
+  .recap-body { max-height: 0; overflow: hidden; transition: max-height .8s cubic-bezier(.25,.46,.45,.94); }
+  .recap-card.open .recap-body { max-height: 2000px; }
 
   .recap-moments { padding: 8px 24px 20px; display: flex; flex-direction: column; gap: 0; }
   .recap-moment { display: grid; grid-template-columns: 48px 1fr; gap: 0 14px; position: relative; padding: 10px 0; }
@@ -6321,7 +6321,7 @@
   const RACES = [
     { round: 1,  location: "Melbourne",         country: "Australia",     flag: "au", dates: "06–08 Mar", sprint: "P17", feature: "P1", note: "First F2 victory · Bulgaria's first F2 win", status: "completed" },
     { round: 2,  location: "Miami",             country: "USA",           flag: "us", dates: "01–03 May", sprint: "P1", feature: "DNF", note: "Sprint win · Feature DNF after first-lap contact", status: "completed" },
-    { round: 3,  location: "Montréal",          country: "Canada",        flag: "ca", dates: "22–24 May", sprint: "—", feature: "—",                                                       status: "upcoming"  },
+    { round: 3,  location: "Montréal",          country: "Canada",        flag: "ca", dates: "22–24 May", sprint: "P14", feature: "P12", note: "Quali P4 · Sprint P14 · Feature P12 (post-penalty)", status: "completed" },
     { round: 4,  location: "Monaco",            country: "Monaco",        flag: "mc", dates: "04–07 Jun", sprint: "—", feature: "—",                                                       status: "upcoming"  },
     { round: 5,  location: "Barcelona",         country: "Spain",         flag: "es", dates: "12–14 Jun", sprint: "—", feature: "—",                                                       status: "upcoming"  },
     { round: 6,  location: "Spielberg",         country: "Austria",       flag: "at", dates: "26–28 Jun", sprint: "—", feature: "—",                                                       status: "upcoming"  },
@@ -6759,7 +6759,7 @@
   const CIRCUITS = [
     { round:1,  name:'Melbourne',       country:'Australia',    dates:'06–08 Mar', sprint:'P17', feature:'P1',  note:'First F2 victory · Bulgaria\'s first F2 win', status:'completed', lat:-37.85, lon:144.97 },
     { round:2,  name:'Miami',           country:'USA',          dates:'01–03 May', sprint:'P1',  feature:'DNF', note:'Sprint win · Feature DNF after first-lap contact', status:'completed', lat: 25.96, lon:-80.24 },
-    { round:3,  name:'Montréal',        country:'Canada',       dates:'22–24 May', sprint:'—',  feature:'—',   note:'', status:'upcoming', lat: 45.50, lon:-73.57 },
+    { round:3,  name:'Montréal',        country:'Canada',       dates:'22–24 May', sprint:'P14', feature:'P12', note:'Sprint P14 · Feature P12 (post-penalty)', status:'completed', lat: 45.50, lon:-73.57 },
     { round:4,  name:'Monaco',          country:'Monaco',       dates:'04–07 Jun', sprint:'—',  feature:'—',   note:'', status:'upcoming', lat: 43.73, lon:  7.42 },
     { round:5,  name:'Barcelona',       country:'Spain',        dates:'12–14 Jun', sprint:'—',  feature:'—',   note:'', status:'upcoming', lat: 41.57, lon:  2.26 },
     { round:6,  name:'Spielberg',       country:'Austria',      dates:'26–28 Jun', sprint:'—',  feature:'—',   note:'', status:'upcoming', lat: 47.22, lon: 14.76 },
