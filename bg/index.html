@@ -4042,7 +4042,7 @@
   .news-tag.team    { background: rgba(0,150,110,0.12);  color: var(--green); border: 1px solid rgba(0,150,110,0.25); }
   .news-tag.record  { background: rgba(224,58,62,0.12);  color: var(--red);   border: 1px solid rgba(224,58,62,0.25); }
   .news-tag.general { background: rgba(255,255,255,0.06); color: var(--gray-300); border: 1px solid rgba(255,255,255,0.1); }
-  .news-headline { font-family: var(--display); font-weight: 900; font-size: 16px; color: var(--bone); letter-spacing: 0.02em; line-height: 1.3; }
+  .news-headline { font-family: var(--sans); font-weight: 700; font-size: 16px; color: var(--bone); letter-spacing: 0.01em; line-height: 1.35; margin: 0; }
   .news-summary  { font-family: var(--sans); font-size: 13px; color: var(--gray-300); line-height: 1.6; flex: 1; }
   .news-link { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: var(--red); text-transform: uppercase; text-decoration: none; margin-top: 4px; }
   .news-link:hover { color: var(--bone); }
@@ -4432,7 +4432,7 @@
         <!-- Технически извод -->
         <div class="recap-takeaway">
           <div class="recap-takeaway-label">Технически извод</div>
-          <p>The Montréal recovery from P16 to P4-on-the-road was a tyre-management masterclass that, in raw racing terms, should have protected 12 points and the championship lead. Instead, a post-race 10-second penalty for a track-limits infringement while defending against Goethe at Turns 13–14 wiped the result out — reclassified P12, zero points. The drive itself showed elite race-craft; the stewards' decision is what cost the points. Tsolov leaves Canada P3 in the championship, 22 points adrift of Minì.</p>
+          <p>Възстановяването в Монреал от P16 до P4 на пистата беше майсторски клас по управление на гумите, който в чисто състезателен план трябваше да защити 12 точки и лидерството в шампионата. Вместо това 10-секундното наказание след финала за излизане извън пистата при защита срещу Goethe в завои 13–14 заличи резултата — прекласифициран на P12, нула точки. Самото каране показа елитен състезателен инстинкт; решението на стюардите е това, което струваше точките. Цолов напуска Канада на P3 в шампионата, на 22 точки зад Minì.</p>
         </div>
 
         <div class="recap-quote" style="color:var(--gray-300);">Резултатът е <em style="color:var(--red);font-style:normal;font-weight:700;">прекласифициран на P12</em> след 10-секундно наказание, наложено след финала · нула точки от уикенда</div>
@@ -5124,7 +5124,7 @@
 <!-- ===================== POINTS CHART ===================== -->
 <section class="chart-section" id="chart">
   <div class="section-tag">Точкова битка</div>
-  <h2 class="section-title">Championship <span class="it">Състезание</span></h2>
+  <h2 class="section-title">Битка за <span class="it">шампионата</span></h2>
   <div class="chart-wrap">
     <svg id="points-chart" viewBox="0 0 740 320"
          preserveAspectRatio="xMidYMid meet"
@@ -5138,8 +5138,8 @@
 <!-- ===================== FAN POLL ===================== -->
 <!-- ===================== GALLERY (3 photos) + CONTENT CARDS (5) ===================== -->
 <section class="gallery-section" id="gallery">
-  <div class="section-tag">In pictures</div>
-  <h2 class="section-title">On <span class="it">track</span></h2>
+  <div class="section-tag">В кадър</div>
+  <h2 class="section-title">На <span class="it">пистата</span></h2>
 
   <!-- Photo gallery (3 painted illustrations) -->
   <div class="photo-gallery" id="photo-gallery"><!-- populated by JS --></div>
@@ -5321,7 +5321,7 @@
 <!-- ===================== VIDEO HIGHLIGHTS ===================== -->
 <section class="video-section" id="highlights">
   <div class="section-tag">Видео</div>
-  <h2 class="section-title">Race <span class="it">highlights</span></h2>
+  <h2 class="section-title">Видео <span class="it">акценти</span></h2>
 
   <div class="video-grid">
     <!-- Melbourne Feature Race Win -->
@@ -5652,7 +5652,9 @@
       let inner;
       if (item.src) {
         const posStyle = item.objectPosition ? ` style="object-position:${item.objectPosition}"` : '';
-        inner = `<img src="${item.src}" alt="${item.caption}" loading="lazy"${posStyle}/>`;
+        // Resolve to absolute root path so images load from /bg/ subfolder
+        const srcAbs = item.src.startsWith('http') || item.src.startsWith('/') ? item.src : '/' + item.src;
+        inner = `<img src="${srcAbs}" alt="${item.caption}" loading="lazy"${posStyle}/>`;
       } else if (item.svg) {
         inner = `<div class="gallery-svg">${item.svg}</div>`;
       } else {
@@ -6185,7 +6187,7 @@ function initRecapCards() {
       date: "2026-05-02",
       tag: "race",
       headline: "Цолов печели Sprint в Маями от поул — лидерството в шампионата е разширено",
-      summary: "Nikola Tsolov beat van Hoepen and Dunne to the line in a drag race to the flag at the Miami International Autodrome, becoming Formula 2's first ever winner in Miami.",
+      summary: "Никола Цолов задмина van Hoepen и Dunne на финиша в драг битка на Miami International Autodrome — първият победител на Маями във Formula 2.",
       url: "https://www.fiaformula2.com/Latest/5EI9dQwzXYKQBZL4NPoxSF/sprint-race-tsolov-beats-van-hoepen-and-dunne-to-the-line-to-win-in-miami",
       source: "FIA Formula 2",
       image: "https://res.cloudinary.com/prod-f2f3/ar_16:9,c_fill,dpr_1.0,f_auto,g_auto,h_563,w_1000/v1/f2/global/articles/2026/05_May/GettyImages-2274161828"
@@ -6202,7 +6204,7 @@ function initRecapCards() {
     {
       date: "2026-03-08",
       tag: "record",
-      headline: "Bulgaria's first F2 race winner — Melbourne Feature Race victory",
+      headline: "Първият българин с победа във F2 — победа в Melbourne Feature Race",
       summary: "Никола Цолов прави история в Albert Park, печелейки FIA Formula 2 Feature Race в Мелбърн — първата българска победа във F2 в историята.",
       url: "https://www.fiaformula2.com/Latest/296ZcBz7lQxAxf2ITO0VWa/feature-race-nikola-tsolov-takes-comfortable-melbourne-victory",
       source: "FIA Formula 2",
@@ -6211,8 +6213,8 @@ function initRecapCards() {
     {
       date: "2025-05-25",
       tag: "record",
-      headline: "Record-breaking 5th F3 win at Monaco",
-      summary: "Tsolov became the most successful driver in FIA Formula 3 history with a dominant lights-to-flag victory at Circuit de Monaco — his fifth career F3 win, a new all-time record.",
+      headline: "Рекордна 5-а победа във F3 в Монако",
+      summary: "Цолов стана най-успешният пилот в историята на FIA Formula 3 с доминираща победа от поул до финал на Circuit de Monaco — петата му кариерна победа във F3, нов рекорд на всички времена.",
       url: "https://www.fiaformula3.com/Latest/DT8JvFKiZZQ2szJdR2DvP/a-record-breaking-fifth-victory-nikola-tsolovs-monte-carlo-weekend-debrief",
       source: "FIA Formula 3",
       image: "https://res.cloudinary.com/prod-f2f3/ar_16:9,c_fill,dpr_1.0,f_auto,g_auto,h_563,w_1000/v1/f3/articles/2025/05_May/GettyImages-2216928609"
@@ -6220,8 +6222,8 @@ function initRecapCards() {
     {
       date: "2025-06-08",
       tag: "general",
-      headline: "Tsolov drives the Red Bull RB7 through the streets of Sofia",
-      summary: "In a landmark moment for Bulgarian motorsport, Tsolov piloted Vettel's 2011 championship-winning RB7 through his hometown — the first Bulgarian driver to take part in a Red Bull show run.",
+      headline: "Цолов кара Red Bull RB7 по улиците на София",
+      summary: "В историческия момент за българския моторен спорт Цолов кара RB7-а на Фетел, спечелил шампионата през 2011, в родния си град — първият българин, участвал в Red Bull show run.",
       url: "https://www.redbull.com/bg-bg/nikola-tsolov-chast-ot-red-bull-showrun-sofia",
       source: "Red Bull",
       image: "https://img.redbull.com/images/c_crop,x_0,y_0,h_3000,w_4500/c_fill,w_2150,h_1433/q_auto:low,f_jpg/redbullcom/2022/8/31/wgcormhoiidwqds1773j/rb7"
@@ -6229,8 +6231,8 @@ function initRecapCards() {
     {
       date: "2024-11-01",
       tag: "team",
-      headline: "Tsolov joins the Red Bull Junior Team",
-      summary: "After three seasons with the Alpine Academy, Nikola Tsolov made the switch to the Red Bull Junior Team — a major step on the road to Formula 1.",
+      headline: "Цолов се присъединява към Red Bull Junior Team",
+      summary: "След три сезона в Alpine Academy Никола Цолов преминава в Red Bull Junior Team — голяма стъпка по пътя към Formula 1.",
       url: "https://formulascout.com/red-bull-add-schaufler-and-tsolov-to-junior-team-for-2025/125523",
       source: "Formula Scout",
       image: "https://formulascout.com/wp-content/uploads/2024/11/tsolov.jpg"
@@ -6249,8 +6251,12 @@ function initRecapCards() {
       const imgUrl = item.image
         ? (item.image.startsWith('http') ? item.image : `https://nikolatsolovfan.com/${item.image}`)
         : 'https://nikolatsolovfan.com/nikola-tsolov-f2-podium-lusail-2025.webp';
+      // Resolve relative news image paths to absolute root for /bg/ subfolder
+      const newsImgSrc = item.image
+        ? (item.image.startsWith('http') || item.image.startsWith('/') ? item.image : '/' + item.image)
+        : '';
       const img = item.image
-        ? `<img class="news-card-img" src="${item.image}" alt="${item.headline}" loading="lazy">`
+        ? `<img class="news-card-img" src="${newsImgSrc}" alt="${item.headline}" loading="lazy">`
         : '';
       return `
         <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
@@ -6262,7 +6268,7 @@ function initRecapCards() {
           <div class="news-card-body">
             <div class="news-meta">
               <span class="news-date">${dateStr}</span>
-              <span class="news-tag ${item.tag}">${item.tag}</span>
+              <span class="news-tag ${item.tag}">${({race:'състезание',general:'общи',record:'рекорд',team:'отбор'}[item.tag] || item.tag)}</span>
             </div>
             <h3 class="news-headline" itemprop="headline">${item.headline}</h3>
             <div class="news-summary" itemprop="description">${item.summary}</div>
