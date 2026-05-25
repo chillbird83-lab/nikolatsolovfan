@@ -597,26 +597,29 @@
     transition: color .2s, text-shadow .2s;
   }
   .topbar nav a:hover { color: var(--gold); text-shadow: 0 0 8px rgba(255,204,0,0.6); }
-  .topbar nav .lang-switch {
+  /* Language switcher — works in both nav (desktop) and .right (always visible) */
+  .topbar .lang-switch {
     display: inline-flex;
     align-items: center;
     gap: 4px;
     padding: 4px 9px;
     border: 1px solid rgba(255,255,255,0.18);
     border-radius: 3px;
+    font-family: var(--mono);
     font-size: 10px;
     letter-spacing: 0.12em;
+    text-decoration: none;
+    color: var(--bone);
     transition: background .2s, border-color .2s, color .2s;
-    margin-left: 6px;
   }
-  .topbar nav .lang-switch:hover {
+  .topbar .lang-switch:hover {
     background: rgba(255,204,0,0.1);
     border-color: var(--gold);
     text-shadow: none;
   }
-  .topbar nav .lang-switch .lang-current { color: var(--gold); font-weight: 700; }
-  .topbar nav .lang-switch .lang-other { color: var(--gray-300); }
-  .topbar nav .lang-switch .lang-current::after { content: " · "; color: var(--gray-500); }
+  .topbar .lang-switch .lang-current { color: var(--gold); font-weight: 700; }
+  .topbar .lang-switch .lang-other { color: var(--gray-300); }
+  .topbar .lang-switch .lang-current::after { content: " · "; color: var(--gray-500); }
   .topbar .right { color: var(--gray-300); display: flex; align-items: center; gap: 16px; }
 
   /* ---- Hamburger button ---- */
@@ -4060,9 +4063,9 @@
     <a href="#season">2026</a>
     <a href="#standings">Класиране</a>
     <a href="/articles/" hreflang="en">Articles</a>
-    <a href="/" class="lang-switch" hreflang="en" title="English version"><span class="lang-current">BG</span><span class="lang-other">EN</span></a>
   </nav>
   <div class="right">
+    <a href="/" class="lang-switch lang-switch-topbar" hreflang="en" title="English version"><span class="lang-current">BG</span><span class="lang-other">EN</span></a>
     <button class="hamburger" id="hamburger" aria-expanded="false" aria-label="Отвори меню">
       <span></span><span></span><span></span>
     </button>
