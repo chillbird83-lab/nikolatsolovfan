@@ -1444,6 +1444,24 @@
     padding-top: 12px;
     border-top: 1px dashed rgba(255,255,255,0.08);
   }
+  .sl-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,204,0,0.3);
+    padding-bottom: 2px;
+    transition: color .2s, border-color .2s;
+  }
+  .sl-cta:hover { color: #fff; border-bottom-color: #fff; }
+  .sl-cta .arr { transition: transform .2s; }
+  .sl-cta:hover .arr { transform: translateX(3px); }
 
   /* ===================== TIMELINE ===================== */
   .timeline-section {
@@ -4504,6 +4522,8 @@
         </div>
         <div class="sl-foot">
           A Top 3 finish in F2 2026 (worth 40 pts) would push Tsolov past the threshold. He currently sits P3 in the championship, 22 points behind Minì.
+          <br>
+          <a class="sl-cta" href="/articles/nikola-tsolov-f1-seat-2027/">Read the full F1 2027 seat analysis <span class="arr">→</span></a>
         </div>
       </div>
     </div>
