@@ -454,8 +454,8 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="preload" as="image" type="image/webp" href="/nikola-tsolov-portrait-gold.webp" />
-<link rel="preload" as="image" type="image/webp" href="/nikola-tsolov-lion-crest.webp" />
+<link rel="preload" as="image" type="image/webp" media="(max-width: 900px)" href="/nikola-tsolov-portrait-gold-mobile.webp" fetchpriority="high" />
+<link rel="preload" as="image" type="image/webp" media="(min-width: 901px)" href="/nikola-tsolov-portrait-gold.webp" fetchpriority="high" />
 <link rel="manifest" href="site.webmanifest" />
 
 <!-- Open Graph (Facebook, LinkedIn, Discord, WhatsApp) -->
@@ -823,6 +823,7 @@
     position: relative;
     width: 100%;
     min-height: 100vh;
+    min-height: 100svh; /* prevents CLS from mobile address bar resize */
     overflow: hidden;
     background:
       radial-gradient(circle at 86% 8%, rgba(224,58,62,0.14), transparent 42%),
@@ -850,22 +851,23 @@
     right: 0; top: 0; bottom: 0;
     width: 56%;
     z-index: 2;
-    background-image: url('/nikola-tsolov-portrait-gold.webp');
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-    background-position: 32% 8%;
+    display: block;
+    overflow: hidden;
     -webkit-mask-image: linear-gradient(100deg, transparent 0%, rgba(0,0,0,0.5) 10%, black 30%);
             mask-image: linear-gradient(100deg, transparent 0%, rgba(0,0,0,0.5) 10%, black 30%);
     opacity: 0;
     animation: heroPortraitFade 1.4s ease-out 0.1s forwards;
-    transition:
-      background-size 1.2s cubic-bezier(0.16, 1, 0.3, 1),
-      background-position 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: background-size;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+  }
+  .hero-portrait img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: 32% 8%;
+    display: block;
   }
   .hero-portrait:hover {
-    background-size: 108% auto;
-    background-position: 32% 6%;
+    transform: scale(1.04);
   }
   .hero-scanline {
     position: absolute; right: 0; top: 0; bottom: 0;
@@ -3677,10 +3679,11 @@
     .topbar nav { display: none; }
     /* Editorial hero mobile */
     .hero-portrait, .hero-scanline {
-      width: 100%; background-position: 58% 4%;
+      width: 100%;
       -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(2,19,44,0.75) 30%, var(--ink-2) 58%);
               mask-image: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(2,19,44,0.75) 30%, var(--ink-2) 58%);
     }
+    .hero-portrait img { object-position: 58% 4%; }
     .hero-seam { display: none; }
     .hero-content {
       position: relative; width: 100%; min-width: 0;
@@ -4181,10 +4184,13 @@
 <header class="hero">
   <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Никола Цолов (Nikola Tsolov) — български пилот във FIA Formula 2, Red Bull Junior, Campos Racing</h1>
 
-  <div class="hero-portrait" role="img" aria-label="Никола Цолов в цветовете на Campos Racing F2"></div>
+  <picture class="hero-portrait">
+    <source media="(max-width: 900px)" srcset="/nikola-tsolov-portrait-gold-mobile.webp" />
+    <img src="/nikola-tsolov-portrait-gold.webp" alt="Никола Цолов в цветовете на Campos Racing F2" width="1400" height="2122" fetchpriority="high" decoding="async" />
+  </picture>
   <div class="hero-scanline" aria-hidden="true"></div>
   <div class="hero-seam" aria-hidden="true"></div>
-  <img class="hero-lion" src="/nikola-tsolov-lion-crest.webp" alt="" width="800" height="800" loading="eager" decoding="async" fetchpriority="high" />
+  <img class="hero-lion" src="/nikola-tsolov-lion-crest.webp" alt="" width="800" height="800" decoding="async" />
 
   <div class="hero-topflag">
     <span class="hero-flag" aria-hidden="true"><i class="hero-w"></i><i class="hero-g"></i><i class="hero-r"></i></span>
