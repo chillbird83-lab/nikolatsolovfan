@@ -454,7 +454,8 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="preload" as="image" type="image/webp" href="/nikola-tsolov-campos-f2-wet-track.webp" />
+<link rel="preload" as="image" type="image/webp" href="/nikola-tsolov-portrait-gold.webp" />
+<link rel="preload" as="image" type="image/webp" href="/nikola-tsolov-lion-crest.webp" />
 <link rel="manifest" href="site.webmanifest" />
 
 <!-- Open Graph (Facebook, LinkedIn, Discord, WhatsApp) -->
@@ -491,6 +492,7 @@
 <style>
   :root {
     --ink: #041E42;
+    --ink-2: #02132c;
     --bone: #F1F1F1;
     --cream: #d8d4cc;
     --red: #E03A3E;
@@ -816,301 +818,366 @@
     .banner-next { align-items: flex-start; }
   }
 
-  /* ===================== HERO ===================== */
+  /* ===================== HERO (editorial) ===================== */
   .hero {
     position: relative;
-    min-height: 100vh;
-    padding: 60px 32px 60px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    gap: 24px;
-    background: #041e42;
-    overflow: hidden;
-  }
-  .hero-bg-img {
-    position: absolute;
-    inset: 0;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 30%;
-    z-index: 0;
-    /* opacity controlled by cinematic animation - starts at 0, animates to 0.45 */
+    min-height: 100vh;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 86% 8%, rgba(224,58,62,0.14), transparent 42%),
+      radial-gradient(circle at 6% 92%, rgba(255,204,0,0.08), transparent 50%),
+      linear-gradient(150deg, #06214a 0%, var(--ink) 54%, var(--ink-2) 100%);
+    display: flex;
+    align-items: stretch;
+    padding: 0;
   }
   .hero::before {
-    content: '';
+    content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 58px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 58px);
+    -webkit-mask-image: radial-gradient(ellipse 80% 80% at 35% 50%, black 30%, transparent 90%);
+            mask-image: radial-gradient(ellipse 80% 80% at 35% 50%, black 30%, transparent 90%);
+  }
+  .hero::after {
+    content: ''; position: absolute; inset: 0; z-index: 6; pointer-events: none;
+    opacity: 0.05; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .hero-portrait {
     position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(4,30,66,0.3) 0%, rgba(4,30,66,0.55) 50%, rgba(4,30,66,0.85) 100%);
-    z-index: 1;
+    right: 0; top: 0; bottom: 0;
+    width: 56%;
+    z-index: 2;
+    background-image: url('/nikola-tsolov-portrait-gold.webp');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: 32% 8%;
+    -webkit-mask-image: linear-gradient(100deg, transparent 0%, rgba(0,0,0,0.5) 10%, black 30%);
+            mask-image: linear-gradient(100deg, transparent 0%, rgba(0,0,0,0.5) 10%, black 30%);
+    opacity: 0;
+    animation: heroPortraitFade 1.4s ease-out 0.1s forwards;
+    transition:
+      background-size 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+      background-position 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: background-size;
   }
-  .hero > * { position: relative; z-index: 2; }
-  .hero > .hero-bg-img,
-  .hero > .speed-lines,
-  .hero > .hero-scanline { position: absolute; }
-  .hero > .speed-lines { z-index: 1; }
-  .hero > .hero-scanline { z-index: 3; }
-
-  .hero .country-strip {
-    position: absolute;
-    top: 60px;
-    right: 32px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 4px;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    color: var(--gray-300);
-  }
-  .flag-bg {
-    width: 64px;
-    height: 38px;
-    border: 1px solid var(--gray-700);
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-  }
-  .flag-bg span:nth-child(1) { background: var(--bone); }
-  .flag-bg span:nth-child(2) { background: var(--green); }
-  .flag-bg span:nth-child(3) { background: var(--red); }
-
-  /* ===================== CINEMATIC INTRO ===================== */
-  @keyframes heroImgReveal {
-    0%   { opacity: 0; transform: scale(1.1); }
-    100% { opacity: 0.45; transform: scale(1); }
-  }
-  @keyframes glitchIn {
-    0%   { opacity: 0; transform: translateX(-40px) skewX(-12deg); filter: blur(8px); }
-    30%  { opacity: 1; transform: translateX(6px) skewX(3deg); filter: blur(0); }
-    50%  { transform: translateX(-3px) skewX(-1deg); }
-    70%  { transform: translateX(1px) skewX(0); }
-    100% { opacity: 1; transform: none; filter: blur(0); }
-  }
-  @keyframes flickerIn {
-    0%   { opacity: 0; }
-    15%  { opacity: 0.7; }
-    25%  { opacity: 0.1; }
-    35%  { opacity: 0.9; }
-    45%  { opacity: 0.3; }
-    60%  { opacity: 1; }
-    75%  { opacity: 0.6; }
-    100% { opacity: 1; }
-  }
-  @keyframes typeSlide {
-    0%   { opacity: 0; transform: translateY(20px); filter: blur(4px); }
-    100% { opacity: 1; transform: none; filter: blur(0); }
-  }
-  @keyframes fadeSlideUp {
-    0%   { opacity: 0; transform: translateY(30px); }
-    100% { opacity: 1; transform: none; }
-  }
-  @keyframes pulseGlow {
-    0%, 100% { text-shadow: 0 0 8px rgba(231,76,60,0.3); }
-    50%      { text-shadow: 0 0 24px rgba(231,76,60,0.7), 0 0 48px rgba(231,76,60,0.3); }
-  }
-  /* Scanline effect across hero — uses transform (compositor) instead of top (layout) to avoid CLS */
-  @keyframes scanline {
-    0%   { transform: translateY(0); }
-    100% { transform: translateY(110vh); }
+  .hero-portrait:hover {
+    background-size: 108% auto;
+    background-position: 32% 6%;
   }
   .hero-scanline {
-    position: absolute;
-    inset: 0;
-    z-index: 3;
-    overflow: hidden;
-    pointer-events: none;
-    opacity: 0.4;
+    position: absolute; right: 0; top: 0; bottom: 0;
+    width: 56%; z-index: 4;
+    pointer-events: none; overflow: hidden;
+    -webkit-mask-image: linear-gradient(100deg, transparent 0%, rgba(0,0,0,0.5) 10%, black 30%);
+            mask-image: linear-gradient(100deg, transparent 0%, rgba(0,0,0,0.5) 10%, black 30%);
   }
-  .hero-scanline::after {
+  .hero-scanline::before {
     content: '';
-    position: absolute;
-    left: 0; right: 0;
-    top: -4px;
-    height: 4px;
-    background: linear-gradient(90deg, transparent, rgba(255,204,0,0.6), rgba(231,76,60,0.6), transparent);
-    animation: scanline 1.2s ease-in-out 0.2s 1 forwards;
-    will-change: transform;
+    position: absolute; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255,204,0,0.55), transparent);
+    box-shadow: 0 0 18px rgba(255,204,0,0.35);
+    transform: translateY(-100%);
+    animation: heroScan 7.5s linear infinite 1.5s;
   }
-
-  /* Hero image cinematic reveal */
-  .hero-bg-img {
-    opacity: 0;
-    animation: heroImgReveal 2s ease-out 0.3s forwards;
+  @keyframes heroScan {
+    0%   { transform: translateY(-5%); opacity: 0; }
+    8%   { opacity: 1; }
+    92%  { opacity: 1; }
+    100% { transform: translateY(105vh); opacity: 0; }
   }
-
-  /* TSOLOV letters - each letter animates individually */
-  .hero-tsolov .char {
-    display: inline-block;
-    opacity: 0;
-    animation: glitchIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  }
-  .hero-tsolov .char:nth-child(1) { animation-delay: 0.8s; }
-  .hero-tsolov .char:nth-child(2) { animation-delay: 0.88s; }
-  .hero-tsolov .char:nth-child(3) { animation-delay: 0.96s; }
-  .hero-tsolov .char:nth-child(4) { animation-delay: 1.04s; }
-  .hero-tsolov .char:nth-child(5) { animation-delay: 1.12s; }
-
-  /* The L in TSOLOV - special red flicker */
-  .hero-tsolov .char-number {
-    animation: glitchIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards, flickerIn 0.8s ease 1.5s 1;
-    color: var(--red);
-    -webkit-text-stroke: 2px var(--red);
-  }
-
-  /* Nickname words type in */
-  .hero-nickname span {
-    display: inline-block;
-    opacity: 0;
-    animation: typeSlide 0.7s ease-out forwards;
-  }
-  .hero-nickname .nick-white { animation-delay: 1.6s; }
-  .hero-nickname .nick-green { animation-delay: 1.85s; }
-  .hero-nickname .nick-red   { animation-delay: 2.1s; }
-
-  /* Tagline fades up */
-  .hero-tagline.cin {
-    opacity: 0;
-    animation: fadeSlideUp 0.8s ease-out 2.6s forwards;
-  }
-  .hero-tagline.cin em {
-    animation: pulseGlow 2s ease-in-out 3.4s infinite;
-  }
-
-  /* Meta fields slide up staggered */
-  .hero-meta.cin .field {
-    opacity: 0;
-    animation: fadeSlideUp 0.5s ease-out forwards;
-  }
-  .hero-meta.cin .field:nth-child(1) { animation-delay: 3.0s; }
-  .hero-meta.cin .field:nth-child(2) { animation-delay: 3.15s; }
-  .hero-meta.cin .field:nth-child(3) { animation-delay: 3.3s; }
-  .hero-meta.cin .field:nth-child(4) { animation-delay: 3.45s; }
-
-  /* Country strip */
-  .country-strip.cin {
-    opacity: 0;
-    animation: fadeSlideUp 0.6s ease-out 2.3s forwards;
-  }
-
-  /* Result banner pulse */
-  .result-banner.cin .banner-position {
-    animation: pulseGlow 2s ease-in-out 3.8s 3;
-  }
-
-  /* Respect reduced motion */
-  @media (prefers-reduced-motion: reduce) {
-    .hero-bg-img,
-    .hero-tsolov .char,
-    .hero-nickname span,
-    .hero-tagline.cin,
-    .hero-meta.cin .field,
-    .country-strip.cin,
-    .hero-scanline::after {
-      animation: none !important;
-      opacity: 1 !important;
-      transform: none !important;
-      filter: none !important;
-    }
-  }
-
-  .hero-name {
-    margin-top: auto;
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    gap: 0.15em;
-  }
-  .hero-tsolov {
-    font-family: var(--display);
-    font-weight: 900;
-    font-size: clamp(48px, 12vw, 180px);
-    line-height: 0.78;
-    letter-spacing: -0.03em;
-    text-transform: uppercase;
-    color: var(--bone);
-    /* Reserve space to prevent CLS during font swap */
-    min-height: clamp(38px, 9.4vw, 140px);
-  }
-  .hero-nickname {
-    font-family: var(--serif);
-    font-style: italic;
-    font-weight: 500;
-    font-size: clamp(36px, 8.5vw, 130px);
-    line-height: 0.95;
-    letter-spacing: -0.005em;
-    display: flex;
-    align-items: baseline;
-    gap: 0.28em;
-    flex-wrap: wrap;
-    /* Reserve space to prevent CLS during font swap */
-    min-height: clamp(34px, 8vw, 124px);
-  }
-  .hero-nickname .nick-white   { color: var(--bone); }
-  .hero-nickname .nick-green   { color: var(--green); }
-  .hero-nickname .nick-red     { color: var(--red); }
-
-  .hero-meta {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    border-top: 1px solid rgba(255,204,0,0.2);
-    border-bottom: 1px solid rgba(255,204,0,0.2);
-    padding: 22px 16px;
-    font-family: var(--mono);
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    background: rgba(4,30,66,0.6);
-    border-radius: 4px;
-  }
-  .hero-meta .field { display: flex; flex-direction: column; gap: 6px; }
-  .hero-meta .field .label { color: rgba(255,255,255,0.7); font-size: 10px; }
-  .hero-meta .field .value { color: var(--bone); font-size: 14px; font-weight: 500; }
-  .hero-meta .field .value strong { color: var(--red); }
-
-  .hero-tagline {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: clamp(20px, 2.4vw, 32px);
-    line-height: 1.3;
-    color: var(--cream);
-    max-width: 720px;
-    font-weight: 400;
-  }
-  .hero-tagline em {
-    color: var(--red);
-    font-style: italic;
-    font-weight: 600;
-  }
-
-  /* Speed lines decoration */
-  .speed-lines {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 30%;
-    height: 220px;
+  .hero-seam {
+    position: absolute; top: 18%; bottom: 18%; left: 45.5%; width: 2px; z-index: 3;
+    background: linear-gradient(180deg, transparent, rgba(255,204,0,0.5) 22%, rgba(255,204,0,0.5) 78%, transparent);
+    box-shadow: 0 0 20px rgba(255,204,0,0.3);
+    transform: skewX(-4deg);
     pointer-events: none;
-    opacity: 0.4;
+    opacity: 0;
+    animation:
+      heroSeamFade 1.2s ease-out 0.8s forwards,
+      heroSeamPulse 4.5s ease-in-out 2.5s infinite;
   }
-  .speed-lines .line {
+  @keyframes heroSeamFade { to { opacity: 1; } }
+  @keyframes heroSeamPulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(255,204,0,0.3); }
+    50%      { box-shadow: 0 0 36px rgba(255,204,0,0.55); }
+  }
+  .hero-portrait:hover ~ .hero-seam {
+    box-shadow: 0 0 42px rgba(255,204,0,0.7);
+    background: linear-gradient(180deg, transparent, rgba(255,204,0,0.8) 22%, rgba(255,204,0,0.8) 78%, transparent);
+    transition: box-shadow .6s ease, background .6s ease;
+  }
+  .hero-lion {
     position: absolute;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--gold), transparent);
-    animation: zoom 2.5s ease-in-out infinite;
+    top: 50%; left: 35%;
+    transform: translate(-50%, -50%);
+    height: 124%; width: auto;
+    z-index: 1;
+    opacity: 0;
+    filter: saturate(1.15);
+    pointer-events: none;
+    animation:
+      heroLionFade 1.6s ease-out 0.3s forwards,
+      heroLionBreathe 9s ease-in-out 2.2s infinite;
   }
-  .speed-lines .line:nth-child(1) { top: 20%; width: 40%; animation-delay: 0s; }
-  .speed-lines .line:nth-child(2) { top: 45%; width: 70%; animation-delay: 0.4s; }
-  .speed-lines .line:nth-child(3) { top: 70%; width: 50%; animation-delay: 0.8s; }
-  .speed-lines .line:nth-child(4) { top: 85%; width: 30%; animation-delay: 1.2s; }
-  @keyframes zoom {
-    0% { transform: translateX(-100%); opacity: 0; }
-    50% { opacity: 1; }
-    100% { transform: translateX(100%); opacity: 0; }
+  @keyframes heroLionFade { to { opacity: 0.13; } }
+  @keyframes heroLionBreathe {
+    0%, 100% { opacity: 0.13; filter: saturate(1.15); }
+    50%      { opacity: 0.17; filter: saturate(1.35); }
+  }
+  @keyframes heroPortraitFade { to { opacity: 1; } }
+
+  .hero-content {
+    position: relative; z-index: 5;
+    width: 52%;
+    min-width: 460px;
+    padding: clamp(40px, 6vh, 80px) 4vw 7vh 5vw;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+
+  .hero-seasons-head {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 14px;
+    opacity: 0; animation: heroRise 0.6s ease-out 0.4s forwards;
+  }
+  .hero-seasons-head .hero-label {
+    font-family: var(--mono); font-size: clamp(11px, 1vw, 13px);
+    font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase;
+    color: var(--bone);
+  }
+  .hero-seasons-head .hero-rule { flex: 1; height: 1px; background: rgba(255,255,255,0.25); }
+  .hero-seasons-head .hero-plus {
+    color: var(--red); font-family: var(--mono); font-size: 18px; line-height: 1;
+    animation: heroPlusPulse 3.2s ease-in-out 2s infinite;
+  }
+  @keyframes heroPlusPulse {
+    0%, 100% { opacity: 1; transform: scale(1) rotate(0); }
+    50%      { opacity: 0.55; transform: scale(1.25) rotate(90deg); color: var(--gold); }
+  }
+
+  .hero-seasons {
+    display: flex; gap: clamp(20px, 3vw, 48px); align-items: baseline;
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(40px, 6vw, 86px); line-height: 0.9;
+    color: var(--bone); letter-spacing: 0.01em;
+    margin-bottom: 28px;
+  }
+  .hero-seasons .hero-yr {
+    position: relative;
+    cursor: default;
+    opacity: 0; transform: translateY(14px);
+    animation: heroRise 0.6s ease-out forwards;
+    transition: color .3s ease, transform .35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hero-seasons .hero-yr:nth-child(1) { animation-delay: 0.55s; }
+  .hero-seasons .hero-yr:nth-child(2) { animation-delay: 0.75s; }
+  .hero-seasons .hero-yr:nth-child(3) { animation-delay: 0.95s; }
+  .hero-seasons .hero-yr:hover {
+    color: var(--gold);
+    transform: translateY(-6px);
+    text-shadow: 0 8px 28px rgba(255,204,0,0.3);
+  }
+  .hero-seasons .hero-yr span {
+    position: absolute; left: 0; top: calc(100% + 10px);
+    font-family: var(--serif); font-style: italic; font-weight: 400;
+    font-size: 12px; letter-spacing: 0.01em; text-transform: none;
+    color: var(--gray-300);
+    white-space: nowrap;
+    transition: color .3s ease, transform .35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hero-seasons .hero-yr:hover span {
+    color: var(--bone);
+    transform: translateY(2px);
+  }
+
+  .hero-name-wrap {
+    margin-top: clamp(46px, 7vh, 92px);
+    opacity: 0; transform: translateY(16px);
+    animation: heroRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 1.15s forwards;
+  }
+  .hero-name-pill {
+    display: inline-block; position: relative;
+    background: var(--gold); color: var(--ink);
+    font-family: var(--mono); font-weight: 700;
+    font-size: clamp(11px, 1vw, 14px); letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 7px 14px; margin-bottom: 6px;
+    cursor: default;
+    transition: transform .35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .35s ease, letter-spacing .35s ease;
+  }
+  .hero-name-pill:hover {
+    transform: translateX(6px);
+    letter-spacing: 0.22em;
+    box-shadow: -6px 0 0 var(--red), 0 8px 24px rgba(255,204,0,0.25);
+  }
+  .hero-bigname {
+    font-family: var(--sans); font-weight: 700;
+    font-size: clamp(72px, 12vw, 178px); line-height: 0.82;
+    letter-spacing: -0.02em; color: var(--bone);
+    text-shadow: 0 6px 34px rgba(0,0,0,0.45);
+    cursor: default;
+    transition: text-shadow .6s ease, letter-spacing .6s ease;
+  }
+  .hero-bigname:hover {
+    text-shadow:
+      0 6px 34px rgba(0,0,0,0.45),
+      0 0 60px rgba(255,204,0,0.25),
+      0 0 120px rgba(255,204,0,0.12);
+    letter-spacing: -0.015em;
+  }
+
+  .hero-stats {
+    margin-top: clamp(40px, 6vh, 76px);
+    display: grid;
+    grid-template-columns: 1.15fr 1fr 1fr;
+    gap: clamp(20px, 2.4vw, 40px);
+    align-items: start;
+  }
+  .hero-bio { display: flex; flex-direction: column; gap: 20px; }
+  .hero-bio .hero-row {
+    opacity: 0; transform: translateX(-10px);
+    animation: heroSlideInLeft 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .hero-bio .hero-row:nth-child(1) { animation-delay: 1.55s; }
+  .hero-bio .hero-row:nth-child(2) { animation-delay: 1.70s; }
+  .hero-bio .hero-row:nth-child(3) { animation-delay: 1.85s; }
+  @keyframes heroSlideInLeft { to { opacity: 1; transform: translateX(0); } }
+  .hero-bio .hero-row .hero-label { display: flex; align-items: center; gap: 7px; margin-bottom: 5px; color: var(--gray-300); transition: color .25s ease; }
+  .hero-bio .hero-row .hero-label .hero-pt { color: var(--red); font-size: 13px; line-height: 1; transition: transform .25s ease; }
+  .hero-bio .hero-row:hover .hero-label { color: var(--bone); }
+  .hero-bio .hero-row:hover .hero-label .hero-pt { transform: translateX(3px); }
+  .hero-bio .hero-row .hero-val {
+    font-family: var(--sans); font-weight: 700; font-size: clamp(17px, 1.5vw, 22px);
+    color: var(--bone); line-height: 1.05;
+  }
+  .hero-bio .hero-row .hero-sub { font-family: var(--mono); font-size: 11px; color: var(--gray-500); letter-spacing: 0.08em; margin-top: 3px; }
+
+  .hero-circ-col { display: flex; flex-direction: column; gap: clamp(22px, 3.4vh, 38px); }
+  .hero-circ {
+    cursor: default;
+    transition: transform .35s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0; transform: translateY(12px);
+    animation: heroRise 0.55s ease-out forwards;
+  }
+  .hero-circ-col:nth-child(2) .hero-circ:nth-child(1) { animation-delay: 1.65s; }
+  .hero-circ-col:nth-child(2) .hero-circ:nth-child(2) { animation-delay: 1.80s; }
+  .hero-circ-col:nth-child(3) .hero-circ:nth-child(1) { animation-delay: 1.95s; }
+  .hero-circ-col:nth-child(3) .hero-circ:nth-child(2) { animation-delay: 2.10s; }
+  .hero-circ .hero-label { margin-bottom: 10px; color: var(--gray-300); display: flex; align-items: center; gap: 7px; transition: color .25s ease; }
+  .hero-circ .hero-label .hero-pt { color: var(--red); font-size: 12px; }
+
+  .hero-ring {
+    width: clamp(90px, 8vw, 124px); height: clamp(90px, 8vw, 124px);
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.35);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    transition:
+      border-color .35s ease,
+      box-shadow .35s ease,
+      transform .35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hero-ring::after {
+    content: ''; position: absolute; inset: -1.5px; border-radius: 50%;
+    border: 1.5px solid transparent;
+    border-top-color: var(--gold); border-right-color: var(--gold);
+    transform: rotate(-180deg); opacity: 0;
+    animation:
+      heroRingDraw 1.3s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+      heroRingDrift 14s linear infinite;
+    transition: border-color .35s ease;
+  }
+  @keyframes heroRingDraw {
+    0%   { transform: rotate(-180deg); opacity: 0; }
+    20%  { opacity: 1; }
+    100% { transform: rotate(-30deg); opacity: 1; }
+  }
+  @keyframes heroRingDrift {
+    0%, 100% { filter: drop-shadow(0 0 0 rgba(255,204,0,0)); }
+    50%      { filter: drop-shadow(0 0 6px rgba(255,204,0,0.35)); }
+  }
+  .hero-circ-col:nth-child(2) .hero-circ:nth-child(1) .hero-ring::after { animation-delay: 2.0s, 4s; }
+  .hero-circ-col:nth-child(2) .hero-circ:nth-child(2) .hero-ring::after { animation-delay: 2.15s, 4.4s; }
+  .hero-circ-col:nth-child(3) .hero-circ:nth-child(1) .hero-ring::after { animation-delay: 2.3s, 4.8s; }
+  .hero-circ-col:nth-child(3) .hero-circ:nth-child(2) .hero-ring::after { animation-delay: 2.45s, 5.2s; }
+
+  .hero-ring .hero-n {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(30px, 3.4vw, 50px); color: var(--bone); letter-spacing: 0.01em;
+    display: inline-block;
+    opacity: 0; transform: scale(0.7);
+    animation: heroNumReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transition: color .3s ease, transform .35s cubic-bezier(0.16, 1, 0.3, 1), text-shadow .35s ease;
+  }
+  @keyframes heroNumReveal { to { opacity: 1; transform: scale(1); } }
+  .hero-circ-col:nth-child(2) .hero-circ:nth-child(1) .hero-ring .hero-n { animation-delay: 2.4s; }
+  .hero-circ-col:nth-child(2) .hero-circ:nth-child(2) .hero-ring .hero-n { animation-delay: 2.55s; }
+  .hero-circ-col:nth-child(3) .hero-circ:nth-child(1) .hero-ring .hero-n { animation-delay: 2.7s; }
+  .hero-circ-col:nth-child(3) .hero-circ:nth-child(2) .hero-ring .hero-n { animation-delay: 2.85s; }
+
+  .hero-circ:hover { transform: translateY(-2px); }
+  .hero-circ:hover .hero-ring {
+    transform: scale(1.06);
+    border-color: rgba(255,255,255,0.55);
+    box-shadow:
+      0 0 28px rgba(255,204,0,0.25),
+      inset 0 0 14px rgba(255,204,0,0.08);
+  }
+  .hero-circ:hover .hero-ring::after {
+    border-top-color: var(--gold);
+    border-right-color: var(--gold);
+    border-bottom-color: var(--gold);
+    animation: heroRingWrap 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @keyframes heroRingWrap { to { transform: rotate(75deg); } }
+  .hero-circ:hover .hero-ring .hero-n {
+    color: var(--gold);
+    transform: scale(1.06);
+    text-shadow: 0 0 16px rgba(255,204,0,0.4);
+  }
+  .hero-circ:hover .hero-label { color: var(--bone); }
+  .hero-circ:hover .hero-cap { color: var(--gray-300); }
+  .hero-circ .hero-cap {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--gray-500); letter-spacing: 0.06em;
+    margin-top: 9px; max-width: 130px; line-height: 1.4;
+    transition: color .3s ease;
+  }
+
+  .hero-urlstamp {
+    position: absolute; bottom: 28px; right: 32px; z-index: 7;
+    font-family: var(--mono); font-size: 13px; font-weight: 700;
+    letter-spacing: 0.14em; color: var(--gold);
+    display: flex; align-items: center; gap: 8px;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.6);
+    opacity: 0; animation: heroFadeIn 0.8s ease-out 2s forwards;
+  }
+  .hero-urlstamp .hero-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--red); box-shadow: 0 0 9px rgba(224,58,62,0.8); animation: heroPulse 2.2s ease-in-out infinite; }
+  @keyframes heroPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+  .hero-topflag {
+    position: absolute; top: 30px; right: 4vw; left: auto; z-index: 7;
+    display: flex; align-items: center; gap: 12px;
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray-300);
+    text-shadow: 0 1px 6px rgba(0,0,0,0.7);
+    opacity: 0; animation: heroFadeIn 0.8s ease-out 0.3s forwards;
+  }
+  .hero-topflag .hero-flag { display: flex; flex-direction: column; width: 8px; height: 26px; border-radius: 1px; overflow: hidden; }
+  .hero-topflag .hero-flag i { flex: 1; }
+  .hero-topflag .hero-flag .hero-w { background:#fff; }
+  .hero-topflag .hero-flag .hero-g { background: var(--green); }
+  .hero-topflag .hero-flag .hero-r { background: var(--red); }
+
+  @keyframes heroRise { to { opacity: 1; transform: translateY(0); } }
+  @keyframes heroFadeIn { to { opacity: 1; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero *, .hero *::before, .hero *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+    .hero-portrait, .hero-lion, .hero-seam, .hero-seasons-head, .hero-seasons .hero-yr, .hero-name-wrap, .hero-stats, .hero-urlstamp, .hero-topflag, .hero-bio .hero-row, .hero-circ, .hero-ring .hero-n, .hero-ring::after { opacity: 1 !important; transform: none !important; }
+    .hero-ring::after { transform: rotate(-30deg) !important; }
+    .hero-lion { opacity: 0.13 !important; }
   }
 
   /* ===================== SECTIONS ===================== */
@@ -3556,16 +3623,17 @@
   .back-to-top svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
 
   /* ===================== RESPONSIVE ===================== */
-  @keyframes heroImgRevealMobile {
-    0%   { opacity: 0; transform: scale(1.05); }
-    100% { opacity: 0.7; transform: scale(1); }
-  }
 
   /* ============================================================
      COMPREHENSIVE MOBILE POLISH — applies on top of existing media
      queries. Reduces paddings, tightens grids, prevents overflow.
      ============================================================ */
   @media (max-width: 480px) {
+    /* Editorial hero — 2-col stats grid */
+    .hero-stats { grid-template-columns: 1fr 1fr; row-gap: 30px; }
+    .hero-bio { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; gap: 18px 30px; }
+    .hero-bio .hero-row { min-width: 130px; }
+
     /* Section spacing: tighter vertical rhythm on small phones */
     section { padding: 56px 16px; }
     .section-title { font-size: clamp(40px, 11vw, 56px); margin-bottom: 36px; }
@@ -3607,40 +3675,27 @@
 
   @media (max-width: 900px) {
     .topbar nav { display: none; }
-    .hero {
-      padding: 70px 18px 32px;
-      min-height: 88vh;
-      gap: 18px;
+    /* Editorial hero mobile */
+    .hero-portrait, .hero-scanline {
+      width: 100%; background-position: 58% 4%;
+      -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(2,19,44,0.75) 30%, var(--ink-2) 58%);
+              mask-image: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(2,19,44,0.75) 30%, var(--ink-2) 58%);
     }
-    /* Make background image actually visible on mobile — keep lion's head in view */
-    /* Image is landscape; on portrait mobile we lose the sides. The lion's head is upper-right of the image, so we anchor the crop to the right side. */
-    .hero-bg-img {
-      object-position: 75% 35%;
-      animation-name: heroImgRevealMobile;
+    .hero-seam { display: none; }
+    .hero-content {
+      position: relative; width: 100%; min-width: 0;
+      padding: 56px 22px 110px; justify-content: flex-end;
     }
-    .hero::before {
-      background: linear-gradient(to bottom,
-        rgba(4,30,66,0.15) 0%,
-        rgba(4,30,66,0.30) 45%,
-        rgba(4,30,66,0.75) 100%);
+    .hero-content::before {
+      content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+      background: linear-gradient(180deg, transparent 0%, rgba(2,19,44,0.55) 26%, rgba(2,19,44,0.9) 50%, var(--ink-2) 70%);
     }
-    .hero .country-strip {
-      top: 18px;
-      right: 18px;
-      font-size: 9px;
-      gap: 2px;
-    }
-    .flag-bg { width: 38px; height: 24px; }
-    .hero-meta {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-      padding: 16px 14px;
-    }
-    .hero-meta .field .value { font-size: 12px; letter-spacing: 0.06em; }
-    .hero-meta .field .label { font-size: 9px; }
-    .hero-tagline { font-size: 18px; line-height: 1.4; }
-    .hero-tsolov { font-size: clamp(56px, 16vw, 110px); }
-    .hero-nickname { font-size: clamp(28px, 9.5vw, 80px); }
+    .hero-lion { left: 50%; height: 80%; }
+    .hero-topflag { right: 22px; top: 70px; }
+    .hero-urlstamp { right: 22px; bottom: 22px; }
+    .hero-seasons { gap: clamp(18px, 5vw, 40px); margin-bottom: 18px; }
+    .hero-seasons .hero-yr span { display: none; }
+    .hero-bigname { font-size: clamp(64px, 19vw, 130px); }
     section { padding: 70px 20px; }
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
     .stats-grid .stat:nth-child(2) { border-right: none; }
@@ -4124,54 +4179,82 @@
 
 <!-- ===================== HERO ===================== -->
 <header class="hero">
-  <img src="/nikola-tsolov-campos-f2-wet-track.webp" alt="" class="hero-bg-img" aria-hidden="true" fetchpriority="high" decoding="async" width="1100" height="614"/>
-  <div class="speed-lines">
-    <div class="line"></div>
-    <div class="line"></div>
-    <div class="line"></div>
-    <div class="line"></div>
+  <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Никола Цолов (Nikola Tsolov) — български пилот във FIA Formula 2, Red Bull Junior, Campos Racing</h1>
+
+  <div class="hero-portrait" role="img" aria-label="Никола Цолов в цветовете на Campos Racing F2"></div>
+  <div class="hero-scanline" aria-hidden="true"></div>
+  <div class="hero-seam" aria-hidden="true"></div>
+  <img class="hero-lion" src="/nikola-tsolov-lion-crest.webp" alt="" width="800" height="800" loading="eager" decoding="async" fetchpriority="high" />
+
+  <div class="hero-topflag">
+    <span class="hero-flag" aria-hidden="true"><i class="hero-w"></i><i class="hero-g"></i><i class="hero-r"></i></span>
+    София &middot; България
   </div>
 
-  <div class="country-strip cin">
-    <div class="flag-bg"><span></span><span></span><span></span></div>
-    <div>БЪЛГАРИЯ · BGR</div>
-    <div>СОФИЯ · 21.12.2006</div>
-  </div>
+  <div class="hero-content">
+    <div class="hero-seasons-head">
+      <span class="hero-label">Ключови сезони</span>
+      <span class="hero-rule"></span>
+      <span class="hero-plus">+</span>
+    </div>
+    <div class="hero-seasons">
+      <span class="hero-yr">&rsquo;22<span>Шампион Spanish F4</span></span>
+      <span class="hero-yr">&rsquo;25<span>Рекорд за победи във F3</span></span>
+      <span class="hero-yr">&rsquo;26<span>Първа победа във F2</span></span>
+    </div>
 
-  <div class="hero-scanline"></div>
+    <div class="hero-name-wrap">
+      <span class="hero-name-pill">Никола Цолов &middot; Българският лъв</span>
+      <div class="hero-bigname">Цолов</div>
+    </div>
 
-  <div class="hero-name">
-    <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Никола Цолов (Nikola Tsolov) — български пилот във FIA Formula 2, Red Bull Junior, Campos Racing</h1>
-    <div class="hero-tsolov"><span class="char">Ц</span><span class="char">О</span><span class="char char-number">Л</span><span class="char">О</span><span class="char">В</span></div>
-    <div class="hero-nickname">
-      <span class="nick-white">българския</span>
-      <span class="nick-green">лъв</span>
+    <div class="hero-stats">
+      <div class="hero-bio">
+        <div class="hero-row">
+          <div class="hero-label"><span class="hero-pt">&#9656;</span> Националност</div>
+          <div class="hero-val">Българин</div>
+        </div>
+        <div class="hero-row">
+          <div class="hero-label"><span class="hero-pt">&#9656;</span> Роден</div>
+          <div class="hero-val">21 декември 2006</div>
+          <div class="hero-sub">София &middot; на 19 години</div>
+        </div>
+        <div class="hero-row">
+          <div class="hero-label"><span class="hero-pt">&#9656;</span> Отбор</div>
+          <div class="hero-val">Campos Racing &middot; #6</div>
+          <div class="hero-sub">Red Bull Junior &middot; F2 2026</div>
+        </div>
+      </div>
+
+      <div class="hero-circ-col">
+        <div class="hero-circ">
+          <div class="hero-label"><span class="hero-pt">&#9656;</span> F3 победи</div>
+          <div class="hero-ring"><span class="hero-n">5</span></div>
+          <div class="hero-cap">Рекордьор за всички времена във F3</div>
+        </div>
+        <div class="hero-circ">
+          <div class="hero-label"><span class="hero-pt">&#9656;</span> Spanish F4 &rsquo;22</div>
+          <div class="hero-ring"><span class="hero-n">13</span></div>
+          <div class="hero-cap">Победи в 21 състезания &middot; шампион</div>
+        </div>
+      </div>
+
+      <div class="hero-circ-col">
+        <div class="hero-circ">
+          <div class="hero-label"><span class="hero-pt">&#9656;</span> F3 финал 2025</div>
+          <div class="hero-ring"><span class="hero-n">P2</span></div>
+          <div class="hero-cap">Втори &middot; Титла за отбори с Campos</div>
+        </div>
+        <div class="hero-circ">
+          <div class="hero-label"><span class="hero-pt">&#9656;</span> Първа победа във F2</div>
+          <div class="hero-ring"><span class="hero-n">&rsquo;26</span></div>
+          <div class="hero-cap">Мелбърн &mdash; първа за България в историята</div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="hero-tagline cin">
-    Първият българин, спечелил състезание във FIA Formula 2. Red Bull Junior.
-    Campos Racing · #6. <em>На крачка от F1.</em>
-  </div>
-
-  <div class="hero-meta cin">
-    <div class="field">
-      <span class="label">Номер</span>
-      <span class="value"><strong>#6</strong></span>
-    </div>
-    <div class="field">
-      <span class="label">Серия</span>
-      <span class="value">FIA Formula 2 — 2026</span>
-    </div>
-    <div class="field">
-      <span class="label">Отбор</span>
-      <span class="value">Campos Racing</span>
-    </div>
-    <div class="field">
-      <span class="label">Юниорска програма</span>
-      <span class="value">Red Bull Junior Team</span>
-    </div>
-  </div>
+  <div class="hero-urlstamp"><span class="hero-dot"></span>nikolatsolovfan.com</div>
 </header>
 
 <!-- ===================== STATS ===================== -->
@@ -6337,7 +6420,7 @@ function initRecapCards() {
     document.querySelectorAll('.section-title').forEach(el => watch(el, 'reveal', 0.08));
 
     // -- Hero meta items --
-    watchGroup('.hero-meta > *', 'reveal', 0.15, 0.1);
+    // (hero-meta removed — new editorial hero handles its own entrance)
 
     // -- Career stats --
     watchGroup('.stat', 'reveal', 0, 0.1);
