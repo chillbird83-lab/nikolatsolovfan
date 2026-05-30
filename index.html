@@ -4133,6 +4133,77 @@
   .news-link { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: var(--red); text-transform: uppercase; text-decoration: none; margin-top: 4px; }
   .news-link:hover { color: var(--bone); }
   @media (max-width: 600px) { .news-section { padding: 70px 20px; } .news-grid { grid-template-columns: 1fr; } }
+
+  /* ============= 2027 F1 SEAT FORECAST TRACKER ============= */
+  .ftrk-section { padding: 100px 32px; background:
+    radial-gradient(ellipse at top, rgba(255,204,0,0.06), transparent 60%),
+    linear-gradient(180deg, rgba(13,45,86,0.0), rgba(13,45,86,0.5) 50%, rgba(13,45,86,0.0));
+    position: relative; overflow: hidden; }
+  .ftrk-wrap { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+  .ftrk-head { text-align: center; margin-bottom: 48px; }
+  .ftrk-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11px; color: var(--gold); letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 14px; }
+  .ftrk-eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 0 rgba(224,58,62,0.7); animation: ftrkPulse 2.2s ease-out infinite; }
+  @keyframes ftrkPulse {
+    0%   { box-shadow: 0 0 0 0 rgba(224,58,62,0.55); }
+    70%  { box-shadow: 0 0 0 12px rgba(224,58,62,0); }
+    100% { box-shadow: 0 0 0 0 rgba(224,58,62,0); }
+  }
+  .ftrk-head h2 { font-family: var(--display); font-weight: 900; font-size: clamp(32px, 5vw, 56px); line-height: 1.05; margin-bottom: 12px; }
+  .ftrk-head h2 .it { color: var(--red); font-style: italic; }
+  .ftrk-head p { color: var(--gray-300); max-width: 660px; margin: 0 auto; font-size: 15.5px; line-height: 1.65; }
+
+  .ftrk-numbers { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 46px; }
+  .ftrk-card { padding: 32px 28px; background: linear-gradient(135deg, rgba(13,45,86,0.78), rgba(4,30,66,0.92)); border: 1px solid var(--gray-700); border-radius: 6px; position: relative; overflow: hidden; }
+  .ftrk-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.5; }
+  .ftrk-card.race::before { background: linear-gradient(90deg, transparent, var(--red), transparent); }
+  .ftrk-card-tag { font-family: var(--mono); font-size: 11px; color: var(--gray-300); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 10px; }
+  .ftrk-card-pct { font-family: var(--display); font-weight: 900; font-size: clamp(64px, 10vw, 110px); line-height: 1; color: var(--bone); display: flex; align-items: baseline; gap: 6px; }
+  .ftrk-card-pct .sym { font-size: 0.45em; color: var(--gold); font-weight: 700; }
+  .ftrk-card.race .ftrk-card-pct { color: #fff; }
+  .ftrk-card-desc { margin-top: 14px; font-family: var(--sans); font-size: 14.5px; color: var(--gray-300); line-height: 1.55; }
+  .ftrk-card-trend { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 10px; border-radius: 3px; }
+  .ftrk-card-trend.up   { color: #6ce0a8; background: rgba(0,150,110,0.12); border: 1px solid rgba(0,150,110,0.3); }
+  .ftrk-card-trend.down { color: #ff9097; background: rgba(224,58,62,0.1); border: 1px solid rgba(224,58,62,0.3); }
+  .ftrk-card-trend.flat { color: var(--gray-300); background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); }
+
+  .ftrk-factors { margin-bottom: 36px; }
+  .ftrk-factors-title { font-family: var(--mono); font-size: 11px; color: var(--gold); letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 18px; text-align: center; }
+  .ftrk-factor { display: grid; grid-template-columns: 220px 1fr 90px; align-items: center; gap: 18px; padding: 14px 0; border-bottom: 1px dashed rgba(255,255,255,0.08); }
+  .ftrk-factor:last-child { border-bottom: none; }
+  .ftrk-factor-label { font-family: var(--sans); font-weight: 700; font-size: 14px; color: var(--bone); }
+  .ftrk-factor-label .ftrk-factor-sub { display: block; font-family: var(--mono); font-size: 10.5px; color: var(--gray-300); font-weight: 400; letter-spacing: 0.08em; margin-top: 3px; text-transform: uppercase; }
+  .ftrk-factor-bar-track { height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; }
+  .ftrk-factor-bar-fill { height: 100%; background: linear-gradient(90deg, var(--red), var(--gold), var(--green)); border-radius: 4px; transition: width 1s ease; }
+  .ftrk-factor-tag { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; text-align: right; padding: 4px 8px; border-radius: 3px; border: 1px solid; }
+  .ftrk-factor-tag.strong   { color: #6ce0a8; border-color: rgba(0,150,110,0.4); }
+  .ftrk-factor-tag.moderate { color: var(--gold); border-color: rgba(255,204,0,0.35); }
+  .ftrk-factor-tag.neutral  { color: var(--gray-300); border-color: rgba(255,255,255,0.15); }
+  .ftrk-factor-tag.weak     { color: #ff9097; border-color: rgba(224,58,62,0.35); }
+
+  .ftrk-meta { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; padding: 18px 22px; background: rgba(13,45,86,0.4); border: 1px solid var(--gray-700); border-radius: 4px; margin-bottom: 22px; }
+  .ftrk-meta-item { font-family: var(--mono); font-size: 11px; color: var(--gray-300); letter-spacing: 0.12em; text-transform: uppercase; }
+  .ftrk-meta-item strong { color: var(--bone); font-weight: 500; }
+  .ftrk-cta { font-family: var(--mono); font-size: 11px; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; padding: 8px 14px; border: 1px solid rgba(255,204,0,0.35); border-radius: 3px; transition: all .2s; }
+  .ftrk-cta:hover { background: rgba(255,204,0,0.08); border-color: var(--gold); transform: translateX(2px); }
+  .ftrk-cta .arr { display: inline-block; transition: transform .2s; }
+  .ftrk-cta:hover .arr { transform: translateX(4px); }
+
+  .ftrk-method { font-family: var(--mono); font-size: 10.5px; color: var(--gray-500); letter-spacing: 0.1em; line-height: 1.7; text-align: center; padding-top: 14px; border-top: 1px dashed rgba(255,255,255,0.06); }
+  .ftrk-method strong { color: var(--gray-300); }
+
+  @media (max-width: 720px) {
+    .ftrk-section { padding: 60px 16px; }
+    .ftrk-head { margin-bottom: 32px; }
+    .ftrk-numbers { grid-template-columns: 1fr; gap: 14px; margin-bottom: 32px; }
+    .ftrk-card { padding: 24px 20px; }
+    .ftrk-card-pct { font-size: 70px; }
+    .ftrk-factor { grid-template-columns: 1fr 70px; gap: 8px 12px; padding: 12px 0; }
+    .ftrk-factor-bar-track { grid-column: 1 / -1; }
+    .ftrk-factor-label { font-size: 13.5px; }
+    .ftrk-meta { padding: 14px 16px; }
+    .ftrk-meta-item { font-size: 10px; }
+  }
 </style>
 </head>
 <body>
@@ -4556,6 +4627,78 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- ===================== 2027 F1 SEAT FORECAST TRACKER ===================== -->
+<section id="f1-forecast" class="ftrk-section" aria-labelledby="ftrk-heading">
+  <div class="ftrk-wrap">
+    <div class="ftrk-head">
+      <div class="ftrk-eyebrow"><span class="dot" aria-hidden="true"></span> Live Forecast · Updated each race weekend</div>
+      <h2 id="ftrk-heading">Will Tsolov get a <span class="it">2027 F1 seat?</span></h2>
+      <p>A transparent, weekly-updated forecast of Tsolov's probability of landing a Formula 1 role in 2027 — broken down by the four factors that actually move the needle.</p>
+    </div>
+
+    <div class="ftrk-numbers">
+      <div class="ftrk-card race">
+        <div class="ftrk-card-tag">Race seat 2027</div>
+        <div class="ftrk-card-pct"><span id="ftrk-race-pct">0</span><span class="sym">%</span></div>
+        <div class="ftrk-card-desc">Probability Tsolov starts a 2027 F1 grand prix — Racing Bulls being the realistic landing spot.</div>
+        <div class="ftrk-card-trend" id="ftrk-race-trend">— no change</div>
+      </div>
+      <div class="ftrk-card">
+        <div class="ftrk-card-tag">Some F1 role 2027</div>
+        <div class="ftrk-card-pct"><span id="ftrk-reserve-pct">0</span><span class="sym">%</span></div>
+        <div class="ftrk-card-desc">Race seat <em>or</em> reserve / test-driver role inside the Red Bull umbrella for the 2027 season.</div>
+        <div class="ftrk-card-trend" id="ftrk-reserve-trend">— no change</div>
+      </div>
+    </div>
+
+    <div class="ftrk-factors">
+      <div class="ftrk-factors-title">The four factors that move the needle</div>
+
+      <div class="ftrk-factor">
+        <div class="ftrk-factor-label">F2 championship position
+          <span class="ftrk-factor-sub" id="ftrk-f-f2-sub">—</span>
+        </div>
+        <div class="ftrk-factor-bar-track"><div class="ftrk-factor-bar-fill" id="ftrk-f-f2-bar"></div></div>
+        <div class="ftrk-factor-tag" id="ftrk-f-f2-tag">—</div>
+      </div>
+
+      <div class="ftrk-factor">
+        <div class="ftrk-factor-label">Racing Bulls vacancy odds
+          <span class="ftrk-factor-sub" id="ftrk-f-vac-sub">—</span>
+        </div>
+        <div class="ftrk-factor-bar-track"><div class="ftrk-factor-bar-fill" id="ftrk-f-vac-bar"></div></div>
+        <div class="ftrk-factor-tag" id="ftrk-f-vac-tag">—</div>
+      </div>
+
+      <div class="ftrk-factor">
+        <div class="ftrk-factor-label">Tsunoda contract movement
+          <span class="ftrk-factor-sub" id="ftrk-f-tsu-sub">—</span>
+        </div>
+        <div class="ftrk-factor-bar-track"><div class="ftrk-factor-bar-fill" id="ftrk-f-tsu-bar"></div></div>
+        <div class="ftrk-factor-tag" id="ftrk-f-tsu-tag">—</div>
+      </div>
+
+      <div class="ftrk-factor">
+        <div class="ftrk-factor-label">Marko relationship signal
+          <span class="ftrk-factor-sub" id="ftrk-f-mar-sub">—</span>
+        </div>
+        <div class="ftrk-factor-bar-track"><div class="ftrk-factor-bar-fill" id="ftrk-f-mar-bar"></div></div>
+        <div class="ftrk-factor-tag" id="ftrk-f-mar-tag">—</div>
+      </div>
+    </div>
+
+    <div class="ftrk-meta">
+      <div class="ftrk-meta-item">Last update: <strong id="ftrk-updated">—</strong></div>
+      <div class="ftrk-meta-item">Anchor round: <strong id="ftrk-anchor">—</strong></div>
+      <a class="ftrk-cta" href="/articles/nikola-tsolov-f1-seat-2027/">Full F1 seat analysis <span class="arr">→</span></a>
+    </div>
+
+    <div class="ftrk-method">
+      <strong>Methodology:</strong> Race-seat probability = (F2×0.40 + Vacancy×0.30 + Tsunoda×0.10 + Marko×0.20) × 0.55 ceiling adjustment · Reserve probability = (F2×0.30 + Vacancy×0.15 + Tsunoda×0.25 + Marko×0.30) × 1.10 ceiling adjustment, capped at 95% · All factor weights and inputs are hand-set per round based on public Red Bull pipeline signals.
+    </div>
   </div>
 </section>
 
@@ -6505,6 +6648,141 @@ function initRecapCards() {
   } else {
     initScrollAnimations();
   }
+</script>
+
+<!-- ===================== 2027 F1 SEAT FORECAST LOGIC ===================== -->
+<script>
+(function () {
+  // ============================================================
+  //  SINGLE SOURCE OF TRUTH — UPDATE THIS BLOCK AFTER EACH RACE
+  // ============================================================
+  //  Each factor 'value' is 0.00–1.00. The 'sub' line shows the
+  //  reasoning behind the number directly on the page.
+  //  'prev' is the previous race's race-seat % (for trend arrow).
+  const FORECAST = {
+    updated: '30 May 2026',
+    anchor:  'After R03 Montréal',
+    prev_race_pct: 37,      // race-seat % at previous update (for delta arrow)
+    prev_reserve_pct: 76,   // reserve % at previous update
+
+    factors: {
+      f2: {
+        value: 0.85,
+        sub:   'P3 in F2, 22 pts behind leader · 2 wins (most on grid)',
+      },
+      vacancy: {
+        value: 0.55,
+        sub:   'Lawson 3rd year, 12 pts · Lindblad rookie, 4 pts',
+      },
+      tsunoda: {
+        value: 0.45,
+        sub:   'Dual reserve role, no exit-market signals yet',
+      },
+      marko: {
+        value: 0.85,
+        sub:   'Still in personal contact post-retirement',
+      },
+    },
+
+    // Model weights — change only if methodology shifts
+    weights_race:    { f2: 0.40, vacancy: 0.30, tsunoda: 0.10, marko: 0.20 },
+    weights_reserve: { f2: 0.30, vacancy: 0.15, tsunoda: 0.25, marko: 0.30 },
+    race_ceiling:    0.55,   // hardest path
+    reserve_ceiling: 1.10,   // easier path
+    reserve_cap:     0.95,
+  };
+
+  // ============================================================
+  //  RENDER — no need to touch below this line
+  // ============================================================
+  const el = (id) => document.getElementById(id);
+  if (!el('ftrk-race-pct')) return;
+
+  function dot(weights) {
+    const f = FORECAST.factors;
+    return f.f2.value      * weights.f2
+         + f.vacancy.value * weights.vacancy
+         + f.tsunoda.value * weights.tsunoda
+         + f.marko.value   * weights.marko;
+  }
+
+  const raw_race    = dot(FORECAST.weights_race)    * FORECAST.race_ceiling;
+  const raw_reserve = Math.min(dot(FORECAST.weights_reserve) * FORECAST.reserve_ceiling, FORECAST.reserve_cap);
+  const pct_race    = Math.round(raw_race * 100);
+  const pct_reserve = Math.round(raw_reserve * 100);
+
+  // Trend deltas
+  function setTrend(elNode, current, prev) {
+    const d = current - prev;
+    elNode.classList.remove('up','down','flat');
+    if (d > 0) {
+      elNode.classList.add('up');
+      elNode.textContent = `↑ +${d} pts vs last update`;
+    } else if (d < 0) {
+      elNode.classList.add('down');
+      elNode.textContent = `↓ ${d} pts vs last update`;
+    } else {
+      elNode.classList.add('flat');
+      elNode.textContent = '— no change';
+    }
+  }
+
+  // Animated count-up on the big numbers
+  function countUp(node, target, duration) {
+    const t0 = performance.now();
+    function frame(t) {
+      const k = Math.min(1, (t - t0) / duration);
+      const eased = 1 - Math.pow(1 - k, 3);
+      node.textContent = Math.round(target * eased);
+      if (k < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  // Strength label from 0-1 value
+  function strengthLabel(v) {
+    if (v >= 0.75) return { tag: 'Strong',   cls: 'strong'   };
+    if (v >= 0.55) return { tag: 'Moderate', cls: 'moderate' };
+    if (v >= 0.35) return { tag: 'Neutral',  cls: 'neutral'  };
+    return            { tag: 'Weak',     cls: 'weak'     };
+  }
+
+  function setFactor(prefix, key) {
+    const f = FORECAST.factors[key];
+    const lbl = strengthLabel(f.value);
+    el(prefix + '-sub').textContent = f.sub;
+    el(prefix + '-tag').textContent = lbl.tag;
+    el(prefix + '-tag').classList.add(lbl.cls);
+    // animate bar after a beat
+    setTimeout(() => { el(prefix + '-bar').style.width = (f.value * 100) + '%'; }, 150);
+  }
+
+  // Wire up
+  el('ftrk-updated').textContent = FORECAST.updated;
+  el('ftrk-anchor').textContent  = FORECAST.anchor;
+  setFactor('ftrk-f-f2',  'f2');
+  setFactor('ftrk-f-vac', 'vacancy');
+  setFactor('ftrk-f-tsu', 'tsunoda');
+  setFactor('ftrk-f-mar', 'marko');
+  setTrend(el('ftrk-race-trend'),    pct_race,    FORECAST.prev_race_pct);
+  setTrend(el('ftrk-reserve-trend'), pct_reserve, FORECAST.prev_reserve_pct);
+
+  // Trigger count-ups when section scrolls into view
+  const sect = document.getElementById('f1-forecast');
+  let fired = false;
+  function maybeFire() {
+    if (fired) return;
+    const r = sect.getBoundingClientRect();
+    if (r.top < window.innerHeight * 0.85 && r.bottom > 0) {
+      fired = true;
+      countUp(el('ftrk-race-pct'),    pct_race,    1200);
+      countUp(el('ftrk-reserve-pct'), pct_reserve, 1400);
+      window.removeEventListener('scroll', maybeFire);
+    }
+  }
+  window.addEventListener('scroll', maybeFire, { passive: true });
+  maybeFire();
+})();
 </script>
 
 </body>
