@@ -4189,8 +4189,10 @@
   .ftrk-cta .arr { display: inline-block; transition: transform .2s; }
   .ftrk-cta:hover .arr { transform: translateX(4px); }
 
-  .ftrk-method { font-family: var(--mono); font-size: 10.5px; color: var(--gray-500); letter-spacing: 0.1em; line-height: 1.7; text-align: center; padding-top: 14px; border-top: 1px dashed rgba(255,255,255,0.06); }
-  .ftrk-method strong { color: var(--gray-300); }
+  .ftrk-method { font-family: var(--mono); font-size: 12px; color: var(--bone); letter-spacing: 0.05em; line-height: 1.8; text-align: left; padding: 20px 24px; margin-top: 18px; background: rgba(13,45,86,0.55); border: 1px solid var(--gray-700); border-left: 3px solid var(--gold); border-radius: 4px; }
+  .ftrk-method strong { color: var(--gold); font-family: var(--mono); letter-spacing: 0.15em; text-transform: uppercase; font-size: 11px; display: block; margin-bottom: 8px; }
+  .ftrk-method code { font-family: var(--mono); color: var(--gold); background: rgba(255,204,0,0.08); padding: 1px 6px; border-radius: 2px; font-size: 11.5px; white-space: nowrap; }
+  @media (max-width: 600px) { .ftrk-method { font-size: 11px; padding: 16px 18px; line-height: 1.75; } }
 
   @media (max-width: 720px) {
     .ftrk-section { padding: 60px 16px; }
@@ -4697,7 +4699,10 @@
     </div>
 
     <div class="ftrk-method">
-      <strong>Methodology:</strong> Race-seat probability = (F2×0.40 + Vacancy×0.30 + Tsunoda×0.10 + Marko×0.20) × 0.55 ceiling adjustment · Reserve probability = (F2×0.30 + Vacancy×0.15 + Tsunoda×0.25 + Marko×0.30) × 1.10 ceiling adjustment, capped at 95% · All factor weights and inputs are hand-set per round based on public Red Bull pipeline signals.
+      <strong>Methodology</strong>
+      <span style="display:block;margin-bottom:8px;">Race-seat probability = <code>(F2×0.40 + Vacancy×0.30 + Tsunoda×0.10 + Marko×0.20) × 0.55</code> ceiling adjustment.</span>
+      <span style="display:block;margin-bottom:8px;">Reserve probability = <code>(F2×0.30 + Vacancy×0.15 + Tsunoda×0.25 + Marko×0.30) × 1.10</code> ceiling adjustment, capped at 95%.</span>
+      <span style="display:block;">All factor weights and inputs are hand-set per round based on public Red Bull pipeline signals.</span>
     </div>
   </div>
 </section>
