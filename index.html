@@ -4133,6 +4133,71 @@
   .news-link { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: var(--red); text-transform: uppercase; text-decoration: none; margin-top: 4px; }
   .news-link:hover { color: var(--bone); }
   @media (max-width: 600px) { .news-section { padding: 70px 20px; } .news-grid { grid-template-columns: 1fr; } }
+
+  /* ============= F1 SUPER LICENCE CALCULATOR ============= */
+  .slc-section { padding: 90px 32px; background: linear-gradient(180deg, rgba(13,45,86,0.0), rgba(13,45,86,0.45) 40%, rgba(13,45,86,0.0)); position: relative; }
+  .slc-wrap { max-width: 1180px; margin: 0 auto; }
+  .slc-head { text-align: center; margin-bottom: 38px; }
+  .slc-tag { font-family: var(--mono); font-size: 11px; color: var(--gold); letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 12px; }
+  .slc-head h2 { font-family: var(--display); font-weight: 900; font-size: clamp(32px, 5vw, 56px); line-height: 1.05; margin-bottom: 14px; }
+  .slc-head h2 .it { color: var(--red); font-style: italic; }
+  .slc-head p { color: var(--gray-300); max-width: 680px; margin: 0 auto; font-size: 15.5px; line-height: 1.6; }
+
+  .slc-presets { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 28px; }
+  .slc-presets button { font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(13,45,86,0.5); color: var(--bone); border: 1px solid var(--gray-700); padding: 10px 16px; cursor: pointer; border-radius: 3px; transition: all .2s; }
+  .slc-presets button:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-1px); }
+  .slc-presets button.slc-reset { color: var(--red); border-color: rgba(224,58,62,0.4); }
+  .slc-presets button.slc-reset:hover { color: var(--red); background: rgba(224,58,62,0.1); }
+
+  .slc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin-bottom: 36px; }
+  .slc-round { background: rgba(13,45,86,0.55); border: 1px solid var(--gray-700); border-radius: 4px; padding: 14px; transition: border-color .2s; }
+  .slc-round:hover { border-color: rgba(255,204,0,0.4); }
+  .slc-round-label { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+  .slc-round-num { font-family: var(--display); font-weight: 700; color: var(--gold); font-size: 14px; letter-spacing: 0.1em; }
+  .slc-round-loc { font-family: var(--mono); font-size: 10px; color: var(--gray-300); letter-spacing: 0.1em; text-transform: uppercase; }
+  .slc-race-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .slc-race-row:last-child { margin-bottom: 0; }
+  .slc-race-row label { font-family: var(--mono); font-size: 10px; color: var(--gray-300); letter-spacing: 0.1em; text-transform: uppercase; min-width: 52px; }
+  .slc-race-row select { flex: 1; background: rgba(4,30,66,0.7); color: var(--bone); border: 1px solid var(--gray-700); border-radius: 3px; padding: 6px 8px; font-family: var(--mono); font-size: 12px; cursor: pointer; }
+  .slc-race-row select:focus { outline: none; border-color: var(--gold); }
+  .slc-race-row .slc-pts { font-family: var(--mono); font-size: 11px; color: var(--gold); min-width: 28px; text-align: right; }
+
+  .slc-result { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; padding: 26px; background: linear-gradient(135deg, rgba(13,45,86,0.7), rgba(4,30,66,0.9)); border: 1px solid var(--gray-700); border-radius: 6px; }
+  .slc-stat { text-align: center; padding: 14px 8px; border-right: 1px dashed rgba(255,255,255,0.1); }
+  .slc-stat:last-child { border-right: none; }
+  .slc-stat-label { font-family: var(--mono); font-size: 10px; color: var(--gray-300); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 8px; }
+  .slc-stat-value { font-family: var(--display); font-weight: 900; font-size: 36px; color: var(--bone); line-height: 1; }
+  .slc-stat-value.gold { color: var(--gold); }
+  .slc-stat-value.red { color: var(--red); }
+  .slc-stat-value.green { color: var(--green); }
+  .slc-stat-sub { font-family: var(--mono); font-size: 10px; color: var(--gray-300); margin-top: 6px; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  .slc-verdict { grid-column: 1 / -1; margin-top: 18px; padding: 16px 18px; border-radius: 4px; font-family: var(--sans); font-size: 15px; text-align: center; line-height: 1.5; border: 1px solid; }
+  .slc-verdict.unlocked { background: rgba(0,150,110,0.12); border-color: rgba(0,150,110,0.5); color: #6ce0a8; }
+  .slc-verdict.locked { background: rgba(224,58,62,0.1); border-color: rgba(224,58,62,0.4); color: #ff9097; }
+  .slc-verdict strong { color: #fff; }
+
+  .slc-bar { grid-column: 1 / -1; margin-top: 16px; }
+  .slc-bar-track { height: 10px; background: rgba(255,255,255,0.06); border-radius: 5px; overflow: hidden; position: relative; }
+  .slc-bar-fill { height: 100%; background: linear-gradient(90deg, var(--gold) 0%, var(--green) 100%); border-radius: 5px; transition: width .35s ease; }
+  .slc-bar-fill.locked { background: linear-gradient(90deg, var(--red) 0%, var(--gold) 100%); }
+  .slc-bar-labels { display: flex; justify-content: space-between; margin-top: 6px; font-family: var(--mono); font-size: 10px; color: var(--gray-300); letter-spacing: 0.1em; text-transform: uppercase; }
+  .slc-bar-labels strong { color: var(--gold); }
+
+  .slc-foot { margin-top: 22px; text-align: center; font-family: var(--mono); font-size: 10px; color: var(--gray-500); letter-spacing: 0.12em; text-transform: uppercase; }
+
+  @media (max-width: 720px) {
+    .slc-section { padding: 60px 16px; }
+    .slc-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .slc-round { padding: 10px; }
+    .slc-result { grid-template-columns: 1fr 1fr; padding: 18px; gap: 4px; }
+    .slc-stat { border-right: none; border-bottom: 1px dashed rgba(255,255,255,0.08); padding: 12px 4px; }
+    .slc-stat:nth-last-child(2), .slc-stat:last-child { border-bottom: none; }
+    .slc-stat-value { font-size: 28px; }
+  }
+  @media (max-width: 420px) {
+    .slc-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -4625,6 +4690,63 @@
           <a class="sl-cta" href="/articles/nikola-tsolov-f1-seat-2027/">Read the full F1 2027 seat analysis <span class="arr">→</span></a>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== F1 SUPER LICENCE CALCULATOR ===================== -->
+<section id="sl-calculator" class="slc-section" aria-labelledby="slc-heading">
+  <div class="slc-wrap">
+    <div class="slc-head">
+      <div class="slc-tag">Interactive · World first</div>
+      <h2 id="slc-heading">F1 Super Licence <span class="it">Calculator</span></h2>
+      <p>Pick Tsolov's finishing position for every remaining F2 2026 race. See his projected final championship points, FIA Super Licence total, and whether he unlocks the 40-point F1 threshold — live.</p>
+    </div>
+
+    <div class="slc-presets" role="group" aria-label="Quick scenarios">
+      <button type="button" data-preset="title">Title charge</button>
+      <button type="button" data-preset="top3">Top 3 finish</button>
+      <button type="button" data-preset="midfield">Midfield grind</button>
+      <button type="button" data-preset="disaster">Worst case</button>
+      <button type="button" data-preset="reset" class="slc-reset">Reset</button>
+    </div>
+
+    <div class="slc-grid" id="slc-grid" aria-label="Remaining F2 2026 rounds"></div>
+
+    <div class="slc-result" aria-live="polite">
+      <div class="slc-stat">
+        <div class="slc-stat-label">Projected F2 points</div>
+        <div class="slc-stat-value gold" id="slc-total-pts">35</div>
+        <div class="slc-stat-sub">After R14 of 14</div>
+      </div>
+      <div class="slc-stat">
+        <div class="slc-stat-label">Projected final position</div>
+        <div class="slc-stat-value" id="slc-final-pos">P3</div>
+        <div class="slc-stat-sub" id="slc-final-pos-sub">Rookie of the year</div>
+      </div>
+      <div class="slc-stat">
+        <div class="slc-stat-label">Super Licence total</div>
+        <div class="slc-stat-value" id="slc-sl-total">25</div>
+        <div class="slc-stat-sub">25 F3 + <span id="slc-sl-f2">0</span> F2</div>
+      </div>
+      <div class="slc-stat">
+        <div class="slc-stat-label">F1 threshold</div>
+        <div class="slc-stat-value red" id="slc-status">LOCKED</div>
+        <div class="slc-stat-sub" id="slc-status-sub">15 short of 40</div>
+      </div>
+
+      <div class="slc-bar">
+        <div class="slc-bar-track"><div class="slc-bar-fill locked" id="slc-bar-fill" style="width: 62.5%"></div></div>
+        <div class="slc-bar-labels"><span>0</span><span>F1 threshold: <strong>40</strong></span><span>80</span></div>
+      </div>
+
+      <div class="slc-verdict locked" id="slc-verdict">
+        Pick race finishes above to see if Tsolov clears the 40-point Super Licence threshold required for an F1 race seat.
+      </div>
+    </div>
+
+    <div class="slc-foot">
+      F2 Sprint: P1–P8 score 10/8/6/5/4/3/2/1 · F2 Feature: P1–P10 score 25/18/15/12/10/8/6/4/2/1 · Super Licence: F2 P1–P3 = 40 pts, P4 = 30, P5 = 20, P6–P10 = 10 · Rivals projected at current points-per-round pace
     </div>
   </div>
 </section>
@@ -6505,6 +6627,214 @@ function initRecapCards() {
   } else {
     initScrollAnimations();
   }
+</script>
+
+<!-- ===================== F1 SUPER LICENCE CALCULATOR LOGIC ===================== -->
+<script>
+(function () {
+  // F2 scoring
+  const SPRINT_PTS  = [10, 8, 6, 5, 4, 3, 2, 1];           // P1..P8
+  const FEATURE_PTS = [25, 18, 15, 12, 10, 8, 6, 4, 2, 1]; // P1..P10
+
+  // FIA Super Licence — F2 finishing position table
+  const SL_F2 = { 1: 40, 2: 40, 3: 40, 4: 30, 5: 20, 6: 10, 7: 10, 8: 10, 9: 10, 10: 10 };
+
+  // Existing valid Super Licence points (F3 2025 P2 = 25; F4 2022 expired end 2025)
+  const SL_EXISTING = 25;
+  const F1_THRESHOLD = 40;
+
+  // Tsolov's actual points after R03 Montréal
+  const TSOLOV_R03_PTS = 35;
+
+  // Rivals after R03 — used for projecting end-of-season position
+  // (rivals assumed to score at their current pts-per-round pace for remaining 11 rounds)
+  const ROUNDS_DONE = 3;
+  const ROUNDS_TOTAL = 14;
+  const ROUNDS_LEFT  = ROUNDS_TOTAL - ROUNDS_DONE;
+  const RIVALS_R03 = [
+    { name: 'Minì',       pts: 57 },
+    { name: 'Câmara',     pts: 36 },
+    { name: 'Stenshorne', pts: 35 },
+    { name: 'León',       pts: 33 },
+    { name: 'van Hoepen', pts: 33 },
+    { name: 'Dunne',      pts: 30 },
+    { name: 'Beganovic',  pts: 24 },
+    { name: 'Miyata',     pts: 22 },
+    { name: 'Dürksen',    pts: 16 },
+  ];
+  const RIVALS_PROJECTED = RIVALS_R03.map(r => ({
+    name: r.name,
+    pts: Math.round(r.pts * (ROUNDS_TOTAL / ROUNDS_DONE))
+  }));
+
+  // Remaining calendar — round number + 3-letter location code
+  const REMAINING_ROUNDS = [
+    { n: 4,  loc: 'IMO' },
+    { n: 5,  loc: 'BCN' },
+    { n: 6,  loc: 'MON' },
+    { n: 7,  loc: 'RBR' },
+    { n: 8,  loc: 'SIL' },
+    { n: 9,  loc: 'HUN' },
+    { n: 10, loc: 'SPA' },
+    { n: 11, loc: 'ZAN' },
+    { n: 12, loc: 'MNZ' },
+    { n: 13, loc: 'BAK' },
+    { n: 14, loc: 'YAS' },
+  ];
+
+  // Build round cards
+  const grid = document.getElementById('slc-grid');
+  if (!grid) return;
+
+  function posOptions(maxPos) {
+    let html = '<option value="0">DNF / no points</option>';
+    for (let p = 1; p <= 10; p++) {
+      const inRange = p <= maxPos;
+      html += `<option value="${p}">${p === 1 ? 'P1 — WIN' : 'P' + p}${inRange ? '' : ' (0 pts)'}</option>`;
+    }
+    html += '<option value="11">P11+ / outside points</option>';
+    return html;
+  }
+
+  REMAINING_ROUNDS.forEach(r => {
+    const card = document.createElement('div');
+    card.className = 'slc-round';
+    card.innerHTML = `
+      <div class="slc-round-label">
+        <span class="slc-round-num">R${String(r.n).padStart(2,'0')}</span>
+        <span class="slc-round-loc">${r.loc}</span>
+      </div>
+      <div class="slc-race-row">
+        <label>Sprint</label>
+        <select class="slc-sprint" data-round="${r.n}" aria-label="Round ${r.n} Sprint position">${posOptions(8)}</select>
+        <span class="slc-pts" data-pts="sprint-${r.n}">0</span>
+      </div>
+      <div class="slc-race-row">
+        <label>Feature</label>
+        <select class="slc-feature" data-round="${r.n}" aria-label="Round ${r.n} Feature position">${posOptions(10)}</select>
+        <span class="slc-pts" data-pts="feature-${r.n}">0</span>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  function pointsForSprint(pos) {
+    const p = parseInt(pos, 10);
+    if (p >= 1 && p <= 8) return SPRINT_PTS[p - 1];
+    return 0;
+  }
+  function pointsForFeature(pos) {
+    const p = parseInt(pos, 10);
+    if (p >= 1 && p <= 10) return FEATURE_PTS[p - 1];
+    return 0;
+  }
+
+  // Output elements
+  const elTotal       = document.getElementById('slc-total-pts');
+  const elFinalPos    = document.getElementById('slc-final-pos');
+  const elFinalPosSub = document.getElementById('slc-final-pos-sub');
+  const elSLTotal     = document.getElementById('slc-sl-total');
+  const elSLF2        = document.getElementById('slc-sl-f2');
+  const elStatus      = document.getElementById('slc-status');
+  const elStatusSub   = document.getElementById('slc-status-sub');
+  const elBarFill     = document.getElementById('slc-bar-fill');
+  const elVerdict     = document.getElementById('slc-verdict');
+
+  function ordinal(n) {
+    const s = ['th','st','nd','rd'], v = n % 100;
+    return n + (s[(v - 20) % 10] || s[v] || s[0]);
+  }
+
+  function recalc() {
+    let tsolovTotal = TSOLOV_R03_PTS;
+
+    REMAINING_ROUNDS.forEach(r => {
+      const sSel = document.querySelector(`select.slc-sprint[data-round="${r.n}"]`);
+      const fSel = document.querySelector(`select.slc-feature[data-round="${r.n}"]`);
+      const sPts = pointsForSprint(sSel.value);
+      const fPts = pointsForFeature(fSel.value);
+      document.querySelector(`[data-pts="sprint-${r.n}"]`).textContent  = '+' + sPts;
+      document.querySelector(`[data-pts="feature-${r.n}"]`).textContent = '+' + fPts;
+      tsolovTotal += sPts + fPts;
+    });
+
+    // Final championship position vs projected rivals
+    const standings = [...RIVALS_PROJECTED, { name: 'Tsolov', pts: tsolovTotal }]
+      .sort((a, b) => b.pts - a.pts);
+    const finalPos = standings.findIndex(d => d.name === 'Tsolov') + 1;
+
+    // Super Licence points from F2 result
+    const slFromF2 = SL_F2[finalPos] || 0;
+    const slTotal  = SL_EXISTING + slFromF2;
+    const unlocked = slTotal >= F1_THRESHOLD;
+
+    // Update DOM
+    elTotal.textContent       = tsolovTotal;
+    elFinalPos.textContent    = 'P' + finalPos;
+    elFinalPosSub.textContent = finalPos === 1 ? 'F2 CHAMPION'
+                              : finalPos <= 3 ? 'Top 3 in F2'
+                              : finalPos <= 10 ? 'In the points'
+                              : 'Outside top 10';
+    elSLTotal.textContent     = slTotal;
+    elSLF2.textContent        = slFromF2;
+    elSLTotal.classList.toggle('green', unlocked);
+    elSLTotal.classList.toggle('red', !unlocked);
+
+    elStatus.textContent      = unlocked ? 'UNLOCKED' : 'LOCKED';
+    elStatus.classList.toggle('green', unlocked);
+    elStatus.classList.toggle('red', !unlocked);
+
+    const diff = slTotal - F1_THRESHOLD;
+    elStatusSub.textContent = unlocked
+      ? (diff === 0 ? 'Exactly on threshold' : `${diff} pts above 40`)
+      : `${Math.abs(diff)} short of 40`;
+
+    const barPct = Math.min(100, (slTotal / 80) * 100);
+    elBarFill.style.width = barPct + '%';
+    elBarFill.classList.toggle('locked', !unlocked);
+
+    elVerdict.classList.toggle('unlocked', unlocked);
+    elVerdict.classList.toggle('locked', !unlocked);
+
+    if (unlocked) {
+      elVerdict.innerHTML = `<strong>F1 unlocked.</strong> A ${ordinal(finalPos)}-place F2 finish gives Tsolov ${slFromF2} SL points. Stacked with his ${SL_EXISTING} from 2025 F3, that's <strong>${slTotal}</strong> — clear of the 40-point threshold required for an F1 race seat.`;
+    } else {
+      elVerdict.innerHTML = `<strong>Not enough.</strong> A ${ordinal(finalPos)}-place F2 finish only gives Tsolov ${slFromF2} SL points. Stacked with 25 from 2025 F3 he sits on <strong>${slTotal}</strong> — ${Math.abs(diff)} short of the 40 required for F1. A 2027 reserve role is the realistic fallback.`;
+    }
+  }
+
+  // Presets
+  function applyPreset(name) {
+    const sprintSels  = document.querySelectorAll('select.slc-sprint');
+    const featureSels = document.querySelectorAll('select.slc-feature');
+
+    const sets = {
+      // Title charge: avg P2 Sprint, P2 Feature → champion
+      title:    { sprint: 2,  feature: 2 },
+      // Top 3 finish: avg P5 Sprint, P5 Feature
+      top3:     { sprint: 5,  feature: 5 },
+      // Midfield grind: avg P8 Sprint, P9 Feature
+      midfield: { sprint: 8,  feature: 9 },
+      // Worst case: all DNF / no points
+      disaster: { sprint: 0,  feature: 0 },
+      // Reset = 0
+      reset:    { sprint: 0,  feature: 0 },
+    };
+    const cfg = sets[name];
+    if (!cfg) return;
+    sprintSels.forEach(s => s.value = cfg.sprint);
+    featureSels.forEach(s => s.value = cfg.feature);
+    recalc();
+  }
+
+  document.querySelectorAll('.slc-presets button').forEach(b => {
+    b.addEventListener('click', () => applyPreset(b.dataset.preset));
+  });
+  grid.addEventListener('change', recalc);
+
+  // Initial render (all zero / DNF)
+  recalc();
+})();
 </script>
 
 </body>
