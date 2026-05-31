@@ -5901,8 +5901,8 @@
       let inner;
       if (item.src) {
         const posStyle = item.objectPosition ? ` style="object-position:${item.objectPosition}"` : '';
-        // Resolve to absolute root path so images load from /bg/ subfolder
-        const srcAbs = item.src.startsWith('http') || item.src.startsWith('/') ? item.src : '/' + item.src;
+        // Resolve to absolute path under /images/ so images load from /bg/ subfolder
+        const srcAbs = item.src.startsWith('http') || item.src.startsWith('/') ? item.src : '/images/' + item.src;
         inner = `<img src="${srcAbs}" alt="${item.caption}" loading="lazy"${posStyle}/>`;
       } else if (item.svg) {
         inner = `<div class="gallery-svg">${item.svg}</div>`;
@@ -6498,11 +6498,11 @@ function initRecapCards() {
         ? `<a class="news-link" href="${item.url}" target="_blank" rel="noopener">Прочети още · ${item.source || 'Source'} →</a>`
         : '';
       const imgUrl = item.image
-        ? (item.image.startsWith('http') ? item.image : `https://nikolatsolovfan.com/${item.image}`)
+        ? (item.image.startsWith('http') ? item.image : `https://nikolatsolovfan.com/images/${item.image}`)
         : 'https://nikolatsolovfan.com/images/nikola-tsolov-f2-podium-lusail-2025.webp';
-      // Resolve relative news image paths to absolute root for /bg/ subfolder
+      // Resolve relative news image paths to absolute /images/ path for /bg/ subfolder
       const newsImgSrc = item.image
-        ? (item.image.startsWith('http') || item.image.startsWith('/') ? item.image : '/' + item.image)
+        ? (item.image.startsWith('http') || item.image.startsWith('/') ? item.image : '/images/' + item.image)
         : '';
       const img = item.image
         ? `<img class="news-card-img" src="${newsImgSrc}" alt="${item.headline}" loading="lazy">`

@@ -5861,9 +5861,10 @@
 <!-- ===================== PHOTO GALLERY DATA + RENDER ===================== -->
 <!--
   HOW TO REPLACE AN ILLUSTRATION WITH A REAL PHOTO:
-  1. Drop your photo file in the same folder as index.html (e.g. melbourne-win.jpg)
+  1. Drop your photo file in the /images/ folder (e.g. /images/melbourne-win.jpg)
   2. In the GALLERY array below, replace the entry with:
      { src: "melbourne-win.jpg", caption: "...", label: "..." }
+     (no need to add /images/ prefix — renderGallery does that automatically)
   3. Save → drag the folder onto Netlify Drop.
 
   The illustrations are inline SVG — copyright-safe, scalable, and themed
@@ -5921,7 +5922,8 @@
       let inner;
       if (item.src) {
         const posStyle = item.objectPosition ? ` style="object-position:${item.objectPosition}"` : '';
-        inner = `<img src="${item.src}" alt="${item.caption}" loading="lazy"${posStyle}/>`;
+        const srcAbs = item.src.startsWith('http') || item.src.startsWith('/') ? item.src : '/images/' + item.src;
+        inner = `<img src="${srcAbs}" alt="${item.caption}" loading="lazy"${posStyle}/>`;
       } else if (item.svg) {
         inner = `<div class="gallery-svg">${item.svg}</div>`;
       } else {
@@ -6516,10 +6518,13 @@ function initRecapCards() {
         ? `<a class="news-link" href="${item.url}" target="_blank" rel="noopener">Read more · ${item.source || 'Source'} →</a>`
         : '';
       const imgUrl = item.image
-        ? (item.image.startsWith('http') ? item.image : `https://nikolatsolovfan.com/${item.image}`)
+        ? (item.image.startsWith('http') ? item.image : `https://nikolatsolovfan.com/images/${item.image}`)
         : 'https://nikolatsolovfan.com/images/nikola-tsolov-f2-podium-lusail-2025.webp';
+      const newsImgSrc = item.image
+        ? (item.image.startsWith('http') || item.image.startsWith('/') ? item.image : '/images/' + item.image)
+        : '';
       const img = item.image
-        ? `<img class="news-card-img" src="${item.image}" alt="${item.headline}" loading="lazy">`
+        ? `<img class="news-card-img" src="${newsImgSrc}" alt="${item.headline}" loading="lazy">`
         : '';
       return `
         <article class="news-card" itemscope itemtype="https://schema.org/NewsArticle">
