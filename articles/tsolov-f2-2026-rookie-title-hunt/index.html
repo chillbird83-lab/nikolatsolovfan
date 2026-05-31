@@ -8,19 +8,19 @@
 <meta name="theme-color" content="#041E42" />
 <meta name="keywords" content="Nikola Tsolov F2 2026, F2 rookie of the year 2026, Tsolov championship, Bulgarian Lion F2, F2 2026 rookies, Rafael Camara, Martinius Stenshorne, F2 2026 standings" />
 <link rel="canonical" href="https://nikolatsolovfan.com/articles/tsolov-f2-2026-rookie-title-hunt/" />
-<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
 
 <!-- Open Graph -->
 <meta property="og:title" content="Tsolov vs the Class of '26: Inside F2's Rookie Title Hunt" />
 <meta property="og:description" content="Five of the top six F2 2026 drivers are rookies. Tsolov leads on wins. Inside the rookie title hunt." />
 <meta property="og:url" content="https://nikolatsolovfan.com/articles/tsolov-f2-2026-rookie-title-hunt/" />
 <meta property="og:type" content="article" />
-<meta property="og:image" content="https://nikolatsolovfan.com/nikola-tsolov-miami-sprint-win-back-to-back-2026.webp" />
+<meta property="og:image" content="https://nikolatsolovfan.com/images/nikola-tsolov-miami-sprint-win-back-to-back-2026.webp" />
 <meta property="og:image:width" content="1080" />
 <meta property="og:image:height" content="1350" />
 <meta property="og:image:alt" content="Nikola Tsolov celebrates back-to-back F2 2026 wins after the Miami Sprint Race" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://nikolatsolovfan.com/nikola-tsolov-miami-sprint-win-back-to-back-2026.webp" />
+<meta name="twitter:image" content="https://nikolatsolovfan.com/images/nikola-tsolov-miami-sprint-win-back-to-back-2026.webp" />
 <meta name="twitter:image:alt" content="Nikola Tsolov celebrates back-to-back F2 2026 wins after the Miami Sprint Race" />
 <meta property="article:author" content="Nikola Tsolov Fan — editorial" />
 <meta property="article:published_time" content="2026-05-30" />
@@ -35,9 +35,9 @@
       "@id": "https://nikolatsolovfan.com/articles/tsolov-f2-2026-rookie-title-hunt/#article",
       "headline": "Tsolov vs the Class of '26: Inside F2's Rookie Title Hunt",
       "description": "Nikola Tsolov leads the F2 2026 rookie pack on wins, sits P3 in the championship, and is the story of the season so far. Inside the rookie title hunt — and why Tsolov is the one to watch.",
-      "image": "https://nikolatsolovfan.com/nikola-tsolov-miami-sprint-win-back-to-back-2026.webp",
+      "image": "https://nikolatsolovfan.com/images/nikola-tsolov-miami-sprint-win-back-to-back-2026.webp",
       "datePublished": "2026-05-30",
-      "dateModified": "2026-05-30",
+      "dateModified": "2026-05-31",
       "author": {
         "@type": "Organization",
         "name": "Nikola Tsolov Fan — editorial",
@@ -173,6 +173,73 @@
   .article-img.landscape img { max-width: 100%; }
   .article-img figcaption { margin-top: 10px; font-family: var(--mono); font-size: 11px; color: var(--gray-300); letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.5; }
 
+  /* ============= HEAD-TO-HEAD COMPARISON ============= */
+  .htoh { position: relative; margin: 28px -24px 40px; background: #000; border-radius: 4px; overflow: hidden; border: 1px solid var(--gray-700); }
+  .htoh-head { padding: 22px 24px 14px; text-align: center; background: linear-gradient(180deg, rgba(0,0,0,0.95), rgba(0,0,0,0.4)); position: relative; z-index: 3; }
+  .htoh-title { font-family: var(--display); font-weight: 900; font-size: clamp(22px, 3.4vw, 34px); line-height: 1.05; color: #fff; letter-spacing: 0.02em; text-transform: uppercase; }
+  .htoh-sub { font-family: var(--mono); font-size: 11px; color: var(--gold); letter-spacing: 0.25em; text-transform: uppercase; margin-top: 8px; }
+
+  .htoh-body { display: grid; grid-template-columns: 1fr 1fr; min-height: 580px; position: relative; }
+  .htoh-side { position: relative; padding: 16px 22px 26px; overflow: hidden; background-color: #0a0203; }
+  .htoh-side.left  {
+    background:
+      radial-gradient(ellipse at 30% 40%, rgba(224,58,62,0.42), rgba(80,10,10,0.78) 55%, rgba(10,2,3,0.95) 100%),
+      url('/images/nikola-tsolov-montreal-feature-race-2026.webp') center/cover no-repeat;
+  }
+  .htoh-side.right {
+    background:
+      radial-gradient(ellipse at 70% 40%, rgba(255,204,0,0.35), rgba(110,80,0,0.72) 55%, rgba(10,7,0,0.95) 100%),
+      url('/images/rafael-camara-invicta-racing.webp') center/cover no-repeat;
+  }
+  .htoh-side::before { content: ''; position: absolute; inset: 0; background-image:
+      repeating-linear-gradient(115deg, transparent 0 14px, rgba(255,255,255,0.05) 14px 16px); pointer-events: none; z-index: 1; }
+
+  .htoh-vs { position: absolute; top: 0; bottom: 0; left: 50%; width: 110px; transform: translateX(-50%); pointer-events: none; z-index: 4;
+    background: linear-gradient(180deg, transparent, rgba(255,204,0,0.55) 30%, rgba(255,204,0,0.55) 70%, transparent);
+    clip-path: polygon(60% 0, 100% 0, 40% 100%, 0 100%); mix-blend-mode: screen; opacity: 0.7; }
+  .htoh-vs-label { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); font-family: var(--display); font-weight: 900; font-size: clamp(36px, 5vw, 60px); color: #fff; z-index: 5; letter-spacing: 0.05em; text-shadow: 0 0 18px rgba(0,0,0,0.7); pointer-events: none; }
+
+  .htoh-name { font-family: var(--display); font-weight: 900; text-transform: uppercase; letter-spacing: 0.02em; line-height: 1; font-size: clamp(22px, 3.4vw, 36px); position: relative; z-index: 2; }
+  .htoh-side.left  .htoh-name { color: #fff; }
+  .htoh-side.right .htoh-name { color: var(--gold); }
+  .htoh-name .first { display: block; font-size: 0.55em; font-weight: 700; opacity: 0.75; letter-spacing: 0.18em; margin-bottom: 4px; }
+  .htoh-team { display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-top: 8px; position: relative; z-index: 2; }
+
+  .htoh-portrait { position: relative; height: 280px; margin: 12px 0 18px; z-index: 1; display: flex; align-items: flex-end; justify-content: center; }
+  .htoh-portrait img { max-height: 100%; max-width: 100%; width: auto; height: auto; filter: drop-shadow(0 14px 24px rgba(0,0,0,0.6)); }
+
+  .htoh-stats { position: relative; z-index: 2; }
+  .htoh-stat { display: grid; grid-template-columns: 24px 1fr auto; align-items: center; gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .htoh-stat:last-child { border-bottom: none; }
+  .htoh-stat-ico { font-family: var(--mono); font-size: 14px; opacity: 0.85; }
+  .htoh-side.left  .htoh-stat-ico { color: var(--red); }
+  .htoh-side.right .htoh-stat-ico { color: var(--gold); }
+  .htoh-stat-label { font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.85); letter-spacing: 0.16em; text-transform: uppercase; }
+  .htoh-stat-val { font-family: var(--display); font-weight: 900; font-size: 22px; }
+  .htoh-side.left  .htoh-stat-val { color: #fff; }
+  .htoh-side.right .htoh-stat-val { color: var(--gold); }
+  .htoh-stat-val.win { color: #6ce0a8 !important; }
+
+  .htoh-foot { padding: 18px 22px; text-align: center; background: linear-gradient(0deg, rgba(0,0,0,0.95), rgba(0,0,0,0.4)); position: relative; z-index: 3; }
+  .htoh-foot-tag { font-family: var(--display); font-weight: 900; font-size: clamp(14px, 2vw, 20px); color: #fff; letter-spacing: 0.04em; text-transform: uppercase; }
+  .htoh-foot-sub { font-family: var(--mono); font-size: 10.5px; color: var(--gold); letter-spacing: 0.22em; text-transform: uppercase; margin-top: 6px; }
+
+  @media (max-width: 600px) {
+    .htoh { margin: 22px -16px 32px; }
+    .htoh-body { min-height: 0; }
+    .htoh-portrait { height: 200px; }
+    .htoh-side { padding: 14px 14px 22px; }
+    .htoh-stat { gap: 8px; padding: 7px 0; }
+    .htoh-stat-label { font-size: 9.5px; letter-spacing: 0.12em; }
+    .htoh-stat-val { font-size: 17px; }
+    .htoh-stat-ico { font-size: 12px; }
+    .htoh-vs { width: 60px; }
+  }
+  @media (max-width: 380px) {
+    .htoh-name { font-size: 18px; }
+    .htoh-portrait { height: 160px; }
+  }
+
   /* Standings table */
   .standings-table { width: 100%; margin: 28px 0; border-collapse: collapse; font-family: var(--sans); font-size: 15px; border: 1px solid var(--gray-700); }
   .standings-table th { background: rgba(13,45,86,0.7); color: var(--gold); font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--gray-700); }
@@ -274,10 +341,54 @@
 
   <p>He is also P3 in the standings, 22 points off the lead, and surrounded by the strongest rookie class F2 has seen in years. This is the story of how he got there, who he has to beat, and why the championship is still wide open.</p>
 
-  <figure class="article-img portrait">
-    <img src="/nikola-tsolov-miami-sprint-win-back-to-back-2026.webp" alt="Nikola Tsolov celebrates back-to-back F2 2026 wins after the Miami Sprint Race — Campos Racing rookie season" width="1080" height="1350" fetchpriority="high" decoding="async" />
-    <figcaption>Back-to-back. Tsolov follows up his Melbourne Feature win with victory in the Miami Sprint Race.</figcaption>
-  </figure>
+  <div class="htoh" aria-label="Head-to-head: Tsolov vs Câmara after F2 2026 Round 3 Montréal">
+    <div class="htoh-head">
+      <div class="htoh-title">The Rookie Title Fight</div>
+      <div class="htoh-sub">Two Rookies · One Title · Three Races In</div>
+    </div>
+
+    <div class="htoh-body">
+      <div class="htoh-side left">
+        <div class="htoh-name"><span class="first">Nikola</span>Tsolov</div>
+        <div class="htoh-team">Campos Racing · #6 · Red Bull Junior</div>
+        <div class="htoh-portrait">
+          <img src="/images/nikola-tsolov-portrait-2026.webp" alt="Nikola Tsolov in his Campos Racing 2026 F2 overalls" width="1080" height="1080" fetchpriority="high" decoding="async" />
+        </div>
+        <div class="htoh-stats">
+          <div class="htoh-stat"><span class="htoh-stat-ico">▲</span><span class="htoh-stat-label">Championship</span><span class="htoh-stat-val">P3</span></div>
+          <div class="htoh-stat"><span class="htoh-stat-ico">◆</span><span class="htoh-stat-label">Points</span><span class="htoh-stat-val">35</span></div>
+          <div class="htoh-stat"><span class="htoh-stat-ico">★</span><span class="htoh-stat-label">Wins</span><span class="htoh-stat-val win">2</span></div>
+          <div class="htoh-stat"><span class="htoh-stat-ico">⚑</span><span class="htoh-stat-label">Feature wins</span><span class="htoh-stat-val">1</span></div>
+          <div class="htoh-stat"><span class="htoh-stat-ico">⚑</span><span class="htoh-stat-label">Sprint wins</span><span class="htoh-stat-val">1</span></div>
+          <div class="htoh-stat"><span class="htoh-stat-ico">⌀</span><span class="htoh-stat-label">DNFs</span><span class="htoh-stat-val">1</span></div>
+        </div>
+      </div>
+
+      <div class="htoh-vs" aria-hidden="true"></div>
+      <div class="htoh-vs-label" aria-hidden="true">VS</div>
+
+      <div class="htoh-side right">
+        <div class="htoh-name" style="text-align:right;"><span class="first">Rafael</span>Câmara</div>
+        <div class="htoh-team" style="text-align:right;">Invicta Racing · Ferrari Driver Academy</div>
+        <div class="htoh-portrait">
+          <img src="/images/rafael-camara-portrait-2026.webp" alt="Rafael Câmara in his Invicta Racing 2026 F2 overalls" width="1080" height="1080" loading="lazy" decoding="async" />
+        </div>
+        <div class="htoh-stats">
+          <div class="htoh-stat"><span class="htoh-stat-ico">▲</span><span class="htoh-stat-label">Championship</span><span class="htoh-stat-val">P2</span></div>
+          <div class="htoh-stat"><span class="htoh-stat-ico">◆</span><span class="htoh-stat-label">Points</span><span class="htoh-stat-val">36</span></div>
+          <div class="htoh-stat"><span class="htoh-stat-ico">★</span><span class="htoh-stat-label">Wins</span><span class="htoh-stat-val">0</span></div>
+          <div class="htoh-stat"><span class="htoh-stat-ico">⚑</span><span class="htoh-stat-label">Feature wins</span><span class="htoh-stat-val">0</span></div>
+          <div class="htoh-stat"><span class="htoh-stat-ico">⚑</span><span class="htoh-stat-label">Sprint wins</span><span class="htoh-stat-val">0</span></div>
+          <div class="htoh-stat"><span class="htoh-stat-ico">⌀</span><span class="htoh-stat-label">DNFs</span><span class="htoh-stat-val">0</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="htoh-foot">
+      <div class="htoh-foot-tag">Different profiles. Same prize.</div>
+      <div class="htoh-foot-sub">One title · Eleven rounds to go</div>
+    </div>
+  </div>
 
   <h2>The story in one table</h2>
 
@@ -311,7 +422,7 @@
   <p>In every weekend so far Tsolov has been on the front three rows of the Feature grid. The car's pace ceiling is his, not Minì's, not Câmara's. The points table doesn't show it yet. The raw speed does.</p>
 
   <figure class="article-img landscape">
-    <img src="/nikola-tsolov-campos-racing-f2-2026.webp" alt="Nikola Tsolov driving the Campos Racing #6 in the FIA Formula 2 Sprint Race" width="1400" height="933" loading="lazy" decoding="async" />
+    <img src="/images/nikola-tsolov-campos-racing-f2-2026.webp" alt="Nikola Tsolov driving the Campos Racing #6 in the FIA Formula 2 Sprint Race" width="1400" height="933" loading="lazy" decoding="async" />
     <figcaption>The Campos Racing #6 — two wins and a top-three qualifying average through Round 3.</figcaption>
   </figure>
 
