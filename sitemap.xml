@@ -3,7 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://nikolatsolovfan.com/</loc>
-    <lastmod>2026-05-30</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://nikolatsolovfan.com/" />
@@ -12,7 +12,7 @@
   </url>
   <url>
     <loc>https://nikolatsolovfan.com/bg/</loc>
-    <lastmod>2026-05-30</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="bg" href="https://nikolatsolovfan.com/bg/" />
@@ -21,7 +21,7 @@
   </url>
   <url>
     <loc>https://nikolatsolovfan.com/articles/</loc>
-    <lastmod>2026-05-30</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -42,5 +42,23 @@
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://nikolatsolovfan.com/about/</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nikolatsolovfan.com/about/" />
+    <xhtml:link rel="alternate" hreflang="bg" href="https://nikolatsolovfan.com/bg/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nikolatsolovfan.com/about/" />
+  </url>
+  <url>
+    <loc>https://nikolatsolovfan.com/bg/about/</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://nikolatsolovfan.com/bg/about/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://nikolatsolovfan.com/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nikolatsolovfan.com/about/" />
   </url>
 </urlset>
