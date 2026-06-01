@@ -97,11 +97,13 @@
 
   main { max-width: 760px; margin: 0 auto; padding: 30px 24px 80px; }
   .tag { font-family: var(--mono); font-size: 11px; color: var(--red); letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 14px; }
-  h1 { font-family: var(--display); font-size: clamp(28px, 4.5vw, 44px); line-height: 1.1; font-weight: 900; margin-bottom: 18px; }
+  /* BG uses Cyrillic; Orbitron has no Cyrillic glyphs so it falls back to Impact (too heavy).
+     Use Titillium Web for headings instead — supports Cyrillic and reads cleaner. */
+  h1 { font-family: var(--sans); font-size: clamp(28px, 4.5vw, 44px); line-height: 1.15; font-weight: 700; letter-spacing: -0.005em; margin-bottom: 18px; }
   h1 .it { color: var(--red); font-style: italic; font-weight: 700; }
   .lead { font-family: var(--sans); font-size: 17.5px; line-height: 1.55; color: var(--gray-300); padding: 14px 0 28px; border-top: 1px solid var(--gray-700); border-bottom: 1px solid var(--gray-700); margin-bottom: 36px; }
 
-  h2 { font-family: var(--display); font-size: 22px; line-height: 1.2; font-weight: 700; margin: 38px 0 14px; padding-top: 18px; border-top: 1px dashed rgba(255,255,255,0.08); }
+  h2 { font-family: var(--sans); font-size: 22px; line-height: 1.25; font-weight: 700; margin: 38px 0 14px; padding-top: 18px; border-top: 1px dashed rgba(255,255,255,0.08); letter-spacing: -0.005em; }
   h2:first-of-type { border-top: none; padding-top: 0; }
   p { margin: 0 0 16px; color: var(--bone); font-size: 16.5px; }
   p strong { color: #fff; }
@@ -121,7 +123,7 @@
 
   .editor-card { margin: 32px 0; padding: 24px; background: linear-gradient(135deg, rgba(13,45,86,0.7), rgba(4,30,66,0.92)); border: 1px solid var(--gray-700); border-radius: 4px; }
   .editor-card .role { font-family: var(--mono); font-size: 11px; color: var(--gold); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 6px; }
-  .editor-card .name { font-family: var(--display); font-size: 26px; font-weight: 900; color: #fff; margin-bottom: 8px; letter-spacing: 0.01em; }
+  .editor-card .name { font-family: var(--sans); font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 8px; letter-spacing: -0.005em; }
   .editor-card p { font-size: 15.5px; margin-bottom: 0; color: var(--gray-300); }
 
   .contact-table { margin: 22px 0; }
