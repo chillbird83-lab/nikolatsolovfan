@@ -801,6 +801,19 @@
     white-space: nowrap;
   }
   .banner-next .label { color: var(--gray-500); }
+  /* Live status countdown — populated by JS (countdown / "PRACTICE TODAY" / "LIVE THIS WEEKEND") */
+  .banner-countdown { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; padding: 3px 9px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: var(--gold); border: 1px solid rgba(255,204,0,0.4); border-radius: 2px; }
+  .banner-countdown.is-live { color: #fff; background: rgba(224,58,62,0.9); border-color: var(--red); }
+  .banner-countdown.is-soon { color: var(--red); border-color: rgba(224,58,62,0.6); background: rgba(224,58,62,0.06); }
+  .banner-live-dot { width: 7px; height: 7px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 0 rgba(255,255,255,0.7); animation: bannerLivePulse 1.6s ease-out infinite; }
+  @keyframes bannerLivePulse {
+    0%   { box-shadow: 0 0 0 0 rgba(255,255,255,0.7); }
+    70%  { box-shadow: 0 0 0 10px rgba(255,255,255,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .banner-live-dot { animation: none; }
+  }
   .banner-next .where { color: var(--bone); font-weight: 700; }
 
   @media (max-width: 800px) {
@@ -4231,7 +4244,6 @@
 
 <!-- Mobile nav panel -->
 <nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
-  <a href="#stats"     onclick="closeMobileNav()">Stats</a>
   <a href="#recaps"    onclick="closeMobileNav()">Race Recaps</a>
   <a href="#bio"        onclick="closeMobileNav()">Bio</a>
   <a href="#timeline"     onclick="closeMobileNav()">Career</a>
@@ -4273,9 +4285,10 @@
     <div class="banner-divider"></div>
 
     <div class="banner-next">
-      <span class="label">Up Next</span>
-      <span class="where">Monaco · R04</span>
-      <span>4–7 June 2026</span>
+      <span class="label" id="banner-next-label">Up Next</span>
+      <span class="where" id="banner-next-where">Monaco · R04</span>
+      <span id="banner-next-dates">4–7 June 2026</span>
+      <span class="banner-countdown" id="banner-countdown" aria-live="polite"></span>
     </div>
   </div>
 </div>
@@ -4363,35 +4376,10 @@
   <div class="hero-urlstamp"><span class="hero-dot"></span>nikolatsolovfan.com</div>
 </header>
 
-<!-- ===================== STATS ===================== -->
-<section class="stats-section" id="stats">
-  <h3 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Nikola Tsolov career stats — F2 wins, F3 record, poles, podiums</h3>
-  <div class="section-tag">By the numbers</div>
-  <h2 class="section-title">Career <span class="it">in figures</span></h2>
-
-  <div class="stats-grid">
-    <div class="stat">
-      <div class="stat-label">F3 Wins (Career)</div>
-      <div class="stat-number" data-count="5" data-suffix="">5</div>
-      <div class="stat-context">Most wins by any driver in FIA Formula 3 history.</div>
-    </div>
-    <div class="stat">
-      <div class="stat-label">2025 F3 Final Standing</div>
-      <div class="stat-number" data-count="2" data-prefix="P">P2</div>
-      <div class="stat-context">Runner-up in the championship; helped Campos win the Teams' title.</div>
-    </div>
-    <div class="stat">
-      <div class="stat-label">2022 Spanish F4</div>
-      <div class="stat-number" data-count="13" data-suffix="">13</div>
-      <div class="stat-context">Wins in 21 races — outright dominator, champion, rookie season.</div>
-    </div>
-    <div class="stat">
-      <div class="stat-label">First F2 Victory</div>
-      <div class="stat-number" data-count="26" data-prefix="'">'26</div>
-      <div class="stat-context">Melbourne Feature Race — Bulgaria's first F2 race win, ever.</div>
-    </div>
-  </div>
-</section>
+<!-- Stats section removed 2026-06-02 — content duplicated by Hero ring circles.
+     Hero already shows: F3 Wins (5), 2025 F3 P2, Spanish F4 '22 (13 wins), First F2 Win ('26).
+     Bio section below tells the same story narratively.
+  -->
 
 <!-- ===================== RACE RECAPS ===================== -->
 <section id="recaps" style="padding: 60px 0;">
@@ -4837,7 +4825,6 @@
   </div>
 </section>
 
-<!-- ===================== 2026 F2 SEASON MAP ===================== -->
 <!-- ===================== 2026 SEASON ===================== -->
 <section class="season-section" id="season">
   <h3 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Nikola Tsolov F2 results 2026 — race calendar, standings, schedule</h3>
@@ -5404,9 +5391,6 @@
   <div class="chart-legend" id="chart-legend"></div>
 </section>
 
-<!-- ===================== POINTS PROJECTION ===================== -->
-
-<!-- ===================== FAN POLL ===================== -->
 <!-- ===================== GALLERY (3 photos) + CONTENT CARDS (5) ===================== -->
 <section class="gallery-section" id="gallery">
   <div class="section-tag">In pictures</div>
@@ -5802,6 +5786,61 @@
     { round: 13, location: "Lusail",            country: "Qatar",         flag: "qa", dates: "27–29 Nov", sprint: "—", feature: "—",                                                       status: "upcoming"  },
     { round: 14, location: "Yas Island",        country: "UAE",           flag: "ae", dates: "04–06 Dec", sprint: "—", feature: "—",                                                       status: "upcoming"  }
   ];
+
+  // ===================== LIVE STATUS BAR =====================
+  // Reads next upcoming race from RACES, computes days-to-practice,
+  // shows "LIVE THIS WEEKEND" with pulsing dot during race window.
+  function updateLiveStatus() {
+    const target  = document.getElementById('banner-countdown');
+    const labelEl = document.getElementById('banner-next-label');
+    const whereEl = document.getElementById('banner-next-where');
+    const datesEl = document.getElementById('banner-next-dates');
+    if (!target || !labelEl || !whereEl || !datesEl) return;
+
+    const RACE_YEAR = 2026;
+    const MONTHS = { Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11 };
+
+    // First upcoming race
+    const next = RACES.find(r => r.status === 'upcoming');
+    if (!next) { target.style.display = 'none'; return; }
+
+    // Parse "04–07 Jun" → start day, end day, month index
+    const m = next.dates.match(/(\d+)\D+(\d+)\s+([A-Za-z]{3})/);
+    if (!m) return;
+    const startDay = parseInt(m[1], 10);
+    const endDay   = parseInt(m[2], 10);
+    const month    = MONTHS[m[3]];
+    if (month === undefined) return;
+
+    const start = new Date(RACE_YEAR, month, startDay, 0, 0, 0);
+    const end   = new Date(RACE_YEAR, month, endDay,   23, 59, 59);
+    const now   = new Date();
+
+    // Reflect race in the visible banner blocks
+    labelEl.textContent = 'Up Next';
+    whereEl.textContent = next.location + ' · R' + String(next.round).padStart(2,'0');
+    const monthName = ['January','February','March','April','May','June','July','August','September','October','November','December'][month];
+    datesEl.textContent = startDay + '–' + endDay + ' ' + monthName + ' ' + RACE_YEAR;
+
+    target.className = 'banner-countdown';
+    if (now >= start && now <= end) {
+      target.classList.add('is-live');
+      target.innerHTML = '<span class="banner-live-dot" aria-hidden="true"></span>Live this weekend';
+    } else if (now < start) {
+      const msPerDay = 86400000;
+      const days = Math.ceil((start - now) / msPerDay);
+      if (days <= 3) target.classList.add('is-soon');
+      if (days === 0)      target.textContent = 'Practice today';
+      else if (days === 1) target.textContent = 'Practice tomorrow';
+      else                 target.textContent = days + ' days to practice';
+    } else {
+      // After this race ended but next race hasn't moved to upcoming yet
+      target.style.display = 'none';
+    }
+  }
+  document.addEventListener('DOMContentLoaded', updateLiveStatus);
+  // Re-check every 5 minutes so the countdown stays accurate on long-lived tabs
+  setInterval(updateLiveStatus, 5 * 60 * 1000);
 
   function badgeClass(result) {
     if (!result || result === "—") return "cal-blank";
