@@ -829,6 +829,26 @@
     .banner-next { align-items: flex-start; }
   }
 
+  /* ===================== TABSET (multi-view section consolidation) ===================== */
+  .tabset { padding: 80px 32px 60px; }
+  .tabset-head { text-align: center; max-width: 1100px; margin: 0 auto 36px; }
+  .tabset .section-tag { justify-content: center; margin-bottom: 14px; }
+  .tabset .section-title { margin-bottom: 20px; }
+  .tab-buttons { display: inline-flex; gap: 0; padding: 5px; background: rgba(13,45,86,0.5); border: 1px solid var(--gray-700); border-radius: 4px; margin-top: 18px; flex-wrap: wrap; justify-content: center; }
+  .tab-buttons button { background: transparent; border: 0; padding: 10px 22px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gray-300); cursor: pointer; border-radius: 3px; transition: background .2s, color .2s; }
+  .tab-buttons button:hover { color: var(--bone); }
+  .tab-buttons button[aria-selected="true"] { background: rgba(255,204,0,0.12); color: var(--gold); }
+  .tab-buttons button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .tabset [role="tabpanel"][hidden] { display: none; }
+  /* When a tabpanel wraps an existing .X-section, neutralise its outer padding (the tabset provides it) */
+  .tabset [role="tabpanel"] > section { padding-top: 0; padding-bottom: 0; }
+  .tabset [role="tabpanel"] > section .section-tag,
+  .tabset [role="tabpanel"] > section > .section-title { display: none; }
+  @media (max-width: 600px) {
+    .tabset { padding: 60px 16px 40px; }
+    .tab-buttons button { padding: 9px 14px; font-size: 10px; letter-spacing: 0.14em; }
+  }
+
   /* ===================== HERO (editorial) ===================== */
   .hero {
     position: relative;
@@ -4381,6 +4401,16 @@
      Bio section below tells the same story narratively.
   -->
 
+<!-- ===================== 2026 SEASON TABSET (Race Recaps + Calendar) ===================== -->
+<div class="tabset" id="season-tabset">
+  <div class="tabset-head">
+    <div class="section-tag">2026 Season</div>
+    <div class="tab-buttons" role="tablist" aria-label="2026 season views">
+      <button role="tab" id="season-tab-recaps" aria-selected="true" aria-controls="season-panel-recaps">Race Recaps</button>
+      <button role="tab" id="season-tab-calendar" aria-selected="false" aria-controls="season-panel-calendar" tabindex="-1">Calendar</button>
+    </div>
+  </div>
+  <div role="tabpanel" id="season-panel-recaps" aria-labelledby="season-tab-recaps">
 <!-- ===================== RACE RECAPS ===================== -->
 <section id="recaps" style="padding: 60px 0;">
   <div class="container" style="max-width:1100px;margin:0 auto;padding:0 24px;">
@@ -4621,210 +4651,8 @@
 
   </div>
 </section>
-
-<!-- ===================== 2027 F1 SEAT FORECAST TRACKER ===================== -->
-<section id="f1-forecast" class="ftrk-section" aria-labelledby="ftrk-heading">
-  <div class="ftrk-wrap">
-    <div class="ftrk-head">
-      <div class="ftrk-eyebrow"><span class="dot" aria-hidden="true"></span> Live Forecast · Updated each race weekend</div>
-      <h2 id="ftrk-heading">Will Tsolov get a <span class="it">2027 F1 seat?</span></h2>
-      <p>A transparent, weekly-updated forecast of Tsolov's probability of landing a Formula 1 role in 2027 — broken down by the four factors that actually move the needle.</p>
-    </div>
-
-    <div class="ftrk-numbers">
-      <div class="ftrk-card race">
-        <div class="ftrk-card-tag">Race seat 2027</div>
-        <div class="ftrk-card-pct"><span id="ftrk-race-pct">0</span><span class="sym">%</span></div>
-        <div class="ftrk-card-desc">Probability Tsolov starts a 2027 F1 grand prix — Racing Bulls being the realistic landing spot.</div>
-        <div class="ftrk-card-trend" id="ftrk-race-trend">— no change</div>
-      </div>
-      <div class="ftrk-card">
-        <div class="ftrk-card-tag">Some F1 role 2027</div>
-        <div class="ftrk-card-pct"><span id="ftrk-reserve-pct">0</span><span class="sym">%</span></div>
-        <div class="ftrk-card-desc">Race seat <em>or</em> reserve / test-driver role inside the Red Bull umbrella for the 2027 season.</div>
-        <div class="ftrk-card-trend" id="ftrk-reserve-trend">— no change</div>
-      </div>
-    </div>
-
-    <div class="ftrk-factors">
-      <div class="ftrk-factors-title">The four factors that move the needle</div>
-
-      <div class="ftrk-factor">
-        <div class="ftrk-factor-label">F2 championship position
-          <span class="ftrk-factor-sub" id="ftrk-f-f2-sub">—</span>
-        </div>
-        <div class="ftrk-factor-bar-track"><div class="ftrk-factor-bar-fill" id="ftrk-f-f2-bar"></div></div>
-        <div class="ftrk-factor-tag" id="ftrk-f-f2-tag">—</div>
-      </div>
-
-      <div class="ftrk-factor">
-        <div class="ftrk-factor-label">Racing Bulls vacancy odds
-          <span class="ftrk-factor-sub" id="ftrk-f-vac-sub">—</span>
-        </div>
-        <div class="ftrk-factor-bar-track"><div class="ftrk-factor-bar-fill" id="ftrk-f-vac-bar"></div></div>
-        <div class="ftrk-factor-tag" id="ftrk-f-vac-tag">—</div>
-      </div>
-
-      <div class="ftrk-factor">
-        <div class="ftrk-factor-label">Tsunoda contract movement
-          <span class="ftrk-factor-sub" id="ftrk-f-tsu-sub">—</span>
-        </div>
-        <div class="ftrk-factor-bar-track"><div class="ftrk-factor-bar-fill" id="ftrk-f-tsu-bar"></div></div>
-        <div class="ftrk-factor-tag" id="ftrk-f-tsu-tag">—</div>
-      </div>
-
-      <div class="ftrk-factor">
-        <div class="ftrk-factor-label">Marko relationship signal
-          <span class="ftrk-factor-sub" id="ftrk-f-mar-sub">—</span>
-        </div>
-        <div class="ftrk-factor-bar-track"><div class="ftrk-factor-bar-fill" id="ftrk-f-mar-bar"></div></div>
-        <div class="ftrk-factor-tag" id="ftrk-f-mar-tag">—</div>
-      </div>
-    </div>
-
-    <div class="ftrk-meta">
-      <div class="ftrk-meta-item">Last update: <strong id="ftrk-updated">—</strong></div>
-      <div class="ftrk-meta-item">Anchor round: <strong id="ftrk-anchor">—</strong></div>
-      <a class="ftrk-cta" href="/articles/nikola-tsolov-f1-seat-2027/">Full F1 seat analysis <span class="arr">→</span></a>
-    </div>
-
-    <div class="ftrk-method">
-      <strong>Methodology</strong>
-      <span style="display:block;margin-bottom:8px;">Race-seat probability = <code>(F2×0.40 + Vacancy×0.30 + Tsunoda×0.10 + Marko×0.20) × 0.55</code> ceiling adjustment.</span>
-      <span style="display:block;margin-bottom:8px;">Reserve probability = <code>(F2×0.30 + Vacancy×0.15 + Tsunoda×0.25 + Marko×0.30) × 1.10</code> ceiling adjustment, capped at 95%.</span>
-      <span style="display:block;">All factor weights and inputs are hand-set per round based on public Red Bull pipeline signals.</span>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== BIO ===================== -->
-<section id="bio" style="position:relative; overflow:hidden;">
-  <div style="position:absolute;inset:0;background:url('/images/tsolov-driver-silhouette-bio-bg.webp') center/cover no-repeat;opacity:0.12;pointer-events:none;z-index:0;"></div>
-  <div class="bio-section" style="position:relative;z-index:1;">
-    <div class="bio-left">
-      <div class="section-tag">The Story</div>
-      <h2 class="section-title" style="font-size: clamp(48px, 7vw, 100px);">Sofia <span class="it">to</span> the front row</h2>
-      <div class="pull-quote">
-        "It seemed impossible in the beginning, coming from Bulgaria and being limited financially. But when you believe in something, nothing can stop you."
-      </div>
-      <div class="quote-attr">— Nikola Tsolov</div>
-    </div>
-
-    <div class="bio-right">
-      <p class="lead">
-        Born in Sofia on 21 December 2006, Nikola Tsolov is the most successful single-seater driver Bulgaria has ever produced — and at nineteen, he is only just getting started. A <strong>Fernando Alonso protégé</strong> who came up through FA Racing karting and the Alpine Academy, he switched to the <strong>Red Bull Junior Team</strong> in November 2024 and signed permanently with <strong>Campos Racing</strong> for his 2026 F2 debut.
-      </p>
-      <p>
-        Two Formula 4 (Spain) seasons, three FIA Formula 3 seasons, and the all-time F3 wins record (5) led to Melbourne in March 2026 — where he became the <strong>first Bulgarian to win an FIA Formula 2 race</strong> and made a piece of national sporting history. The full career story is below.
-      </p>
-      <a href="/articles/nikola-tsolov-career-timeline/" class="bio-read-more">
-        <span class="brm-label">Full feature</span>
-        <span class="brm-title">From karts to championship leader — the Nikola Tsolov story</span>
-        <span class="brm-arrow">→</span>
-      </a>
-
-      <!-- F1 Super License Points Tracker -->
-      <div class="sl-tracker" aria-label="FIA Super License Points progress toward Formula 1">
-        <div class="sl-head">
-          <div>
-            <div class="sl-label">FIA Super License points</div>
-            <div class="sl-sub">Progress toward the 40 points required to race in Formula 1 — counted over a rolling 3-year window</div>
-          </div>
-          <div class="sl-count">
-            <span class="sl-current">25</span><span class="sl-total">/40</span>
-          </div>
-        </div>
-        <div class="sl-bar">
-          <div class="sl-bar-fill" style="width:62.5%"></div>
-          <div class="sl-bar-marker" style="left:100%"><span>F1</span></div>
-        </div>
-        <div class="sl-breakdown">
-          <div class="sl-item">
-            <span class="sl-year">2025</span>
-            <span class="sl-desc">FIA Formula 3 — Vice-Champion</span>
-            <span class="sl-pts">+25</span>
-          </div>
-          <div class="sl-item sl-pending">
-            <span class="sl-year">2026</span>
-            <span class="sl-desc">FIA Formula 2 — Top 3 unlocks Super License</span>
-            <span class="sl-pts">+40</span>
-          </div>
-          <div class="sl-item sl-expired">
-            <span class="sl-year">2022</span>
-            <span class="sl-desc">Spanish F4 — Champion (expired end 2025)</span>
-            <span class="sl-pts">+12</span>
-          </div>
-        </div>
-        <div class="sl-foot">
-          A Top 3 finish in F2 2026 (worth 40 pts) would push Tsolov past the threshold. He currently sits P3 in the championship, 22 points behind Minì.
-          <br>
-          <a class="sl-cta" href="/articles/tsolov-f2-2026-rookie-title-hunt/">Read: Tsolov vs the Class of '26 — inside the rookie title hunt <span class="arr">→</span></a>
-          <br>
-          <a class="sl-cta" href="/articles/nikola-tsolov-f1-seat-2027/">Read the full F1 2027 seat analysis <span class="arr">→</span></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== TIMELINE ===================== -->
-<section class="timeline-section" id="timeline">
-  <h3 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Nikola Tsolov career timeline — karting, F4, F3, Formula 2</h3>
-  <div class="section-tag">Career Path</div>
-  <h2 class="section-title">From karts <span class="it">to</span> the grid</h2>
-
-  <div class="timeline">
-    <div class="t-entry">
-      <div class="year">2019</div>
-      <span class="badge">Karting · Champion</span>
-      <div class="series">WSK Open Cup — 60 Mini</div>
-      <div class="desc">Wins his first international karting title at age 12.</div>
-    </div>
-
-    <div class="t-entry">
-      <div class="year">2021</div>
-      <span class="badge">Karting · P3</span>
-      <div class="series">Dubai 24h Endurance with Fernando Alonso</div>
-      <div class="desc">Hand-picked by <strong>Alonso</strong> to share a kart with him, Pedro de la Rosa, and Ángel Burgueño. They finish on the podium.</div>
-    </div>
-
-    <div class="t-entry">
-      <div class="year">2022</div>
-      <span class="badge">F4 · Champion</span>
-      <div class="series">Spanish F4 — Campos Racing</div>
-      <div class="desc"><strong>13 wins from 21 races.</strong> Title secured three races before the season's end. Joins the Alpine Affiliate Programme in March of the same year.</div>
-    </div>
-
-    <div class="t-entry">
-      <div class="year">2023</div>
-      <span class="badge">F3 · Rookie</span>
-      <div class="series">FIA Formula 3 — ART Grand Prix</div>
-      <div class="desc">Debut F3 season. Two points finishes at Spa and Monza; finishes 22nd in the standings while building experience.</div>
-    </div>
-
-    <div class="t-entry">
-      <div class="year">2024</div>
-      <span class="badge">F3 · 1st Bulgarian Winner</span>
-      <div class="series">FIA Formula 3 — ART Grand Prix</div>
-      <div class="desc">Wins the <strong>Monaco Sprint Race</strong> — the first Bulgarian to win in F3. Adds further wins at Spielberg and the Hungary Feature Race.</div>
-    </div>
-
-    <div class="t-entry">
-      <div class="year">2025</div>
-      <span class="badge">F3 · Runner-Up</span>
-      <div class="series">FIA Formula 3 — Campos Racing</div>
-      <div class="desc">Joins the <strong>Red Bull Junior Team</strong>. Wins in Bahrain and from pole in Monaco. Becomes the <strong>all-time F3 wins record holder (5)</strong>. Finishes second in the championship behind Rafael Câmara. Drafted to F2 for the final two rounds — first F2 podium at Yas Marina.</div>
-    </div>
-
-    <div class="t-entry">
-      <div class="year">2026</div>
-      <span class="badge">F2 · Race Winner</span>
-      <div class="series">FIA Formula 2 — Campos Racing · #6</div>
-      <div class="desc">Wins the <strong>Melbourne Feature Race</strong> — Bulgaria's <strong>first ever F2 victory</strong>. Leads the championship out of round one.</div>
-    </div>
-  </div>
-</section>
-
+  </div><!-- /season-panel-recaps -->
+  <div role="tabpanel" id="season-panel-calendar" aria-labelledby="season-tab-calendar" hidden>
 <!-- ===================== 2026 SEASON ===================== -->
 <section class="season-section" id="season">
   <h3 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Nikola Tsolov F2 results 2026 — race calendar, standings, schedule</h3>
@@ -5010,7 +4838,237 @@
     </div>
   </div>
 </section>
+  </div><!-- /season-panel-calendar -->
+</div><!-- /season-tabset -->
 
+
+<!-- ===================== 2027 F1 SEAT FORECAST TRACKER ===================== -->
+<section id="f1-forecast" class="ftrk-section" aria-labelledby="ftrk-heading">
+  <div class="ftrk-wrap">
+    <div class="ftrk-head">
+      <div class="ftrk-eyebrow"><span class="dot" aria-hidden="true"></span> Live Forecast · Updated each race weekend</div>
+      <h2 id="ftrk-heading">Will Tsolov get a <span class="it">2027 F1 seat?</span></h2>
+      <p>A transparent, weekly-updated forecast of Tsolov's probability of landing a Formula 1 role in 2027 — broken down by the four factors that actually move the needle.</p>
+    </div>
+
+    <div class="ftrk-numbers">
+      <div class="ftrk-card race">
+        <div class="ftrk-card-tag">Race seat 2027</div>
+        <div class="ftrk-card-pct"><span id="ftrk-race-pct">0</span><span class="sym">%</span></div>
+        <div class="ftrk-card-desc">Probability Tsolov starts a 2027 F1 grand prix — Racing Bulls being the realistic landing spot.</div>
+        <div class="ftrk-card-trend" id="ftrk-race-trend">— no change</div>
+      </div>
+      <div class="ftrk-card">
+        <div class="ftrk-card-tag">Some F1 role 2027</div>
+        <div class="ftrk-card-pct"><span id="ftrk-reserve-pct">0</span><span class="sym">%</span></div>
+        <div class="ftrk-card-desc">Race seat <em>or</em> reserve / test-driver role inside the Red Bull umbrella for the 2027 season.</div>
+        <div class="ftrk-card-trend" id="ftrk-reserve-trend">— no change</div>
+      </div>
+    </div>
+
+    <div class="ftrk-factors">
+      <div class="ftrk-factors-title">The four factors that move the needle</div>
+
+      <div class="ftrk-factor">
+        <div class="ftrk-factor-label">F2 championship position
+          <span class="ftrk-factor-sub" id="ftrk-f-f2-sub">—</span>
+        </div>
+        <div class="ftrk-factor-bar-track"><div class="ftrk-factor-bar-fill" id="ftrk-f-f2-bar"></div></div>
+        <div class="ftrk-factor-tag" id="ftrk-f-f2-tag">—</div>
+      </div>
+
+      <div class="ftrk-factor">
+        <div class="ftrk-factor-label">Racing Bulls vacancy odds
+          <span class="ftrk-factor-sub" id="ftrk-f-vac-sub">—</span>
+        </div>
+        <div class="ftrk-factor-bar-track"><div class="ftrk-factor-bar-fill" id="ftrk-f-vac-bar"></div></div>
+        <div class="ftrk-factor-tag" id="ftrk-f-vac-tag">—</div>
+      </div>
+
+      <div class="ftrk-factor">
+        <div class="ftrk-factor-label">Tsunoda contract movement
+          <span class="ftrk-factor-sub" id="ftrk-f-tsu-sub">—</span>
+        </div>
+        <div class="ftrk-factor-bar-track"><div class="ftrk-factor-bar-fill" id="ftrk-f-tsu-bar"></div></div>
+        <div class="ftrk-factor-tag" id="ftrk-f-tsu-tag">—</div>
+      </div>
+
+      <div class="ftrk-factor">
+        <div class="ftrk-factor-label">Marko relationship signal
+          <span class="ftrk-factor-sub" id="ftrk-f-mar-sub">—</span>
+        </div>
+        <div class="ftrk-factor-bar-track"><div class="ftrk-factor-bar-fill" id="ftrk-f-mar-bar"></div></div>
+        <div class="ftrk-factor-tag" id="ftrk-f-mar-tag">—</div>
+      </div>
+    </div>
+
+    <div class="ftrk-meta">
+      <div class="ftrk-meta-item">Last update: <strong id="ftrk-updated">—</strong></div>
+      <div class="ftrk-meta-item">Anchor round: <strong id="ftrk-anchor">—</strong></div>
+      <a class="ftrk-cta" href="/articles/nikola-tsolov-f1-seat-2027/">Full F1 seat analysis <span class="arr">→</span></a>
+    </div>
+
+    <div class="ftrk-method">
+      <strong>Methodology</strong>
+      <span style="display:block;margin-bottom:8px;">Race-seat probability = <code>(F2×0.40 + Vacancy×0.30 + Tsunoda×0.10 + Marko×0.20) × 0.55</code> ceiling adjustment.</span>
+      <span style="display:block;margin-bottom:8px;">Reserve probability = <code>(F2×0.30 + Vacancy×0.15 + Tsunoda×0.25 + Marko×0.30) × 1.10</code> ceiling adjustment, capped at 95%.</span>
+      <span style="display:block;">All factor weights and inputs are hand-set per round based on public Red Bull pipeline signals.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DRIVER PROFILE TABSET (Bio + Career Timeline) ===================== -->
+<div class="tabset" id="profile-tabset">
+  <div class="tabset-head">
+    <div class="section-tag">Driver Profile</div>
+    <div class="tab-buttons" role="tablist" aria-label="Driver profile views">
+      <button role="tab" id="prof-tab-bio" aria-selected="true" aria-controls="prof-panel-bio">The Story</button>
+      <button role="tab" id="prof-tab-timeline" aria-selected="false" aria-controls="prof-panel-timeline" tabindex="-1">Career Timeline</button>
+    </div>
+  </div>
+  <div role="tabpanel" id="prof-panel-bio" aria-labelledby="prof-tab-bio">
+<!-- ===================== BIO ===================== -->
+<section id="bio" style="position:relative; overflow:hidden;">
+  <div style="position:absolute;inset:0;background:url('/images/tsolov-driver-silhouette-bio-bg.webp') center/cover no-repeat;opacity:0.12;pointer-events:none;z-index:0;"></div>
+  <div class="bio-section" style="position:relative;z-index:1;">
+    <div class="bio-left">
+      <div class="section-tag">The Story</div>
+      <h2 class="section-title" style="font-size: clamp(48px, 7vw, 100px);">Sofia <span class="it">to</span> the front row</h2>
+      <div class="pull-quote">
+        "It seemed impossible in the beginning, coming from Bulgaria and being limited financially. But when you believe in something, nothing can stop you."
+      </div>
+      <div class="quote-attr">— Nikola Tsolov</div>
+    </div>
+
+    <div class="bio-right">
+      <p class="lead">
+        Born in Sofia on 21 December 2006, Nikola Tsolov is the most successful single-seater driver Bulgaria has ever produced — and at nineteen, he is only just getting started. A <strong>Fernando Alonso protégé</strong> who came up through FA Racing karting and the Alpine Academy, he switched to the <strong>Red Bull Junior Team</strong> in November 2024 and signed permanently with <strong>Campos Racing</strong> for his 2026 F2 debut.
+      </p>
+      <p>
+        Two Formula 4 (Spain) seasons, three FIA Formula 3 seasons, and the all-time F3 wins record (5) led to Melbourne in March 2026 — where he became the <strong>first Bulgarian to win an FIA Formula 2 race</strong> and made a piece of national sporting history. The full career story is below.
+      </p>
+      <a href="/articles/nikola-tsolov-career-timeline/" class="bio-read-more">
+        <span class="brm-label">Full feature</span>
+        <span class="brm-title">From karts to championship leader — the Nikola Tsolov story</span>
+        <span class="brm-arrow">→</span>
+      </a>
+
+      <!-- F1 Super License Points Tracker -->
+      <div class="sl-tracker" aria-label="FIA Super License Points progress toward Formula 1">
+        <div class="sl-head">
+          <div>
+            <div class="sl-label">FIA Super License points</div>
+            <div class="sl-sub">Progress toward the 40 points required to race in Formula 1 — counted over a rolling 3-year window</div>
+          </div>
+          <div class="sl-count">
+            <span class="sl-current">25</span><span class="sl-total">/40</span>
+          </div>
+        </div>
+        <div class="sl-bar">
+          <div class="sl-bar-fill" style="width:62.5%"></div>
+          <div class="sl-bar-marker" style="left:100%"><span>F1</span></div>
+        </div>
+        <div class="sl-breakdown">
+          <div class="sl-item">
+            <span class="sl-year">2025</span>
+            <span class="sl-desc">FIA Formula 3 — Vice-Champion</span>
+            <span class="sl-pts">+25</span>
+          </div>
+          <div class="sl-item sl-pending">
+            <span class="sl-year">2026</span>
+            <span class="sl-desc">FIA Formula 2 — Top 3 unlocks Super License</span>
+            <span class="sl-pts">+40</span>
+          </div>
+          <div class="sl-item sl-expired">
+            <span class="sl-year">2022</span>
+            <span class="sl-desc">Spanish F4 — Champion (expired end 2025)</span>
+            <span class="sl-pts">+12</span>
+          </div>
+        </div>
+        <div class="sl-foot">
+          A Top 3 finish in F2 2026 (worth 40 pts) would push Tsolov past the threshold. He currently sits P3 in the championship, 22 points behind Minì.
+          <br>
+          <a class="sl-cta" href="/articles/tsolov-f2-2026-rookie-title-hunt/">Read: Tsolov vs the Class of '26 — inside the rookie title hunt <span class="arr">→</span></a>
+          <br>
+          <a class="sl-cta" href="/articles/nikola-tsolov-f1-seat-2027/">Read the full F1 2027 seat analysis <span class="arr">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </div><!-- /prof-panel-bio -->
+  <div role="tabpanel" id="prof-panel-timeline" aria-labelledby="prof-tab-timeline" hidden>
+<!-- ===================== TIMELINE ===================== -->
+<section class="timeline-section" id="timeline">
+  <h3 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Nikola Tsolov career timeline — karting, F4, F3, Formula 2</h3>
+  <div class="section-tag">Career Path</div>
+  <h2 class="section-title">From karts <span class="it">to</span> the grid</h2>
+
+  <div class="timeline">
+    <div class="t-entry">
+      <div class="year">2019</div>
+      <span class="badge">Karting · Champion</span>
+      <div class="series">WSK Open Cup — 60 Mini</div>
+      <div class="desc">Wins his first international karting title at age 12.</div>
+    </div>
+
+    <div class="t-entry">
+      <div class="year">2021</div>
+      <span class="badge">Karting · P3</span>
+      <div class="series">Dubai 24h Endurance with Fernando Alonso</div>
+      <div class="desc">Hand-picked by <strong>Alonso</strong> to share a kart with him, Pedro de la Rosa, and Ángel Burgueño. They finish on the podium.</div>
+    </div>
+
+    <div class="t-entry">
+      <div class="year">2022</div>
+      <span class="badge">F4 · Champion</span>
+      <div class="series">Spanish F4 — Campos Racing</div>
+      <div class="desc"><strong>13 wins from 21 races.</strong> Title secured three races before the season's end. Joins the Alpine Affiliate Programme in March of the same year.</div>
+    </div>
+
+    <div class="t-entry">
+      <div class="year">2023</div>
+      <span class="badge">F3 · Rookie</span>
+      <div class="series">FIA Formula 3 — ART Grand Prix</div>
+      <div class="desc">Debut F3 season. Two points finishes at Spa and Monza; finishes 22nd in the standings while building experience.</div>
+    </div>
+
+    <div class="t-entry">
+      <div class="year">2024</div>
+      <span class="badge">F3 · 1st Bulgarian Winner</span>
+      <div class="series">FIA Formula 3 — ART Grand Prix</div>
+      <div class="desc">Wins the <strong>Monaco Sprint Race</strong> — the first Bulgarian to win in F3. Adds further wins at Spielberg and the Hungary Feature Race.</div>
+    </div>
+
+    <div class="t-entry">
+      <div class="year">2025</div>
+      <span class="badge">F3 · Runner-Up</span>
+      <div class="series">FIA Formula 3 — Campos Racing</div>
+      <div class="desc">Joins the <strong>Red Bull Junior Team</strong>. Wins in Bahrain and from pole in Monaco. Becomes the <strong>all-time F3 wins record holder (5)</strong>. Finishes second in the championship behind Rafael Câmara. Drafted to F2 for the final two rounds — first F2 podium at Yas Marina.</div>
+    </div>
+
+    <div class="t-entry">
+      <div class="year">2026</div>
+      <span class="badge">F2 · Race Winner</span>
+      <div class="series">FIA Formula 2 — Campos Racing · #6</div>
+      <div class="desc">Wins the <strong>Melbourne Feature Race</strong> — Bulgaria's <strong>first ever F2 victory</strong>. Leads the championship out of round one.</div>
+    </div>
+  </div>
+</section>
+  </div><!-- /prof-panel-timeline -->
+</div><!-- /profile-tabset -->
+
+<!-- ===================== CHAMPIONSHIP TABSET (Standings + Points Chart) ===================== -->
+<div class="tabset" id="champ-tabset">
+  <div class="tabset-head">
+    <div class="section-tag">Drivers' Championship</div>
+    <div class="tab-buttons" role="tablist" aria-label="Championship views">
+      <button role="tab" id="champ-tab-table" aria-selected="true" aria-controls="champ-panel-table">Standings</button>
+      <button role="tab" id="champ-tab-chart" aria-selected="false" aria-controls="champ-panel-chart" tabindex="-1">Points Race</button>
+    </div>
+  </div>
+  <div role="tabpanel" id="champ-panel-table" aria-labelledby="champ-tab-table">
 <!-- ===================== CHAMPIONSHIP STANDINGS ===================== -->
 <section class="champ-section" id="standings">
   <div class="champ-header">
@@ -5256,6 +5314,16 @@
     <span>Updated after R03 Montréal · R04 Monaco next</span>
   </div>
 </section>
+  </div><!-- /champ-panel-table -->
+  <div role="tabpanel" id="champ-panel-chart" aria-labelledby="champ-tab-chart" hidden>
+    <div class="chart-wrap">
+      <svg id="points-chart" viewBox="0 0 740 320"
+           preserveAspectRatio="xMidYMid meet"
+           aria-label="2026 FIA Formula 2 championship points progression chart"></svg>
+    </div>
+    <div class="chart-legend" id="chart-legend"></div>
+  </div><!-- /champ-panel-chart -->
+</div><!-- /champ-tabset -->
 
 <!-- ===================== RIVAL CARD ===================== -->
 <section class="rival-section" id="rival">
@@ -5379,17 +5447,7 @@
   </div>
 </section>
 
-<!-- ===================== POINTS CHART ===================== -->
-<section class="chart-section" id="chart">
-  <div class="section-tag">Points Battle</div>
-  <h2 class="section-title">Championship <span class="it">Race</span></h2>
-  <div class="chart-wrap">
-    <svg id="points-chart" viewBox="0 0 740 320"
-         preserveAspectRatio="xMidYMid meet"
-         aria-label="2026 FIA Formula 2 championship points progression chart"></svg>
-  </div>
-  <div class="chart-legend" id="chart-legend"></div>
-</section>
+<!-- Points Chart moved into Championship tabset 2026-06-02 — see #champ-tabset above -->
 
 <!-- ===================== GALLERY (3 photos) + CONTENT CARDS (5) ===================== -->
 <section class="gallery-section" id="gallery">
@@ -6592,6 +6650,43 @@ function initRecapCards() {
       try { if (typeof initSessionSchedule === 'function') initSessionSchedule(); } catch (e) { console.error('initSessionSchedule:', e); }
       try { if (typeof initStatCounters === 'function') initStatCounters(); } catch (e) { console.error('initStatCounters:', e); }
       try { if (typeof initRecapCards === 'function') initRecapCards(); } catch (e) { console.error('initRecapCards:', e); }
+      try { initTabsets(); } catch (e) { console.error('initTabsets:', e); }
+    });
+  }
+
+  // ARIA-compliant tab handler for .tabset sections.
+  // Click any tab to switch; arrow keys / Home / End for keyboard navigation.
+  function initTabsets() {
+    document.querySelectorAll('.tabset').forEach(set => {
+      const tabs   = Array.from(set.querySelectorAll('[role="tab"]'));
+      const panels = Array.from(set.querySelectorAll('[role="tabpanel"]'));
+      function activate(i) {
+        tabs.forEach((t, idx) => {
+          const on = idx === i;
+          t.setAttribute('aria-selected', on);
+          t.setAttribute('tabindex', on ? '0' : '-1');
+          if (panels[idx]) panels[idx].hidden = !on;
+        });
+        // Trigger chart redraw if the activated panel contains the chart
+        if (panels[i] && panels[i].querySelector('#points-chart') && typeof drawPointsChart === 'function') {
+          try { drawPointsChart(); } catch (e) { /* swallow */ }
+        }
+      }
+      tabs.forEach((tab, i) => {
+        tab.addEventListener('click', () => activate(i));
+        tab.addEventListener('keydown', e => {
+          if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+            e.preventDefault();
+            const dir = e.key === 'ArrowRight' ? 1 : -1;
+            const next = (i + dir + tabs.length) % tabs.length;
+            activate(next); tabs[next].focus();
+          } else if (e.key === 'Home') {
+            e.preventDefault(); activate(0); tabs[0].focus();
+          } else if (e.key === 'End') {
+            e.preventDefault(); activate(tabs.length-1); tabs[tabs.length-1].focus();
+          }
+        });
+      });
     });
   }
   if (document.readyState === 'loading') {
