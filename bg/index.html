@@ -803,6 +803,19 @@
     white-space: nowrap;
   }
   .banner-next .label { color: var(--gray-500); }
+  /* Live status countdown */
+  .banner-countdown { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; padding: 3px 9px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: var(--gold); border: 1px solid rgba(255,204,0,0.4); border-radius: 2px; }
+  .banner-countdown.is-live { color: #fff; background: rgba(224,58,62,0.9); border-color: var(--red); }
+  .banner-countdown.is-soon { color: var(--red); border-color: rgba(224,58,62,0.6); background: rgba(224,58,62,0.06); }
+  .banner-live-dot { width: 7px; height: 7px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 0 rgba(255,255,255,0.7); animation: bannerLivePulse 1.6s ease-out infinite; }
+  @keyframes bannerLivePulse {
+    0%   { box-shadow: 0 0 0 0 rgba(255,255,255,0.7); }
+    70%  { box-shadow: 0 0 0 10px rgba(255,255,255,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .banner-live-dot { animation: none; }
+  }
   .banner-next .where { color: var(--bone); font-weight: 700; }
 
   @media (max-width: 800px) {
@@ -816,6 +829,25 @@
     .banner-position { font-size: 32px; }
     .banner-text { white-space: normal; }
     .banner-next { align-items: flex-start; }
+  }
+
+  /* ===================== TABSET (multi-view section consolidation) ===================== */
+  .tabset { padding: 80px 32px 60px; }
+  .tabset-head { text-align: center; max-width: 1100px; margin: 0 auto 36px; }
+  .tabset .section-tag { justify-content: center; margin-bottom: 14px; }
+  .tabset .section-title { margin-bottom: 20px; }
+  .tab-buttons { display: inline-flex; gap: 0; padding: 5px; background: rgba(13,45,86,0.5); border: 1px solid var(--gray-700); border-radius: 4px; margin-top: 18px; flex-wrap: wrap; justify-content: center; }
+  .tab-buttons button { background: transparent; border: 0; padding: 10px 22px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gray-300); cursor: pointer; border-radius: 3px; transition: background .2s, color .2s; }
+  .tab-buttons button:hover { color: var(--bone); }
+  .tab-buttons button[aria-selected="true"] { background: rgba(255,204,0,0.12); color: var(--gold); }
+  .tab-buttons button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .tabset [role="tabpanel"][hidden] { display: none; }
+  .tabset [role="tabpanel"] > section { padding-top: 0; padding-bottom: 0; }
+  .tabset [role="tabpanel"] > section .section-tag,
+  .tabset [role="tabpanel"] > section > .section-title { display: none; }
+  @media (max-width: 600px) {
+    .tabset { padding: 60px 16px 40px; }
+    .tab-buttons button { padding: 9px 14px; font-size: 10px; letter-spacing: 0.14em; }
   }
 
   /* ===================== HERO (editorial) ===================== */
@@ -4215,7 +4247,6 @@
 
 <!-- Mobile nav panel -->
 <nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
-  <a href="#stats"        onclick="closeMobileNav()">Статистики</a>
   <a href="#recaps"       onclick="closeMobileNav()">Прегледи</a>
   <a href="#bio"          onclick="closeMobileNav()">За Никола</a>
   <a href="#timeline"     onclick="closeMobileNav()">Кариера</a>
@@ -4257,9 +4288,10 @@
     <div class="banner-divider"></div>
 
     <div class="banner-next">
-      <span class="label">Следва</span>
-      <span class="where">Монако · R04</span>
-      <span>4–7 юни 2026</span>
+      <span class="label" id="banner-next-label">Следва</span>
+      <span class="where" id="banner-next-where">Монако · R04</span>
+      <span id="banner-next-dates">4–7 юни 2026</span>
+      <span class="banner-countdown" id="banner-countdown" aria-live="polite"></span>
     </div>
   </div>
 </div>
@@ -4347,36 +4379,18 @@
   <div class="hero-urlstamp"><span class="hero-dot"></span>nikolatsolovfan.com</div>
 </header>
 
-<!-- ===================== STATS ===================== -->
-<section class="stats-section" id="stats">
-  <h3 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Никола Цолов кариерна статистика — F2 победи, F3 рекорд, поул позиции, подиуми</h3>
-  <div class="section-tag">В цифри</div>
-  <h2 class="section-title">Кариера <span class="it">в числа</span></h2>
+<!-- Stats section removed 2026-06-02 — content duplicated by Hero ring circles. -->
 
-  <div class="stats-grid">
-    <div class="stat">
-      <div class="stat-label">F3 победи (общо)</div>
-      <div class="stat-number" data-count="5" data-suffix="">5</div>
-      <div class="stat-context">Най-много победи от пилот в историята на FIA Formula 3.</div>
-    </div>
-    <div class="stat">
-      <div class="stat-label">F3 финално класиране 2025</div>
-      <div class="stat-number" data-count="2" data-prefix="P">P2</div>
-      <div class="stat-context">Вицешампион; помогна на Campos да спечели титлата при отборите.</div>
-    </div>
-    <div class="stat">
-      <div class="stat-label">Spanish F4 (2022)</div>
-      <div class="stat-number" data-count="13" data-suffix="">13</div>
-      <div class="stat-context">Победи от 21 състезания — абсолютен доминатор и шампион в дебютния сезон.</div>
-    </div>
-    <div class="stat">
-      <div class="stat-label">Първа победа във F2</div>
-      <div class="stat-number" data-count="26" data-prefix="'">'26</div>
-      <div class="stat-context">Feature Race в Мелбърн — първата българска победа във F2 в историята.</div>
+<!-- ===================== СЕЗОН 2026 — TABSET (Прегледи + Календар) ===================== -->
+<div class="tabset" id="season-tabset">
+  <div class="tabset-head">
+    <div class="section-tag">Сезон 2026</div>
+    <div class="tab-buttons" role="tablist" aria-label="Изгледи на сезон 2026">
+      <button role="tab" id="season-tab-recaps" aria-selected="true" aria-controls="season-panel-recaps">Прегледи</button>
+      <button role="tab" id="season-tab-calendar" aria-selected="false" aria-controls="season-panel-calendar" tabindex="-1">Календар</button>
     </div>
   </div>
-</section>
-
+  <div role="tabpanel" id="season-panel-recaps" aria-labelledby="season-tab-recaps">
 <!-- ===================== RACE RECAPS ===================== -->
 <section id="recaps" style="padding: 60px 0;">
   <div class="container" style="max-width:1100px;margin:0 auto;padding:0 24px;">
@@ -4617,207 +4631,8 @@
 
   </div>
 </section>
-
-<!-- ===================== 2027 F1 SEAT FORECAST TRACKER ===================== -->
-<section id="f1-forecast" class="ftrk-section" aria-labelledby="ftrk-heading">
-  <div class="ftrk-wrap">
-    <div class="ftrk-head">
-      <div class="ftrk-eyebrow"><span class="dot" aria-hidden="true"></span> Жива прогноза · Обновява се след всеки кръг</div>
-      <h2 id="ftrk-heading">Ще получи ли Цолов <span class="it">място във F1 за 2027?</span></h2>
-      <p>Прозрачна прогноза, която се обновява всяка седмица, за шансовете на Цолов да получи роля във Formula 1 за сезон 2027 — разбита по четирите фактора, които реално движат стрелката.</p>
-    </div>
-
-    <div class="ftrk-numbers">
-      <div class="ftrk-card race">
-        <div class="ftrk-card-tag">Състезателно място 2027</div>
-        <div class="ftrk-card-pct"><span id="ftrk-race-pct">0</span><span class="sym">%</span></div>
-        <div class="ftrk-card-desc">Вероятност Цолов да започне състезание във F1 през 2027 — Racing Bulls е реалистичната дестинация.</div>
-        <div class="ftrk-card-trend" id="ftrk-race-trend">— без промяна</div>
-      </div>
-      <div class="ftrk-card">
-        <div class="ftrk-card-tag">Каквато и да е F1 роля 2027</div>
-        <div class="ftrk-card-pct"><span id="ftrk-reserve-pct">0</span><span class="sym">%</span></div>
-        <div class="ftrk-card-desc">Състезателно място <em>или</em> резервна / тест роля в системата на Red Bull за сезон 2027.</div>
-        <div class="ftrk-card-trend" id="ftrk-reserve-trend">— без промяна</div>
-      </div>
-    </div>
-
-    <div class="ftrk-factors">
-      <div class="ftrk-factors-title">Четирите фактора, които движат стрелката</div>
-
-      <div class="ftrk-factor">
-        <div class="ftrk-factor-label">Позиция в F2 шампионата
-          <span class="ftrk-factor-sub" id="ftrk-f-f2-sub">—</span>
-        </div>
-        <div class="ftrk-factor-bar-track"><div class="ftrk-factor-bar-fill" id="ftrk-f-f2-bar"></div></div>
-        <div class="ftrk-factor-tag" id="ftrk-f-f2-tag">—</div>
-      </div>
-
-      <div class="ftrk-factor">
-        <div class="ftrk-factor-label">Вакантно място в Racing Bulls
-          <span class="ftrk-factor-sub" id="ftrk-f-vac-sub">—</span>
-        </div>
-        <div class="ftrk-factor-bar-track"><div class="ftrk-factor-bar-fill" id="ftrk-f-vac-bar"></div></div>
-        <div class="ftrk-factor-tag" id="ftrk-f-vac-tag">—</div>
-      </div>
-
-      <div class="ftrk-factor">
-        <div class="ftrk-factor-label">Договорна ситуация на Цунода
-          <span class="ftrk-factor-sub" id="ftrk-f-tsu-sub">—</span>
-        </div>
-        <div class="ftrk-factor-bar-track"><div class="ftrk-factor-bar-fill" id="ftrk-f-tsu-bar"></div></div>
-        <div class="ftrk-factor-tag" id="ftrk-f-tsu-tag">—</div>
-      </div>
-
-      <div class="ftrk-factor">
-        <div class="ftrk-factor-label">Сигнал от Марко
-          <span class="ftrk-factor-sub" id="ftrk-f-mar-sub">—</span>
-        </div>
-        <div class="ftrk-factor-bar-track"><div class="ftrk-factor-bar-fill" id="ftrk-f-mar-bar"></div></div>
-        <div class="ftrk-factor-tag" id="ftrk-f-mar-tag">—</div>
-      </div>
-    </div>
-
-    <div class="ftrk-meta">
-      <div class="ftrk-meta-item">Последна актуализация: <strong id="ftrk-updated">—</strong></div>
-      <div class="ftrk-meta-item">Опорен кръг: <strong id="ftrk-anchor">—</strong></div>
-      <a class="ftrk-cta" href="/articles/nikola-tsolov-f1-seat-2027/">Пълен анализ за F1 мястото <span class="arr">→</span></a>
-    </div>
-
-    <div class="ftrk-method">
-      <strong>Методология</strong>
-      <span style="display:block;margin-bottom:8px;">Вероятност за състезателно място = <code>(F2×0.40 + Вакантно×0.30 + Цунода×0.10 + Марко×0.20) × 0.55</code> корекция за реалистична граница.</span>
-      <span style="display:block;margin-bottom:8px;">Вероятност за резервна роля = <code>(F2×0.30 + Вакантно×0.15 + Цунода×0.25 + Марко×0.30) × 1.10</code> корекция, ограничена до 95%.</span>
-      <span style="display:block;">Тежестите и входните стойности на всеки фактор се настройват ръчно след всеки кръг въз основа на публични сигнали от Red Bull pipeline.</span>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== BIO ===================== -->
-<section id="bio" style="position:relative; overflow:hidden;">
-  <div style="position:absolute;inset:0;background:url('/images/tsolov-driver-silhouette-bio-bg.webp') center/cover no-repeat;opacity:0.12;pointer-events:none;z-index:0;"></div>
-  <div class="bio-section" style="position:relative;z-index:1;">
-    <div class="bio-left">
-      <div class="section-tag">Историята</div>
-      <h2 class="section-title" style="font-size: clamp(48px, 7vw, 100px);">От София <span class="it">към</span> първия ред</h2>
-      <div class="pull-quote">
-        „В началото изглеждаше невъзможно — от България и с ограничен бюджет. Но когато вярваш в нещо, нищо не може да те спре.“
-      </div>
-      <div class="quote-attr">— Никола Цолов</div>
-    </div>
-
-    <div class="bio-right">
-      <p class="lead">
-        Никола Цолов е роден в София на 21 декември 2006 г. и вече е най-успешният български пилот в едноместните състезания — а на 19 е едва в началото. <strong>Възпитаник на Фернандо Алонсо</strong>, преминал през картинга на FA Racing и Alpine Academy, той се присъединява към <strong>Red Bull Junior Team</strong> през ноември 2024 г. и подписва за постоянно с <strong>Campos Racing</strong> за дебюта си във F2 през 2026.
-      </p>
-      <p>
-        Два сезона във Formula 4 (Испания), три сезона във FIA Formula 3 и рекордът за най-много победи в историята на F3 (5) водят до Мелбърн през март 2026 — където той става <strong>първият българин, спечелил състезание във FIA Formula 2</strong> и пише ново парче българска спортна история. Пълната му кариера е по-долу.
-      </p>
-      <a href="/articles/nikola-tsolov-career-timeline/" class="bio-read-more">
-        <span class="brm-label">Пълен материал</span>
-        <span class="brm-title">От картинга до борбата за титлата — историята на Никола Цолов</span>
-        <span class="brm-arrow">→</span>
-      </a>
-
-      <!-- F1 Super License Points Tracker -->
-      <div class="sl-tracker" aria-label="FIA Super License Points progress toward Formula 1">
-        <div class="sl-head">
-          <div>
-            <div class="sl-label">FIA Super License точки</div>
-            <div class="sl-sub">Прогрес към 40-те точки, необходими за каране във Formula 1 — броят се в плъзгащ се 3-годишен прозорец</div>
-          </div>
-          <div class="sl-count">
-            <span class="sl-current">25</span><span class="sl-total">/40</span>
-          </div>
-        </div>
-        <div class="sl-bar">
-          <div class="sl-bar-fill" style="width:62.5%"></div>
-          <div class="sl-bar-marker" style="left:100%"><span>F1</span></div>
-        </div>
-        <div class="sl-breakdown">
-          <div class="sl-item">
-            <span class="sl-year">2025</span>
-            <span class="sl-desc">FIA Formula 3 — Вицешампион</span>
-            <span class="sl-pts">+25</span>
-          </div>
-          <div class="sl-item sl-pending">
-            <span class="sl-year">2026</span>
-            <span class="sl-desc">FIA Formula 2 — Топ 3 осигурява Super License</span>
-            <span class="sl-pts">+40</span>
-          </div>
-          <div class="sl-item sl-expired">
-            <span class="sl-year">2022</span>
-            <span class="sl-desc">Spanish F4 — Шампион (изтекли края на 2025)</span>
-            <span class="sl-pts">+12</span>
-          </div>
-        </div>
-        <div class="sl-foot">
-          Топ 3 финал във F2 2026 (40 точки) би изпратил Цолов над прага. В момента е P3 в шампионата, на 22 точки зад Minì.
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== TIMELINE ===================== -->
-<section class="timeline-section" id="timeline">
-  <h3 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Никола Цолов кариерна история — картинг, F4, F3, Formula 2</h3>
-  <div class="section-tag">Кариерен път</div>
-  <h2 class="section-title">От картинга <span class="it">към</span> стартовата решетка</h2>
-
-  <div class="timeline">
-    <div class="t-entry">
-      <div class="year">2019</div>
-      <span class="badge">Картинг · Шампион</span>
-      <div class="series">WSK Open Cup — 60 Mini</div>
-      <div class="desc">Печели първата си международна картинг титла на 12 години.</div>
-    </div>
-
-    <div class="t-entry">
-      <div class="year">2021</div>
-      <span class="badge">Картинг · P3</span>
-      <div class="series">Dubai 24h Endurance с Фернандо Алонсо</div>
-      <div class="desc">Лично избран от <strong>Алонсо</strong> да кара заедно с него, Педро де ла Роса и Анхел Бургеньо. Финишират на подиума.</div>
-    </div>
-
-    <div class="t-entry">
-      <div class="year">2022</div>
-      <span class="badge">F4 · Шампион</span>
-      <div class="series">Spanish F4 — Campos Racing</div>
-      <div class="desc"><strong>13 победи от 21 състезания.</strong> Титлата спечелена три кръга преди края на сезона. През март същата година се присъединява към Alpine Affiliate Programme.</div>
-    </div>
-
-    <div class="t-entry">
-      <div class="year">2023</div>
-      <span class="badge">F3 · Дебютант</span>
-      <div class="series">FIA Formula 3 — ART Grand Prix</div>
-      <div class="desc">Дебютен сезон във F3. Две финалирания в точките в Спа и Монца; завършва 22-ри в класирането, докато трупа опит.</div>
-    </div>
-
-    <div class="t-entry">
-      <div class="year">2024</div>
-      <span class="badge">F3 · Първи българин с победа</span>
-      <div class="series">FIA Formula 3 — ART Grand Prix</div>
-      <div class="desc">Печели <strong>Monaco Sprint Race</strong> — първият българин с победа във F3. Добавя още победи в Шпилберг и Feature Race в Унгария.</div>
-    </div>
-
-    <div class="t-entry">
-      <div class="year">2025</div>
-      <span class="badge">F3 · Вицешампион</span>
-      <div class="series">FIA Formula 3 — Campos Racing</div>
-      <div class="desc">Присъединява се към <strong>Red Bull Junior Team</strong>. Печели в Бахрейн и от поул в Монако. Става <strong>рекордьор на всички времена във F3 (5 победи)</strong>. Завършва втори в шампионата зад Рафаел Камара. Призован във F2 за последните два кръга — първи F2 подиум на Yas Marina.</div>
-    </div>
-
-    <div class="t-entry">
-      <div class="year">2026</div>
-      <span class="badge">F2 · Победител</span>
-      <div class="series">FIA Formula 2 — Campos Racing · #6</div>
-      <div class="desc">Печели <strong>Melbourne Feature Race</strong> — <strong>първата българска победа във F2</strong> в историята. Води в шампионата след първия кръг.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== СЕЗОН 2026 · F2 MAP ===================== -->
+  </div><!-- /season-panel-recaps -->
+  <div role="tabpanel" id="season-panel-calendar" aria-labelledby="season-tab-calendar" hidden>
 <!-- ===================== 2026 SEASON ===================== -->
 <section class="season-section" id="season">
   <h3 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Никола Цолов F2 резултати 2026 — календар, класиране, програма</h3>
@@ -5003,7 +4818,233 @@
     </div>
   </div>
 </section>
+  </div><!-- /season-panel-calendar -->
+</div><!-- /season-tabset -->
 
+
+<!-- ===================== 2027 F1 SEAT FORECAST TRACKER ===================== -->
+<section id="f1-forecast" class="ftrk-section" aria-labelledby="ftrk-heading">
+  <div class="ftrk-wrap">
+    <div class="ftrk-head">
+      <div class="ftrk-eyebrow"><span class="dot" aria-hidden="true"></span> Жива прогноза · Обновява се след всеки кръг</div>
+      <h2 id="ftrk-heading">Ще получи ли Цолов <span class="it">място във F1 за 2027?</span></h2>
+      <p>Прозрачна прогноза, която се обновява всяка седмица, за шансовете на Цолов да получи роля във Formula 1 за сезон 2027 — разбита по четирите фактора, които реално движат стрелката.</p>
+    </div>
+
+    <div class="ftrk-numbers">
+      <div class="ftrk-card race">
+        <div class="ftrk-card-tag">Състезателно място 2027</div>
+        <div class="ftrk-card-pct"><span id="ftrk-race-pct">0</span><span class="sym">%</span></div>
+        <div class="ftrk-card-desc">Вероятност Цолов да започне състезание във F1 през 2027 — Racing Bulls е реалистичната дестинация.</div>
+        <div class="ftrk-card-trend" id="ftrk-race-trend">— без промяна</div>
+      </div>
+      <div class="ftrk-card">
+        <div class="ftrk-card-tag">Каквато и да е F1 роля 2027</div>
+        <div class="ftrk-card-pct"><span id="ftrk-reserve-pct">0</span><span class="sym">%</span></div>
+        <div class="ftrk-card-desc">Състезателно място <em>или</em> резервна / тест роля в системата на Red Bull за сезон 2027.</div>
+        <div class="ftrk-card-trend" id="ftrk-reserve-trend">— без промяна</div>
+      </div>
+    </div>
+
+    <div class="ftrk-factors">
+      <div class="ftrk-factors-title">Четирите фактора, които движат стрелката</div>
+
+      <div class="ftrk-factor">
+        <div class="ftrk-factor-label">Позиция в F2 шампионата
+          <span class="ftrk-factor-sub" id="ftrk-f-f2-sub">—</span>
+        </div>
+        <div class="ftrk-factor-bar-track"><div class="ftrk-factor-bar-fill" id="ftrk-f-f2-bar"></div></div>
+        <div class="ftrk-factor-tag" id="ftrk-f-f2-tag">—</div>
+      </div>
+
+      <div class="ftrk-factor">
+        <div class="ftrk-factor-label">Вакантно място в Racing Bulls
+          <span class="ftrk-factor-sub" id="ftrk-f-vac-sub">—</span>
+        </div>
+        <div class="ftrk-factor-bar-track"><div class="ftrk-factor-bar-fill" id="ftrk-f-vac-bar"></div></div>
+        <div class="ftrk-factor-tag" id="ftrk-f-vac-tag">—</div>
+      </div>
+
+      <div class="ftrk-factor">
+        <div class="ftrk-factor-label">Договорна ситуация на Цунода
+          <span class="ftrk-factor-sub" id="ftrk-f-tsu-sub">—</span>
+        </div>
+        <div class="ftrk-factor-bar-track"><div class="ftrk-factor-bar-fill" id="ftrk-f-tsu-bar"></div></div>
+        <div class="ftrk-factor-tag" id="ftrk-f-tsu-tag">—</div>
+      </div>
+
+      <div class="ftrk-factor">
+        <div class="ftrk-factor-label">Сигнал от Марко
+          <span class="ftrk-factor-sub" id="ftrk-f-mar-sub">—</span>
+        </div>
+        <div class="ftrk-factor-bar-track"><div class="ftrk-factor-bar-fill" id="ftrk-f-mar-bar"></div></div>
+        <div class="ftrk-factor-tag" id="ftrk-f-mar-tag">—</div>
+      </div>
+    </div>
+
+    <div class="ftrk-meta">
+      <div class="ftrk-meta-item">Последна актуализация: <strong id="ftrk-updated">—</strong></div>
+      <div class="ftrk-meta-item">Опорен кръг: <strong id="ftrk-anchor">—</strong></div>
+      <a class="ftrk-cta" href="/articles/nikola-tsolov-f1-seat-2027/">Пълен анализ за F1 мястото <span class="arr">→</span></a>
+    </div>
+
+    <div class="ftrk-method">
+      <strong>Методология</strong>
+      <span style="display:block;margin-bottom:8px;">Вероятност за състезателно място = <code>(F2×0.40 + Вакантно×0.30 + Цунода×0.10 + Марко×0.20) × 0.55</code> корекция за реалистична граница.</span>
+      <span style="display:block;margin-bottom:8px;">Вероятност за резервна роля = <code>(F2×0.30 + Вакантно×0.15 + Цунода×0.25 + Марко×0.30) × 1.10</code> корекция, ограничена до 95%.</span>
+      <span style="display:block;">Тежестите и входните стойности на всеки фактор се настройват ръчно след всеки кръг въз основа на публични сигнали от Red Bull pipeline.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ПРОФИЛ НА ПИЛОТА — TABSET ===================== -->
+<div class="tabset" id="profile-tabset">
+  <div class="tabset-head">
+    <div class="section-tag">Профил на пилота</div>
+    <div class="tab-buttons" role="tablist" aria-label="Изгледи на профила">
+      <button role="tab" id="prof-tab-bio" aria-selected="true" aria-controls="prof-panel-bio">Историята</button>
+      <button role="tab" id="prof-tab-timeline" aria-selected="false" aria-controls="prof-panel-timeline" tabindex="-1">Кариерен път</button>
+    </div>
+  </div>
+  <div role="tabpanel" id="prof-panel-bio" aria-labelledby="prof-tab-bio">
+<!-- ===================== BIO ===================== -->
+<section id="bio" style="position:relative; overflow:hidden;">
+  <div style="position:absolute;inset:0;background:url('/images/tsolov-driver-silhouette-bio-bg.webp') center/cover no-repeat;opacity:0.12;pointer-events:none;z-index:0;"></div>
+  <div class="bio-section" style="position:relative;z-index:1;">
+    <div class="bio-left">
+      <div class="section-tag">Историята</div>
+      <h2 class="section-title" style="font-size: clamp(48px, 7vw, 100px);">От София <span class="it">към</span> първия ред</h2>
+      <div class="pull-quote">
+        „В началото изглеждаше невъзможно — от България и с ограничен бюджет. Но когато вярваш в нещо, нищо не може да те спре.“
+      </div>
+      <div class="quote-attr">— Никола Цолов</div>
+    </div>
+
+    <div class="bio-right">
+      <p class="lead">
+        Никола Цолов е роден в София на 21 декември 2006 г. и вече е най-успешният български пилот в едноместните състезания — а на 19 е едва в началото. <strong>Възпитаник на Фернандо Алонсо</strong>, преминал през картинга на FA Racing и Alpine Academy, той се присъединява към <strong>Red Bull Junior Team</strong> през ноември 2024 г. и подписва за постоянно с <strong>Campos Racing</strong> за дебюта си във F2 през 2026.
+      </p>
+      <p>
+        Два сезона във Formula 4 (Испания), три сезона във FIA Formula 3 и рекордът за най-много победи в историята на F3 (5) водят до Мелбърн през март 2026 — където той става <strong>първият българин, спечелил състезание във FIA Formula 2</strong> и пише ново парче българска спортна история. Пълната му кариера е по-долу.
+      </p>
+      <a href="/articles/nikola-tsolov-career-timeline/" class="bio-read-more">
+        <span class="brm-label">Пълен материал</span>
+        <span class="brm-title">От картинга до борбата за титлата — историята на Никола Цолов</span>
+        <span class="brm-arrow">→</span>
+      </a>
+
+      <!-- F1 Super License Points Tracker -->
+      <div class="sl-tracker" aria-label="FIA Super License Points progress toward Formula 1">
+        <div class="sl-head">
+          <div>
+            <div class="sl-label">FIA Super License точки</div>
+            <div class="sl-sub">Прогрес към 40-те точки, необходими за каране във Formula 1 — броят се в плъзгащ се 3-годишен прозорец</div>
+          </div>
+          <div class="sl-count">
+            <span class="sl-current">25</span><span class="sl-total">/40</span>
+          </div>
+        </div>
+        <div class="sl-bar">
+          <div class="sl-bar-fill" style="width:62.5%"></div>
+          <div class="sl-bar-marker" style="left:100%"><span>F1</span></div>
+        </div>
+        <div class="sl-breakdown">
+          <div class="sl-item">
+            <span class="sl-year">2025</span>
+            <span class="sl-desc">FIA Formula 3 — Вицешампион</span>
+            <span class="sl-pts">+25</span>
+          </div>
+          <div class="sl-item sl-pending">
+            <span class="sl-year">2026</span>
+            <span class="sl-desc">FIA Formula 2 — Топ 3 осигурява Super License</span>
+            <span class="sl-pts">+40</span>
+          </div>
+          <div class="sl-item sl-expired">
+            <span class="sl-year">2022</span>
+            <span class="sl-desc">Spanish F4 — Шампион (изтекли края на 2025)</span>
+            <span class="sl-pts">+12</span>
+          </div>
+        </div>
+        <div class="sl-foot">
+          Топ 3 финал във F2 2026 (40 точки) би изпратил Цолов над прага. В момента е P3 в шампионата, на 22 точки зад Minì.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </div><!-- /prof-panel-bio -->
+  <div role="tabpanel" id="prof-panel-timeline" aria-labelledby="prof-tab-timeline" hidden>
+<!-- ===================== TIMELINE ===================== -->
+<section class="timeline-section" id="timeline">
+  <h3 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Никола Цолов кариерна история — картинг, F4, F3, Formula 2</h3>
+  <div class="section-tag">Кариерен път</div>
+  <h2 class="section-title">От картинга <span class="it">към</span> стартовата решетка</h2>
+
+  <div class="timeline">
+    <div class="t-entry">
+      <div class="year">2019</div>
+      <span class="badge">Картинг · Шампион</span>
+      <div class="series">WSK Open Cup — 60 Mini</div>
+      <div class="desc">Печели първата си международна картинг титла на 12 години.</div>
+    </div>
+
+    <div class="t-entry">
+      <div class="year">2021</div>
+      <span class="badge">Картинг · P3</span>
+      <div class="series">Dubai 24h Endurance с Фернандо Алонсо</div>
+      <div class="desc">Лично избран от <strong>Алонсо</strong> да кара заедно с него, Педро де ла Роса и Анхел Бургеньо. Финишират на подиума.</div>
+    </div>
+
+    <div class="t-entry">
+      <div class="year">2022</div>
+      <span class="badge">F4 · Шампион</span>
+      <div class="series">Spanish F4 — Campos Racing</div>
+      <div class="desc"><strong>13 победи от 21 състезания.</strong> Титлата спечелена три кръга преди края на сезона. През март същата година се присъединява към Alpine Affiliate Programme.</div>
+    </div>
+
+    <div class="t-entry">
+      <div class="year">2023</div>
+      <span class="badge">F3 · Дебютант</span>
+      <div class="series">FIA Formula 3 — ART Grand Prix</div>
+      <div class="desc">Дебютен сезон във F3. Две финалирания в точките в Спа и Монца; завършва 22-ри в класирането, докато трупа опит.</div>
+    </div>
+
+    <div class="t-entry">
+      <div class="year">2024</div>
+      <span class="badge">F3 · Първи българин с победа</span>
+      <div class="series">FIA Formula 3 — ART Grand Prix</div>
+      <div class="desc">Печели <strong>Monaco Sprint Race</strong> — първият българин с победа във F3. Добавя още победи в Шпилберг и Feature Race в Унгария.</div>
+    </div>
+
+    <div class="t-entry">
+      <div class="year">2025</div>
+      <span class="badge">F3 · Вицешампион</span>
+      <div class="series">FIA Formula 3 — Campos Racing</div>
+      <div class="desc">Присъединява се към <strong>Red Bull Junior Team</strong>. Печели в Бахрейн и от поул в Монако. Става <strong>рекордьор на всички времена във F3 (5 победи)</strong>. Завършва втори в шампионата зад Рафаел Камара. Призован във F2 за последните два кръга — първи F2 подиум на Yas Marina.</div>
+    </div>
+
+    <div class="t-entry">
+      <div class="year">2026</div>
+      <span class="badge">F2 · Победител</span>
+      <div class="series">FIA Formula 2 — Campos Racing · #6</div>
+      <div class="desc">Печели <strong>Melbourne Feature Race</strong> — <strong>първата българска победа във F2</strong> в историята. Води в шампионата след първия кръг.</div>
+    </div>
+  </div>
+</section>
+  </div><!-- /prof-panel-timeline -->
+</div><!-- /profile-tabset -->
+
+<!-- ===================== ШАМПИОНАТ — TABSET (Класиране + Точкова битка) ===================== -->
+<div class="tabset" id="champ-tabset">
+  <div class="tabset-head">
+    <div class="section-tag">Драйвърски шампионат</div>
+    <div class="tab-buttons" role="tablist" aria-label="Изгледи на шампионата">
+      <button role="tab" id="champ-tab-table" aria-selected="true" aria-controls="champ-panel-table">Класиране</button>
+      <button role="tab" id="champ-tab-chart" aria-selected="false" aria-controls="champ-panel-chart" tabindex="-1">Точкова битка</button>
+    </div>
+  </div>
+  <div role="tabpanel" id="champ-panel-table" aria-labelledby="champ-tab-table">
 <!-- ===================== CHAMPIONSHIP STANDINGS ===================== -->
 <section class="champ-section" id="standings">
   <div class="champ-header">
@@ -5249,6 +5290,16 @@
     <span>Обновено след R03 Монреал · следва R04 Монако</span>
   </div>
 </section>
+  </div><!-- /champ-panel-table -->
+  <div role="tabpanel" id="champ-panel-chart" aria-labelledby="champ-tab-chart" hidden>
+    <div class="chart-wrap">
+      <svg id="points-chart" viewBox="0 0 740 320"
+           preserveAspectRatio="xMidYMid meet"
+           aria-label="2026 FIA Formula 2 championship points progression chart"></svg>
+    </div>
+    <div class="chart-legend" id="chart-legend"></div>
+  </div><!-- /champ-panel-chart -->
+</div><!-- /champ-tabset -->
 
 <!-- ===================== RIVAL CARD ===================== -->
 <section class="rival-section" id="rival">
@@ -5372,21 +5423,8 @@
   </div>
 </section>
 
-<!-- ===================== POINTS CHART ===================== -->
-<section class="chart-section" id="chart">
-  <div class="section-tag">Точкова битка</div>
-  <h2 class="section-title">Битка за <span class="it">шампионата</span></h2>
-  <div class="chart-wrap">
-    <svg id="points-chart" viewBox="0 0 740 320"
-         preserveAspectRatio="xMidYMid meet"
-         aria-label="2026 FIA Formula 2 championship points progression chart"></svg>
-  </div>
-  <div class="chart-legend" id="chart-legend"></div>
-</section>
+<!-- Points Chart moved into Championship tabset 2026-06-02 — see #champ-tabset above -->
 
-<!-- ===================== POINTS PROJECTION ===================== -->
-
-<!-- ===================== FAN POLL ===================== -->
 <!-- ===================== GALLERY (3 photos) + CONTENT CARDS (5) ===================== -->
 <section class="gallery-section" id="gallery">
   <div class="section-tag">В кадър</div>
@@ -5782,6 +5820,50 @@
     { round: 13, location: "Lusail",            country: "Qatar",         flag: "qa", dates: "27–29 Nov", sprint: "—", feature: "—",                                                       status: "upcoming"  },
     { round: 14, location: "Yas Island",        country: "UAE",           flag: "ae", dates: "04–06 Dec", sprint: "—", feature: "—",                                                       status: "upcoming"  }
   ];
+
+  // ===================== LIVE STATUS BAR (Bulgarian) =====================
+  function updateLiveStatus() {
+    const target  = document.getElementById('banner-countdown');
+    const labelEl = document.getElementById('banner-next-label');
+    const whereEl = document.getElementById('banner-next-where');
+    const datesEl = document.getElementById('banner-next-dates');
+    if (!target || !labelEl || !whereEl || !datesEl) return;
+    const RACE_YEAR = 2026;
+    const MONTHS = { Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11 };
+    const BG_MONTHS = ['януари','февруари','март','април','май','юни','юли','август','септември','октомври','ноември','декември'];
+    const BG_LOC = { 'Melbourne':'Мелбърн','Miami':'Маями','Montréal':'Монреал','Monaco':'Монако','Barcelona':'Барселона','Spielberg':'Шпилберг','Silverstone':'Силвърстоун','Spa-Francorchamps':'Спа','Budapest':'Будапеща','Monza':'Монца','Madrid':'Мадрид','Baku':'Баку','Lusail':'Лусаил','Yas Island':'Яс Айлънд' };
+    const next = RACES.find(r => r.status === 'upcoming');
+    if (!next) { target.style.display = 'none'; return; }
+    const m = next.dates.match(/(\d+)\D+(\d+)\s+([A-Za-z]{3})/);
+    if (!m) return;
+    const startDay = parseInt(m[1], 10);
+    const endDay   = parseInt(m[2], 10);
+    const month    = MONTHS[m[3]];
+    if (month === undefined) return;
+    const start = new Date(RACE_YEAR, month, startDay, 0, 0, 0);
+    const end   = new Date(RACE_YEAR, month, endDay,   23, 59, 59);
+    const now   = new Date();
+    labelEl.textContent = 'Следва';
+    const loc = BG_LOC[next.location] || next.location;
+    whereEl.textContent = loc + ' · R' + String(next.round).padStart(2,'0');
+    datesEl.textContent = startDay + '–' + endDay + ' ' + BG_MONTHS[month] + ' ' + RACE_YEAR;
+    target.className = 'banner-countdown';
+    if (now >= start && now <= end) {
+      target.classList.add('is-live');
+      target.innerHTML = '<span class="banner-live-dot" aria-hidden="true"></span>На живо този уикенд';
+    } else if (now < start) {
+      const msPerDay = 86400000;
+      const days = Math.ceil((start - now) / msPerDay);
+      if (days <= 3) target.classList.add('is-soon');
+      if (days === 0)      target.textContent = 'Тренировка днес';
+      else if (days === 1) target.textContent = 'Тренировка утре';
+      else                 target.textContent = days + ' дни до тренировка';
+    } else {
+      target.style.display = 'none';
+    }
+  }
+  document.addEventListener('DOMContentLoaded', updateLiveStatus);
+  setInterval(updateLiveStatus, 5 * 60 * 1000);
 
   function badgeClass(result) {
     if (!result || result === "—") return "cal-blank";
@@ -6534,6 +6616,40 @@ function initRecapCards() {
       try { if (typeof initSessionSchedule === 'function') initSessionSchedule(); } catch (e) { console.error('initSessionSchedule:', e); }
       try { if (typeof initStatCounters === 'function') initStatCounters(); } catch (e) { console.error('initStatCounters:', e); }
       try { if (typeof initRecapCards === 'function') initRecapCards(); } catch (e) { console.error('initRecapCards:', e); }
+      try { initTabsets(); } catch (e) { console.error('initTabsets:', e); }
+    });
+  }
+
+  function initTabsets() {
+    document.querySelectorAll('.tabset').forEach(set => {
+      const tabs   = Array.from(set.querySelectorAll('[role="tab"]'));
+      const panels = Array.from(set.querySelectorAll('[role="tabpanel"]'));
+      function activate(i) {
+        tabs.forEach((t, idx) => {
+          const on = idx === i;
+          t.setAttribute('aria-selected', on);
+          t.setAttribute('tabindex', on ? '0' : '-1');
+          if (panels[idx]) panels[idx].hidden = !on;
+        });
+        if (panels[i] && panels[i].querySelector('#points-chart') && typeof drawPointsChart === 'function') {
+          try { drawPointsChart(); } catch (e) {}
+        }
+      }
+      tabs.forEach((tab, i) => {
+        tab.addEventListener('click', () => activate(i));
+        tab.addEventListener('keydown', e => {
+          if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+            e.preventDefault();
+            const dir = e.key === 'ArrowRight' ? 1 : -1;
+            const next = (i + dir + tabs.length) % tabs.length;
+            activate(next); tabs[next].focus();
+          } else if (e.key === 'Home') {
+            e.preventDefault(); activate(0); tabs[0].focus();
+          } else if (e.key === 'End') {
+            e.preventDefault(); activate(tabs.length-1); tabs[tabs.length-1].focus();
+          }
+        });
+      });
     });
   }
   if (document.readyState === 'loading') {
