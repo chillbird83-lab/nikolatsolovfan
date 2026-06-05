@@ -841,6 +841,18 @@
   .banner-next .where { color: var(--bone); font-weight: 700; }
 
   @media (max-width: 800px) {
+    /* Kill the marquee on mobile — let text wrap normally, hide the duplicate copy */
+    .banner-ticker {
+      display: block;
+      width: auto;
+      animation: none;
+      transform: none;
+    }
+    .banner-ticker > .banner-ticker-copy {
+      display: block;
+      padding-right: 0;
+    }
+    .banner-ticker > .banner-ticker-copy[aria-hidden="true"] { display: none; }
     .banner-inner {
       grid-template-columns: 1fr;
       gap: 12px;
@@ -3806,8 +3818,8 @@
     }
     .calendar-header,
     .cal-row {
-      grid-template-columns: 40px 1fr auto;
-      gap: 12px;
+      grid-template-columns: 36px minmax(0, 1fr) auto;
+      gap: 10px;
       padding: 14px 12px;
     }
     .calendar-header .ch-date,
@@ -3818,9 +3830,11 @@
       color: var(--gray-500);
     }
     .calendar-header .ch-results { display: none; }
-    .cal-results { grid-column: 3; }
+    .cal-results { grid-column: 3; justify-content: flex-end; max-width: 110px; }
+    .cal-badge { min-width: 34px; padding: 4px 6px; font-size: 11px; }
     .cal-round { font-size: 24px; }
     .cal-loc { font-size: 15px; }
+    .cal-note { grid-column: 1 / -1; font-size: 12px; }
     .live-feed-col { position: static; }
   }
 
