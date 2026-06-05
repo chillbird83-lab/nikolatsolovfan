@@ -768,18 +768,26 @@
     flex: 1;
   }
   .banner-ticker {
-    display: inline-block;
-    padding-left: 100%;
-    animation: bannerTick 38s linear infinite;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0;
+    width: max-content;
+    animation: bannerTick 28s linear infinite;
     will-change: transform;
+    transform: translate3d(0,0,0);
+  }
+  .banner-ticker > .banner-ticker-copy {
+    display: inline-flex;
+    align-items: baseline;
+    padding-right: 60px; /* gap between loop ends */
   }
   .banner-text:hover .banner-ticker { animation-play-state: paused; }
   @keyframes bannerTick {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(-50%, 0, 0); }
   }
   @media (prefers-reduced-motion: reduce) {
-    .banner-ticker { animation: none; padding-left: 0; }
+    .banner-ticker { animation: none; }
   }
   .banner-text strong {
     font-weight: 700;
@@ -4310,12 +4318,22 @@
       <span class="banner-position">P2</span>
       <span class="banner-text">
         <span class="banner-ticker">
-          <span class="race">Monaco · Qualifying</span>
-          <strong>Front row for Sunday's Feature · Group B pole, 1:21.053</strong>
-          <span class="sep">·</span>
-          +0.130 to Câmara's overall pole — Câmara P1, Tsolov P2, Dunne P3, Stenshorne P4
-          <span class="sep">·</span>
-          Sprint reverse-grid drops him to P9 on Saturday
+          <span class="banner-ticker-copy">
+            <span class="race">Monaco · Qualifying</span>
+            <strong>Front row for Sunday's Feature · Group B pole, 1:21.053</strong>
+            <span class="sep">·</span>
+            +0.130 to Câmara's overall pole — Câmara P1, Tsolov P2, Dunne P3, Stenshorne P4
+            <span class="sep">·</span>
+            Sprint reverse-grid drops him to P9 on Saturday
+          </span>
+          <span class="banner-ticker-copy" aria-hidden="true">
+            <span class="race">Monaco · Qualifying</span>
+            <strong>Front row for Sunday's Feature · Group B pole, 1:21.053</strong>
+            <span class="sep">·</span>
+            +0.130 to Câmara's overall pole — Câmara P1, Tsolov P2, Dunne P3, Stenshorne P4
+            <span class="sep">·</span>
+            Sprint reverse-grid drops him to P9 on Saturday
+          </span>
         </span>
       </span>
     </div>
