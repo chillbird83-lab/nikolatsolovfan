@@ -762,8 +762,24 @@
     line-height: 1.3;
     letter-spacing: 0.01em;
     overflow: hidden;
-    text-overflow: ellipsis;
     white-space: nowrap;
+    display: block;
+    min-width: 0;
+    flex: 1;
+  }
+  .banner-ticker {
+    display: inline-block;
+    padding-left: 100%;
+    animation: bannerTick 38s linear infinite;
+    will-change: transform;
+  }
+  .banner-text:hover .banner-ticker { animation-play-state: paused; }
+  @keyframes bannerTick {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .banner-ticker { animation: none; padding-left: 0; }
   }
   .banner-text strong {
     font-weight: 700;
@@ -4293,12 +4309,14 @@
     <div class="banner-result">
       <span class="banner-position">P2</span>
       <span class="banner-text">
-        <span class="race">Monaco · Qualifying</span>
-        <strong>Front row for Sunday's Feature · Group B pole, 1:21.053</strong>
-        <span class="sep">·</span>
-        +0.130 to Câmara's overall pole — Câmara P1, Tsolov P2, Dunne P3, Stenshorne P4
-        <span class="sep">·</span>
-        Sprint reverse-grid drops him to P9 on Saturday
+        <span class="banner-ticker">
+          <span class="race">Monaco · Qualifying</span>
+          <strong>Front row for Sunday's Feature · Group B pole, 1:21.053</strong>
+          <span class="sep">·</span>
+          +0.130 to Câmara's overall pole — Câmara P1, Tsolov P2, Dunne P3, Stenshorne P4
+          <span class="sep">·</span>
+          Sprint reverse-grid drops him to P9 on Saturday
+        </span>
       </span>
     </div>
 
