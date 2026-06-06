@@ -4752,7 +4752,7 @@
       <div class="sched-tz-wrap">
         <span>TZ</span>
         <div class="tz-dropdown" id="tz-dropdown">
-          <div class="tz-trigger" id="tz-trigger" role="button" tabindex="0" aria-haspopup="listbox" aria-expanded="false" onclick="(function(t){var d=t.parentElement;var open=d.classList.toggle('open');t.classList.toggle('open',open);t.setAttribute('aria-expanded',open);})(this);event.stopPropagation();">
+          <div class="tz-trigger" id="tz-trigger" role="button" tabindex="0" aria-haspopup="listbox" aria-expanded="false">
             <span class="tz-trigger-label" id="tz-trigger-label">🌍 My local time</span>
             <span class="tz-trigger-chevron">▼</span>
           </div>
@@ -4769,17 +4769,6 @@
             <div class="tz-option" data-tz="Australia/Sydney" role="option">🇦🇺 Sydney (AEST)</div>
           </div>
         </div>
-        <script>
-          // Inline fallback: close dropdown on outside click + Esc
-          (function(){
-            var d = document.getElementById('tz-dropdown');
-            var t = document.getElementById('tz-trigger');
-            if (!d || !t) return;
-            function close(){ d.classList.remove('open'); t.classList.remove('open'); t.setAttribute('aria-expanded','false'); }
-            document.addEventListener('click', function(e){ if (!d.contains(e.target)) close(); });
-            document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
-          })();
-        </script>
       </div>
     </div>
     <div class="sched-rows" id="sched-rows"></div>
