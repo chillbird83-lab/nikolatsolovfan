@@ -24,6 +24,18 @@
     <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nikolatsolovfan.com/articles/" />
+    <xhtml:link rel="alternate" hreflang="bg" href="https://nikolatsolovfan.com/bg/articles/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nikolatsolovfan.com/articles/" />
+  </url>
+  <url>
+    <loc>https://nikolatsolovfan.com/bg/articles/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://nikolatsolovfan.com/bg/articles/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://nikolatsolovfan.com/articles/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nikolatsolovfan.com/articles/" />
   </url>
   <url>
     <loc>https://nikolatsolovfan.com/articles/nikola-tsolov-career-timeline/</loc>
