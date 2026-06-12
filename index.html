@@ -4165,6 +4165,23 @@
     text-transform: none;
     box-shadow: 0 0 12px rgba(225,6,0,0.18);
   }
+  .sched-live-pill {
+    display: inline-block;
+    margin-left: 12px;
+    padding: 3px 9px;
+    border-radius: 3px;
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    vertical-align: middle;
+    background: rgba(224,58,62,0.9);
+    color: #fff;
+    border: 1px solid var(--red);
+    animation: pulse 1.2s ease-in-out infinite;
+  }
 
   @media (max-width: 600px) {
     .sched-wrap { margin: 20px 0 0; border-radius: 0; border-left: none; border-right: none; }
@@ -4447,11 +4464,11 @@
   <div class="tabset-head">
     <div class="section-tag">2026 Season</div>
     <div class="tab-buttons" role="tablist" aria-label="2026 season views">
-      <button role="tab" id="season-tab-recaps" aria-selected="true" aria-controls="season-panel-recaps">Race Recaps</button>
-      <button role="tab" id="season-tab-calendar" aria-selected="false" aria-controls="season-panel-calendar" tabindex="-1">Calendar</button>
+      <button role="tab" id="season-tab-calendar" aria-selected="true" aria-controls="season-panel-calendar">Calendar</button>
+      <button role="tab" id="season-tab-recaps" aria-selected="false" aria-controls="season-panel-recaps" tabindex="-1">Race Recaps</button>
     </div>
   </div>
-  <div role="tabpanel" id="season-panel-recaps" aria-labelledby="season-tab-recaps">
+  <div role="tabpanel" id="season-panel-recaps" aria-labelledby="season-tab-recaps" hidden>
 <!-- ===================== RACE RECAPS ===================== -->
 <section id="recaps" style="padding: 60px 0;">
   <div class="container" style="max-width:1100px;margin:0 auto;padding:0 24px;">
@@ -4693,7 +4710,7 @@
   </div>
 </section>
   </div><!-- /season-panel-recaps -->
-  <div role="tabpanel" id="season-panel-calendar" aria-labelledby="season-tab-calendar" hidden>
+  <div role="tabpanel" id="season-panel-calendar" aria-labelledby="season-tab-calendar">
 <!-- ===================== 2026 SEASON ===================== -->
 <section class="season-section" id="season">
   <h3 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Nikola Tsolov F2 results 2026 — race calendar, standings, schedule</h3>
@@ -4716,7 +4733,7 @@
   <div class="countdown" id="countdown">
     <div class="cd-label">
       <span>Next round</span>
-      <span class="race-name" id="cd-race-name"><img class="cd-race-flag" src="https://flagcdn.com/24x18/ca.png" alt="CA" title="Canada"> Montréal · <span class="red">R03</span></span>
+      <span class="race-name" id="cd-race-name"><img class="cd-race-flag" src="https://flagcdn.com/24x18/es.png" alt="ES" title="Spain"> Barcelona · <span class="red">R05</span></span>
     </div>
     <div class="cd-units" id="cd-units">
       <div class="cd-unit"><span class="cd-num" id="cd-d">--</span><span class="cd-tag">Days</span></div>
@@ -5926,7 +5943,7 @@
     2:  "2026-05-01T13:30:00Z",  // Miami FP1 (09:30 EDT)
     3:  "2026-05-22T14:05:00Z",  // Montreal
     4:  "2026-06-04T10:00:00Z",  // Monaco
-    5:  "2026-06-12T10:00:00Z",  // Barcelona
+    5:  "2026-06-12T09:05:00Z",  // Barcelona FP (11:05 CEST)
     6:  "2026-06-26T10:00:00Z",  // Spielberg
     7:  "2026-07-03T10:00:00Z",  // Silverstone
     8:  "2026-07-17T10:00:00Z",  // Spa
@@ -5957,12 +5974,37 @@
 
   function pad2(n) { return String(Math.max(0, Math.floor(n))).padStart(2, '0'); }
 
+  // Reads the current round's session schedule (shared via window.F2_SESSIONS).
+  // Returns { live, next } or null once the weekend's last session has ended.
+  function sessionCtx() {
+    const S = (window.F2_SESSIONS || [])
+      .map(s => {
+        const start = Date.parse(s.utc);
+        return { label: s.label, start, end: start + ((s.durMin || 60) * 60000) };
+      })
+      .filter(s => !isNaN(s.start));
+    if (!S.length) return null;
+    const now = Date.now();
+    if (now >= S[S.length - 1].end) return null;
+    const live = S.find(s => now >= s.start && now < s.end) || null;
+    const next = S.find(s => now < s.start) || null;
+    return { live, next };
+  }
+
+  function renderRemaining(targetMs) {
+    const remaining = targetMs - Date.now();
+    document.getElementById('cd-d').textContent = pad2(remaining / 86400000);
+    document.getElementById('cd-h').textContent = pad2((remaining % 86400000) / 3600000);
+    document.getElementById('cd-m').textContent = pad2((remaining % 3600000) / 60000);
+    document.getElementById('cd-s').textContent = pad2((remaining % 60000) / 1000);
+  }
+
   function tick() {
     const ctx = findNextRace();
+    const statusEl = document.getElementById('cd-status');
     if (!ctx) {
       document.getElementById('cd-race-name').textContent = '—';
-      document.getElementById('cd-status').innerHTML =
-        '<span class="now">Season complete</span>';
+      statusEl.innerHTML = '<span class="now">Season complete</span>';
       return;
     }
     const { race, start, isLive } = ctx;
@@ -5972,25 +6014,30 @@
     document.getElementById('cd-race-name').innerHTML =
       `<img class="cd-race-flag" src="https://flagcdn.com/24x18/${race.flag}.png" alt="${race.flag.toUpperCase()}" title="${race.country}"> ${race.location} · <span class="red">R${rnd}</span>`;
 
-    if (isLive) {
-      ['cd-d', 'cd-h', 'cd-m', 'cd-s'].forEach(id =>
-        document.getElementById(id).textContent = '00'
-      );
-      document.getElementById('cd-status').innerHTML =
-        '<span class="now">Race weekend live</span>';
+    // Session-aware mode: during race week, count to the next session
+    const sess = sessionCtx();
+    if (sess && (sess.live || sess.next)) {
+      if (sess.live && !sess.next) {
+        // Final session of the weekend is running
+        ['cd-d', 'cd-h', 'cd-m', 'cd-s'].forEach(id => document.getElementById(id).textContent = '00');
+        statusEl.innerHTML = `<span class="now">${sess.live.label} — live now</span>`;
+        return;
+      }
+      renderRemaining(sess.next.start);
+      statusEl.innerHTML = sess.live
+        ? `<span class="now">${sess.live.label} — live now</span><br/><span>Next: ${sess.next.label}</span>`
+        : `<span>Until lights out</span><br/><span>${sess.next.label}</span>`;
       return;
     }
 
-    const remaining = start - Date.now();
-    const days  = Math.floor(remaining / 86400000);
-    const hours = Math.floor((remaining % 86400000) / 3600000);
-    const mins  = Math.floor((remaining % 3600000)  / 60000);
-    const secs  = Math.floor((remaining % 60000)    / 1000);
-
-    document.getElementById('cd-d').textContent = pad2(days);
-    document.getElementById('cd-h').textContent = pad2(hours);
-    document.getElementById('cd-m').textContent = pad2(mins);
-    document.getElementById('cd-s').textContent = pad2(secs);
+    // Between race weekends: count to the next round's Friday practice
+    if (isLive) {
+      ['cd-d', 'cd-h', 'cd-m', 'cd-s'].forEach(id => document.getElementById(id).textContent = '00');
+      statusEl.innerHTML = '<span class="now">Race weekend live</span>';
+      return;
+    }
+    renderRemaining(start);
+    statusEl.innerHTML = '<span>Until lights out</span><br/><span>Free Practice</span>';
   }
 </script>
 
@@ -6190,11 +6237,13 @@
 <script>
 function initSessionSchedule() {
   const SESSIONS = [
-    { label: 'Free Practice',   short: 'FP',   utc: '2026-06-12T09:05:00Z', type: 'fp',   result: '' },
-    { label: 'Qualifying',      short: 'QUAL', utc: '2026-06-12T13:55:00Z', type: 'qual', result: '' },
-    { label: 'Sprint Race',     short: 'SPR',  utc: '2026-06-13T12:15:00Z', type: 'spr',  result: '' },
-    { label: 'Feature Race',    short: 'FTR',  utc: '2026-06-14T09:25:00Z', type: 'ftr',  result: '' },
+    { label: 'Free Practice',   short: 'FP',   utc: '2026-06-12T09:05:00Z', durMin: 45, type: 'fp',   result: '' },
+    { label: 'Qualifying',      short: 'QUAL', utc: '2026-06-12T13:55:00Z', durMin: 30, type: 'qual', result: '' },
+    { label: 'Sprint Race',     short: 'SPR',  utc: '2026-06-13T12:15:00Z', durMin: 45, type: 'spr',  result: '' },
+    { label: 'Feature Race',    short: 'FTR',  utc: '2026-06-14T09:25:00Z', durMin: 60, type: 'ftr',  result: '' },
   ];
+  // Expose for the hero countdown so both components share one schedule
+  window.F2_SESSIONS = SESSIONS;
 
   const TZ_ZONES = [
     'America/Toronto','America/New_York','America/Los_Angeles','America/Sao_Paulo',
@@ -6236,19 +6285,23 @@ function initSessionSchedule() {
     if (!wrap) return;
     const now = Date.now();
     wrap.innerHTML = SESSIONS.map(s => {
-      const t = new Date(s.utc).getTime();
-      const isPast = t < now;
-      const isNext = !isPast && SESSIONS.filter(x => new Date(x.utc).getTime() > now)[0] === s;
-      const resultPill = (isPast && s.result)
-        ? `<span class="sched-result-pill">${s.result}</span>`
-        : (isPast ? '<span class="sched-done-pill">Done</span>' : '');
+      const start = new Date(s.utc).getTime();
+      const end = start + ((s.durMin || 60) * 60000);
+      const isLive = now >= start && now < end;
+      const isPast = now >= end;
+      const isNext = !isPast && !isLive && SESSIONS.filter(x => new Date(x.utc).getTime() > now)[0] === s;
+      const pill = isLive
+        ? '<span class="sched-live-pill">Live now</span>'
+        : (isPast && s.result)
+          ? `<span class="sched-result-pill">${s.result}</span>`
+          : (isPast ? '<span class="sched-done-pill">Done</span>' : '');
       return `<div class="sched-row sched-type-${s.type}${isPast?' sched-past':''}${isNext?' sched-next':''}">
         <span class="sched-dot"></span>
         <span class="sched-badge">${s.short}</span>
         <span class="sched-label">${s.label}</span>
         <span class="sched-time">${formatSession(s.utc, tz)}</span>
         ${isNext ? '<span class="sched-next-pill">Next up</span>' : ''}
-        ${resultPill}
+        ${pill}
       </div>`;
     }).join('');
   }
@@ -6325,6 +6378,8 @@ function initSessionSchedule() {
   renderRows(currentTZ);
   updateTriggerLabel(currentTZ);
   setActiveOption(currentTZ);
+  // Refresh every minute so Live/Done states stay accurate on long-lived tabs
+  setInterval(() => renderRows(currentTZ), 60000);
 }
 </script>
 
@@ -6558,10 +6613,13 @@ function initRecapCards() {
           const on = idx === i;
           t.setAttribute('aria-selected', on);
           t.setAttribute('tabindex', on ? '0' : '-1');
-          if (panels[idx]) panels[idx].hidden = !on;
+          // Resolve panel via aria-controls — tab DOM order may differ from panel order
+          const p = document.getElementById(t.getAttribute('aria-controls'));
+          if (p) p.hidden = !on;
         });
         // Trigger chart redraw if the activated panel contains the chart
-        if (panels[i] && panels[i].querySelector('#points-chart') && typeof drawPointsChart === 'function') {
+        const activePanel = document.getElementById(tabs[i].getAttribute('aria-controls'));
+        if (activePanel && activePanel.querySelector('#points-chart') && typeof drawPointsChart === 'function') {
           try { drawPointsChart(); } catch (e) { /* swallow */ }
         }
       }
