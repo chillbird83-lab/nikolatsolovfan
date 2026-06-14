@@ -4753,7 +4753,7 @@
   <!-- SESSION SCHEDULE -->
   <div class="sched-wrap" id="sched-wrap">
     <div class="sched-header">
-      <div class="sched-title"><span class="sched-title-dot"></span>R05 Session Schedule · Circuit de Barcelona-Catalunya, Montmeló</div>
+      <div class="sched-title"><span class="sched-title-dot"></span>R06 Session Schedule · Red Bull Ring, Spielberg · times TBC</div>
       <div class="sched-tz-wrap">
         <span>TZ</span>
         <div class="tz-dropdown" id="tz-dropdown">
@@ -6243,10 +6243,10 @@
 <script>
 function initSessionSchedule() {
   const SESSIONS = [
-    { label: 'Free Practice',   short: 'FP',   utc: '2026-06-12T09:05:00Z', durMin: 45, type: 'fp',   result: 'P9 · +0.360' },
-    { label: 'Qualifying',      short: 'QUAL', utc: '2026-06-12T13:55:00Z', durMin: 30, type: 'qual', result: 'P6 · +0.412' },
-    { label: 'Sprint Race',     short: 'SPR',  utc: '2026-06-13T12:15:00Z', durMin: 45, type: 'spr',  result: 'P3 · +6 pts' },
-    { label: 'Feature Race',    short: 'FTR',  utc: '2026-06-14T09:25:00Z', durMin: 60, type: 'ftr',  result: 'P2 · +18 pts' },
+    { label: 'Free Practice',   short: 'FP',   utc: '', durMin: 45, type: 'fp',   result: '', tbc: true, day: 'Fri 26 Jun' },
+    { label: 'Qualifying',      short: 'QUAL', utc: '', durMin: 30, type: 'qual', result: '', tbc: true, day: 'Fri 26 Jun' },
+    { label: 'Sprint Race',     short: 'SPR',  utc: '', durMin: 45, type: 'spr',  result: '', tbc: true, day: 'Sat 27 Jun' },
+    { label: 'Feature Race',    short: 'FTR',  utc: '', durMin: 60, type: 'ftr',  result: '', tbc: true, day: 'Sun 28 Jun' },
   ];
   // Expose for the hero countdown so both components share one schedule
   window.F2_SESSIONS = SESSIONS;
@@ -6291,6 +6291,14 @@ function initSessionSchedule() {
     if (!wrap) return;
     const now = Date.now();
     wrap.innerHTML = SESSIONS.map(s => {
+      if (s.tbc) {
+        return `<div class="sched-row sched-type-${s.type}">
+        <span class="sched-dot"></span>
+        <span class="sched-badge">${s.short}</span>
+        <span class="sched-label">${s.label}</span>
+        <span class="sched-time">${s.day} · TBC</span>
+      </div>`;
+      }
       const start = new Date(s.utc).getTime();
       const end = start + ((s.durMin || 60) * 60000);
       const isLive = now >= start && now < end;

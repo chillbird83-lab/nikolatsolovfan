@@ -4715,7 +4715,7 @@
   <!-- SESSION SCHEDULE -->
   <div class="sched-wrap" id="sched-wrap">
     <div class="sched-header">
-      <div class="sched-title"><span class="sched-title-dot"></span>R05 програма · Circuit de Barcelona-Catalunya, Монмело</div>
+      <div class="sched-title"><span class="sched-title-dot"></span>R06 програма · Red Bull Ring, Шпилберг · часовете предстоят</div>
       <div class="sched-tz-wrap">
         <span>TZ</span>
         <div class="tz-dropdown" id="tz-dropdown">
@@ -6191,10 +6191,10 @@
 <script>
 function initSessionSchedule() {
   const SESSIONS = [
-    { label: 'Свободна тренировка',   short: 'FP',   utc: '2026-06-12T09:05:00Z', durMin: 45, type: 'fp',   result: 'P9 · +0.360' },
-    { label: 'Квалификация',      short: 'QUAL', utc: '2026-06-12T13:55:00Z', durMin: 30, type: 'qual', result: 'P6 · +0.412' },
-    { label: 'Спринт',     short: 'SPR',  utc: '2026-06-13T12:15:00Z', durMin: 45, type: 'spr',  result: 'P3 · +6 точки' },
-    { label: 'Основно състезание',    short: 'FTR',  utc: '2026-06-14T09:25:00Z', durMin: 60, type: 'ftr',  result: 'P2 · +18 точки' },
+    { label: 'Свободна тренировка',   short: 'FP',   utc: '', durMin: 45, type: 'fp',   result: '', tbc: true, day: 'Пет 26 юни' },
+    { label: 'Квалификация',      short: 'QUAL', utc: '', durMin: 30, type: 'qual', result: '', tbc: true, day: 'Пет 26 юни' },
+    { label: 'Спринт',     short: 'SPR',  utc: '', durMin: 45, type: 'spr',  result: '', tbc: true, day: 'Съб 27 юни' },
+    { label: 'Основно състезание',    short: 'FTR',  utc: '', durMin: 60, type: 'ftr',  result: '', tbc: true, day: 'Нед 28 юни' },
   ];
   // Споделено с обратното броене в hero секцията — един източник за програмата
   window.F2_SESSIONS = SESSIONS;
@@ -6239,6 +6239,14 @@ function initSessionSchedule() {
     if (!wrap) return;
     const now = Date.now();
     wrap.innerHTML = SESSIONS.map(s => {
+      if (s.tbc) {
+        return `<div class="sched-row sched-type-${s.type}">
+        <span class="sched-dot"></span>
+        <span class="sched-badge">${s.short}</span>
+        <span class="sched-label">${s.label}</span>
+        <span class="sched-time">${s.day} · TBC</span>
+      </div>`;
+      }
       const start = new Date(s.utc).getTime();
       const end = start + ((s.durMin || 60) * 60000);
       const isLive = now >= start && now < end;
