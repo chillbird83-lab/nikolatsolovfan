@@ -744,7 +744,8 @@
     letter-spacing: -0.02em;
   }
   .banner-text {
-    font-family: var(--sans);
+    /* System font (no web-font swap) so the wrapping ticker text can't reflow → no CLS */
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     font-size: 13px;
     color: var(--bone);
     line-height: 1.3;
@@ -782,7 +783,7 @@
     color: var(--bone);
   }
   .banner-text .race {
-    font-family: var(--display);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     font-weight: 800;
     font-size: 15px;
     text-transform: uppercase;
