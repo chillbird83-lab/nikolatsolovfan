@@ -470,7 +470,7 @@
     --green: #00966e;
     --gold: #FFCC00;
     --gray-700: #0d2d56;
-    --gray-500: #4a6080;
+    --gray-500: #7589ab;
     --gray-300: #9ab0c8;
     --display: 'Orbitron', 'Russo One', Impact, sans-serif;
     --serif: 'Fraunces', Georgia, serif;
@@ -4271,7 +4271,7 @@
 </div>
 
 <!-- Mobile nav panel -->
-<nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
+<nav class="mobile-nav" id="mobile-nav" aria-hidden="true" inert>
   <a href="#recaps"       onclick="closeMobileNav()">Прегледи</a>
   <a href="#bio"          onclick="closeMobileNav()">За Никола</a>
   <a href="#timeline"     onclick="closeMobileNav()">Кариера</a>
@@ -4675,7 +4675,7 @@
   <div role="tabpanel" id="season-panel-calendar" aria-labelledby="season-tab-calendar">
 <!-- ===================== 2026 SEASON ===================== -->
 <section class="season-section" id="season">
-  <h3 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Никола Цолов F2 резултати 2026 — календар, класиране, програма</h3>
+  <h2 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Никола Цолов F2 резултати 2026 — календар, класиране, програма</h2>
   <div class="season-header">
     <div>
       <div class="section-tag">Сезон 2026</div>
@@ -5008,7 +5008,7 @@
   <div role="tabpanel" id="prof-panel-timeline" aria-labelledby="prof-tab-timeline" hidden>
 <!-- ===================== TIMELINE ===================== -->
 <section class="timeline-section" id="timeline">
-  <h3 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Никола Цолов кариерна история — картинг, F4, F3, Formula 2</h3>
+  <h2 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Никола Цолов кариерна история — картинг, F4, F3, Formula 2</h2>
   <div class="section-tag">Кариерен път</div>
   <h2 class="section-title">От картинга <span class="it">към</span> стартовата решетка</h2>
 
@@ -6017,11 +6017,13 @@
     mobileNav.classList.add('open');
     hamburger.setAttribute('aria-expanded', 'true');
     mobileNav.setAttribute('aria-hidden', 'false');
+    mobileNav.removeAttribute('inert');
   }
   function closeMobileNav() {
     mobileNav.classList.remove('open');
     hamburger.setAttribute('aria-expanded', 'false');
     mobileNav.setAttribute('aria-hidden', 'true');
+    mobileNav.setAttribute('inert', '');
   }
 
   hamburger.addEventListener('click', () => {
