@@ -4718,7 +4718,7 @@
   <!-- SESSION SCHEDULE -->
   <div class="sched-wrap" id="sched-wrap">
     <div class="sched-header">
-      <div class="sched-title"><span class="sched-title-dot"></span>R06 програма · Red Bull Ring, Шпилберг · часовете предстоят</div>
+      <div class="sched-title"><span class="sched-title-dot"></span>R06 програма · Red Bull Ring, Шпилберг</div>
       <div class="sched-tz-wrap">
         <span>TZ</span>
         <div class="tz-dropdown" id="tz-dropdown">
@@ -5902,7 +5902,7 @@
     3:  "2026-05-22T14:05:00Z",  // Montreal
     4:  "2026-06-04T10:00:00Z",  // Monaco
     5:  "2026-06-12T09:05:00Z",  // Barcelona FP (11:05 CEST)
-    6:  "2026-06-26T10:00:00Z",  // Spielberg
+    6:  "2026-06-26T09:05:00Z",  // Spielberg FP (11:05 CEST)
     7:  "2026-07-03T10:00:00Z",  // Silverstone
     8:  "2026-07-17T10:00:00Z",  // Spa
     9:  "2026-07-24T10:00:00Z",  // Budapest
@@ -6196,10 +6196,10 @@
 <script>
 function initSessionSchedule() {
   const SESSIONS = [
-    { label: 'Свободна тренировка',   short: 'FP',   utc: '', durMin: 45, type: 'fp',   result: '', tbc: true, day: 'Пет 26 юни' },
-    { label: 'Квалификация',      short: 'QUAL', utc: '', durMin: 30, type: 'qual', result: '', tbc: true, day: 'Пет 26 юни' },
-    { label: 'Спринт',     short: 'SPR',  utc: '', durMin: 45, type: 'spr',  result: '', tbc: true, day: 'Съб 27 юни' },
-    { label: 'Основно състезание',    short: 'FTR',  utc: '', durMin: 60, type: 'ftr',  result: '', tbc: true, day: 'Нед 28 юни' },
+    { label: 'Свободна тренировка',   short: 'FP',   utc: '2026-06-26T09:05:00Z', durMin: 45, type: 'fp',   result: '' },
+    { label: 'Квалификация',      short: 'QUAL', utc: '2026-06-26T13:55:00Z', durMin: 30, type: 'qual', result: '' },
+    { label: 'Спринт',     short: 'SPR',  utc: '2026-06-27T12:15:00Z', durMin: 45, type: 'spr',  result: '' },
+    { label: 'Основно състезание',    short: 'FTR',  utc: '2026-06-28T08:10:00Z', durMin: 60, type: 'ftr',  result: '' },
   ];
   // Споделено с обратното броене в hero секцията — един източник за програмата
   window.F2_SESSIONS = SESSIONS;
