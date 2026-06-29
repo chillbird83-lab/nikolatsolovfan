@@ -126,39 +126,6 @@
       "description": "Nikola Tsolov wins the Miami Sprint Race — his second FIA Formula 2 victory of 2026, leading the championship."
     },
     {
-      "@type": "VideoObject",
-      "@id": "https://nikolatsolovfan.com/#video-melbourne",
-      "name": "Nikola Tsolov wins the Melbourne Feature Race — Bulgaria's first F2 victory 2026",
-      "description": "Highlights of Nikola Tsolov's victory in the FIA Formula 2 Melbourne Feature Race, Round 1 2026 — Bulgaria's first ever F2 race win.",
-      "thumbnailUrl": "https://img.youtube.com/vi/TrAFUhgeRzc/hqdefault.jpg",
-      "uploadDate": "2026-03-08T12:00:00+00:00",
-      "url": "https://www.youtube.com/watch?v=TrAFUhgeRzc",
-      "embedUrl": "https://www.youtube.com/embed/TrAFUhgeRzc",
-      "about": { "@id": "https://nikolatsolovfan.com/#tsolov" }
-    },
-    {
-      "@type": "VideoObject",
-      "@id": "https://nikolatsolovfan.com/#video-sofia-rb7",
-      "name": "Nikola Tsolov drives the Red Bull RB7 through Sofia — Show Run 2025",
-      "description": "Nikola Tsolov takes the wheel of Vettel's 2011 championship-winning Red Bull RB7 through the streets of Sofia — the first Bulgarian driver to take part in a Red Bull show run.",
-      "thumbnailUrl": "https://img.youtube.com/vi/tnY2I0OgwxM/hqdefault.jpg",
-      "uploadDate": "2025-06-08T12:00:00+00:00",
-      "url": "https://www.youtube.com/watch?v=tnY2I0OgwxM",
-      "embedUrl": "https://www.youtube.com/embed/tnY2I0OgwxM",
-      "about": { "@id": "https://nikolatsolovfan.com/#tsolov" }
-    },
-    {
-      "@type": "VideoObject",
-      "@id": "https://nikolatsolovfan.com/#video-miami-sprint",
-      "name": "Nikola Tsolov wins the Miami Sprint Race — Pole to flag, FIA Formula 2 Round 2 2026",
-      "description": "Highlights of Nikola Tsolov's dominant pole-to-flag Miami Sprint Race victory, FIA Formula 2 Round 2, 2 May 2026.",
-      "thumbnailUrl": "https://img.youtube.com/vi/DQDaAIq2DWc/hqdefault.jpg",
-      "uploadDate": "2026-05-02T12:00:00+00:00",
-      "url": "https://www.youtube.com/watch?v=DQDaAIq2DWc",
-      "embedUrl": "https://www.youtube.com/embed/DQDaAIq2DWc",
-      "about": { "@id": "https://nikolatsolovfan.com/#tsolov" }
-    },
-    {
       "@type": "SportsEvent",
       "@id": "https://nikolatsolovfan.com/#barcelona-2026",
       "name": "FIA Formula 2 2026 — Round 5 Barcelona",
@@ -3440,116 +3407,6 @@
     .rival-n { font-size: 20px; padding: 14px 12px; }
   }
 
-  /* ===================== VIDEO HIGHLIGHTS ===================== */
-  .video-section {
-    padding: 120px 32px;
-    background: var(--gray-700);
-  }
-
-  .video-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-top: 0;
-  }
-
-  .video-card {
-    display: flex;
-    flex-direction: column;
-    background: var(--ink);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 3px;
-    overflow: hidden;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-  .video-card:hover {
-    border-color: rgba(225,6,0,0.4);
-    transform: translateY(-3px);
-  }
-
-  .video-embed {
-    position: relative;
-    width: 100%;
-    padding-top: 56.25%; /* 16:9 */
-    background: #000;
-    display: block;
-    overflow: hidden;
-  }
-  .video-embed img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.85;
-    transition: opacity 0.2s, transform 0.3s;
-  }
-  .video-card:hover .video-embed img {
-    opacity: 1;
-    transform: scale(1.03);
-  }
-  .video-play {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-  }
-  .video-play-btn {
-    width: 60px;
-    height: 60px;
-    background: rgba(225,6,0,0.9);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s, transform 0.2s;
-  }
-  .video-card:hover .video-play-btn {
-    background: var(--red);
-    transform: scale(1.1);
-  }
-  .video-play-btn svg {
-    width: 22px;
-    height: 22px;
-    fill: var(--bone);
-    margin-left: 3px;
-  }
-
-  .video-meta {
-    padding: 18px 20px 22px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    flex: 1;
-  }
-  .video-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--red);
-  }
-  .video-title {
-    font-family: var(--sans);
-    font-weight: 700;
-    font-size: 15px;
-    color: var(--bone);
-    line-height: 1.3;
-  }
-  .video-sub {
-    font-family: var(--sans);
-    font-size: 12px;
-    color: var(--gray-500);
-    margin-top: 2px;
-  }
-
-  @media (max-width: 900px) {
-    .video-grid { grid-template-columns: 1fr; }
-  }
-
-
   @media (max-width: 700px) {
     .livery-grid { grid-template-columns: 1fr; }
     .livery-visual { min-height: 220px; padding: 32px 24px 24px; }
@@ -4316,7 +4173,6 @@
   <a href="#season"     onclick="closeMobileNav()">2026</a>
   <a href="#standings"  onclick="closeMobileNav()">Standings</a>
   <a href="#gallery"    onclick="closeMobileNav()">Gallery</a>
-  <a href="#highlights"      onclick="closeMobileNav()">Video</a>
   <a href="#news"            onclick="closeMobileNav()">News</a>
   <a href="/articles/"       onclick="closeMobileNav()">Articles</a>
   <a href="/about/"          onclick="closeMobileNav()">About</a>
@@ -5539,66 +5395,6 @@
   </div>
 </section>
 
-<!-- ===================== VIDEO HIGHLIGHTS ===================== -->
-<section class="video-section" id="highlights">
-  <div class="section-tag">Video</div>
-  <h2 class="section-title">Race <span class="it">highlights</span></h2>
-
-  <div class="video-grid">
-    <!-- Melbourne Feature Race Win -->
-    <a class="video-card" href="https://www.youtube.com/watch?v=TrAFUhgeRzc" target="_blank" rel="noopener" style="text-decoration:none;">
-      <div class="video-embed">
-        <img src="https://img.youtube.com/vi/TrAFUhgeRzc/hqdefault.jpg" alt="Bulgaria's first F2 victory — Melbourne 2026" loading="lazy" />
-        <div class="video-play">
-          <div class="video-play-btn">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-        </div>
-      </div>
-      <div class="video-meta">
-        <span class="video-label">Feature Race · R01 Melbourne</span>
-        <span class="video-title">Bulgaria's first F2 victory</span>
-        <span class="video-sub">8 March 2026 · Albert Park</span>
-      </div>
-    </a>
-
-    <!-- Onboard -->
-    <!-- Sofia RB7 Show Run -->
-    <a class="video-card" href="https://www.youtube.com/watch?v=tnY2I0OgwxM" target="_blank" rel="noopener" style="text-decoration:none;">
-      <div class="video-embed">
-        <img src="https://img.youtube.com/vi/tnY2I0OgwxM/hqdefault.jpg" alt="Tsolov drives the RB7 through Sofia 2025" loading="lazy" />
-        <div class="video-play">
-          <div class="video-play-btn">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-        </div>
-      </div>
-      <div class="video-meta">
-        <span class="video-label">Show Run · Sofia 2025</span>
-        <span class="video-title">Tsolov drives the RB7 through Sofia</span>
-        <span class="video-sub">First Bulgarian driver in a Red Bull show run</span>
-      </div>
-    </a>
-
-    <!-- Miami Sprint Race Highlights -->
-    <a class="video-card" href="https://www.youtube.com/watch?v=DQDaAIq2DWc" target="_blank" rel="noopener" style="text-decoration:none;">
-      <div class="video-embed">
-        <img src="https://img.youtube.com/vi/DQDaAIq2DWc/hqdefault.jpg" alt="F2 Sprint Race Highlights Miami 2026 — Tsolov wins" loading="lazy" />
-        <div class="video-play">
-          <div class="video-play-btn">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-        </div>
-      </div>
-      <div class="video-meta">
-        <span class="video-label">Sprint Race · R02 Miami</span>
-        <span class="video-title">Sprint Race highlights — pole to flag</span>
-        <span class="video-sub">2 May 2026 · Miami International Autodrome</span>
-      </div>
-    </a>
-  </div>
-</section>
-
 <!-- ===================== NEWS ===================== -->
 <section class="news-section" id="news">
   <div class="section-tag">Latest</div>
@@ -6769,9 +6565,6 @@ function initRecapCards() {
 
     // -- Content tiles --
     watchGroup('.ct-card', 'reveal', 0, 0.08);
-
-    // -- Video cards --
-    watchGroup('.video-card', 'reveal', 0, 0.12);
 
     // -- Result banner (slight delay so it's not invisible on hard load) --
     document.querySelectorAll('.result-banner').forEach(el => watch(el, 'reveal', 0.2));
