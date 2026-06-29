@@ -4,3 +4,16 @@
 !.dev.vars.example
 .env*
 !.env.example
+
+# Local Claude Code config (machine-specific, not for the repo)
+.claude/
+
+# Local helper scripts (handoff builders, summaries)
+*.py
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
