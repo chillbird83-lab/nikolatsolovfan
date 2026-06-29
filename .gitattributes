@@ -1,0 +1,24 @@
+# Normalize line endings so CRLF↔LF swaps never show as conflicts.
+# Git stores text files as LF in the repo; checkouts can use native endings.
+* text=auto
+
+# Force LF for web source files (consistent across local edits and web uploads)
+*.html  text eol=lf
+*.xml   text eol=lf
+*.css   text eol=lf
+*.js    text eol=lf
+*.json  text eol=lf
+*.svg   text eol=lf
+*.md    text eol=lf
+*.webmanifest text eol=lf
+*.ics   text eol=lf
+
+# Binary assets — never touch
+*.webp  binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.avif  binary
+*.ico   binary
+*.woff  binary
+*.woff2 binary
