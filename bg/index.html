@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="bg">
 <head>
 <meta charset="UTF-8" />
@@ -3631,7 +3631,7 @@
     }
     .calendar-header,
     .cal-row {
-      grid-template-columns: 36px minmax(0, 1fr) auto;
+      grid-template-columns: 36px minmax(0, 1fr) 88px;
       gap: 10px;
       padding: 14px 12px;
     }
@@ -3643,11 +3643,12 @@
       color: var(--gray-500);
     }
     .calendar-header .ch-results { display: none; }
-    .cal-results { grid-column: 3; justify-content: flex-end; max-width: 110px; }
-    .cal-badge { min-width: 34px; padding: 4px 6px; font-size: 11px; }
+    .cal-results { grid-column: 3; justify-content: flex-end; width: 88px; max-width: 88px; overflow: hidden; }
+    .cal-badge { min-width: 32px; padding: 4px 5px; font-size: 10px; }
     .cal-round { font-size: 24px; }
-    .cal-loc { font-size: 15px; }
-    .cal-note { grid-column: 1 / -1; font-size: 12px; }
+    .cal-loc { font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .cal-race { min-width: 0; overflow: hidden; }
+    .cal-note { grid-column: 1 / -1; font-size: 12px; word-break: break-word; }
     .live-feed-col { position: static; }
   }
 
