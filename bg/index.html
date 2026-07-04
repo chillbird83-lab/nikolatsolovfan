@@ -6,7 +6,7 @@
 <title>Никола Цолов — Formula 2 2026 | Резултати, класиране, новини</title>
 
 <!-- ===================== SEO + SOCIAL META ===================== -->
-<meta name="description" content="Никола Цолов е P2 във FIA Formula 2 2026, на 2 точки зад лидера след доминираща победа на Red Bull Ring — четвъртата му победа във F2. Резултати на живо, класиране, календар и пътят на Българския лъв към F1 през 2027." />
+<meta name="description" content="Никола Цолов е лидер в шампионата на FIA Formula 2 2026 — изравнен с Минѝ на 116 точки и напред по победи след триумф в спринта на Силвърстоун, петата му победа във F2. Резултати на живо, класиране, календар и пътят на Българския лъв към F1 през 2027." />
 <meta name="theme-color" content="#041E42" />
 <meta name="keywords" content="Никола Цолов, Nikola Tsolov, български пилот, F2 България, FIA Formula 2 2026, Campos Racing, Red Bull Junior, Българският лъв, F2 резултати 2026, F2 класиране" />
 <link rel="canonical" href="https://nikolatsolovfan.com/bg/" />
@@ -306,7 +306,7 @@
       "name": "Какви са резултатите на Никола Цолов във F2 през 2026?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "В сезон 2026 на FIA Formula 2 Цолов спечели Feature Race в Мелбърн (първата българска победа във F2) и Sprint Race в Маями. В момента е на трето място в шампионата след кръг 3 в Монреал."
+        "text": "В сезон 2026 на FIA Formula 2 Цолов има пет победи — Feature Race в Мелбърн (първата българска победа във F2), Sprint Race в Маями, Feature Race в Монако, Feature Race на Red Bull Ring и Sprint Race на Силвърстоун. След спринта на Силвърстоун е лидер в шампионата със 116 точки — изравнен с Габриеле Минѝ и напред по победи."
       }
     },
     {
@@ -378,7 +378,7 @@
       "name": "Печелил ли е Никола Цолов състезание във Формула 2?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Да. Никола Цолов спечели Feature Race в Мелбърн през 2026 и стана първият българин в историята, печелил състезание във FIA Formula 2. Последва втора победа в Sprint Race в Маями."
+        "text": "Да. Никола Цолов спечели Feature Race в Мелбърн през 2026 и стана първият българин в историята, печелил състезание във FIA Formula 2. Последваха победи в Sprint Race в Маями, Feature Race в Монако, Feature Race на Red Bull Ring и Sprint Race на Силвърстоун — общо пет."
       }
     }
   ]
@@ -398,8 +398,8 @@
 <!-- Open Graph (Facebook, LinkedIn, Discord, WhatsApp) -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://nikolatsolovfan.com/bg/" />
-<meta property="og:title" content="Никола Цолов · P2 във F2 2026, победител на Red Bull Ring" />
-<meta property="og:description" content="Първият българин, спечелил състезание във FIA Formula 2, е P2 в шампионата на 2026, на 2 точки зад лидера след доминираща победа на Red Bull Ring — четвъртата му победа във F2. Резултати на живо, класиране и пътят към F1 2027." />
+<meta property="og:title" content="Никола Цолов · Лидер във F2 2026 след победа в спринта на Силвърстоун" />
+<meta property="og:description" content="Първият българин, спечелил състезание във FIA Formula 2, е лидер в шампионата на 2026 — изравнен с Минѝ на 116 точки и напред по победи след триумф в спринта на Силвърстоун. Резултати на живо, класиране и пътят към F1 2027." />
 <meta property="og:image" content="https://nikolatsolovfan.com/images/og-image.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -409,8 +409,8 @@
 
 <!-- Twitter / X Card -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Никола Цолов · P2 във F2 2026, победител на Red Bull Ring" />
-<meta name="twitter:description" content="P2 в шампионата на F2 2026, на 2 точки зад лидера след доминираща победа на Red Bull Ring — четвъртата му победа във F2. Резултати на живо, класиране, пътят към F1." />
+<meta name="twitter:title" content="Никола Цолов · Лидер във F2 2026 след победа в спринта на Силвърстоун" />
+<meta name="twitter:description" content="Лидер в шампионата на F2 2026 — изравнен с Минѝ на 116 точки и напред по победи след триумф в спринта на Силвърстоун, петата му победа във F2. Резултати на живо, класиране, пътят към F1." />
 <meta name="twitter:image" content="https://nikolatsolovfan.com/images/og-image.jpg" />
 
 <!-- Google Analytics -->
@@ -3114,10 +3114,12 @@
   /* Mobile */
   @media (max-width: 700px) {
     .std-row {
-      grid-template-columns: 42px 48px 1fr auto;
+      grid-template-columns: 42px 48px minmax(0, 1fr) auto;
       gap: 12px;
       padding: 12px 14px 12px 12px;
     }
+    .std-driver, .std-names { min-width: 0; }
+    .std-last { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%; }
     .std-pos { font-size: 26px; }
     .std-avatar-wrap, .std-avatar { width: 44px; height: 44px; }
     .std-avatar { font-size: 14px; }
@@ -3367,7 +3369,9 @@
   .rival-foot strong { color: var(--gold); font-weight: 700; }
 
   @media (max-width: 720px) {
-    .rival-drivers { grid-template-columns: 1fr; }
+    .rival-drivers { grid-template-columns: minmax(0, 1fr); }
+    .rival-side { min-width: 0; }
+    .rival-tag { white-space: normal; }
     .rival-vs-col { flex-direction: row; padding: 16px 20px; border-top: 1px solid var(--gray-700); border-bottom: 1px solid var(--gray-700); }
     .rival-side { padding: 24px 20px; }
     .s-camara, .s-mini { text-align: left; border-left: none; border-top: 1px solid var(--gray-700); }
@@ -3524,6 +3528,11 @@
   }
   .back-to-top:hover { background: var(--deep-red); }
   .back-to-top svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  @media (max-width: 800px) {
+    .back-to-top { width: 34px; height: 34px; bottom: 14px; right: 12px; background: rgba(225,6,0,0.55); }
+    .back-to-top:hover { background: rgba(225,6,0,0.85); }
+    .back-to-top svg { width: 14px; height: 14px; }
+  }
 
   /* ===================== RESPONSIVE ===================== */
 
@@ -4168,20 +4177,20 @@
       <span class="banner-text">
         <span class="banner-ticker">
           <span class="banner-ticker-copy">
-            <span class="race">Шпилберг · Feature ПОБЕДА</span>
-            <strong>4-та победа във F2 · P2 в шампионата, 106 т. (−2 до Minì)</strong>
+            <span class="race">Силвърстоун · Sprint ПОБЕДА</span>
+            <strong>5-та победа във F2 · Лидер в шампионата — изравнен с Minì на 116 т., води по победи 5–1</strong>
             <span class="sep">·</span>
-            От P3 изпревари съотборника си Леон на 1-ва обиколка и контролира за доминираща победа на Red Bull Ring
+            Победа с 1.291 s пред Minì — втора спринтова победа за сезона
             <span class="sep">·</span>
-            Стопи разликата от шест на две — най-близкото този сезон · Спринт P8 вчера
+            Feature Race в неделя — лидерството се решава на пистата
           </span>
           <span class="banner-ticker-copy" aria-hidden="true">
-            <span class="race">Шпилберг · Feature ПОБЕДА</span>
-            <strong>4-та победа във F2 · P2 в шампионата, 106 т. (−2 до Minì)</strong>
+            <span class="race">Силвърстоун · Sprint ПОБЕДА</span>
+            <strong>5-та победа във F2 · Лидер в шампионата — изравнен с Minì на 116 т., води по победи 5–1</strong>
             <span class="sep">·</span>
-            От P3 изпревари съотборника си Леон на 1-ва обиколка и контролира за доминираща победа на Red Bull Ring
+            Победа с 1.291 s пред Minì — втора спринтова победа за сезона
             <span class="sep">·</span>
-            Стопи разликата от шест на две — най-близкото този сезон · Спринт P8 вчера
+            Feature Race в неделя — лидерството се решава на пистата
           </span>
         </span>
       </span>
@@ -4191,8 +4200,8 @@
 
     <div class="banner-next">
       <span class="label" id="banner-next-label">Следва</span>
-      <span class="where" id="banner-next-where">Барселона · R05</span>
-      <span id="banner-next-dates">12–14 юни 2026</span>
+      <span class="where" id="banner-next-where">Силвърстоун · R07</span>
+      <span id="banner-next-dates">3–5 юли 2026</span>
       <span class="banner-countdown" id="banner-countdown" aria-live="polite"></span>
     </div>
   </div>
@@ -4860,7 +4869,7 @@
           </div>
         </div>
         <div class="sl-foot">
-          Топ 3 финал във F2 2026 (40 точки) би изпратил Цолов над прага. В момента е P2 в шампионата, на 2 точки зад Minì.
+          Топ 3 финал във F2 2026 (40 точки) би изпратил Цолов над прага. В момента е лидер в шампионата — изравнен с Minì на 116 точки и напред по победи.
           <br><br>
           <strong style="color:var(--gold);">Знаете ли?</strong> Топ 3 не е единственият път. С натрупаните 25 точки, P4 (30 т.) или P5 (20 т.) във F2 също минават прага от 40. Има и FP1 маршрут: всяко участие в петъчна тренировка във Formula 1 добавя по 1 точка, до 10 — достатъчно дори P6 в шампионата да го прехвърли над линията с пет FP1 сесии.
         </div>
@@ -4949,8 +4958,8 @@
       <h2 class="section-title" style="font-size: clamp(48px, 7vw, 100px); margin-bottom: 0;">2026 <span class="it">Standings</span></h2>
     </div>
     <div class="champ-after">
-      След кръг 06 · Шпилберг
-      <span class="champ-updated"><time datetime="2026-06-28">Обновено 28 юни 2026</time></span>
+      След спринта в R07 · Силвърстоун
+      <span class="champ-updated"><time datetime="2026-07-04">Обновено 4 юли 2026</time></span>
     </div>
   </div>
 
@@ -4964,30 +4973,8 @@
   <div class="std-list">
 
     <!-- 1 -->
-    <div class="std-row std-leader" style="--team-color:#ff6b1a">
+    <div class="std-row std-leader" style="--team-color:#e10600">
       <div class="std-pos">1</div>
-      <div class="std-avatar-wrap">
-        <div class="std-avatar">GM</div>
-        <img class="std-flag" src="https://flagcdn.com/24x18/it.png" alt="Italy" />
-      </div>
-      <div class="std-driver">
-        <div class="std-names">
-          <span class="std-first">Gabriele</span>
-          <span class="std-last">Minì</span>
-        </div>
-        <div class="std-team">MP Motorsport</div>
-      </div>
-      <div class="std-right">
-        <div class="std-pts">108</div>
-        <div class="std-trophies">
-          <svg class="std-trophy"><use href="#trophy-icon"/></svg>
-        </div>
-      </div>
-    </div>
-
-    <!-- 2 -->
-    <div class="std-row" style="--team-color:#e10600">
-      <div class="std-pos">2</div>
       <div class="std-avatar-wrap">
         <div class="std-avatar">NT</div>
         <img class="std-flag" src="https://flagcdn.com/24x18/bg.png" alt="Bulgaria" />
@@ -5001,11 +4988,34 @@
         <div class="std-team">Campos Racing</div>
       </div>
       <div class="std-right">
-        <div class="std-pts">106</div>
+        <div class="std-pts">116</div>
         <div class="std-trophies">
           <svg class="std-trophy"><use href="#trophy-icon"/></svg>
           <svg class="std-trophy"><use href="#trophy-icon"/></svg>
           <svg class="std-trophy"><use href="#trophy-icon"/></svg>
+          <svg class="std-trophy"><use href="#trophy-icon"/></svg>
+          <svg class="std-trophy"><use href="#trophy-icon"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="std-row" style="--team-color:#ff6b1a">
+      <div class="std-pos">2</div>
+      <div class="std-avatar-wrap">
+        <div class="std-avatar">GM</div>
+        <img class="std-flag" src="https://flagcdn.com/24x18/it.png" alt="Italy" />
+      </div>
+      <div class="std-driver">
+        <div class="std-names">
+          <span class="std-first">Gabriele</span>
+          <span class="std-last">Minì</span>
+        </div>
+        <div class="std-team">MP Motorsport</div>
+      </div>
+      <div class="std-right">
+        <div class="std-pts">116</div>
+        <div class="std-trophies">
           <svg class="std-trophy"><use href="#trophy-icon"/></svg>
         </div>
       </div>
@@ -5049,7 +5059,7 @@
         <div class="std-team">Rodin Motorsport</div>
       </div>
       <div class="std-right">
-        <div class="std-pts">78</div>
+        <div class="std-pts">80</div>
         <div class="std-trophies"></div>
       </div>
     </div>
@@ -5070,7 +5080,7 @@
         <div class="std-team">Campos Racing</div>
       </div>
       <div class="std-right">
-        <div class="std-pts">60</div>
+        <div class="std-pts">62</div>
         <div class="std-trophies">
           <svg class="std-trophy"><use href="#trophy-icon"/></svg>
           <svg class="std-trophy"><use href="#trophy-icon"/></svg>
@@ -5079,8 +5089,28 @@
     </div>
 
     <!-- 6 -->
-    <div class="std-row" style="--team-color:#facc15">
+    <div class="std-row" style="--team-color:#dc2626">
       <div class="std-pos">6</div>
+      <div class="std-avatar-wrap">
+        <div class="std-avatar">DB</div>
+        <img class="std-flag" src="https://flagcdn.com/24x18/se.png" alt="Sweden" />
+      </div>
+      <div class="std-driver">
+        <div class="std-names">
+          <span class="std-first">Dino</span>
+          <span class="std-last">Beganovic</span>
+        </div>
+        <div class="std-team">DAMS Lucas Oil</div>
+      </div>
+      <div class="std-right">
+        <div class="std-pts">57</div>
+        <div class="std-trophies"></div>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="std-row" style="--team-color:#facc15">
+      <div class="std-pos">7</div>
       <div class="std-avatar-wrap">
         <div class="std-avatar" style="color:#1a1a1a">MS</div>
         <img class="std-flag" src="https://flagcdn.com/24x18/no.png" alt="Norway" />
@@ -5094,36 +5124,38 @@
         <div class="std-team">Rodin Motorsport</div>
       </div>
       <div class="std-right">
-        <div class="std-pts">56</div>
+        <div class="std-pts">48</div>
         <div class="std-trophies">
           <svg class="std-trophy"><use href="#trophy-icon"/></svg>
         </div>
       </div>
     </div>
 
-    <!-- 7 -->
-    <div class="std-row" style="--team-color:#dc2626">
-      <div class="std-pos">7</div>
+    <!-- 8 -->
+    <div class="std-row" style="--team-color:#000000">
+      <div class="std-pos">8</div>
       <div class="std-avatar-wrap">
-        <div class="std-avatar">DB</div>
-        <img class="std-flag" src="https://flagcdn.com/24x18/se.png" alt="Sweden" />
+        <div class="std-avatar">KM</div>
+        <img class="std-flag" src="https://flagcdn.com/24x18/in.png" alt="India" />
       </div>
       <div class="std-driver">
         <div class="std-names">
-          <span class="std-first">Dino</span>
-          <span class="std-last">Beganovic</span>
+          <span class="std-first">Kush</span>
+          <span class="std-last">Maini</span>
         </div>
-        <div class="std-team">DAMS Lucas Oil</div>
+        <div class="std-team">ART Grand Prix</div>
       </div>
       <div class="std-right">
-        <div class="std-pts">53</div>
-        <div class="std-trophies"></div>
+        <div class="std-pts">48</div>
+        <div class="std-trophies">
+          <svg class="std-trophy"><use href="#trophy-icon"/></svg>
+        </div>
       </div>
     </div>
 
-    <!-- 8 -->
+    <!-- 9 -->
     <div class="std-row" style="--team-color:#2563eb">
-      <div class="std-pos">8</div>
+      <div class="std-pos">9</div>
       <div class="std-avatar-wrap">
         <div class="std-avatar">LH</div>
         <img class="std-flag" src="https://flagcdn.com/24x18/nl.png" alt="Netherlands" />
@@ -5137,30 +5169,8 @@
         <div class="std-team">Trident</div>
       </div>
       <div class="std-right">
-        <div class="std-pts">45</div>
+        <div class="std-pts">47</div>
         <div class="std-trophies"></div>
-      </div>
-    </div>
-
-    <!-- 9 -->
-    <div class="std-row" style="--team-color:#000000">
-      <div class="std-pos">9</div>
-      <div class="std-avatar-wrap">
-        <div class="std-avatar">KM</div>
-        <img class="std-flag" src="https://flagcdn.com/24x18/in.png" alt="India" />
-      </div>
-      <div class="std-driver">
-        <div class="std-names">
-          <span class="std-first">Kush</span>
-          <span class="std-last">Maini</span>
-        </div>
-        <div class="std-team">ART Grand Prix</div>
-      </div>
-      <div class="std-right">
-        <div class="std-pts">43</div>
-        <div class="std-trophies">
-          <svg class="std-trophy"><use href="#trophy-icon"/></svg>
-        </div>
       </div>
     </div>
 
@@ -5212,28 +5222,28 @@
 
       <!-- Tsolov -->
       <div class="rival-side s-tsolov">
-        <span class="rival-tag">P2 · −2 точки</span>
+        <span class="rival-tag">Лидер в шампионата · P1</span>
         <div class="rival-surname">Tsolov</div>
         <div class="rival-fullname">Nikola Tsolov</div>
         <div class="rival-team-txt">Campos Racing · #6 · България</div>
-        <div class="rival-pts-big">106</div>
+        <div class="rival-pts-big">116</div>
         <div class="rival-pts-lbl">Точки</div>
       </div>
 
       <!-- VS divider -->
       <div class="rival-vs-col">
         <div class="rival-vs-word">VS</div>
-        <div class="rival-gap-pill">−2 т.</div>
-        <div class="rival-after-note">След R06<br/>6 от 14</div>
+        <div class="rival-gap-pill">Равни · победи 5–1</div>
+        <div class="rival-after-note">След спринта в R07<br/>7 от 14</div>
       </div>
 
       <!-- Minì -->
       <div class="rival-side s-mini">
-        <span class="rival-tag">Лидер в шампионата · P1</span>
+        <span class="rival-tag">P2 · равен по точки</span>
         <div class="rival-surname">Minì</div>
         <div class="rival-fullname">Gabriele Minì</div>
         <div class="rival-team-txt">MP Motorsport · Италия</div>
-        <div class="rival-pts-big">108</div>
+        <div class="rival-pts-big">116</div>
         <div class="rival-pts-lbl">Точки</div>
       </div>
     </div>
@@ -5242,39 +5252,39 @@
     <div class="rival-stats">
 
       <div class="rival-stat-row">
-        <div class="rival-n left">106</div>
+        <div class="rival-n left">116</div>
         <div class="rival-center-cell">
           <span class="rival-center-lbl">Точки</span>
           <div class="rival-split-bar">
-            <div class="rsb-t" style="width:49.5%"></div>
-            <div class="rsb-c" style="width:50.5%"></div>
+            <div class="rsb-t" style="width:50%"></div>
+            <div class="rsb-c" style="width:50%"></div>
           </div>
         </div>
-        <div class="rival-n right">108</div>
+        <div class="rival-n right">116</div>
       </div>
 
       <div class="rival-stat-row">
-        <div class="rival-n left">4</div>
+        <div class="rival-n left">5</div>
         <div class="rival-center-cell">
           <span class="rival-center-lbl">Победи</span>
           <div class="rival-split-bar">
-            <div class="rsb-t" style="width:80%"></div>
-            <div class="rsb-c" style="width:20%"></div>
+            <div class="rsb-t" style="width:83.3%"></div>
+            <div class="rsb-c" style="width:16.7%"></div>
           </div>
         </div>
         <div class="rival-n right">1</div>
       </div>
 
       <div class="rival-stat-row">
-        <div class="rival-n left">17.7</div>
+        <div class="rival-n left">16.6</div>
         <div class="rival-center-cell">
-          <span class="rival-center-lbl">Точки / кръг</span>
+          <span class="rival-center-lbl">Точки / кръг (7 кръга, R07 в ход)</span>
           <div class="rival-split-bar">
-            <div class="rsb-t" style="width:49.5%"></div>
-            <div class="rsb-c" style="width:50.5%"></div>
+            <div class="rsb-t" style="width:50%"></div>
+            <div class="rsb-c" style="width:50%"></div>
           </div>
         </div>
-        <div class="rival-n right">18.0</div>
+        <div class="rival-n right">16.6</div>
       </div>
 
       <div class="rival-stat-row">
@@ -5290,35 +5300,35 @@
       </div>
 
       <div class="rival-stat-row">
-        <div class="rival-n-sm left">26</div>
+        <div class="rival-n-sm left">10</div>
         <div class="rival-center-cell">
-          <span class="rival-center-lbl">Точки от последния кръг (R06 Шпилберг)</span>
+          <span class="rival-center-lbl">Спринтът на Силвърстоун (R07)</span>
           <div class="rival-split-bar">
-            <div class="rsb-t" style="width:54.2%"></div>
-            <div class="rsb-c" style="width:45.8%"></div>
+            <div class="rsb-t" style="width:55.6%"></div>
+            <div class="rsb-c" style="width:44.4%"></div>
           </div>
-          <span class="rival-center-sub">Цолов Спринт P8 + Feature ПОБЕДА · Minì Спринт P5 + Feature P2</span>
+          <span class="rival-center-sub">Цолов Спринт ПОБЕДА · Minì Спринт P2 (+1.291 s)</span>
         </div>
-        <div class="rival-n-sm right dim">22</div>
+        <div class="rival-n-sm right dim">8</div>
       </div>
 
       <div class="rival-stat-row">
-        <div class="rival-n-sm left dim">11/12</div>
+        <div class="rival-n-sm left dim">12/13</div>
         <div class="rival-center-cell">
           <span class="rival-center-lbl">Завършени състезания</span>
           <div class="rival-split-bar">
-            <div class="rsb-t" style="width:47.8%"></div>
-            <div class="rsb-c" style="width:52.2%"></div>
+            <div class="rsb-t" style="width:48%"></div>
+            <div class="rsb-c" style="width:52%"></div>
           </div>
           <span class="rival-center-sub">Цолов DNF — Маями Feature (контакт в първа обиколка)</span>
         </div>
-        <div class="rival-n-sm right">12/12</div>
+        <div class="rival-n-sm right">13/13</div>
       </div>
 
     </div>
 
     <div class="rival-foot">
-      <span>Minì води с <strong>2 точки</strong> — доминиращата победа на Цолов във Feature-а на Шпилберг стопи разликата от шест, най-близкото в битката за титлата този сезон</span>
+      <span>Цолов и Minì са изравнени на <strong>116 точки</strong> — Цолов е лидер в шампионата по победи, 5 на 1, след триумфа в спринта на Силвърстоун. Feature Race-ът решава кой напуска Великобритания начело</span>
       <span>Източник · FIA Formula 2 · fiaformula2.com</span>
     </div>
   </div>
@@ -5509,7 +5519,7 @@
     { round: 4,  location: "Monaco",            country: "Monaco",        flag: "mc", dates: "04–07 Jun", sprint: "P8", feature: "P1", note: "Квали P2 · Sprint P8 (1 т.) · Feature ПОБЕДА (победа + FL = 26 т.) · разликата до Minì падна от 22 на 1", status: "completed" },
     { round: 5,  location: "Barcelona",         country: "Spain",         flag: "es", dates: "12–14 Jun", sprint: "P3", feature: "P4", note: "Квали P6 · Sprint P3 · Feature P4 (финишира P2 на пистата, 5с наказание) · P2 в шампионата, −6 до Minì", status: "completed" },
     { round: 6,  location: "Spielberg",         country: "Austria",       flag: "at", dates: "26–28 Jun", sprint: "P8", feature: "P1", note: "Квали P3 · Sprint P8 · Feature ПОБЕДА (доминираща, 4-та победа във F2) · стопи преднината на Minì до 2 точки", status: "completed" },
-    { round: 7,  location: "Silverstone",       country: "Great Britain", flag: "gb", dates: "03–05 Jul", sprint: "—", feature: "—",                                                       status: "upcoming"  },
+    { round: 7,  location: "Silverstone",       country: "Great Britain", flag: "gb", dates: "03–05 Jul", sprint: "P1", feature: "?", note: "Sprint ПОБЕДА (10 т., +1.291 s пред Minì) · излиза начело в шампионата по победи — изравнен с Minì на 116 т. · Feature Race в неделя", status: "upcoming"  },
     { round: 8,  location: "Spa-Francorchamps", country: "Belgium",       flag: "be", dates: "17–19 Jul", sprint: "—", feature: "—",                                                       status: "upcoming"  },
     { round: 9,  location: "Budapest",          country: "Hungary",       flag: "hu", dates: "24–26 Jul", sprint: "—", feature: "—",                                                       status: "upcoming"  },
     { round: 10, location: "Monza",             country: "Italy",         flag: "it", dates: "04–06 Sep", sprint: "—", feature: "—",                                                       status: "upcoming"  },
@@ -6002,7 +6012,7 @@ function initSessionSchedule() {
   const SESSIONS = [
     { label: 'Свободна тренировка',   short: 'FP',   utc: '', durMin: 45, type: 'fp',   result: '', tbc: true, day: 'Пет 3 юли' },
     { label: 'Квалификация',      short: 'QUAL', utc: '', durMin: 30, type: 'qual', result: '', tbc: true, day: 'Пет 3 юли' },
-    { label: 'Спринт',     short: 'SPR',  utc: '', durMin: 45, type: 'spr',  result: '', tbc: true, day: 'Съб 4 юли' },
+    { label: 'Спринт',     short: 'SPR',  utc: '', durMin: 45, type: 'spr',  result: 'P1 · ПОБЕДА · +1.291 s', tbc: true, day: 'Съб 4 юли' },
     { label: 'Основно състезание',    short: 'FTR',  utc: '', durMin: 60, type: 'ftr',  result: '', tbc: true, day: 'Нед 5 юли' },
   ];
   // Споделено с обратното броене в hero секцията — един източник за програмата
@@ -6049,11 +6059,12 @@ function initSessionSchedule() {
     const now = Date.now();
     wrap.innerHTML = SESSIONS.map(s => {
       if (s.tbc) {
-        return `<div class="sched-row sched-type-${s.type}">
+        return `<div class="sched-row sched-type-${s.type}${s.result?' sched-past':''}">
         <span class="sched-dot"></span>
         <span class="sched-badge">${s.short}</span>
         <span class="sched-label">${s.label}</span>
-        <span class="sched-time">${s.day} · TBC</span>
+        <span class="sched-time">${s.day}${s.result ? '' : ' · TBC'}</span>
+        ${s.result ? `<span class="sched-result-pill">${s.result}</span>` : ''}
       </div>`;
       }
       const start = new Date(s.utc).getTime();
