@@ -1987,7 +1987,7 @@
 
   .follow-row {
     display: grid;
-    grid-template-columns: 56px 1fr auto;
+    grid-template-columns: 56px minmax(0, 1fr) auto;
     align-items: center;
     gap: 16px;
     padding: 18px 20px;
@@ -2101,10 +2101,12 @@
   }
 
   @media (max-width: 600px) {
-    .follow-row { grid-template-columns: 44px 1fr auto; gap: 12px; padding: 14px 14px; }
+    .follow-row { grid-template-columns: 44px minmax(0, 1fr) auto; gap: 12px; padding: 14px 14px; }
     .follow-avatar { width: 44px; height: 44px; font-size: 16px; }
     .follow-name { font-size: 15px; }
     .follow-desc { font-size: 12px; }
+    .follow-text { min-width: 0; }
+    .follow-handle { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }
   }
 
   .season-note {
@@ -2242,11 +2244,12 @@
 
   @media (max-width: 800px) {
     .countdown {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
       gap: 18px;
       padding: 22px;
     }
-    .cd-units { justify-content: flex-start; gap: 14px; }
+    .cd-label, .cd-label .race-name { min-width: 0; overflow-wrap: break-word; }
+    .cd-units { justify-content: flex-start; gap: 14px; flex-wrap: wrap; }
     .cd-num { font-size: 42px; }
     .cd-sep { font-size: 42px; }
     .cd-unit { min-width: 56px; }
@@ -3661,9 +3664,10 @@
 
     /* Season grid mobile */
     .season-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
       gap: 32px;
     }
+    .calendar-col, .live-feed-col { min-width: 0; max-width: 100%; }
     .calendar-header,
     .cal-row {
       grid-template-columns: 36px minmax(0, 1fr) 88px;
@@ -4129,7 +4133,7 @@
   .ftrk-method { font-family: var(--mono); font-size: 12px; color: var(--bone); letter-spacing: 0.05em; line-height: 1.8; text-align: left; padding: 20px 24px; margin-top: 18px; background: rgba(13,45,86,0.55); border: 1px solid var(--gray-700); border-left: 3px solid var(--gold); border-radius: 4px; }
   .ftrk-method strong { color: var(--gold); font-family: var(--mono); letter-spacing: 0.15em; text-transform: uppercase; font-size: 11px; display: block; margin-bottom: 8px; }
   .ftrk-method code { font-family: var(--mono); color: var(--gold); background: rgba(255,204,0,0.08); padding: 1px 6px; border-radius: 2px; font-size: 11.5px; white-space: nowrap; }
-  @media (max-width: 600px) { .ftrk-method { font-size: 11px; padding: 16px 18px; line-height: 1.75; } }
+  @media (max-width: 600px) { .ftrk-method { font-size: 11px; padding: 16px 18px; line-height: 1.75; } .ftrk-method code { white-space: normal; overflow-wrap: break-word; } }
 
   @media (max-width: 720px) {
     .ftrk-section { padding: 60px 16px; }
