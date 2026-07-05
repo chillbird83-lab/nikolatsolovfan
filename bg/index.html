@@ -4556,8 +4556,8 @@
       <h2 class="section-title">F2 <span class="it">2026</span></h2>
     </div>
     <div class="right-info">
-      <div class="live">Уикендът на живо</div>
-      <div>Кръг 03 · Монреал · 22–24 май 2026</div>
+      <div class="live" id="season-live-pill">Уикендът на живо</div>
+      <div id="season-live-round">Кръг 07 · Силвърстоун · 3–5 юли 2026</div>
       <a class="ics-download" href="/nikola-tsolov-f2-2026-calendar.ics" download>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         <span>Добави сезон 2026 в календара (.ics)</span>
@@ -5555,6 +5555,16 @@
     const loc = BG_LOC[next.location] || next.location;
     whereEl.textContent = loc + ' · R' + String(next.round).padStart(2,'0');
     datesEl.textContent = startDay + '–' + endDay + ' ' + BG_MONTHS[month] + ' ' + RACE_YEAR;
+
+    // Season Tracker header mirrors the same round info
+    const pillEl  = document.getElementById('season-live-pill');
+    const roundEl = document.getElementById('season-live-round');
+    if (pillEl && roundEl) {
+      const isLiveNow = now >= start && now <= end;
+      pillEl.textContent = isLiveNow ? 'Уикендът на живо' : 'Следващ кръг';
+      roundEl.textContent = 'Кръг ' + String(next.round).padStart(2,'0') + ' · ' + loc + ' · ' + startDay + '–' + endDay + ' ' + BG_MONTHS[month] + ' ' + RACE_YEAR;
+    }
+
     target.className = 'banner-countdown';
     if (now >= start && now <= end) {
       target.classList.add('is-live');
