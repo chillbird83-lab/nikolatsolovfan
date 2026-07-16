@@ -4589,7 +4589,7 @@
   <!-- SESSION SCHEDULE -->
   <div class="sched-wrap" id="sched-wrap">
     <div class="sched-header">
-      <div class="sched-title"><span class="sched-title-dot"></span>R08 програма · Spa-Francorchamps · часовете предстоят</div>
+      <div class="sched-title"><span class="sched-title-dot"></span>R08 програма · Spa-Francorchamps</div>
       <div class="sched-tz-wrap">
         <span>TZ</span>
         <div class="tz-dropdown" id="tz-dropdown">
@@ -5729,7 +5729,7 @@
     5:  "2026-06-12T09:05:00Z",  // Barcelona FP (11:05 CEST)
     6:  "2026-06-26T09:05:00Z",  // Spielberg FP (11:05 CEST)
     7:  "2026-07-03T09:00:00Z",  // Silverstone FP (10:00 BST)
-    8:  "2026-07-17T10:00:00Z",  // Spa
+    8:  "2026-07-17T09:05:00Z",  // Spa FP (11:05 CEST)
     9:  "2026-07-24T10:00:00Z",  // Budapest
     10: "2026-09-04T10:00:00Z",  // Monza
     11: "2026-09-11T10:00:00Z",  // Madrid
@@ -6021,10 +6021,10 @@
 <script>
 function initSessionSchedule() {
   const SESSIONS = [
-    { label: 'Свободна тренировка',   short: 'FP',   utc: '', durMin: 45, type: 'fp',   result: '', tbc: true, day: 'Пет 17 юли' },
-    { label: 'Квалификация',      short: 'QUAL', utc: '', durMin: 30, type: 'qual', result: '', tbc: true, day: 'Пет 17 юли' },
-    { label: 'Спринт',     short: 'SPR',  utc: '', durMin: 50, type: 'spr',  result: '', tbc: true, day: 'Съб 18 юли' },
-    { label: 'Основно състезание',    short: 'FTR',  utc: '', durMin: 65, type: 'ftr',  result: '', tbc: true, day: 'Нед 19 юли' },
+    { label: 'Свободна тренировка',   short: 'FP',   utc: '2026-07-17T09:05:00Z', durMin: 45, type: 'fp',   result: '' },
+    { label: 'Квалификация',      short: 'QUAL', utc: '2026-07-17T13:55:00Z', durMin: 30, type: 'qual', result: '' },
+    { label: 'Спринт',     short: 'SPR',  utc: '2026-07-18T12:15:00Z', durMin: 50, type: 'spr',  result: '' },
+    { label: 'Основно състезание',    short: 'FTR',  utc: '2026-07-19T08:00:00Z', durMin: 65, type: 'ftr',  result: '' },
   ];
   // Споделено с обратното броене в hero секцията — един източник за програмата
   window.F2_SESSIONS = SESSIONS;
