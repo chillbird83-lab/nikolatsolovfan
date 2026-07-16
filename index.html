@@ -4626,7 +4626,7 @@
   <!-- SESSION SCHEDULE -->
   <div class="sched-wrap" id="sched-wrap">
     <div class="sched-header">
-      <div class="sched-title"><span class="sched-title-dot"></span>R07 Session Schedule · Silverstone Circuit</div>
+      <div class="sched-title"><span class="sched-title-dot"></span>R08 Session Schedule · Spa-Francorchamps · times TBC</div>
       <div class="sched-tz-wrap">
         <span>TZ</span>
         <div class="tz-dropdown" id="tz-dropdown">
@@ -6071,10 +6071,10 @@
 <script>
 function initSessionSchedule() {
   const SESSIONS = [
-    { label: 'Free Practice',   short: 'FP',   utc: '2026-07-03T09:00:00Z', durMin: 45, type: 'fp',   result: '' },
-    { label: 'Qualifying',      short: 'QUAL', utc: '2026-07-03T13:55:00Z', durMin: 30, type: 'qual', result: 'P5 · +0.282' },
-    { label: 'Sprint Race',     short: 'SPR',  utc: '2026-07-04T12:45:00Z', durMin: 50, type: 'spr',  result: 'P1 · WIN · +1.291s' },
-    { label: 'Feature Race',    short: 'FTR',  utc: '2026-07-05T10:15:00Z', durMin: 65, type: 'ftr',  result: 'P1 · WIN · +3.233s' },
+    { label: 'Free Practice',   short: 'FP',   utc: '', durMin: 45, type: 'fp',   result: '', tbc: true, day: 'Fri 17 Jul' },
+    { label: 'Qualifying',      short: 'QUAL', utc: '', durMin: 30, type: 'qual', result: '', tbc: true, day: 'Fri 17 Jul' },
+    { label: 'Sprint Race',     short: 'SPR',  utc: '', durMin: 50, type: 'spr',  result: '', tbc: true, day: 'Sat 18 Jul' },
+    { label: 'Feature Race',    short: 'FTR',  utc: '', durMin: 65, type: 'ftr',  result: '', tbc: true, day: 'Sun 19 Jul' },
   ];
   // Expose for the hero countdown so both components share one schedule
   window.F2_SESSIONS = SESSIONS;

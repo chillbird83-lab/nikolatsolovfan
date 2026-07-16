@@ -4589,7 +4589,7 @@
   <!-- SESSION SCHEDULE -->
   <div class="sched-wrap" id="sched-wrap">
     <div class="sched-header">
-      <div class="sched-title"><span class="sched-title-dot"></span>R07 програма · Silverstone Circuit</div>
+      <div class="sched-title"><span class="sched-title-dot"></span>R08 програма · Spa-Francorchamps · часовете предстоят</div>
       <div class="sched-tz-wrap">
         <span>TZ</span>
         <div class="tz-dropdown" id="tz-dropdown">
@@ -6021,10 +6021,10 @@
 <script>
 function initSessionSchedule() {
   const SESSIONS = [
-    { label: 'Свободна тренировка',   short: 'FP',   utc: '2026-07-03T09:00:00Z', durMin: 45, type: 'fp',   result: '' },
-    { label: 'Квалификация',      short: 'QUAL', utc: '2026-07-03T13:55:00Z', durMin: 30, type: 'qual', result: 'P5 · +0.282' },
-    { label: 'Спринт',     short: 'SPR',  utc: '2026-07-04T12:45:00Z', durMin: 50, type: 'spr',  result: 'P1 · ПОБЕДА · +1.291 s' },
-    { label: 'Основно състезание',    short: 'FTR',  utc: '2026-07-05T10:15:00Z', durMin: 65, type: 'ftr',  result: 'P1 · ПОБЕДА · +3.233 s' },
+    { label: 'Свободна тренировка',   short: 'FP',   utc: '', durMin: 45, type: 'fp',   result: '', tbc: true, day: 'Пет 17 юли' },
+    { label: 'Квалификация',      short: 'QUAL', utc: '', durMin: 30, type: 'qual', result: '', tbc: true, day: 'Пет 17 юли' },
+    { label: 'Спринт',     short: 'SPR',  utc: '', durMin: 50, type: 'spr',  result: '', tbc: true, day: 'Съб 18 юли' },
+    { label: 'Основно състезание',    short: 'FTR',  utc: '', durMin: 65, type: 'ftr',  result: '', tbc: true, day: 'Нед 19 юли' },
   ];
   // Споделено с обратното броене в hero секцията — един източник за програмата
   window.F2_SESSIONS = SESSIONS;
