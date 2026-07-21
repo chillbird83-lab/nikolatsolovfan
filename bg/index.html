@@ -4589,7 +4589,7 @@
   <!-- SESSION SCHEDULE -->
   <div class="sched-wrap" id="sched-wrap">
     <div class="sched-header">
-      <div class="sched-title"><span class="sched-title-dot"></span>R08 програма · Spa-Francorchamps</div>
+      <div class="sched-title"><span class="sched-title-dot"></span>R09 програма · Hungaroring, Будапеща</div>
       <div class="sched-tz-wrap">
         <span>TZ</span>
         <div class="tz-dropdown" id="tz-dropdown">
@@ -5731,7 +5731,7 @@
     6:  "2026-06-26T09:05:00Z",  // Spielberg FP (11:05 CEST)
     7:  "2026-07-03T09:00:00Z",  // Silverstone FP (10:00 BST)
     8:  "2026-07-17T09:05:00Z",  // Spa FP (11:05 CEST)
-    9:  "2026-07-24T10:00:00Z",  // Budapest
+    9:  "2026-07-24T09:05:00Z",  // Budapest FP (11:05 CEST)
     10: "2026-09-04T10:00:00Z",  // Monza
     11: "2026-09-11T10:00:00Z",  // Madrid
     12: "2026-09-24T10:00:00Z",  // Baku
@@ -6022,10 +6022,10 @@
 <script>
 function initSessionSchedule() {
   const SESSIONS = [
-    { label: 'Свободна тренировка',   short: 'FP',   utc: '2026-07-17T09:05:00Z', durMin: 45, type: 'fp',   result: '' },
-    { label: 'Квалификация',      short: 'QUAL', utc: '2026-07-17T14:00:00Z', durMin: 30, type: 'qual', result: 'P4 · +0.393' },
-    { label: 'Спринт',     short: 'SPR',  utc: '2026-07-18T12:15:00Z', durMin: 50, type: 'spr',  result: 'P4 · +1.798 s' },
-    { label: 'Основно състезание',    short: 'FTR',  utc: '2026-07-19T08:00:00Z', durMin: 65, type: 'ftr',  result: 'P3 · +7.463 s' },
+    { label: 'Свободна тренировка',   short: 'FP',   utc: '2026-07-24T09:05:00Z', durMin: 45, type: 'fp',   result: '' },
+    { label: 'Квалификация',      short: 'QUAL', utc: '2026-07-24T14:05:00Z', durMin: 30, type: 'qual', result: '' },
+    { label: 'Спринт',     short: 'SPR',  utc: '2026-07-25T12:15:00Z', durMin: 50, type: 'spr',  result: '' },
+    { label: 'Основно състезание',    short: 'FTR',  utc: '2026-07-26T09:25:00Z', durMin: 65, type: 'ftr',  result: '' },
   ];
   // Споделено с обратното броене в hero секцията — един източник за програмата
   window.F2_SESSIONS = SESSIONS;
