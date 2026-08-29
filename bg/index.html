@@ -4589,7 +4589,7 @@
   <!-- SESSION SCHEDULE -->
   <div class="sched-wrap" id="sched-wrap">
     <div class="sched-header">
-      <div class="sched-title"><span class="sched-title-dot"></span>R09 програма · Hungaroring, Будапеща</div>
+      <div class="sched-title"><span class="sched-title-dot"></span>R10 програма · Autodromo Nazionale, Монца</div>
       <div class="sched-tz-wrap">
         <span>TZ</span>
         <div class="tz-dropdown" id="tz-dropdown">
@@ -5737,7 +5737,7 @@
     7:  "2026-07-03T09:00:00Z",  // Silverstone FP (10:00 BST)
     8:  "2026-07-17T09:05:00Z",  // Spa FP (11:05 CEST)
     9:  "2026-07-24T09:05:00Z",  // Budapest FP (11:05 CEST)
-    10: "2026-09-04T10:00:00Z",  // Monza
+    10: "2026-09-04T08:00:00Z",  // Monza FP (10:00 CEST)
     11: "2026-09-11T10:00:00Z",  // Madrid
     12: "2026-09-24T10:00:00Z",  // Baku
     13: "2026-11-27T11:00:00Z",  // Lusail
@@ -6027,10 +6027,10 @@
 <script>
 function initSessionSchedule() {
   const SESSIONS = [
-    { label: 'Свободна тренировка',   short: 'FP',   utc: '2026-07-24T09:05:00Z', durMin: 45, type: 'fp',   result: 'P4 · +0.137' },
-    { label: 'Квалификация',      short: 'QUAL', utc: '2026-07-24T14:05:00Z', durMin: 30, type: 'qual', result: 'P7 · +0.417' },
-    { label: 'Спринт',     short: 'SPR',  utc: '2026-07-25T12:15:00Z', durMin: 50, type: 'spr',  result: 'DNF' },
-    { label: 'Основно състезание',    short: 'FTR',  utc: '2026-07-26T09:25:00Z', durMin: 65, type: 'ftr',  result: 'P7' },
+    { label: 'Свободна тренировка',   short: 'FP',   utc: '2026-09-04T08:00:00Z', durMin: 45, type: 'fp',   result: '' },
+    { label: 'Квалификация',      short: 'QUAL', utc: '2026-09-04T12:55:00Z', durMin: 30, type: 'qual', result: '' },
+    { label: 'Спринт',     short: 'SPR',  utc: '2026-09-05T12:15:00Z', durMin: 50, type: 'spr',  result: '' },
+    { label: 'Основно състезание',    short: 'FTR',  utc: '2026-09-06T07:45:00Z', durMin: 65, type: 'ftr',  result: '' },
   ];
   // Споделено с обратното броене в hero секцията — един източник за програмата
   window.F2_SESSIONS = SESSIONS;
@@ -6258,6 +6258,15 @@ function initRecapCards() {
 -->
 <script>
   const NEWS = [
+    {
+      date: "2026-08-29",
+      tag: "race",
+      headline: "Преглед за Монца: Цолов подновява битката за титлата с 20 точки преднина",
+      summary: "Сезонът на F2 се подновява на Монца на 4–6 септември след лятната пауза, а Никола Цолов води с 20 точки. Поглед към подиума му от F3 на храма на скоростта, защо трасето с ниска притискаща сила се кара съвсем различно от Будапеща и какво би бил добър уикенд за лидер с пет оставащи кръга.",
+      url: "/bg/articles/tsolov-monza-2026/",
+      source: "Преглед",
+      image: "nikola-tsolov-budapest-feature-2026.webp"
+    },
     {
       date: "2026-07-26",
       tag: "race",

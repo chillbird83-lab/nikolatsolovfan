@@ -4626,7 +4626,7 @@
   <!-- SESSION SCHEDULE -->
   <div class="sched-wrap" id="sched-wrap">
     <div class="sched-header">
-      <div class="sched-title"><span class="sched-title-dot"></span>R09 Session Schedule · Hungaroring, Budapest</div>
+      <div class="sched-title"><span class="sched-title-dot"></span>R10 Session Schedule · Autodromo Nazionale, Monza</div>
       <div class="sched-tz-wrap">
         <span>TZ</span>
         <div class="tz-dropdown" id="tz-dropdown">
@@ -5786,7 +5786,7 @@
     7:  "2026-07-03T09:00:00Z",  // Silverstone FP (10:00 BST)
     8:  "2026-07-17T09:05:00Z",  // Spa FP (11:05 CEST)
     9:  "2026-07-24T09:05:00Z",  // Budapest FP (11:05 CEST)
-    10: "2026-09-04T10:00:00Z",  // Monza
+    10: "2026-09-04T08:00:00Z",  // Monza FP (10:00 CEST)
     11: "2026-09-11T10:00:00Z",  // Madrid
     12: "2026-09-24T10:00:00Z",  // Baku
     13: "2026-11-27T11:00:00Z",  // Lusail
@@ -6077,10 +6077,10 @@
 <script>
 function initSessionSchedule() {
   const SESSIONS = [
-    { label: 'Free Practice',   short: 'FP',   utc: '2026-07-24T09:05:00Z', durMin: 45, type: 'fp',   result: 'P4 · +0.137' },
-    { label: 'Qualifying',      short: 'QUAL', utc: '2026-07-24T14:05:00Z', durMin: 30, type: 'qual', result: 'P7 · +0.417' },
-    { label: 'Sprint Race',     short: 'SPR',  utc: '2026-07-25T12:15:00Z', durMin: 50, type: 'spr',  result: 'DNF' },
-    { label: 'Feature Race',    short: 'FTR',  utc: '2026-07-26T09:25:00Z', durMin: 65, type: 'ftr',  result: 'P7' },
+    { label: 'Free Practice',   short: 'FP',   utc: '2026-09-04T08:00:00Z', durMin: 45, type: 'fp',   result: '' },
+    { label: 'Qualifying',      short: 'QUAL', utc: '2026-09-04T12:55:00Z', durMin: 30, type: 'qual', result: '' },
+    { label: 'Sprint Race',     short: 'SPR',  utc: '2026-09-05T12:15:00Z', durMin: 50, type: 'spr',  result: '' },
+    { label: 'Feature Race',    short: 'FTR',  utc: '2026-09-06T07:45:00Z', durMin: 65, type: 'ftr',  result: '' },
   ];
   // Expose for the hero countdown so both components share one schedule
   window.F2_SESSIONS = SESSIONS;
@@ -6308,6 +6308,15 @@ function initRecapCards() {
 -->
 <script>
   const NEWS = [
+    {
+      date: "2026-08-29",
+      tag: "race",
+      headline: "Monza preview: Tsolov resumes the title fight 20 points clear",
+      summary: "The F2 season restarts at Monza on 4–6 September after the summer break, with Nikola Tsolov leading by 20 points. A look at his F3 podium record at the Temple of Speed, why the low-downforce track races nothing like Budapest, and what a good weekend looks like for a championship leader with five rounds to go.",
+      url: "/articles/r10-monza-tsolov-preview-2026/",
+      source: "Race preview",
+      image: "nikola-tsolov-budapest-feature-2026.webp"
+    },
     {
       date: "2026-07-26",
       tag: "race",
